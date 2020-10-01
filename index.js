@@ -35,41 +35,39 @@ import generateVisibility from "./generators/visibility";
 import generateWidth from "./generators/width";
 import generateZIndex from "./generators/zindex";
 
-module.exports = {
-  generateAlign,
-  generateBase,
-  generateBg,
-  generateBorder,
-  generateBox,
-  generateClear,
-  generateContainer,
-  generateDisplay,
-  generateDivide,
-  generateFlex,
-  generateFloat,
-  generateForm,
-  generateGradient,
-  generateGrid,
-  generateHeight,
-  generateInteractivity,
-  generateJustify,
-  generateLeading,
-  generateList,
-  generateMargin,
-  generateObject,
-  generateOpacity,
-  generateOverflow,
-  generateOverscroll,
-  generatePadding,
-  generatePlace,
-  generatePlaceholder,
-  generatePosition,
-  generateShadow,
-  generateSpace,
-  generateTable,
-  generateText,
-  generateTracking,
-  generateVisibility,
-  generateWidth,
-  generateZIndex,
-};
+module.exports.generateAlign = generateAlign;
+module.exports.generateBase = generateBase;
+module.exports.generateBg = generateBg;
+module.exports.generateBorder = generateBorder;
+module.exports.generateBox = generateBox;
+module.exports.generateClear = generateClear;
+module.exports.generateContainer = generateContainer;
+module.exports.generateDisplay = generateDisplay;
+module.exports.generateDivide = generateDivide;
+module.exports.generateFlex = generateFlex;
+module.exports.generateFloat = generateFloat;
+module.exports.generateForm = generateForm;
+module.exports.generateGradient = generateGradient;
+module.exports.generateGrid = generateGrid;
+module.exports.generateHeight = generateHeight;
+module.exports.generateInteractivity = generateInteractivity;
+module.exports.generateJustify = generateJustify;
+module.exports.generateLeading = generateLeading;
+module.exports.generateList = generateList;
+module.exports.generateMargin = generateMargin;
+module.exports.generateObject = generateObject;
+module.exports.generateOpacity = generateOpacity;
+module.exports.generateOverflow = generateOverflow;
+module.exports.generateOverscroll = generateOverscroll;
+module.exports.generatePadding = generatePadding;
+module.exports.generatePlace = generatePlace;
+module.exports.generatePlaceholder = generatePlaceholder;
+module.exports.generatePosition = generatePosition;
+module.exports.generateShadow = generateShadow;
+module.exports.generateSpace = generateSpace;
+module.exports.generateTable = generateTable;
+module.exports.generateText = generateText;
+module.exports.generateTracking = generateTracking;
+module.exports.generateVisibility = generateVisibility;
+module.exports.generateWidth = generateWidth;
+module.exports.generateZIndex = generateZIndex;
