@@ -8,12 +8,9 @@ export default function generateMargin(globalConfigOptions = {}) {
     globalConfigOptions
   );
 
-  const { prefix: globalPrefix, spacing } = configOptions;
+  const { prefix: globalPrefix, spacing, extendMargin } = configOptions;
 
   const prefix = `${globalPrefix}m`;
-  const extraSpacing = {
-    auto: "auto",
-  };
 
   const responsiveCssString = generateCssString(({ pseudoClass }) => {
     const generateMargin = (key, value, isNegative) => {
@@ -46,7 +43,7 @@ export default function generateMargin(globalConfigOptions = {}) {
     };
 
     let cssString = "";
-    Object.entries(Object.assign(spacing, extraSpacing)).forEach(
+    Object.entries(Object.assign(spacing, extendMargin)).forEach(
       ([space, spaceValue]) => {
         cssString += generateMargin(space, spaceValue);
         cssString += generateMargin(space, spaceValue, true);

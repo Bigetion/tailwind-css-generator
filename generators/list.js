@@ -8,15 +8,9 @@ export default function generateList(globalConfigOptions = {}) {
     globalConfigOptions
   );
 
-  const { prefix: globalPrefix } = configOptions;
+  const { prefix: globalPrefix, listStyleType } = configOptions;
 
   const prefix = `${globalPrefix}list`;
-
-  const listStyleType = {
-    none: "none",
-    disc: "disc",
-    decimal: "decimal",
-  };
 
   const responsiveCssString = generateCssString(
     ({ orientationPrefix, getCssByOptions }) => {
