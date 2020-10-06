@@ -12,7 +12,7 @@ export default function generateWidth(globalConfigOptions = {}) {
     prefix: globalPrefix,
     screens,
     spacing,
-    extendWidth,
+    extendWidth = {},
     maxWidth,
   } = configOptions;
 

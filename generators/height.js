@@ -9,7 +9,7 @@ export default function generateHeight(globalConfigOptions = {}) {
     globalConfigOptions
   );
 
-  const { prefix: globalPrefix, spacing, extendHeight } = configOptions;
+  const { prefix: globalPrefix, spacing, extendHeight = {} } = configOptions;
 
   const prefix = `${globalPrefix}h`;
 

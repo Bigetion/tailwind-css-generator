@@ -31,6 +31,7 @@ export { default as generateSpace } from "./generators/space";
 export { default as generateTable } from "./generators/table";
 export { default as generateText } from "./generators/text";
 export { default as generateTracking } from "./generators/tracking";
+export { default as generateTransform } from "./generators/transform";
 export { default as generateVisibility } from "./generators/visibility";
 export { default as generateWidth } from "./generators/width";
 export { default as generateZIndex } from "./generators/zindex";
