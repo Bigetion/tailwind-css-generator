@@ -28,6 +28,7 @@ export { default as generatePlaceholder } from "./generators/placeholder";
 export { default as generatePosition } from "./generators/position";
 export { default as generateShadow } from "./generators/shadow";
 export { default as generateSpace } from "./generators/space";
+export { default as generateSvg } from "./generators/svg";
 export { default as generateTable } from "./generators/table";
 export { default as generateText } from "./generators/text";
 export { default as generateTracking } from "./generators/tracking";
