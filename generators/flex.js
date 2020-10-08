@@ -71,7 +71,7 @@ export default function generateFlex(globalConfigOptions = {}) {
       cssString += getCssByOptions(
         flexGrow,
         (key, value) => `
-          .${orientationPrefix}${prefix}${key !== "" ? `-${key}` : ""} {
+          .${orientationPrefix}${prefix}-grow${key !== "" ? `-${key}` : ""} {
             flex-grow: ${value};
           }
         `
@@ -79,7 +79,7 @@ export default function generateFlex(globalConfigOptions = {}) {
       cssString += getCssByOptions(
         flexShrink,
         (key, value) => `
-          .${orientationPrefix}${prefix}${key !== "" ? `-${key}` : ""} {
+          .${orientationPrefix}${prefix}-shrink${key !== "" ? `-${key}` : ""} {
             flex-shrink: ${value};
           }
         `
