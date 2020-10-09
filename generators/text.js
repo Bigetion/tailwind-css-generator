@@ -46,13 +46,21 @@ export default function generateText(globalConfigOptions = {}) {
         let str = "";
         if (htmlColor === "transparent") {
           str += `
-            ${pseudoClass(`${prefix}-${colorName}`)} {
+            ${pseudoClass(`${prefix}-${colorName}`, [
+              "hover",
+              "focus",
+              "active",
+            ])} {
               color: transparent;
             }
           `;
         } else {
           str += `
-            ${pseudoClass(`${prefix}-${colorName}`)} {
+            ${pseudoClass(`${prefix}-${colorName}`, [
+              "hover",
+              "focus",
+              "active",
+            ])} {
               --text-opacity: 1;
               color: ${htmlColor};
               color: rgba(${rgbColor}, var(--text-opacity));

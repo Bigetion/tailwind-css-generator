@@ -41,13 +41,21 @@ export default function generateBg(globalConfigOptions = {}) {
         let str = "";
         if (htmlColor === "transparent") {
           str += `
-            ${pseudoClass(`${prefix}-${colorName}`)} {
+            ${pseudoClass(`${prefix}-${colorName}`, [
+              "hover",
+              "focus",
+              "active",
+            ])} {
               background-color: transparent;
             }
           `;
         } else {
           str += `
-            ${pseudoClass(`${prefix}-${colorName}`)} {
+            ${pseudoClass(`${prefix}-${colorName}`, [
+              "hover",
+              "focus",
+              "active",
+            ])} {
               --bg-opacity: 1;
               background-color: ${htmlColor};
               background-color: rgba(${rgbColor}, var(--bg-opacity));
