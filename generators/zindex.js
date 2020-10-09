@@ -13,11 +13,11 @@ export default function generateZIndex(globalConfigOptions = {}) {
   const prefix = `${globalPrefix}z`;
 
   const responsiveCssString = generateCssString(
-    ({ orientationPrefix, getCssByOptions }) => {
+    ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         zIndex,
         (key, value) => `
-          .${orientationPrefix}${prefix}-${key} {
+          ${pseudoClass(`${prefix}-${key}`)} {
             z-index: ${value};
           }
         `
