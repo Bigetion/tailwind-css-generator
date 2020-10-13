@@ -8,17 +8,17 @@ export default function generateZIndex(globalConfigOptions = {}) {
     globalConfigOptions
   );
 
-  const { prefix: globalPrefix, zIndex } = configOptions;
+  const { prefix: globalPrefix, zIndex, extendZIndex = {} } = configOptions;
 
   const prefix = `${globalPrefix}z`;
 
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
-        zIndex,
+        Object.assign(zIndex, extendZIndex),
         (key, value) => `
           ${pseudoClass(`${prefix}-${key}`)} {
-            z-index: ${value};
+            z-index: ${value} !important;
           }
         `
       );
