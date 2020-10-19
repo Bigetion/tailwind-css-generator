@@ -8,7 +8,7 @@ export default function generatePlaceholder(globalConfigOptions = {}) {
     globalConfigOptions
   );
 
-  const { prefix: globalPrefix, opacity } = configOptions;
+  const { prefix: globalPrefix, opacity, extendOpacity = {} } = configOptions;
 
   const prefix = `${globalPrefix}placeholder`;
   const pseudoElements = ["", "focus"];
@@ -74,7 +74,7 @@ export default function generatePlaceholder(globalConfigOptions = {}) {
         return str;
       });
       cssString += getCssByOptions(
-        opacity,
+        Object.assign(opacity, extendOpacity),
         (key, value) => `
           .${orientationPrefix}${prefix}-opacity-${key}::-webkit-input-placeholder {
             --placeholder-opacity: ${value};

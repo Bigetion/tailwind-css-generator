@@ -8,14 +8,14 @@ export default function generateOpacity(globalConfigOptions = {}) {
     globalConfigOptions
   );
 
-  const { prefix: globalPrefix, opacity } = configOptions;
+  const { prefix: globalPrefix, opacity, extendOpacity = {} } = configOptions;
 
   const prefix = `${globalPrefix}opacity`;
 
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
-        opacity,
+        Object.assign(opacity, extendOpacity),
         (key, value) => `
           ${pseudoClass(`${prefix}-${key}`)} {
             opacity: ${value};

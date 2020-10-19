@@ -8,7 +8,7 @@ export default function generateFlex(globalConfigOptions = {}) {
     globalConfigOptions
   );
 
-  const { prefix: globalPrefix, order } = configOptions;
+  const { prefix: globalPrefix, order, extendOrder = {} } = configOptions;
 
   const prefix = `${globalPrefix}flex`;
 
@@ -85,7 +85,7 @@ export default function generateFlex(globalConfigOptions = {}) {
         `
       );
       cssString += getCssByOptions(
-        order,
+        Object.assign(order, extendOrder),
         (key, value) => `
           .${orientationPrefix}order-${key} {
             order: ${value};

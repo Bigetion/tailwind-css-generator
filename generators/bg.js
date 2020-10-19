@@ -8,7 +8,7 @@ export default function generateBg(globalConfigOptions = {}) {
     globalConfigOptions
   );
 
-  const { prefix: globalPrefix, opacity } = configOptions;
+  const { prefix: globalPrefix, opacity, extendOpacity = {} } = configOptions;
 
   const prefix = `${globalPrefix}bg`;
 
@@ -84,7 +84,7 @@ export default function generateBg(globalConfigOptions = {}) {
         `
       );
       cssString += getCssByOptions(
-        opacity,
+        Object.assign(opacity, extendOpacity),
         (key, value) => `
           .${orientationPrefix}${prefix}-opacity-${key} {
             --bg-opacity: ${value};

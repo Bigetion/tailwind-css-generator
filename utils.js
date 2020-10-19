@@ -3,7 +3,7 @@ export const generateCssString = (
   options,
   isResponsive = true
 ) => {
-  const { screens, colors } = options;
+  const { screens, colors, extendColors = {} } = options;
   let orientationPrefix = "";
 
   const pseudoClass = (value, pseudoElements = ["hover", "focus"]) => {
@@ -39,15 +39,17 @@ export const generateCssString = (
 
   const getCssFromColors = (getStr = () => {}) => {
     let str = "";
-    Object.entries(colors).forEach(([key1, value1]) => {
-      if (typeof value1 === "string") {
-        str += `${getStr(key1, value1, hexToRgb(value1))} `;
-      } else if (typeof value1 === "object") {
-        Object.entries(value1).forEach(([key2, value2]) => {
-          str += `${getStr(`${key1}-${key2}`, value2, hexToRgb(value2))} `;
-        });
+    Object.entries(Object.assign(colors, extendColors)).forEach(
+      ([key1, value1]) => {
+        if (typeof value1 === "string") {
+          str += `${getStr(key1, value1, hexToRgb(value1))} `;
+        } else if (typeof value1 === "object") {
+          Object.entries(value1).forEach(([key2, value2]) => {
+            str += `${getStr(`${key1}-${key2}`, value2, hexToRgb(value2))} `;
+          });
+        }
       }
-    });
+    );
     return str;
   };
 

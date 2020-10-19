@@ -8,7 +8,12 @@ export default function generateMargin(globalConfigOptions = {}) {
     globalConfigOptions
   );
 
-  const { prefix: globalPrefix, spacing, extendMargin = {} } = configOptions;
+  const {
+    prefix: globalPrefix,
+    spacing,
+    margin,
+    extendMargin = {},
+  } = configOptions;
 
   const prefix = `${globalPrefix}m`;
 
@@ -44,7 +49,7 @@ export default function generateMargin(globalConfigOptions = {}) {
       };
 
       const cssString = getCssByOptions(
-        Object.assign(spacing, extendMargin),
+        Object.assign(spacing, margin, extendMargin),
         (key, value) => {
           let str = "";
           str += generateMargin(key, value);

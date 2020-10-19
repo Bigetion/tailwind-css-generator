@@ -9,14 +9,19 @@ export default function generateHeight(globalConfigOptions = {}) {
     globalConfigOptions
   );
 
-  const { prefix: globalPrefix, spacing, extendHeight = {} } = configOptions;
+  const {
+    prefix: globalPrefix,
+    spacing,
+    height,
+    extendHeight = {},
+  } = configOptions;
 
   const prefix = `${globalPrefix}h`;
 
   const responsiveCssString = generateCssString(
     ({ orientationPrefix, getCssByOptions }) => {
       let cssString = getCssByOptions(
-        Object.assign(spacing, extendHeight),
+        Object.assign(spacing, height, extendHeight),
         (key, value) => `
           .${orientationPrefix}${prefix}-${key.replace("/", `\\/`)} {
             height: ${value}; 

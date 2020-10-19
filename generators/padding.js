@@ -8,7 +8,7 @@ export default function generatePadding(globalConfigOptions = {}) {
     globalConfigOptions
   );
 
-  const { prefix: globalPrefix, spacing } = configOptions;
+  const { prefix: globalPrefix, spacing, extendPadding = {} } = configOptions;
 
   const prefix = `${globalPrefix}p`;
 
@@ -42,9 +42,11 @@ export default function generatePadding(globalConfigOptions = {}) {
     };
 
     let cssString = "";
-    Object.entries(spacing).forEach(([space, spaceValue]) => {
-      cssString += generatePadding(space, spaceValue);
-    });
+    Object.entries(Object.assign(spacing, extendPadding)).forEach(
+      ([space, spaceValue]) => {
+        cssString += generatePadding(space, spaceValue);
+      }
+    );
     return cssString;
   }, configOptions);
 

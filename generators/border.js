@@ -11,8 +11,11 @@ export default function generateBorder(globalConfigOptions = {}) {
   const {
     prefix: globalPrefix,
     opacity,
+    extendOpacity = {},
     borderRadius,
+    extendBorderRadius = {},
     borderWidth,
+    extendBorderWidth = {},
   } = configOptions;
 
   const prefix = `${globalPrefix}border`;
@@ -40,9 +43,11 @@ export default function generateBorder(globalConfigOptions = {}) {
         }
         return str;
       });
-      cssString += getCssByOptions(borderRadius, (key, value) => {
-        const k = key !== "default" ? `-${key}` : "";
-        return `
+      cssString += getCssByOptions(
+        Object.assign(borderRadius, extendBorderRadius),
+        (key, value) => {
+          const k = key !== "default" ? `-${key}` : "";
+          return `
           ${pseudoClass(`rounded${k}`)} {
             border-radius: ${value};
           }
@@ -75,10 +80,13 @@ export default function generateBorder(globalConfigOptions = {}) {
             border-bottom-left-radius: ${value};
           }
         `;
-      });
-      cssString += getCssByOptions(borderWidth, (key, value) => {
-        const k = key !== "default" ? `-${key}` : "";
-        return `
+        }
+      );
+      cssString += getCssByOptions(
+        Object.assign(borderWidth, extendBorderWidth),
+        (key, value) => {
+          const k = key !== "default" ? `-${key}` : "";
+          return `
           ${pseudoClass(`${prefix}${k}`)} {
             border-width: ${value};
           }
@@ -95,9 +103,10 @@ export default function generateBorder(globalConfigOptions = {}) {
             border-left-width: ${value};
           }
         `;
-      });
+        }
+      );
       cssString += getCssByOptions(
-        opacity,
+        Object.assign(opacity, extendOpacity),
         (key, value) => `
           .${orientationPrefix}${prefix}-opacity-${key} {
             --border-opacity: ${value};

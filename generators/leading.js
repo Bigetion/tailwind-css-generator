@@ -8,14 +8,18 @@ export default function generateLeading(globalConfigOptions = {}) {
     globalConfigOptions
   );
 
-  const { prefix: globalPrefix, lineHeight } = configOptions;
+  const {
+    prefix: globalPrefix,
+    lineHeight,
+    extendLineHeight = {},
+  } = configOptions;
 
   const prefix = `${globalPrefix}leading`;
 
   const responsiveCssString = generateCssString(
     ({ orientationPrefix, getCssByOptions }) => {
       const cssString = getCssByOptions(
-        lineHeight,
+        Object.assign(lineHeight, extendLineHeight),
         (key, value) => `
           .${orientationPrefix}${prefix}-${key} {
             line-height: ${value};

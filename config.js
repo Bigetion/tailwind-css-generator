@@ -151,15 +151,15 @@ const configOptions = {
     75: "0.75",
     100: "1",
   },
-  extendHeight: {
+  height: {
     auto: "auto",
     full: "100%",
     screen: "100vh",
   },
-  extendMargin: {
+  margin: {
     auto: "auto",
   },
-  extendWidth: {
+  width: {
     auto: "auto",
     "1/2": "50%",
     "1/3": "33.333333%",

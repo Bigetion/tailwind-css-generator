@@ -8,7 +8,15 @@ export default function generateText(globalConfigOptions = {}) {
     globalConfigOptions
   );
 
-  const { prefix: globalPrefix, opacity, fontSize, fontWeight } = configOptions;
+  const {
+    prefix: globalPrefix,
+    opacity,
+    extendOpacity = {},
+    fontSize,
+    extendFontSize = {},
+    fontWeight,
+    extendFontWeight = {},
+  } = configOptions;
 
   const prefix = `${globalPrefix}text`;
 
@@ -78,7 +86,7 @@ export default function generateText(globalConfigOptions = {}) {
         `
       );
       cssString += getCssByOptions(
-        opacity,
+        Object.assign(opacity, extendOpacity),
         (key, value) => `
           .${orientationPrefix}${prefix}-opacity-${key} {
             --text-opacity: ${value};
@@ -102,7 +110,7 @@ export default function generateText(globalConfigOptions = {}) {
         `
       );
       cssString += getCssByOptions(
-        fontSize,
+        Object.assign(fontSize, extendFontSize),
         (key, value) => `
           .${orientationPrefix}${prefix}-${key} {
             font-size: ${value};
@@ -110,7 +118,7 @@ export default function generateText(globalConfigOptions = {}) {
         `
       );
       cssString += getCssByOptions(
-        fontWeight,
+        Object.assign(fontWeight, extendFontWeight),
         (key, value) => `
           .${orientationPrefix}${globalPrefix}font-${key} {
             font-weight: ${value};

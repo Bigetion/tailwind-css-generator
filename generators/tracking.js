@@ -8,14 +8,18 @@ export default function generateTracking(globalConfigOptions = {}) {
     globalConfigOptions
   );
 
-  const { prefix: globalPrefix, letterSpacing } = configOptions;
+  const {
+    prefix: globalPrefix,
+    letterSpacing,
+    extendLetterSpacing = {},
+  } = configOptions;
 
   const prefix = `${globalPrefix}tracking`;
 
   const responsiveCssString = generateCssString(
     ({ orientationPrefix, getCssByOptions }) => {
       const cssString = getCssByOptions(
-        letterSpacing,
+        Object.assign(letterSpacing, extendLetterSpacing),
         (key, value) => `
           .${orientationPrefix}${prefix}-${key} {
             letter-spacing: ${value};

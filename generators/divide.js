@@ -8,7 +8,13 @@ export default function generateDivide(globalConfigOptions = {}) {
     globalConfigOptions
   );
 
-  const { prefix: globalPrefix, opacity, divideSpacing } = configOptions;
+  const {
+    prefix: globalPrefix,
+    opacity,
+    extendOpacity = {},
+    divideSpacing,
+    extendDivideSpacing = {},
+  } = configOptions;
 
   const prefix = `${globalPrefix}divide`;
 
@@ -36,10 +42,12 @@ export default function generateDivide(globalConfigOptions = {}) {
       };
 
       let cssString = "";
-      Object.entries(divideSpacing).forEach(([key, value]) => {
-        cssString += generateDivideWidth("y", key, value);
-        cssString += generateDivideWidth("x", key, value);
-      });
+      Object.entries(Object.assign(divideSpacing, extendDivideSpacing)).forEach(
+        ([key, value]) => {
+          cssString += generateDivideWidth("y", key, value);
+          cssString += generateDivideWidth("x", key, value);
+        }
+      );
       cssString += `
         .${orientationPrefix}${prefix}-y-reverse > :not(template) ~ :not(template) {
           --divide-y-reverse: 1;
@@ -70,7 +78,7 @@ export default function generateDivide(globalConfigOptions = {}) {
       });
 
       cssString += getCssByOptions(
-        opacity,
+        Object.assign(opacity, extendOpacity),
         (key, value) => `
           .${orientationPrefix}${prefix}-opacity-${key} > :not(template) ~ :not(template) {
             --divide-opacity: ${value};

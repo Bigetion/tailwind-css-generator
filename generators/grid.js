@@ -9,7 +9,7 @@ export default function generateGrid(globalConfigOptions = {}) {
     globalConfigOptions
   );
 
-  const { prefix: globalPrefix, spacing } = configOptions;
+  const { prefix: globalPrefix, spacing, extendGap = {} } = configOptions;
 
   const prefix = `${globalPrefix}grid`;
 
@@ -78,13 +78,15 @@ export default function generateGrid(globalConfigOptions = {}) {
           cr = "row-";
         }
         let str = "";
-        Object.entries(spacing).forEach(([key, value]) => {
-          str += `
-            ${pseudoClass(`${globalPrefix}gap${p}-${key}`)} {
-              ${cr}gap: ${value};
-            }
-          `;
-        });
+        Object.entries(Object.assign(spacing, extendGap)).forEach(
+          ([key, value]) => {
+            str += `
+              ${pseudoClass(`${globalPrefix}gap${p}-${key}`)} {
+                ${cr}gap: ${value};
+              }
+            `;
+          }
+        );
         return str;
       };
 

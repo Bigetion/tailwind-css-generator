@@ -8,14 +8,18 @@ export default function generatePosition(globalConfigOptions = {}) {
     globalConfigOptions
   );
 
-  const { prefix, spacing } = configOptions;
+  const { prefix, spacing, extendPosition = {} } = configOptions;
 
   const position = ["static", "fixed", "absolute", "relative", "sticky"];
 
-  const positionOptions = Object.assign(spacing, {
-    0: "0",
-    auto: "auto",
-  });
+  const positionOptions = Object.assign(
+    spacing,
+    {
+      0: "0",
+      auto: "auto",
+    },
+    extendPosition
+  );
 
   const responsiveCssString = generateCssString(
     ({ orientationPrefix, getCssByOptions }) => {

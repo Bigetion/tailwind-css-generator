@@ -8,14 +8,18 @@ export default function generateList(globalConfigOptions = {}) {
     globalConfigOptions
   );
 
-  const { prefix: globalPrefix, listStyleType } = configOptions;
+  const {
+    prefix: globalPrefix,
+    listStyleType,
+    extendListStyleType = {},
+  } = configOptions;
 
   const prefix = `${globalPrefix}list`;
 
   const responsiveCssString = generateCssString(
     ({ orientationPrefix, getCssByOptions }) => {
       let cssString = getCssByOptions(
-        listStyleType,
+        Object.assign(listStyleType, extendListStyleType),
         (key, value) => `
           .${orientationPrefix}${prefix}-${key} {
             list-style-type: ${value};

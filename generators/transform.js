@@ -11,10 +11,13 @@ export default function generateTransform(globalConfigOptions = {}) {
   const {
     prefix: globalPrefix,
     scale,
+    extendScale = {},
     rotate,
+    extendRotate = {},
     spacing,
     extendTranslate = {},
     skew,
+    extendSkew = {},
   } = configOptions;
 
   const objectPosition = [
@@ -73,7 +76,7 @@ export default function generateTransform(globalConfigOptions = {}) {
         `
       );
       cssString += getCssByOptions(
-        scale,
+        Object.assign(scale, extendScale),
         (key, value) => `
           ${pseudoClass(`${globalPrefix}scale-${key}`)} {
             --transform-scale-x: ${value} !important;
@@ -87,19 +90,22 @@ export default function generateTransform(globalConfigOptions = {}) {
           }
         `
       );
-      cssString += getCssByOptions(rotate, (key, value) => {
-        let negativePrefix = "";
-        if (key.toString().substr(0, 1) === "-") {
-          negativePrefix = "-";
-        }
-        return `
+      cssString += getCssByOptions(
+        Object.assign(rotate, extendRotate),
+        (key, value) => {
+          let negativePrefix = "";
+          if (key.toString().substr(0, 1) === "-") {
+            negativePrefix = "-";
+          }
+          return `
           ${pseudoClass(
             `${globalPrefix}${negativePrefix}rotate-${key.split("-").join("")}`
           )} {
             --transform-rotate: ${value} !important;
           }
         `;
-      });
+        }
+      );
       cssString += getCssByOptions(
         Object.assign(spacing, extendTranslate),
         (key, value) => {
@@ -111,14 +117,17 @@ export default function generateTransform(globalConfigOptions = {}) {
           return str;
         }
       );
-      cssString += getCssByOptions(skew, (key, value) => {
-        let str = "";
-        str += generateTranslateSkew(key, value, "skew", "x");
-        str += generateTranslateSkew(key, value, "skew", "x", true);
-        str += generateTranslateSkew(key, value, "skew", "y");
-        str += generateTranslateSkew(key, value, "skew", "y", true);
-        return str;
-      });
+      cssString += getCssByOptions(
+        Object.assign(skew, extendSkew),
+        (key, value) => {
+          let str = "";
+          str += generateTranslateSkew(key, value, "skew", "x");
+          str += generateTranslateSkew(key, value, "skew", "x", true);
+          str += generateTranslateSkew(key, value, "skew", "y");
+          str += generateTranslateSkew(key, value, "skew", "y", true);
+          return str;
+        }
+      );
       return cssString;
     },
     configOptions
