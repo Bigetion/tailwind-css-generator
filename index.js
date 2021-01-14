@@ -36,3 +36,47 @@ export { default as generateTransform } from "./generators/transform";
 export { default as generateVisibility } from "./generators/visibility";
 export { default as generateWidth } from "./generators/width";
 export { default as generateZIndex } from "./generators/zindex";
+
+export default function generateTailwindCss(options) {
+  let cssString = "";
+  cssString += generateBase();
+  cssString += generateForm(options);
+  cssString += generateAlign(options);
+  cssString += generateBg(options);
+  cssString += generateBorder(options);
+  cssString += generateBox(options);
+  cssString += generateClear(options);
+  cssString += generateContainer(options);
+  cssString += generateDisplay(options);
+  cssString += generateDivide(options);
+  cssString += generateFlex(options);
+  cssString += generateFloat(options);
+  cssString += generateGradient(options);
+  cssString += generateGrid(options);
+  cssString += generateHeight(options);
+  cssString += generateInteractivity(options);
+  cssString += generateJustify(options);
+  cssString += generateLeading(options);
+  cssString += generateList(options);
+  cssString += generateMargin(options);
+  cssString += generateObject(options);
+  cssString += generateOpacity(options);
+  cssString += generateOverflow(options);
+  cssString += generateOverscroll(options);
+  cssString += generatePadding(options);
+  cssString += generatePlace(options);
+  cssString += generatePlaceholder(options);
+  cssString += generatePosition(options);
+  cssString += generateShadow(options);
+  cssString += generateSpace(options);
+  cssString += generateSvg(options);
+  cssString += generateTable(options);
+  cssString += generateText(options);
+  cssString += generateTracking(options);
+  cssString += generateTransform(options);
+  cssString += generateVisibility(options);
+  cssString += generateWidth(options);
+  cssString += generateZIndex(options);
+
+  return cssString;
+}
