@@ -37,7 +37,7 @@ export { default as generateVisibility } from "./generators/visibility";
 export { default as generateWidth } from "./generators/width";
 export { default as generateZIndex } from "./generators/zindex";
 
-export default function generateAll(options) {
+export function generateAll(options) {
   let cssString = "";
   cssString += generateBase();
   cssString += generateForm(options);
