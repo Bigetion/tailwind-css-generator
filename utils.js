@@ -25,57 +25,57 @@ export const getConfigOptions = (options = {}) => {
     scale = {},
     rotate = {},
     skew = {},
-    extends: extendsOptions = {},
+    extend: extendOptions = {},
   } = options;
 
   const {
-    screens: screensExtends = {},
-    colors: colorsExtends = {},
-    spacing: spacingExtends = {},
-    opacity: opacityExtends = {},
-    height: heightExtends = {},
-    margin: marginExtends = {},
-    width: widthExtends = {},
-    fontSize: fontSizeExtends = {},
-    fontWeight: fontWeightExtends = {},
-    letterSpacing: letterSpacingExtends = {},
-    lineHeight: lineHeightExtends = {},
-    borderRadius: borderRadiusExtends = {},
-    borderWidth: borderWidthExtends = {},
-    divideSpacing: divideSpacingExtends = {},
-    order: orderExtends = {},
-    listStyleType: listStyleTypeExtends = {},
-    boxShadow: boxShadowExtends = {},
-    maxWidth: maxWidthExtends = {},
-    zIndex: zIndexExtends = {},
-    scale: scaleExtends = {},
-    rotate: rotateExtends = {},
-    skew: skewExtends = {},
-  } = extendsOptions;
+    screens: screensExtend = {},
+    colors: colorsExtend = {},
+    spacing: spacingExtend = {},
+    opacity: opacityExtend = {},
+    height: heightExtend = {},
+    margin: marginExtend = {},
+    width: widthExtend = {},
+    fontSize: fontSizeExtend = {},
+    fontWeight: fontWeightExtend = {},
+    letterSpacing: letterSpacingExtend = {},
+    lineHeight: lineHeightExtend = {},
+    borderRadius: borderRadiusExtend = {},
+    borderWidth: borderWidthExtend = {},
+    divideSpacing: divideSpacingExtend = {},
+    order: orderExtend = {},
+    listStyleType: listStyleTypeExtend = {},
+    boxShadow: boxShadowExtend = {},
+    maxWidth: maxWidthExtend = {},
+    zIndex: zIndexExtend = {},
+    scale: scaleExtend = {},
+    rotate: rotateExtend = {},
+    skew: skewExtend = {},
+  } = extendOptions;
 
   const globalConfigOptions = {
-    screens: Object.assign(screens, screensExtends),
-    colors: Object.assign(colors, colorsExtends),
-    spacing: Object.assign(spacing, spacingExtends),
-    opacity: Object.assign(opacity, opacityExtends),
-    height: Object.assign(height, heightExtends),
-    margin: Object.assign(margin, marginExtends),
-    width: Object.assign(width, widthExtends),
-    fontSize: Object.assign(fontSize, fontSizeExtends),
-    fontWeight: Object.assign(fontWeight, fontWeightExtends),
-    letterSpacing: Object.assign(letterSpacing, letterSpacingExtends),
-    lineHeight: Object.assign(lineHeight, lineHeightExtends),
-    borderRadius: Object.assign(borderRadius, borderRadiusExtends),
-    borderWidth: Object.assign(borderWidth, borderWidthExtends),
-    divideSpacing: Object.assign(divideSpacing, divideSpacingExtends),
-    order: Object.assign(order, orderExtends),
-    listStyleType: Object.assign(listStyleType, listStyleTypeExtends),
-    boxShadow: Object.assign(boxShadow, boxShadowExtends),
-    maxWidth: Object.assign(maxWidth, maxWidthExtends),
-    zIndex: Object.assign(zIndex, zIndexExtends),
-    scale: Object.assign(scale, scaleExtends),
-    rotate: Object.assign(rotate, rotateExtends),
-    skew: Object.assign(skew, skewExtends),
+    screens: Object.assign(screens, screensExtend),
+    colors: Object.assign(colors, colorsExtend),
+    spacing: Object.assign(spacing, spacingExtend),
+    opacity: Object.assign(opacity, opacityExtend),
+    height: Object.assign(height, heightExtend),
+    margin: Object.assign(margin, marginExtend),
+    width: Object.assign(width, widthExtend),
+    fontSize: Object.assign(fontSize, fontSizeExtend),
+    fontWeight: Object.assign(fontWeight, fontWeightExtend),
+    letterSpacing: Object.assign(letterSpacing, letterSpacingExtend),
+    lineHeight: Object.assign(lineHeight, lineHeightExtend),
+    borderRadius: Object.assign(borderRadius, borderRadiusExtend),
+    borderWidth: Object.assign(borderWidth, borderWidthExtend),
+    divideSpacing: Object.assign(divideSpacing, divideSpacingExtend),
+    order: Object.assign(order, orderExtend),
+    listStyleType: Object.assign(listStyleType, listStyleTypeExtend),
+    boxShadow: Object.assign(boxShadow, boxShadowExtend),
+    maxWidth: Object.assign(maxWidth, maxWidthExtend),
+    zIndex: Object.assign(zIndex, zIndexExtend),
+    scale: Object.assign(scale, scaleExtend),
+    rotate: Object.assign(rotate, rotateExtend),
+    skew: Object.assign(skew, skewExtend),
   };
 
   return {
@@ -198,7 +198,7 @@ export const generateCssString = (
   options,
   isResponsive = true
 ) => {
-  const { screens, colors, extendColors = {} } = options;
+  const { screens, colors } = options;
   let orientationPrefix = "";
 
   const pseudoClass = (value, pseudoElements = ["hover", "focus"]) => {
@@ -234,17 +234,15 @@ export const generateCssString = (
 
   const getCssFromColors = (getStr = () => {}) => {
     let str = "";
-    Object.entries(Object.assign(colors, extendColors)).forEach(
-      ([key1, value1]) => {
-        if (typeof value1 === "string") {
-          str += `${getStr(key1, value1, hexToRgb(value1))} `;
-        } else if (typeof value1 === "object") {
-          Object.entries(value1).forEach(([key2, value2]) => {
-            str += `${getStr(`${key1}-${key2}`, value2, hexToRgb(value2))} `;
-          });
-        }
+    Object.entries(colors).forEach(([key1, value1]) => {
+      if (typeof value1 === "string") {
+        str += `${getStr(key1, value1, hexToRgb(value1))} `;
+      } else if (typeof value1 === "object") {
+        Object.entries(value1).forEach(([key2, value2]) => {
+          str += `${getStr(`${key1}-${key2}`, value2, hexToRgb(value2))} `;
+        });
       }
-    );
+    });
     return str;
   };
 

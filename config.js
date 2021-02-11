@@ -354,7 +354,7 @@ const configOptions = {
     6: "6deg",
     12: "12deg",
   },
-  extends: {},
+  extend: {},
 };
 
 export default configOptions;
