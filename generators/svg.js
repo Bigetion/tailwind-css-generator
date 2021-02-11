@@ -1,16 +1,10 @@
-import { generateCssString } from "../utils";
-import defaultConfigOptions from "../config";
+import { getConfigOptions, generateCssString } from "../utils";
 
 export default function generateSvg(globalConfigOptions = {}) {
-  const configOptions = Object.assign(
-    {},
-    defaultConfigOptions,
-    globalConfigOptions
-  );
+  const configOptions = getConfigOptions(globalConfigOptions);
+  const { prefix } = configOptions;
 
-  const { prefix, extendStrokeWidth = {} } = configOptions;
-
-  const strokeWidth = { 1: 1, 2: 2, 3: 3 };
+  const strokeWidth = { 1: 1, 2: 2, 3: 3, 4: 4, 5: 5 };
 
   const responsiveCssString = generateCssString(
     ({ orientationPrefix, getCssByOptions }) => {
@@ -23,7 +17,7 @@ export default function generateSvg(globalConfigOptions = {}) {
       }
     `;
       cssString += getCssByOptions(
-        Object.assign(strokeWidth, extendStrokeWidth),
+        strokeWidth,
         (key, value) => `
         .${orientationPrefix}${prefix}stroke-${key} {
           stroke-width: ${value};

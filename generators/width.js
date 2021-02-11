@@ -1,21 +1,13 @@
-import { generateCssString } from "../utils";
-import defaultConfigOptions from "../config";
+import { getConfigOptions, generateCssString } from "../utils";
 
 export default function generateWidth(globalConfigOptions = {}) {
-  const configOptions = Object.assign(
-    {},
-    defaultConfigOptions,
-    globalConfigOptions
-  );
-
+  const configOptions = getConfigOptions(globalConfigOptions);
   const {
     prefix: globalPrefix,
     screens,
     spacing,
     width,
-    extendWidth = {},
     maxWidth,
-    extendMaxWidth = {},
   } = configOptions;
 
   const prefix = "w";
@@ -23,7 +15,7 @@ export default function generateWidth(globalConfigOptions = {}) {
   const responsiveCssString = generateCssString(
     ({ orientationPrefix, getCssByOptions }) => {
       let cssString = getCssByOptions(
-        Object.assign(spacing, width, extendWidth),
+        Object.assign(spacing, width),
         (key, value) => {
           const k = key.replace("/", `\\/`);
           return `
@@ -34,7 +26,7 @@ export default function generateWidth(globalConfigOptions = {}) {
         }
       );
       cssString += getCssByOptions(
-        Object.assign(maxWidth, extendMaxWidth),
+        maxWidth,
         (key, value) => `
           .${orientationPrefix}${globalPrefix}max-${prefix}-${key} {
             max-width: ${value};

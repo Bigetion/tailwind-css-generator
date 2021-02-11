@@ -1,24 +1,8 @@
-import { generateCssString } from "../utils";
-import defaultConfigOptions from "../config";
+import { getConfigOptions, generateCssString } from "../utils";
 
 export default function generateTransform(globalConfigOptions = {}) {
-  const configOptions = Object.assign(
-    {},
-    defaultConfigOptions,
-    globalConfigOptions
-  );
-
-  const {
-    prefix: globalPrefix,
-    scale,
-    extendScale = {},
-    rotate,
-    extendRotate = {},
-    spacing,
-    extendTranslate = {},
-    skew,
-    extendSkew = {},
-  } = configOptions;
+  const configOptions = getConfigOptions(globalConfigOptions);
+  const { prefix: globalPrefix, scale, rotate, spacing, skew } = configOptions;
 
   const objectPosition = [
     "center",
@@ -76,7 +60,7 @@ export default function generateTransform(globalConfigOptions = {}) {
         `
       );
       cssString += getCssByOptions(
-        Object.assign(scale, extendScale),
+        scale,
         (key, value) => `
           ${pseudoClass(`${globalPrefix}scale-${key}`)} {
             --transform-scale-x: ${value} !important;
@@ -90,44 +74,35 @@ export default function generateTransform(globalConfigOptions = {}) {
           }
         `
       );
-      cssString += getCssByOptions(
-        Object.assign(rotate, extendRotate),
-        (key, value) => {
-          let negativePrefix = "";
-          if (key.toString().substr(0, 1) === "-") {
-            negativePrefix = "-";
-          }
-          return `
+      cssString += getCssByOptions(rotate, (key, value) => {
+        let negativePrefix = "";
+        if (key.toString().substr(0, 1) === "-") {
+          negativePrefix = "-";
+        }
+        return `
           ${pseudoClass(
             `${globalPrefix}${negativePrefix}rotate-${key.split("-").join("")}`
           )} {
             --transform-rotate: ${value} !important;
           }
         `;
-        }
-      );
-      cssString += getCssByOptions(
-        Object.assign(spacing, extendTranslate),
-        (key, value) => {
-          let str = "";
-          str += generateTranslateSkew(key, value, "translate", "x");
-          str += generateTranslateSkew(key, value, "translate", "x", true);
-          str += generateTranslateSkew(key, value, "translate", "y");
-          str += generateTranslateSkew(key, value, "translate", "y", true);
-          return str;
-        }
-      );
-      cssString += getCssByOptions(
-        Object.assign(skew, extendSkew),
-        (key, value) => {
-          let str = "";
-          str += generateTranslateSkew(key, value, "skew", "x");
-          str += generateTranslateSkew(key, value, "skew", "x", true);
-          str += generateTranslateSkew(key, value, "skew", "y");
-          str += generateTranslateSkew(key, value, "skew", "y", true);
-          return str;
-        }
-      );
+      });
+      cssString += getCssByOptions(spacing, (key, value) => {
+        let str = "";
+        str += generateTranslateSkew(key, value, "translate", "x");
+        str += generateTranslateSkew(key, value, "translate", "x", true);
+        str += generateTranslateSkew(key, value, "translate", "y");
+        str += generateTranslateSkew(key, value, "translate", "y", true);
+        return str;
+      });
+      cssString += getCssByOptions(skew, (key, value) => {
+        let str = "";
+        str += generateTranslateSkew(key, value, "skew", "x");
+        str += generateTranslateSkew(key, value, "skew", "x", true);
+        str += generateTranslateSkew(key, value, "skew", "y");
+        str += generateTranslateSkew(key, value, "skew", "y", true);
+        return str;
+      });
       return cssString;
     },
     configOptions

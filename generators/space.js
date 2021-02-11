@@ -1,14 +1,8 @@
-import { generateCssString } from "../utils";
-import defaultConfigOptions from "../config";
+import { getConfigOptions, generateCssString } from "../utils";
 
 export default function generateSpace(globalConfigOptions = {}) {
-  const configOptions = Object.assign(
-    {},
-    defaultConfigOptions,
-    globalConfigOptions
-  );
-
-  const { prefix: globalPrefix, spacing, extendSpacing = {} } = configOptions;
+  const configOptions = getConfigOptions(globalConfigOptions);
+  const { prefix: globalPrefix, spacing } = configOptions;
 
   const prefix = `${globalPrefix}space`;
 
@@ -37,12 +31,10 @@ export default function generateSpace(globalConfigOptions = {}) {
     };
 
     let cssString = "";
-    Object.entries(Object.assign(spacing, extendSpacing)).forEach(
-      ([space, spaceValue]) => {
-        cssString += generateSpace("y", space, spaceValue);
-        cssString += generateSpace("x", space, spaceValue);
-      }
-    );
+    Object.entries(spacing).forEach(([space, spaceValue]) => {
+      cssString += generateSpace("y", space, spaceValue);
+      cssString += generateSpace("x", space, spaceValue);
+    });
     cssString += `
       .${prefix}-y-reverse > :not(template) ~ :not(template) {
         --space-y-reverse: 1;

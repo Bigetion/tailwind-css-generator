@@ -1,13 +1,7 @@
-import { generateCssString } from "../utils";
-import defaultConfigOptions from "../config";
+import { getConfigOptions, generateCssString } from "../utils";
 
 export default function generateVisibility(globalConfigOptions = {}) {
-  const configOptions = Object.assign(
-    {},
-    defaultConfigOptions,
-    globalConfigOptions
-  );
-
+  const configOptions = getConfigOptions(globalConfigOptions);
   const { prefix } = configOptions;
 
   const responsiveCssString = generateCssString(

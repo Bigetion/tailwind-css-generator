@@ -1,25 +1,15 @@
-import { generateCssString } from "../utils";
-import defaultConfigOptions from "../config";
+import { getConfigOptions, generateCssString } from "../utils";
 
 export default function generateList(globalConfigOptions = {}) {
-  const configOptions = Object.assign(
-    {},
-    defaultConfigOptions,
-    globalConfigOptions
-  );
-
-  const {
-    prefix: globalPrefix,
-    listStyleType,
-    extendListStyleType = {},
-  } = configOptions;
+  const configOptions = getConfigOptions(globalConfigOptions);
+  const { prefix: globalPrefix, listStyleType } = configOptions;
 
   const prefix = `${globalPrefix}list`;
 
   const responsiveCssString = generateCssString(
     ({ orientationPrefix, getCssByOptions }) => {
       let cssString = getCssByOptions(
-        Object.assign(listStyleType, extendListStyleType),
+        listStyleType,
         (key, value) => `
           .${orientationPrefix}${prefix}-${key} {
             list-style-type: ${value};

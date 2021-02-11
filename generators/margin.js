@@ -1,19 +1,8 @@
-import { generateCssString } from "../utils";
-import defaultConfigOptions from "../config";
+import { getConfigOptions, generateCssString } from "../utils";
 
 export default function generateMargin(globalConfigOptions = {}) {
-  const configOptions = Object.assign(
-    {},
-    defaultConfigOptions,
-    globalConfigOptions
-  );
-
-  const {
-    prefix: globalPrefix,
-    spacing,
-    margin,
-    extendMargin = {},
-  } = configOptions;
+  const configOptions = getConfigOptions(globalConfigOptions);
+  const { prefix: globalPrefix, spacing, margin } = configOptions;
 
   const prefix = `${globalPrefix}m`;
 
@@ -49,7 +38,7 @@ export default function generateMargin(globalConfigOptions = {}) {
       };
 
       const cssString = getCssByOptions(
-        Object.assign(spacing, margin, extendMargin),
+        Object.assign(spacing, margin),
         (key, value) => {
           let str = "";
           str += generateMargin(key, value);

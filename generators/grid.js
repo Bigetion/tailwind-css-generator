@@ -1,15 +1,8 @@
-import { generateCssString } from "../utils";
-
-import defaultConfigOptions from "../config";
+import { getConfigOptions, generateCssString } from "../utils";
 
 export default function generateGrid(globalConfigOptions = {}) {
-  const configOptions = Object.assign(
-    {},
-    defaultConfigOptions,
-    globalConfigOptions
-  );
-
-  const { prefix: globalPrefix, spacing, extendGap = {} } = configOptions;
+  const configOptions = getConfigOptions(globalConfigOptions);
+  const { prefix: globalPrefix, spacing } = configOptions;
 
   const prefix = `${globalPrefix}grid`;
 
@@ -78,15 +71,13 @@ export default function generateGrid(globalConfigOptions = {}) {
           cr = "row-";
         }
         let str = "";
-        Object.entries(Object.assign(spacing, extendGap)).forEach(
-          ([key, value]) => {
-            str += `
+        Object.entries(spacing).forEach(([key, value]) => {
+          str += `
               ${pseudoClass(`${globalPrefix}gap${p}-${key}`)} {
                 ${cr}gap: ${value};
               }
             `;
-          }
-        );
+        });
         return str;
       };
 

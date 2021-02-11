@@ -1,27 +1,15 @@
-import { generateCssString } from "../utils";
-
-import defaultConfigOptions from "../config";
+import { getConfigOptions, generateCssString } from "../utils";
 
 export default function generateHeight(globalConfigOptions = {}) {
-  const configOptions = Object.assign(
-    {},
-    defaultConfigOptions,
-    globalConfigOptions
-  );
-
-  const {
-    prefix: globalPrefix,
-    spacing,
-    height,
-    extendHeight = {},
-  } = configOptions;
+  const configOptions = getConfigOptions(globalConfigOptions);
+  const { prefix: globalPrefix, spacing, height } = configOptions;
 
   const prefix = `${globalPrefix}h`;
 
   const responsiveCssString = generateCssString(
     ({ orientationPrefix, getCssByOptions }) => {
       let cssString = getCssByOptions(
-        Object.assign(spacing, height, extendHeight),
+        Object.assign(spacing, height),
         (key, value) => `
           .${orientationPrefix}${prefix}-${key.replace("/", `\\/`)} {
             height: ${value}; 

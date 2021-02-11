@@ -1,25 +1,15 @@
-import { generateCssString } from "../utils";
-import defaultConfigOptions from "../config";
+import { getConfigOptions, generateCssString } from "../utils";
 
 export default function generateLeading(globalConfigOptions = {}) {
-  const configOptions = Object.assign(
-    {},
-    defaultConfigOptions,
-    globalConfigOptions
-  );
-
-  const {
-    prefix: globalPrefix,
-    lineHeight,
-    extendLineHeight = {},
-  } = configOptions;
+  const configOptions = getConfigOptions(globalConfigOptions);
+  const { prefix: globalPrefix, lineHeight } = configOptions;
 
   const prefix = `${globalPrefix}leading`;
 
   const responsiveCssString = generateCssString(
     ({ orientationPrefix, getCssByOptions }) => {
       const cssString = getCssByOptions(
-        Object.assign(lineHeight, extendLineHeight),
+        lineHeight,
         (key, value) => `
           .${orientationPrefix}${prefix}-${key} {
             line-height: ${value};

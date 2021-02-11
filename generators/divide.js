@@ -1,20 +1,8 @@
-import { generateCssString } from "../utils";
-import defaultConfigOptions from "../config";
+import { getConfigOptions, generateCssString } from "../utils";
 
 export default function generateDivide(globalConfigOptions = {}) {
-  const configOptions = Object.assign(
-    {},
-    defaultConfigOptions,
-    globalConfigOptions
-  );
-
-  const {
-    prefix: globalPrefix,
-    opacity,
-    extendOpacity = {},
-    divideSpacing,
-    extendDivideSpacing = {},
-  } = configOptions;
+  const configOptions = getConfigOptions(globalConfigOptions);
+  const { prefix: globalPrefix, opacity, divideSpacing } = configOptions;
 
   const prefix = `${globalPrefix}divide`;
 
@@ -42,12 +30,10 @@ export default function generateDivide(globalConfigOptions = {}) {
       };
 
       let cssString = "";
-      Object.entries(Object.assign(divideSpacing, extendDivideSpacing)).forEach(
-        ([key, value]) => {
-          cssString += generateDivideWidth("y", key, value);
-          cssString += generateDivideWidth("x", key, value);
-        }
-      );
+      Object.entries(divideSpacing).forEach(([key, value]) => {
+        cssString += generateDivideWidth("y", key, value);
+        cssString += generateDivideWidth("x", key, value);
+      });
       cssString += `
         .${orientationPrefix}${prefix}-y-reverse > :not(template) ~ :not(template) {
           --divide-y-reverse: 1;
@@ -78,7 +64,7 @@ export default function generateDivide(globalConfigOptions = {}) {
       });
 
       cssString += getCssByOptions(
-        Object.assign(opacity, extendOpacity),
+        opacity,
         (key, value) => `
           .${orientationPrefix}${prefix}-opacity-${key} > :not(template) ~ :not(template) {
             --divide-opacity: ${value};

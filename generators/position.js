@@ -1,25 +1,15 @@
-import { generateCssString } from "../utils";
-import defaultConfigOptions from "../config";
+import { getConfigOptions, generateCssString } from "../utils";
 
 export default function generatePosition(globalConfigOptions = {}) {
-  const configOptions = Object.assign(
-    {},
-    defaultConfigOptions,
-    globalConfigOptions
-  );
-
-  const { prefix, spacing, extendPosition = {} } = configOptions;
+  const configOptions = getConfigOptions(globalConfigOptions);
+  const { prefix, spacing } = configOptions;
 
   const position = ["static", "fixed", "absolute", "relative", "sticky"];
 
-  const positionOptions = Object.assign(
-    spacing,
-    {
-      0: "0",
-      auto: "auto",
-    },
-    extendPosition
-  );
+  const positionOptions = Object.assign(spacing, {
+    0: "0",
+    auto: "auto",
+  });
 
   const responsiveCssString = generateCssString(
     ({ orientationPrefix, getCssByOptions }) => {

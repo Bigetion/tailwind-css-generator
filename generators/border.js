@@ -1,21 +1,12 @@
-import { generateCssString } from "../utils";
-import defaultConfigOptions from "../config";
+import { getConfigOptions, generateCssString } from "../utils";
 
 export default function generateBorder(globalConfigOptions = {}) {
-  const configOptions = Object.assign(
-    {},
-    defaultConfigOptions,
-    globalConfigOptions
-  );
-
+  const configOptions = getConfigOptions(globalConfigOptions);
   const {
     prefix: globalPrefix,
     opacity,
-    extendOpacity = {},
     borderRadius,
-    extendBorderRadius = {},
     borderWidth,
-    extendBorderWidth = {},
   } = configOptions;
 
   const prefix = `${globalPrefix}border`;
@@ -43,11 +34,9 @@ export default function generateBorder(globalConfigOptions = {}) {
         }
         return str;
       });
-      cssString += getCssByOptions(
-        Object.assign(borderRadius, extendBorderRadius),
-        (key, value) => {
-          const k = key !== "default" ? `-${key}` : "";
-          return `
+      cssString += getCssByOptions(borderRadius, (key, value) => {
+        const k = key !== "default" ? `-${key}` : "";
+        return `
           ${pseudoClass(`rounded${k}`)} {
             border-radius: ${value};
           }
@@ -80,13 +69,10 @@ export default function generateBorder(globalConfigOptions = {}) {
             border-bottom-left-radius: ${value};
           }
         `;
-        }
-      );
-      cssString += getCssByOptions(
-        Object.assign(borderWidth, extendBorderWidth),
-        (key, value) => {
-          const k = key !== "default" ? `-${key}` : "";
-          return `
+      });
+      cssString += getCssByOptions(borderWidth, (key, value) => {
+        const k = key !== "default" ? `-${key}` : "";
+        return `
           ${pseudoClass(`${prefix}${k}`)} {
             border-width: ${value};
           }
@@ -103,10 +89,9 @@ export default function generateBorder(globalConfigOptions = {}) {
             border-left-width: ${value};
           }
         `;
-        }
-      );
+      });
       cssString += getCssByOptions(
-        Object.assign(opacity, extendOpacity),
+        opacity,
         (key, value) => `
           .${orientationPrefix}${prefix}-opacity-${key} {
             --border-opacity: ${value};

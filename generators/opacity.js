@@ -1,21 +1,15 @@
-import { generateCssString } from "../utils";
-import defaultConfigOptions from "../config";
+import { getConfigOptions, generateCssString } from "../utils";
 
 export default function generateOpacity(globalConfigOptions = {}) {
-  const configOptions = Object.assign(
-    {},
-    defaultConfigOptions,
-    globalConfigOptions
-  );
-
-  const { prefix: globalPrefix, opacity, extendOpacity = {} } = configOptions;
+  const configOptions = getConfigOptions(globalConfigOptions);
+  const { prefix: globalPrefix, opacity } = configOptions;
 
   const prefix = `${globalPrefix}opacity`;
 
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
-        Object.assign(opacity, extendOpacity),
+        opacity,
         (key, value) => `
           ${pseudoClass(`${prefix}-${key}`)} {
             opacity: ${value};
