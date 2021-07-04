@@ -4,7 +4,7 @@ export default function generateWidth(globalConfigOptions = {}) {
   const configOptions = getConfigOptions(globalConfigOptions);
   const {
     prefix: globalPrefix,
-    screens,
+    breakpoints,
     spacing,
     width,
     maxWidth,
@@ -34,7 +34,7 @@ export default function generateWidth(globalConfigOptions = {}) {
         `
       );
       cssString += getCssByOptions(
-        screens,
+        breakpoints,
         (key, value) => `
           .${orientationPrefix}${globalPrefix}max-${prefix}-screen-${key} {
             max-width: ${value};

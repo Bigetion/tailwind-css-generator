@@ -3,7 +3,7 @@ import defaultConfigOptions from "./config";
 export const getConfigOptions = (options = {}) => {
   const {
     prefix = "",
-    screens = {},
+    breakpoints = {},
     colors = {},
     spacing = {},
     opacity = {},
@@ -29,7 +29,7 @@ export const getConfigOptions = (options = {}) => {
   } = options;
 
   const {
-    screens: screensExtend = {},
+    breakpoints: breakpointsExtend = {},
     colors: colorsExtend = {},
     spacing: spacingExtend = {},
     opacity: opacityExtend = {},
@@ -54,7 +54,7 @@ export const getConfigOptions = (options = {}) => {
   } = extendOptions;
 
   const globalConfigOptions = {
-    screens: Object.assign(screens, screensExtend),
+    breakpoints: Object.assign(breakpoints, breakpointsExtend),
     colors: Object.assign(colors, colorsExtend),
     spacing: Object.assign(spacing, spacingExtend),
     opacity: Object.assign(opacity, opacityExtend),
@@ -80,10 +80,10 @@ export const getConfigOptions = (options = {}) => {
 
   return {
     prefix,
-    screens: Object.assign(
+    breakpoints: Object.assign(
       {},
-      defaultConfigOptions.screens,
-      globalConfigOptions.screens
+      defaultConfigOptions.breakpoints,
+      globalConfigOptions.breakpoints
     ),
     colors: Object.assign(
       {},
@@ -198,7 +198,7 @@ export const generateCssString = (
   options,
   isResponsive = true
 ) => {
-  const { screens, colors } = options;
+  const { breakpoints, colors } = options;
   let orientationPrefix = "";
 
   const pseudoClass = (value, pseudoElements = ["hover", "focus"]) => {
@@ -254,7 +254,7 @@ export const generateCssString = (
   });
 
   if (isResponsive) {
-    Object.entries(screens).forEach(([screen, screenValue]) => {
+    Object.entries(breakpoints).forEach(([screen, screenValue]) => {
       orientationPrefix = `${screen}\\:`;
       cssString += `
         @media (min-width: ${screenValue}) {
