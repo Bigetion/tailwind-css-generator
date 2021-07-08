@@ -323,10 +323,11 @@ export function generateTailwindCssString(options = {}) {
 	cssString += corePlugins.accessibility
 		? generateAccessibility(configOptions)
 		: "";
+  return cssString;
 }
 
 function generateTailwindCss(options = {}) {
-  cssString = generateTailwindCssString(options).replace(/\s\s+/g, ' ');
+  const cssString = generateTailwindCssString(options).replace(/\s\s+/g, ' ');
 	const head = document.head || document.getElementsByTagName("head")[0];
 	const style = document.createElement("style");
 	head.appendChild(style);
