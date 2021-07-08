@@ -1,50 +1,72 @@
-import { getConfigOptions, generateCssString } from "../utils";
+import { generateCssString } from "../utils";
 
-export default function generateSpace(globalConfigOptions = {}) {
-  const configOptions = getConfigOptions(globalConfigOptions);
-  const { prefix: globalPrefix, spacing } = configOptions;
+export default function generateSpace(configOptions = {}) {
+  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
 
   const prefix = `${globalPrefix}space`;
 
-  const responsiveCssString = generateCssString(({ orientationPrefix }) => {
-    const generateSpace = (position, key, value) => {
-      let spacePosition = "x";
-      let margin1 = "left";
-      let margin2 = "right";
-      if (position === "y") {
-        spacePosition = "y";
-        margin1 = "top";
-        margin2 = "bottom";
-      }
-      return `
-        .${orientationPrefix}${prefix}-${spacePosition}-${key} > :not(template) ~ :not(template) {
-          --space-${spacePosition}-reverse: 0;
-          margin-${margin1}: calc(${value} * calc(1 - var(--space-${spacePosition}-reverse)));
-          margin-${margin2}: calc(${value} * var(--space-${spacePosition}-reverse));
+  const { spacing = {}, space = {} } = theme;
+
+  const propertyOptions = Object.assign({}, spacing, space);
+
+  const responsiveCssString = generateCssString(
+    ({ pseudoClass }) => {
+      const generateSpace = (position, key, value) => {
+        let spacePosition = "x";
+        let margin1 = "left";
+        let margin2 = "right";
+        if (position === "y") {
+          spacePosition = "y";
+          margin1 = "top";
+          margin2 = "bottom";
         }
-        .${orientationPrefix}-${prefix}-${key} > :not(template) ~ :not(template) {
-          --space-${spacePosition}-reverse: 0;
-          margin-${margin1}: calc(-${value} * calc(1 - var(--space-${spacePosition}-reverse)));
-          margin-${margin2}: calc(-${value} * var(--space-${spacePosition}-reverse));
+        return `
+          ${pseudoClass(
+            (pseudoString) =>
+              `${prefix}-${spacePosition}-${key}${pseudoString} > :not(template) ~ :not(template)`,
+            variants.space
+          )} {
+            --space-${spacePosition}-reverse: 0;
+            margin-${margin1}: calc(${value} * calc(1 - var(--space-${spacePosition}-reverse)));
+            margin-${margin2}: calc(${value} * var(--space-${spacePosition}-reverse));
+          }
+          ${pseudoClass(
+            (pseudoString) =>
+              `-${prefix}-${key}${pseudoString} > :not(template) ~ :not(template)`,
+            variants.space
+          )} {
+            --space-${spacePosition}-reverse: 0;
+            margin-${margin1}: calc(-${value} * calc(1 - var(--space-${spacePosition}-reverse)));
+            margin-${margin2}: calc(-${value} * var(--space-${spacePosition}-reverse));
+          }
+        `;
+      };
+      let cssString = "";
+      Object.entries(propertyOptions).forEach(([space, spaceValue]) => {
+        cssString += generateSpace("y", space, spaceValue);
+        cssString += generateSpace("x", space, spaceValue);
+      });
+      cssString += `
+        ${pseudoClass(
+          (pseudoString) =>
+            `${prefix}-x-reverse${pseudoString} > :not(template) ~ :not(template)`,
+          variants.space
+        )} {
+          --space-x-reverse: 1;
+        }
+        ${pseudoClass(
+          (pseudoString) =>
+            `${prefix}-y-reverse${pseudoString} > :not(template) ~ :not(template)`,
+          variants.space
+        )} {
+          --space-y-reverse: 1;
         }
       `;
-    };
-
-    let cssString = "";
-    Object.entries(spacing).forEach(([space, spaceValue]) => {
-      cssString += generateSpace("y", space, spaceValue);
-      cssString += generateSpace("x", space, spaceValue);
-    });
-    cssString += `
-      .${prefix}-y-reverse > :not(template) ~ :not(template) {
-        --space-y-reverse: 1;
-      }
-      .${prefix}-x-reverse > :not(template) ~ :not(template) {
-        --space-x-reverse: 1;
-      }
-    `;
-    return cssString;
-  }, configOptions);
+      return cssString;
+    },
+    configOptions,
+    variants.space.indexOf("responsive") >= 0
+  );
 
   return responsiveCssString;
 }

@@ -1,40 +1,40 @@
-import { getConfigOptions, generateCssString } from "../utils";
+import { generateCssString } from "../utils";
 
-export default function generateOverflow(globalConfigOptions = {}) {
-  const configOptions = getConfigOptions(globalConfigOptions);
-  const { prefix: globalPrefix } = configOptions;
+export default function generateOverflow(configOptions = {}) {
+  const { prefix: globalPrefix, variants = {} } = configOptions;
 
   const prefix = `${globalPrefix}overflow`;
 
-  const overflow = ["auto", "hidden", "visible", "scroll"];
+  const propertyOptions = ["auto", "hidden", "visible", "scroll"];
 
-  let responsiveCssString = generateCssString(
-    ({ orientationPrefix, getCssByOptions }) => {
+  const responsiveCssString = generateCssString(
+    ({ pseudoClass, getCssByOptions }) => {
       let cssString = getCssByOptions(
-        overflow,
+        propertyOptions,
         (key, value) => `
-          .${orientationPrefix}${prefix}-${key} {
+          ${pseudoClass(`${prefix}-${key}`, variants.overflow)} {
             overflow: ${value};
           }
-          .${orientationPrefix}${prefix}-x-${key} {
+          ${pseudoClass(`${prefix}-x-${key}`, variants.overflow)} {
             overflow-x: ${value};
           }
-          .${orientationPrefix}${prefix}-y-${key} {
+          ${pseudoClass(`${prefix}-y-${key}`, variants.overflow)} {
             overflow-y: ${value};
           }
         `
       );
       cssString += `
-        .${orientationPrefix}${globalPrefix}scrolling-touch {
+        ${pseudoClass(`${globalPrefix}scrolling-touch`, variants.overflow)} {
           -webkit-overflow-scrolling: touch;
         }
-        .${orientationPrefix}${globalPrefix}scrolling-auto {
+        ${pseudoClass(`${globalPrefix}scrolling-auto`, variants.overflow)} {
           -webkit-overflow-scrolling: auto;
         }
       `;
       return cssString;
     },
-    configOptions
+    configOptions,
+    variants.overflow.indexOf("responsive") >= 0
   );
 
   return responsiveCssString;

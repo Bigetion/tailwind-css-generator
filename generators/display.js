@@ -1,10 +1,9 @@
-import { getConfigOptions, generateCssString } from "../utils";
+import { generateCssString } from "../utils";
 
-export default function generateDisplay(globalConfigOptions = {}) {
-  const configOptions = getConfigOptions(globalConfigOptions);
-  const { prefix } = configOptions;
+export default function generateDisplay(configOptions = {}) {
+  const { prefix, variants = {} } = configOptions;
 
-  const display = [
+  const propertyOptions = [
     "block",
     "inline-block",
     "inline",
@@ -29,10 +28,11 @@ export default function generateDisplay(globalConfigOptions = {}) {
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
-        display,
+        propertyOptions,
         (key, value) => `
           ${pseudoClass(
-            `${key === "none" ? `${prefix}hidden` : `${prefix}${key}`}`
+            key === "none" ? `${prefix}hidden` : `${prefix}${key}`,
+            variants.display
           )} {
             display: ${value};
           }
@@ -40,7 +40,8 @@ export default function generateDisplay(globalConfigOptions = {}) {
       );
       return cssString;
     },
-    configOptions
+    configOptions,
+    variants.display.indexOf("responsive") >= 0
   );
 
   return responsiveCssString;

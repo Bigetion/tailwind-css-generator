@@ -1,46 +1,49 @@
-import { getConfigOptions, generateCssString } from "../utils";
+import { generateCssString } from "../utils";
 
-export default function generatePadding(globalConfigOptions = {}) {
-  const configOptions = getConfigOptions(globalConfigOptions);
-  const { prefix: globalPrefix, spacing } = configOptions;
+export default function generatePadding(configOptions = {}) {
+  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
 
   const prefix = `${globalPrefix}p`;
 
-  const responsiveCssString = generateCssString(({ pseudoClass }) => {
-    const generatePadding = (key, value) => {
-      return `
-        ${pseudoClass(`${prefix}-${key}`)} {
-          padding: ${value};
-        }
-        ${pseudoClass(`${prefix}y-${key}`)} {
-          padding-top: ${value};
-          padding-bottom: ${value};
-        }
-        ${pseudoClass(`${prefix}x-${key}`)} {
-          padding-left: ${value};
-          padding-right: ${value};
-        }
-        ${pseudoClass(`${prefix}t-${key}`)} {
-          padding-top: ${value};
-        }
-        ${pseudoClass(`${prefix}r-${key}`)} {
-          padding-right: ${value};
-        }
-        ${pseudoClass(`${prefix}b-${key}`)} {
-          padding-bottom: ${value};
-        }
-        ${pseudoClass(`${prefix}l-${key}`)} {
-          padding-left: ${value};
-        }
-      `;
-    };
+  const { spacing = {}, padding = {} } = theme;
 
-    let cssString = "";
-    Object.entries(spacing).forEach(([space, spaceValue]) => {
-      cssString += generatePadding(space, spaceValue);
-    });
-    return cssString;
-  }, configOptions);
+  const propertyOptions = Object.assign({}, spacing, padding);
+
+  const responsiveCssString = generateCssString(
+    ({ pseudoClass, getCssByOptions }) => {
+      const cssString = getCssByOptions(
+        propertyOptions,
+        (key, value) => `
+          ${pseudoClass(`${prefix}-${key}`, variants.padding)} {
+            padding: ${value};
+          }
+          ${pseudoClass(`${prefix}y-${key}`, variants.padding)} {
+            padding-top: ${value};
+            padding-bottom: ${value};
+          }
+          ${pseudoClass(`${prefix}x-${key}`, variants.padding)} {
+            padding-left: ${value};
+            padding-right: ${value};
+          }
+          ${pseudoClass(`${prefix}t-${key}`, variants.padding)} {
+            padding-top: ${value};
+          }
+          ${pseudoClass(`${prefix}r-${key}`, variants.padding)} {
+            padding-right: ${value};
+          }
+          ${pseudoClass(`${prefix}b-${key}`, variants.padding)} {
+            padding-bottom: ${value};
+          }
+          ${pseudoClass(`${prefix}l-${key}`, variants.padding)} {
+            padding-left: ${value};
+          }
+        `
+      );
+      return cssString;
+    },
+    configOptions,
+    variants.padding.indexOf("responsive") >= 0
+  );
 
   return responsiveCssString;
 }

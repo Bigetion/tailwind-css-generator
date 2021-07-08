@@ -1,60 +1,28 @@
-import { getConfigOptions, generateCssString } from "../utils";
+import { generateCssString } from "../utils";
 
-export default function generateWidth(globalConfigOptions = {}) {
-  const configOptions = getConfigOptions(globalConfigOptions);
-  const {
-    prefix: globalPrefix,
-    breakpoints,
-    spacing,
-    width,
-    maxWidth,
-  } = configOptions;
+export default function generateWidth(configOptions = {}) {
+  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
 
-  const prefix = "w";
+  const prefix = `${globalPrefix}w`;
+
+  const { spacing = {}, width = {} } = theme;
+
+  const propertyOptions = Object.assign({}, spacing, width);
 
   const responsiveCssString = generateCssString(
-    ({ orientationPrefix, getCssByOptions }) => {
-      let cssString = getCssByOptions(
-        Object.assign(spacing, width),
-        (key, value) => {
-          const k = key.replace("/", `\\/`);
-          return `
-            .${orientationPrefix}${globalPrefix}${prefix}-${k} {
-              width: ${value}; 
-            }
-          `;
-        }
-      );
-      cssString += getCssByOptions(
-        maxWidth,
+    ({ pseudoClass, getCssByOptions }) => {
+      const cssString = getCssByOptions(
+        propertyOptions,
         (key, value) => `
-          .${orientationPrefix}${globalPrefix}max-${prefix}-${key} {
-            max-width: ${value};
+          ${pseudoClass(`${prefix}-${key}`, variants.width)} {
+            width: ${value};
           }
         `
       );
-      cssString += getCssByOptions(
-        breakpoints,
-        (key, value) => `
-          .${orientationPrefix}${globalPrefix}max-${prefix}-screen-${key} {
-            max-width: ${value};
-          }
-        `
-      );
-      cssString += `
-        .${orientationPrefix}${globalPrefix}min-${prefix}-0 {
-          min-width: 0;
-        }
-        .${orientationPrefix}${globalPrefix}min-${prefix}-full {
-          min-width: 100%;
-        }
-        .${orientationPrefix}${globalPrefix}min-${prefix}-screen {
-          min-width: 100vw;
-        }
-      `;
       return cssString;
     },
-    configOptions
+    configOptions,
+    variants.width.indexOf("responsive") >= 0
   );
 
   return responsiveCssString;

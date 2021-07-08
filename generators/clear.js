@@ -1,26 +1,26 @@
-import { getConfigOptions, generateCssString } from "../utils";
+import { generateCssString } from "../utils";
 
-export default function generateClear(globalConfigOptions = {}) {
-  const configOptions = getConfigOptions(globalConfigOptions);
-  const { prefix: globalPrefix } = configOptions;
+export default function generateClear(configOptions = {}) {
+  const { prefix: globalPrefix, variants = {} } = configOptions;
 
   const prefix = `${globalPrefix}clear`;
 
-  const clear = ["left", "right", "both", "none"];
+  const propertyOptions = ["left", "right", "both", "none"];
 
   const responsiveCssString = generateCssString(
-    ({ orientationPrefix, getCssByOptions }) => {
+    ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
-        clear,
+        propertyOptions,
         (key, value) => `
-          .${orientationPrefix}${prefix}-${key} {
+          ${pseudoClass(`${prefix}-${key}`, variants.clear)} {
             clear: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions,
+    variants.clear.indexOf("responsive") >= 0
   );
 
   return responsiveCssString;

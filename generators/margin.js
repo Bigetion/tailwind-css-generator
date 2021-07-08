@@ -1,54 +1,54 @@
-import { getConfigOptions, generateCssString } from "../utils";
+import { generateCssString } from "../utils";
 
-export default function generateMargin(globalConfigOptions = {}) {
-  const configOptions = getConfigOptions(globalConfigOptions);
-  const { prefix: globalPrefix, spacing, margin } = configOptions;
+export default function generateMargin(configOptions = {}) {
+  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
 
-  const prefix = `${globalPrefix}m`;
+  const { spacing = {}, margin = {} } = theme;
+
+  const propertyOptions = Object.assign({}, spacing, margin);
+  Object.entries(spacing).forEach(([key, value]) => {
+    propertyOptions[`-${key}`] = `-${value}`;
+  });
 
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
-      const generateMargin = (key, value, isNegative) => {
-        const negativePrefix = isNegative ? "-" : "";
+      const cssString = getCssByOptions(propertyOptions, (keyTmp, value) => {
+        let prefix = `${globalPrefix}m`;
+        let key = keyTmp;
+        if (`${key}`.indexOf("-") >= 0) {
+          key = key.split("-").join("");
+          prefix = `${globalPrefix}-m`;
+        }
         return `
-          ${pseudoClass(`${negativePrefix}${prefix}-${key}`)} {
-            margin: ${negativePrefix}${value};
+          ${pseudoClass(`${prefix}-${key}`, variants.margin)} {
+            margin: ${value};
           }
-          ${pseudoClass(`${negativePrefix}${prefix}y-${key}`)} {
-            margin-top: ${negativePrefix}${value};
-            margin-bottom: ${negativePrefix}${value};
+          ${pseudoClass(`${prefix}y-${key}`, variants.margin)} {
+            margin-top: ${value};
+            margin-bottom: ${value};
           }
-          ${pseudoClass(`${negativePrefix}${prefix}x-${key}`)} {
-            margin-left: ${negativePrefix}${value};
-            margin-right: ${negativePrefix}${value};
+          ${pseudoClass(`${prefix}x-${key}`, variants.margin)} {
+            margin-left: ${value};
+            margin-right: ${value};
           }
-          ${pseudoClass(`${negativePrefix}${prefix}t-${key}`)} {
-            margin-top: ${negativePrefix}${value};
+          ${pseudoClass(`${prefix}t-${key}`, variants.margin)} {
+            margin-top: ${value};
           }
-          ${pseudoClass(`${negativePrefix}${prefix}r-${key}`)} {
-            margin-right: ${negativePrefix}${value};
+          ${pseudoClass(`${prefix}r-${key}`, variants.margin)} {
+            margin-right: ${value};
           }
-          ${pseudoClass(`${negativePrefix}${prefix}b-${key}`)} {
-            margin-bottom: ${negativePrefix}${value};
+          ${pseudoClass(`${prefix}b-${key}`, variants.margin)} {
+            margin-bottom: ${value};
           }
-          ${pseudoClass(`${negativePrefix}${prefix}l-${key}`)} {
-            margin-left: ${negativePrefix}${value};
+          ${pseudoClass(`${prefix}l-${key}`, variants.margin)} {
+            margin-left: ${value};
           }
         `;
-      };
-
-      const cssString = getCssByOptions(
-        Object.assign(spacing, margin),
-        (key, value) => {
-          let str = "";
-          str += generateMargin(key, value);
-          str += generateMargin(key, value, true);
-          return str;
-        }
-      );
+      });
       return cssString;
     },
-    configOptions
+    configOptions,
+    variants.margin.indexOf("responsive") >= 0
   );
 
   return responsiveCssString;

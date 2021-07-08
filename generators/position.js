@@ -1,60 +1,24 @@
-import { getConfigOptions, generateCssString } from "../utils";
+import { generateCssString } from "../utils";
 
-export default function generatePosition(globalConfigOptions = {}) {
-  const configOptions = getConfigOptions(globalConfigOptions);
-  const { prefix, spacing } = configOptions;
+export default function generatePosition(configOptions = {}) {
+  const { prefix, variants = {} } = configOptions;
 
-  const position = ["static", "fixed", "absolute", "relative", "sticky"];
-
-  const positionOptions = Object.assign(spacing, {
-    0: "0",
-    auto: "auto",
-  });
+  const propertyOptions = ["static", "fixed", "absolute", "relative", "sticky"];
 
   const responsiveCssString = generateCssString(
-    ({ orientationPrefix, getCssByOptions }) => {
-      let cssString = getCssByOptions(
-        position,
+    ({ pseudoClass, getCssByOptions }) => {
+      const cssString = getCssByOptions(
+        propertyOptions,
         (key, value) => `
-          .${orientationPrefix}${prefix}${key} {
+          ${pseudoClass(`${prefix}${key}`, variants.position)} {
             position: ${value};
-          }
-        `
-      );
-      cssString += getCssByOptions(
-        positionOptions,
-        (key, value) => `
-          .${orientationPrefix}${prefix}inset-${key} {
-            top: ${value};
-            right: ${value};
-            bottom: ${value};
-            left: ${value};
-          }
-          .${orientationPrefix}${prefix}inset-x-${key} {
-            right: ${value};
-            left: ${value};
-          }
-          .${orientationPrefix}${prefix}inset-y-${key} {
-            top: ${value};
-            bottom: ${value};
-          }
-          .${orientationPrefix}${prefix}top-${key} {
-            top: ${value};
-          }
-          .${orientationPrefix}${prefix}right-${key} {
-            right: ${value};
-          }
-          .${orientationPrefix}${prefix}bottom-${key} {
-            bottom: ${value};
-          }
-          .${orientationPrefix}${prefix}left-${key} {
-            left: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions,
+    variants.position.indexOf("responsive") >= 0
   );
 
   return responsiveCssString;

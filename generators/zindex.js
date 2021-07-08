@@ -1,24 +1,29 @@
-import { getConfigOptions, generateCssString } from "../utils";
+import { generateCssString } from "../utils";
 
-export default function generateZIndex(globalConfigOptions = {}) {
-  const configOptions = getConfigOptions(globalConfigOptions);
-  const { prefix: globalPrefix, zIndex } = configOptions;
+export default function generateZIndex(configOptions = {}) {
+  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
 
-  const prefix = `${globalPrefix}z`;
+  const { zIndex: propertyOptions = {} } = theme;
 
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
-      const cssString = getCssByOptions(
-        zIndex,
-        (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`)} {
-            z-index: ${value} !important;
+      const cssString = getCssByOptions(propertyOptions, (keyTmp, value) => {
+        let prefix = `${globalPrefix}z`;
+        let key = keyTmp;
+        if (`${key}`.indexOf("-") >= 0) {
+          key = key.split("-").join("");
+          prefix = `${globalPrefix}-z`;
+        }
+        return `
+          ${pseudoClass(`${prefix}-${key}`, variants.zIndex)} {
+            z-index: ${value};
           }
-        `
-      );
+        `;
+      });
       return cssString;
     },
-    configOptions
+    configOptions,
+    variants.zIndex.indexOf("responsive") >= 0
   );
 
   return responsiveCssString;

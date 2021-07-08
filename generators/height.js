@@ -1,41 +1,28 @@
-import { getConfigOptions, generateCssString } from "../utils";
+import { generateCssString } from "../utils";
 
-export default function generateHeight(globalConfigOptions = {}) {
-  const configOptions = getConfigOptions(globalConfigOptions);
-  const { prefix: globalPrefix, spacing, height } = configOptions;
+export default function generateHeight(configOptions = {}) {
+  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
 
   const prefix = `${globalPrefix}h`;
 
+  const { spacing = {}, height = {} } = theme;
+
+  const propertyOptions = Object.assign({}, spacing, height);
+
   const responsiveCssString = generateCssString(
-    ({ orientationPrefix, getCssByOptions }) => {
-      let cssString = getCssByOptions(
-        Object.assign(spacing, height),
+    ({ pseudoClass, getCssByOptions }) => {
+      const cssString = getCssByOptions(
+        propertyOptions,
         (key, value) => `
-          .${orientationPrefix}${prefix}-${key.replace("/", `\\/`)} {
-            height: ${value}; 
+          ${pseudoClass(`${prefix}-${key}`, variants.height)} {
+            height: ${value};
           }
         `
       );
-      cssString += `
-        .${orientationPrefix}min-${prefix}-0 {
-          min-height: 0;
-        }
-        .${orientationPrefix}min-${prefix}-full {
-          min-height: 100%;
-        }
-        .${orientationPrefix}min-${prefix}-screen {
-          min-height: 100vh;
-        }
-        .${orientationPrefix}max-${prefix}-full {
-          max-height: 100%;
-        }
-        .${orientationPrefix}max-${prefix}-screen {
-          max-height: 100vh;
-        }
-      `;
       return cssString;
     },
-    configOptions
+    configOptions,
+    variants.height.indexOf("responsive") >= 0
   );
 
   return responsiveCssString;

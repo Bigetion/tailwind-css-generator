@@ -1,94 +1,26 @@
-import { getConfigOptions, generateCssString } from "../utils";
+import { generateCssString } from "../utils";
 
-export default function generateFlex(globalConfigOptions = {}) {
-  const configOptions = getConfigOptions(globalConfigOptions);
-  const { prefix: globalPrefix, order } = configOptions;
+export default function generateFlex(configOptions = {}) {
+  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
 
   const prefix = `${globalPrefix}flex`;
 
-  const flexDirection = {
-    row: "row",
-    "row-reverse": "row-reverse",
-    col: "column",
-    "col-reverse": "column-reverse",
-  };
-
-  const flexWrap = {
-    wrap: "wrap",
-    "wrap-reverse": "wrap-reverse",
-    "no-wrap": "nowrap",
-  };
-
-  const flexSize = {
-    1: "1 1 0",
-    auto: "1 1 auto",
-    initial: "0 1 auto",
-    none: "none",
-  };
-
-  const flexGrow = {
-    0: 0,
-    "": 1,
-  };
-
-  const flexShrink = {
-    0: 0,
-    "": 1,
-  };
+  const { flex: propertyOptions = {} } = theme;
 
   const responsiveCssString = generateCssString(
-    ({ orientationPrefix, getCssByOptions }) => {
-      let cssString = getCssByOptions(
-        flexDirection,
+    ({ pseudoClass, getCssByOptions }) => {
+      const cssString = getCssByOptions(
+        propertyOptions,
         (key, value) => `
-          .${orientationPrefix}${prefix}-${key} {
-            flex-direction: ${value};
-          }
-        `
-      );
-      cssString += getCssByOptions(
-        flexWrap,
-        (key, value) => `
-          .${orientationPrefix}${prefix}-${key} {
-            flex-wrap: ${value};
-          }
-        `
-      );
-      cssString += getCssByOptions(
-        flexSize,
-        (key, value) => `
-          .${orientationPrefix}${prefix}-${key} {
+          ${pseudoClass(`${prefix}-${key}`, variants.flex)} {
             flex: ${value};
-          }
-        `
-      );
-      cssString += getCssByOptions(
-        flexGrow,
-        (key, value) => `
-          .${orientationPrefix}${prefix}-grow${key !== "" ? `-${key}` : ""} {
-            flex-grow: ${value};
-          }
-        `
-      );
-      cssString += getCssByOptions(
-        flexShrink,
-        (key, value) => `
-          .${orientationPrefix}${prefix}-shrink${key !== "" ? `-${key}` : ""} {
-            flex-shrink: ${value};
-          }
-        `
-      );
-      cssString += getCssByOptions(
-        order,
-        (key, value) => `
-          .${orientationPrefix}order-${key} {
-            order: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions,
+    variants.flex.indexOf("responsive") >= 0
   );
 
   return responsiveCssString;

@@ -1,25 +1,27 @@
-import { getConfigOptions, generateCssString } from "../utils";
+import { generateCssString } from "../utils";
 
-export default function generateFloat(globalConfigOptions = {}) {
-  const configOptions = getConfigOptions(globalConfigOptions);
-  const { prefix: globalPrefix } = configOptions;
+export default function generateFloat(configOptions = {}) {
+  const { prefix: globalPrefix, variants = {} } = configOptions;
 
   const prefix = `${globalPrefix}float`;
 
-  const float = ["left", "right", "none"];
+  const propertyOptions = ["left", "right", "none"];
 
   const responsiveCssString = generateCssString(
-    ({ orientationPrefix, getCssByOptions }) => {
+    ({ pseudoClass, getCssByOptions }) => {
       let cssString = getCssByOptions(
-        float,
+        propertyOptions,
         (key, value) => `
-          .${orientationPrefix}${prefix}-${key} {
+          ${pseudoClass(`${prefix}-${key}`, variants.float)} {
             float: ${value};
           }
         `
       );
       cssString += `
-        .${orientationPrefix}${globalPrefix}clearfix:after {
+        ${pseudoClass(
+          (pseudoString) => `${globalPrefix}clearfix${pseudoString}:after`,
+          variants.float
+        )} {
           content: "";
           display: table;
           clear: both;
@@ -27,7 +29,8 @@ export default function generateFloat(globalConfigOptions = {}) {
       `;
       return cssString;
     },
-    configOptions
+    configOptions,
+    variants.float.indexOf("responsive") >= 0
   );
 
   return responsiveCssString;

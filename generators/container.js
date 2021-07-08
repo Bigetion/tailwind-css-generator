@@ -1,8 +1,7 @@
-import { getConfigOptions, generateCssString } from "../utils";
+import { generateCssString } from "../utils";
 
-export default function generateContainer(globalConfigOptions = {}) {
-  const configOptions = getConfigOptions(globalConfigOptions);
-  const { prefix: globalPrefix = "", breakpoints } = configOptions;
+export default function generateContainer(configOptions = {}) {
+  const { prefix: globalPrefix = "", screens } = configOptions;
 
   const prefix = `${globalPrefix}container`;
 
@@ -12,7 +11,7 @@ export default function generateContainer(globalConfigOptions = {}) {
         width: 100%;
       }
     `;
-    Object.entries(breakpoints).forEach((screenItem) => {
+    Object.entries(screens).forEach((screenItem) => {
       cssString += `
         @media (min-width: ${screenItem[1]}) {
           .${orientationPrefix}${prefix} {
