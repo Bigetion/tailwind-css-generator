@@ -109,7 +109,7 @@ import generateStroke from "./generators/stroke";
 import generateStrokeWidth from "./generators/strokeWidth";
 import generateAccessibility from "./generators/accessibility";
 
-function generateTailwindCss(options = {}) {
+export function generateTailwindCssString(options = {}) {
 	const configOptions = getConfigOptions(options);
 	const { corePlugins = {} } = configOptions;
 	let cssString = "";
@@ -323,9 +323,11 @@ function generateTailwindCss(options = {}) {
 	cssString += corePlugins.accessibility
 		? generateAccessibility(configOptions)
 		: "";
+  return cssString;
+}
 
-  cssString = cssString.replace(/\s\s+/g, ' ');
-
+function generateTailwindCss(options = {}) {
+  const cssString = generateTailwindCssString(options).replace(/\s\s+/g, ' ');
 	const head = document.head || document.getElementsByTagName("head")[0];
 	const style = document.createElement("style");
 	head.appendChild(style);
