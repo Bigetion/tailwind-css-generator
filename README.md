@@ -3,13 +3,13 @@
 Tailwind CSS String Generator
 
 ## Instalation
-```
+```bash
 npm i tailwind-css-generator
 ```
 
 ## Usage
 
-```
+```jsx
 import React from "react";
 import generateTailwindCss from "tailwind-css-generator";
 
