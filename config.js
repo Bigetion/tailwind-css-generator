@@ -1,12 +1,5 @@
 const configOptions = {
   prefix: "",
-  screens: {
-    sm: "640px",
-    md: "768px",
-    lg: "1024px",
-    xl: "1280px",
-  },
-  extend: {},
   corePlugins: {
     base: true,
     form: true,
@@ -236,6 +229,12 @@ const configOptions = {
     accessibility: ["responsive", "hover", "focus", "active"],
   },
   theme: {
+    screens: {
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+    },
     spacing: {
       0: "0",
       px: "1px",
