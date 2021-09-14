@@ -1,6 +1,6 @@
-import { generateCssString } from "../utils";
+const { generateCssString } = require("../utils");
 
-export default function generateGridAutoRows(configOptions = {}) {
+module.exports = function generateGridAutoRows(configOptions = {}) {
   const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
 
   let prefix = `${globalPrefix}auto-rows`;

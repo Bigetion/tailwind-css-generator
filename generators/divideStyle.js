@@ -1,6 +1,6 @@
-import { generateCssString } from "../utils";
+const { generateCssString } = require("../utils");
 
-export default function generateDivideStyle(configOptions = {}) {
+module.exports = function generateDivideStyle(configOptions = {}) {
   const { prefix: globalPrefix, variants = {} } = configOptions;
 
   const prefix = `${globalPrefix}divide`;

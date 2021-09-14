@@ -1,6 +1,6 @@
-import { generateCssString } from "../utils";
+const { generateCssString } = require("../utils");
 
-export default function generateRotate(configOptions = {}) {
+module.exports = function generateRotate(configOptions = {}) {
   const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
 
   const { rotate: propertyOptions = {} } = theme;

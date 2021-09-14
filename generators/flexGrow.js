@@ -1,6 +1,6 @@
-import { generateCssString } from "../utils";
+const { generateCssString } = require("../utils");
 
-export default function generateFlexGrow(configOptions = {}) {
+module.exports = function generateFlexGrow(configOptions = {}) {
   const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
 
   const prefix = `${globalPrefix}flex-grow`;

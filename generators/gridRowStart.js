@@ -1,6 +1,6 @@
-import { generateCssString } from "../utils";
+const { generateCssString } = require("../utils");
 
-export default function generateGridRowStart(configOptions = {}) {
+module.exports = function generateGridRowStart(configOptions = {}) {
   const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
 
   let prefix = `${globalPrefix}row-start`;

@@ -1,6 +1,6 @@
-import { generateCssString } from "../utils";
+const { generateCssString } = require("../utils");
 
-export default function generateFlexWrap(configOptions = {}) {
+module.exports = function generateFlexWrap(configOptions = {}) {
   const { prefix: globalPrefix, variants = {} } = configOptions;
 
   const prefix = `${globalPrefix}flex`;

@@ -1,6 +1,6 @@
-import { generateCssString } from "../utils";
+const { generateCssString } = require("../utils");
 
-export default function generatePlaceContent(configOptions = {}) {
+module.exports = function generatePlaceContent(configOptions = {}) {
   const { prefix: globalPrefix, variants = {} } = configOptions;
 
   const prefix = `${globalPrefix}place-content`;

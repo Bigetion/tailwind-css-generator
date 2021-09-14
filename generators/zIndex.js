@@ -1,6 +1,6 @@
-import { generateCssString } from "../utils";
+const { generateCssString } = require("../utils");
 
-export default function generateZIndex(configOptions = {}) {
+module.exports = function generateZIndex(configOptions = {}) {
   const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
 
   const { zIndex: propertyOptions = {} } = theme;

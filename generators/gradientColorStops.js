@@ -1,6 +1,6 @@
-import { generateCssString } from "../utils";
+const { generateCssString } = require("../utils");
 
-export default function generateGradientColorStops(configOptions = {}) {
+module.exports = function generateGradientColorStops(configOptions = {}) {
   const { prefix, variants = {}, theme = {} } = configOptions;
 
   const { colors, gradientColorStops } = theme;

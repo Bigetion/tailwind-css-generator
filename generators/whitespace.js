@@ -1,6 +1,6 @@
-import { generateCssString } from "../utils";
+const { generateCssString } = require("../utils");
 
-export default function generateWhitespace(configOptions = {}) {
+module.exports = function generateWhitespace(configOptions = {}) {
   const { prefix: globalPrefix, variants = {} } = configOptions;
 
   const prefix = `${globalPrefix}whitespace`;

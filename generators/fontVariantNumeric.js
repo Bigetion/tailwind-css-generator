@@ -1,6 +1,6 @@
-import { generateCssString } from "../utils";
+const { generateCssString } = require("../utils");
 
-export default function generateFontVariantNumeric(configOptions = {}) {
+module.exports = function generateFontVariantNumeric(configOptions = {}) {
   const { prefix, variants = {} } = configOptions;
 
   const propertyOptions = {

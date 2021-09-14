@@ -870,4 +870,4 @@ const configOptions = {
   },
 };
 
-export default configOptions;
+module.exports = configOptions;

@@ -1,6 +1,6 @@
-import { generateCssString } from "../utils";
+const { generateCssString } = require("../utils");
 
-export default function generatePlaceholderOpacity(configOptions = {}) {
+module.exports = function generatePlaceholderOpacity(configOptions = {}) {
   const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
 
   const prefix = `${globalPrefix}placeholder-opacity`;

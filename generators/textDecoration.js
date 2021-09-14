@@ -1,6 +1,6 @@
-import { generateCssString } from "../utils";
+const { generateCssString } = require("../utils");
 
-export default function generateTextDecoration(configOptions = {}) {
+module.exports = function generateTextDecoration(configOptions = {}) {
   const { prefix, variants = {} } = configOptions;
 
   const propertyOptions = {

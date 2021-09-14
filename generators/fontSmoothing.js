@@ -1,6 +1,6 @@
-import { generateCssString } from "../utils";
+const { generateCssString } = require("../utils");
 
-export default function generateFontSmoothing(configOptions = {}) {
+module.exports = function generateFontSmoothing(configOptions = {}) {
   const { prefix, variants = {} } = configOptions;
 
   const responsiveCssString = generateCssString(

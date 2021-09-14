@@ -1,6 +1,6 @@
-import { generateCssString } from "../utils";
+const { generateCssString } = require("../utils");
 
-export default function generateGridColumnEnd(configOptions = {}) {
+module.exports = function generateGridColumnEnd(configOptions = {}) {
   const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
 
   let prefix = `${globalPrefix}col-end`;

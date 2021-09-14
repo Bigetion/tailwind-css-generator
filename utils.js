@@ -1,6 +1,6 @@
-import defaultConfigOptions from "./config";
+const defaultConfigOptions = require("./config");
 
-export const getConfigOptions = (options = {}) => {
+const getConfigOptions = (options = {}) => {
   const { prefix = "", variants = {}, corePlugins = {}, theme = {} } = options;
 
   const variantsKeys = [
@@ -208,7 +208,7 @@ export const getConfigOptions = (options = {}) => {
   };
 };
 
-export const generateCssString = (
+const generateCssString = (
   getCssString = () => {},
   options = {},
   isResponsive = true
@@ -327,3 +327,6 @@ export const generateCssString = (
 
   return cssString;
 };
+
+module.exports.getConfigOptions = getConfigOptions;
+module.exports.generateCssString = generateCssString;

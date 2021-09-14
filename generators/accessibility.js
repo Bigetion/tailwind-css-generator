@@ -1,6 +1,6 @@
-import { generateCssString } from "../utils";
+const { generateCssString } = require("../utils");
 
-export default function generateAccessibility(configOptions = {}) {
+module.exports = function generateAccessibility(configOptions = {}) {
   const { prefix, variants = {} } = configOptions;
 
   const responsiveCssString = generateCssString(

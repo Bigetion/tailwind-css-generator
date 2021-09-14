@@ -1,6 +1,6 @@
-import { generateCssString } from "../utils";
+const { generateCssString } = require("../utils");
 
-export default function generateOutline(configOptions = {}) {
+module.exports = function generateOutline(configOptions = {}) {
   const { prefix, variants = {} } = configOptions;
 
   const responsiveCssString = generateCssString(

@@ -1,6 +1,6 @@
-import { generateCssString } from "../utils";
+const { generateCssString } = require("../utils");
 
-export default function generateContainer(configOptions = {}) {
+module.exports = function generateContainer(configOptions = {}) {
   const { prefix: globalPrefix = "", theme = {} } = configOptions;
   const { screens = {} } = theme;
 

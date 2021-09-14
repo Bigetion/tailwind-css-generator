@@ -1,6 +1,6 @@
-import { generateCssString } from "../utils";
+const { generateCssString } = require("../utils");
 
-export default function generatePointerEvents(configOptions = {}) {
+module.exports = function generatePointerEvents(configOptions = {}) {
   const { prefix, variants = {} } = configOptions;
 
   const responsiveCssString = generateCssString(
