@@ -9,6 +9,7 @@ module.exports = function generateFlexWrap(configOptions = {}) {
     wrap: "wrap",
     "wrap-reverse": "wrap-reverse",
     "no-wrap": "nowrap",
+    "nowrap": "nowrap",
   };
 
   const responsiveCssString = generateCssString(

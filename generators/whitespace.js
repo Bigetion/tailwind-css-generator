@@ -8,6 +8,7 @@ module.exports = function generateWhitespace(configOptions = {}) {
   const propertyOptions = {
     normal: "normal",
     "no-wrap": "nowrap",
+    "nowrap": "nowrap",
     pre: "pre",
     "pre-line": "pre-line",
     "pre-wrap": "pre-wrap",
