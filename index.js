@@ -89,6 +89,11 @@ const generateDivideWidth = require("./generators/divideWidth");
 const generateDivideColor = require("./generators/divideColor");
 const generateDivideOpacity = require("./generators/divideOpacity");
 const generateDivideStyle = require("./generators/divideStyle");
+const generateRingWidth = require("./generators/ringWidth");
+const generateRingColor = require("./generators/ringColor");
+const generateRingOpacity = require("./generators/ringOpacity");
+const generateRingOffsetWidth = require("./generators/ringOffsetWidth");
+const generateRingOffsetColor = require("./generators/ringOffsetColor");
 const generateBorderCollapse = require("./generators/borderCollapse");
 const generateTableLayout = require("./generators/tableLayout");
 const generateBoxShadow = require("./generators/boxShadow");
@@ -112,7 +117,16 @@ const generateAccessibility = require("./generators/accessibility");
 function generateTailwindCssString(options = {}) {
   const configOptions = getConfigOptions(options);
   const { corePlugins = {} } = configOptions;
-  let cssString = "";
+  let cssString = `
+    *, ::before, ::after {
+      --ring-inset: var(--empty,/*!*/ /*!*/);
+      --ring-offset-width: 0px;
+      --ring-offset-color: #fff;
+      --ring-color: rgba(59, 130, 246, 0.5);
+      --ring-offset-shadow: 0 0 #0000;
+      --ring-shadow: 0 0 #0000;
+    }
+  `;
   cssString += corePlugins.base ? generateBase(configOptions) : "";
   cssString += corePlugins.form ? generateForm(configOptions) : "";
   cssString += corePlugins.transform ? generateTransform(configOptions) : "";
@@ -291,6 +305,17 @@ function generateTailwindCssString(options = {}) {
     : "";
   cssString += corePlugins.divideStyle
     ? generateDivideStyle(configOptions)
+    : "";
+  cssString += corePlugins.ringWidth ? generateRingWidth(configOptions) : "";
+  cssString += corePlugins.ringColor ? generateRingColor(configOptions) : "";
+  cssString += corePlugins.ringOpacity
+    ? generateRingOpacity(configOptions)
+    : "";
+  cssString += corePlugins.ringOffsetWidth
+    ? generateRingOffsetWidth(configOptions)
+    : "";
+  cssString += corePlugins.ringOffsetColor
+    ? generateRingOffsetColor(configOptions)
     : "";
   cssString += corePlugins.borderCollapse
     ? generateBorderCollapse(configOptions)

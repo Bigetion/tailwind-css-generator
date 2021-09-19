@@ -1,28 +1,31 @@
 const { generateCssString } = require("../utils");
 
-module.exports = function generateBorderColor(configOptions = {}) {
+module.exports = function generateRingColor(configOptions = {}) {
   const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
 
-  const prefix = `${globalPrefix}border`;
+  const prefix = `${globalPrefix}ring`;
 
-  const { colors, borderColor } = theme;
+  const { colors, ringColor } = theme;
 
-  const propertyOptions = Object.assign({}, colors, borderColor);
+  const propertyOptions = Object.assign({}, colors, ringColor);
 
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByColors }) => {
       const cssString = getCssByColors(
         propertyOptions,
         (keyTmp, value, rgbValue) => {
+          if (keyTmp === "default") {
+            return "";
+          }
           const key = keyTmp !== "default" ? `-${keyTmp}` : "";
           let rgbPropertyValue = "";
           if (rgbValue) {
-            rgbPropertyValue = `border-color: rgba(${rgbValue}, var(--border-opacity));`;
+            rgbPropertyValue = `--ring-color: rgba(${rgbValue}, var(--ring-opacity));`;
           }
           return `
-            ${pseudoClass(`${prefix}${key}`, variants.borderColor)} {
-              --border-opacity: 1;
-              border-color: ${value};${rgbPropertyValue}
+            ${pseudoClass(`${prefix}${key}`, variants.ringColor)} {
+              --ring-opacity: 1;
+              --ring-color: ${value};${rgbPropertyValue}
             }
           `;
         }
@@ -30,8 +33,8 @@ module.exports = function generateBorderColor(configOptions = {}) {
       return cssString;
     },
     configOptions,
-    variants.borderColor.indexOf("responsive") >= 0
+    variants.ringColor.indexOf("responsive") >= 0
   );
 
   return responsiveCssString;
-}
+};
