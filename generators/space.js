@@ -8,6 +8,9 @@ module.exports = function generateSpace(configOptions = {}) {
   const { spacing = {}, space = {} } = theme;
 
   const propertyOptions = Object.assign({}, spacing, space);
+  Object.entries(spacing).forEach(([key, value]) => {
+    propertyOptions[`-${key}`] = `-${value}`;
+  });
 
   const responsiveCssString = generateCssString(
     ({ pseudoClass }) => {
