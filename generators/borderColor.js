@@ -13,14 +13,13 @@ module.exports = function generateBorderColor(configOptions = {}) {
     ({ pseudoClass, getCssByColors }) => {
       const cssString = getCssByColors(
         propertyOptions,
-        (keyTmp, value, rgbValue) => {
-          const key = keyTmp !== "default" ? `-${keyTmp}` : "";
+        (key, value, rgbValue) => {
           let rgbPropertyValue = "";
           if (rgbValue) {
             rgbPropertyValue = `border-color: rgba(${rgbValue}, var(--border-opacity));`;
           }
           return `
-            ${pseudoClass(`${prefix}${key}`, variants.borderColor)} {
+            ${pseudoClass(`${prefix}-${key}`, variants.borderColor)} {
               --border-opacity: 1;
               border-color: ${value};${rgbPropertyValue}
             }
