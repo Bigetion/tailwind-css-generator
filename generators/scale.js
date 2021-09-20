@@ -31,4 +31,4 @@ module.exports = function generateScale(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

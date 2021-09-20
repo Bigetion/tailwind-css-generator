@@ -24,4 +24,4 @@ module.exports = function generateFontSize(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

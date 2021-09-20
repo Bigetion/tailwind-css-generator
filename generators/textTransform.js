@@ -27,4 +27,4 @@ module.exports = function generateTextTransform(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

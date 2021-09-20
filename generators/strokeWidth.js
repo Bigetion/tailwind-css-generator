@@ -24,4 +24,4 @@ module.exports = function generateStrokeWidth(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

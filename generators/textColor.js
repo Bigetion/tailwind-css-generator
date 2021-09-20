@@ -33,4 +33,4 @@ module.exports = function generateTextColor(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

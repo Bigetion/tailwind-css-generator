@@ -26,4 +26,4 @@ module.exports = function generateWidth(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

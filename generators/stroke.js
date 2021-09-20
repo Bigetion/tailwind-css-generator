@@ -24,4 +24,4 @@ module.exports = function generateStroke(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

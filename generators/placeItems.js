@@ -24,4 +24,4 @@ module.exports = function generatePlaceItems(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

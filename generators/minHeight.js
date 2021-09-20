@@ -26,4 +26,4 @@ module.exports = function generateMinHeight(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

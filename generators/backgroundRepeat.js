@@ -31,4 +31,4 @@ module.exports = function generateBackgroundRepeat(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

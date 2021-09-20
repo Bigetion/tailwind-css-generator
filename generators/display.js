@@ -45,4 +45,4 @@ module.exports = function generateDisplay(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

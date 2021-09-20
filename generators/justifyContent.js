@@ -31,4 +31,4 @@ module.exports = function generateJustifyContent(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

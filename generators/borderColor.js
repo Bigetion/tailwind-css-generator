@@ -33,4 +33,4 @@ module.exports = function generateBorderColor(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

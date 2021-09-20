@@ -62,4 +62,4 @@ module.exports = function generateDivideWidth(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

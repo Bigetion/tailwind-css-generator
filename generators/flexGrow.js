@@ -27,4 +27,4 @@ module.exports = function generateFlexGrow(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

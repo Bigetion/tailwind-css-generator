@@ -35,4 +35,4 @@ module.exports = function generatePlaceholderOpacity(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

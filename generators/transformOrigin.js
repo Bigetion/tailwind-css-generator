@@ -24,4 +24,4 @@ module.exports = function generateTransformOrigin(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

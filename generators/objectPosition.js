@@ -34,4 +34,4 @@ module.exports = function generateObjectPosition(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

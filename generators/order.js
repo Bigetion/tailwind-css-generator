@@ -24,4 +24,4 @@ module.exports = function generateOrder(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

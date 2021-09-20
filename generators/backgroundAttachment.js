@@ -24,4 +24,4 @@ module.exports = function generateBackgroundAttachment(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

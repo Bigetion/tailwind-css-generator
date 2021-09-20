@@ -26,4 +26,4 @@ module.exports = function generateBorderOpacity(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

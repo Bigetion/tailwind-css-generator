@@ -32,4 +32,4 @@ module.exports = function generatePlaceContent(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

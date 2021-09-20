@@ -24,4 +24,4 @@ module.exports = function generateListStyleType(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

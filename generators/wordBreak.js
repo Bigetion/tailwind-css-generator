@@ -29,4 +29,4 @@ module.exports = function generateWordBreak(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

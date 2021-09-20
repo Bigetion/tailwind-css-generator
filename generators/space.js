@@ -72,4 +72,4 @@ module.exports = function generateSpace(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

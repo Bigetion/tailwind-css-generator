@@ -27,4 +27,4 @@ module.exports = function generateFlexShrink(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

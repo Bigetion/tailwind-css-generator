@@ -24,4 +24,4 @@ module.exports = function generateLineHeight(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

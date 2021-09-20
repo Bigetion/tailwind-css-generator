@@ -46,4 +46,4 @@ module.exports = function generateGradientColorStops(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

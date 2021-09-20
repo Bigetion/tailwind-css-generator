@@ -26,4 +26,4 @@ module.exports = function generateBackgroundOpacity(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

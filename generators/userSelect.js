@@ -27,4 +27,4 @@ module.exports = function generateUserSelect(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

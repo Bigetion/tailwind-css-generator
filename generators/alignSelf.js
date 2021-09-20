@@ -30,4 +30,4 @@ module.exports = function generateAlignSelf(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

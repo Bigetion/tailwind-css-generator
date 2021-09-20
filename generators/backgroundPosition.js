@@ -24,4 +24,4 @@ module.exports = function generateBackgroundPosition(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

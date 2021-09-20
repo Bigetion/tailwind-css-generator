@@ -34,4 +34,4 @@ module.exports = function generateFloat(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

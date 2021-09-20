@@ -24,4 +24,4 @@ module.exports = function generateBackgroundImage(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

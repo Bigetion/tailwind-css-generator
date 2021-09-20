@@ -24,4 +24,4 @@ module.exports = function generateFontWeight(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

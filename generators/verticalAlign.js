@@ -31,4 +31,4 @@ module.exports = function generateVerticalAlign(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

@@ -52,4 +52,4 @@ module.exports = function generateMargin(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

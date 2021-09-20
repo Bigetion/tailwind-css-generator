@@ -24,4 +24,4 @@ module.exports = function generateGridAutoRows(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

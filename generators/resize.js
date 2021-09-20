@@ -29,4 +29,4 @@ module.exports = function generateResize(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

@@ -36,4 +36,4 @@ module.exports = function generateBorderWidth(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

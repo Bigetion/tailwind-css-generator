@@ -26,4 +26,4 @@ module.exports = function generateTextOpacity(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

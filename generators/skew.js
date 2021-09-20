@@ -35,4 +35,4 @@ module.exports = function generateSkew(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

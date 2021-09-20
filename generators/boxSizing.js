@@ -27,4 +27,4 @@ module.exports = function generateBoxSizing(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

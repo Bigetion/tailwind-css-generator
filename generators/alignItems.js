@@ -30,4 +30,4 @@ module.exports = function generateAlignItems(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

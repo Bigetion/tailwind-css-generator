@@ -26,4 +26,4 @@ module.exports = function generateTextDecoration(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

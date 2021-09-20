@@ -26,4 +26,4 @@ module.exports = function generateGridTemplateRows(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

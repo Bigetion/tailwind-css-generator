@@ -26,4 +26,4 @@ module.exports = function generateGridTemplateColumns(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

@@ -38,4 +38,4 @@ module.exports = function generateOverflow(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

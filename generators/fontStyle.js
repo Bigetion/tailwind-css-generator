@@ -25,4 +25,4 @@ module.exports = function generateFontStyle(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

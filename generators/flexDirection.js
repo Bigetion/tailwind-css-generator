@@ -29,4 +29,4 @@ module.exports = function generateFlexDirection(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

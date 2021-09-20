@@ -22,4 +22,4 @@ module.exports = function generatePosition(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

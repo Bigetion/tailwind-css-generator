@@ -24,4 +24,4 @@ module.exports = function generateFlex(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

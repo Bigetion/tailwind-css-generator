@@ -33,4 +33,4 @@ module.exports = function generateBackgroundColor(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

@@ -26,4 +26,4 @@ module.exports = function generateMaxHeight(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

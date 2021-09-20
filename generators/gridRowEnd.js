@@ -24,4 +24,4 @@ module.exports = function generateGridRowEnd(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

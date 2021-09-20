@@ -25,4 +25,4 @@ module.exports = function generateContainer(configOptions = {}) {
   }, configOptions);
 
   return responsiveCssString;
-}
+};

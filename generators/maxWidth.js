@@ -26,4 +26,4 @@ module.exports = function generateMaxWidth(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

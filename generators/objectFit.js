@@ -24,4 +24,4 @@ module.exports = function generateObjectFit(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

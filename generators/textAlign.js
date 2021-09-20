@@ -24,4 +24,4 @@ module.exports = function generateTextAlign(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

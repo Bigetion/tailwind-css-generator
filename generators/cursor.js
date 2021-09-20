@@ -32,4 +32,4 @@ module.exports = function generateCursor(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

@@ -24,4 +24,4 @@ module.exports = function generateJustifySelf(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

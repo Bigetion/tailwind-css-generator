@@ -24,4 +24,4 @@ module.exports = function generatePlaceSelf(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};

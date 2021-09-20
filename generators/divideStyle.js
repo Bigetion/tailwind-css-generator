@@ -28,4 +28,4 @@ module.exports = function generateDivideStyle(configOptions = {}) {
   );
 
   return responsiveCssString;
-}
+};
