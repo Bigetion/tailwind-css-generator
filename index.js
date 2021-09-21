@@ -233,7 +233,12 @@ const generateOptions = {
 function generateTailwindCssString(options = {}) {
   const configOptions = getConfigOptions(options);
   const { corePlugins = {} } = configOptions;
+
   let cssString = `
+    *, ::after, ::before {
+      --border-opacity: 1;
+      border-color:rgba(229, 231, 235, var(--border-opacity));
+    }
     *, ::before, ::after {
       --ring-inset: var(--empty,/*!*/ /*!*/);
       --ring-offset-width: 0px;
@@ -243,7 +248,7 @@ function generateTailwindCssString(options = {}) {
       --ring-shadow: 0 0 #0000;
     }
   `;
-  Object.keys(corePlugins).forEach((key) => {
+  Object.keys(generateOptions).forEach((key) => {
     if (corePlugins[key]) {
       cssString += generateOptions[key](configOptions);
     }
