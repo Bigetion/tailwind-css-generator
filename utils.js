@@ -259,7 +259,15 @@ const generateCssString = (
         if (typeof pseudoItem === "string") {
           if (
             pseudoItem !== "" &&
-            ["responsive", "group-hover"].indexOf(pseudoItem) < 0
+            [
+              "responsive",
+              "group-hover",
+              "group-focus",
+              "first",
+              "last",
+              "odd",
+              "even",
+            ].indexOf(pseudoItem) < 0
           ) {
             classArray.push(
               `.${orientationPrefix}${pseudoItem}\\:${
@@ -271,13 +279,37 @@ const generateCssString = (
           }
         }
       });
-      if (pseudoElements.indexOf("group-hover") >= 0) {
-        classArray.push(
-          `.${orientationPrefix}group:hover .group-hover\\:${
-            isFunction(value) ? value() : value
-          }`
-        );
-      }
+      ["hover", "focus"].forEach((item) => {
+        if (pseudoElements.indexOf(`group-${item}`) >= 0) {
+          classArray.push(
+            `.${orientationPrefix}group:${item} .group-${item}\\:${
+              isFunction(value) ? value() : value
+            }`
+          );
+        }
+      });
+      ["first", "last"].forEach((item) => {
+        if (pseudoElements.indexOf(item) >= 0) {
+          classArray.push(
+            `.${orientationPrefix}${item}\\:${
+              isFunction(value)
+                ? value(`:${item}-child`)
+                : `${value}:${item}-child`
+            }`
+          );
+        }
+      });
+      ["odd", "even"].forEach((item) => {
+        if (pseudoElements.indexOf(item) >= 0) {
+          classArray.push(
+            `.${orientationPrefix}${item}\\:${
+              isFunction(value)
+                ? value(`:nth-child(${item})`)
+                : `${value}:nth-child(${item})`
+            }`
+          );
+        }
+      });
     }
     return classArray.join(", ");
   };
