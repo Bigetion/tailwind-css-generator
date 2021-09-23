@@ -24,7 +24,7 @@ module.exports = function generateDivideWidth(configOptions = {}) {
         return `
           ${pseudoClass(
             (pseudoString) =>
-              `${prefix}-${dividePosition}${key}${pseudoString} > :not(template) ~ :not(template)`,
+              `${prefix}-${dividePosition}${key}${pseudoString} > :not([hidden]) ~ :not([hidden])`,
             variants.divideWidth
           )}  {
             --divide-${dividePosition}-reverse: 0;
@@ -42,14 +42,14 @@ module.exports = function generateDivideWidth(configOptions = {}) {
       cssString += `
         ${pseudoClass(
           (pseudoString) =>
-            `${prefix}-y-reverse${pseudoString} > :not(template) ~ :not(template)`,
+            `${prefix}-y-reverse${pseudoString} > :not([hidden]) ~ :not([hidden])`,
           variants.divideWidth
         )} {
           --divide-y-reverse: 1;
         }
         ${pseudoClass(
           (pseudoString) =>
-            `${prefix}-x-reverse${pseudoString} > :not(template) ~ :not(template)`,
+            `${prefix}-x-reverse${pseudoString} > :not([hidden]) ~ :not([hidden])`,
           variants.divideWidth
         )} {
           --divide-x-reverse: 1;

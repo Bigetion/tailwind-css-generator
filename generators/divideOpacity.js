@@ -16,7 +16,7 @@ module.exports = function generateDivideOpacity(configOptions = {}) {
         (key, value) => `
           ${pseudoClass(
             (pseudoString) =>
-              `${prefix}-${key}${pseudoString} > :not(template) ~ :not(template)`,
+              `${prefix}-${key}${pseudoString} > :not([hidden]) ~ :not([hidden])`,
             variants.divideOpacity
           )} {
             --divide-opacity: ${value};

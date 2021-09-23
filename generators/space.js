@@ -26,7 +26,7 @@ module.exports = function generateSpace(configOptions = {}) {
         return `
           ${pseudoClass(
             (pseudoString) =>
-              `${prefix}-${spacePosition}-${key}${pseudoString} > :not(template) ~ :not(template)`,
+              `${prefix}-${spacePosition}-${key}${pseudoString} > :not([hidden]) ~ :not([hidden])`,
             variants.space
           )} {
             --space-${spacePosition}-reverse: 0;
@@ -35,7 +35,7 @@ module.exports = function generateSpace(configOptions = {}) {
           }
           ${pseudoClass(
             (pseudoString) =>
-              `-${prefix}-${key}${pseudoString} > :not(template) ~ :not(template)`,
+              `-${prefix}-${spacePosition}-${key}${pseudoString} > :not([hidden]) ~ :not([hidden])`,
             variants.space
           )} {
             --space-${spacePosition}-reverse: 0;
@@ -52,14 +52,14 @@ module.exports = function generateSpace(configOptions = {}) {
       cssString += `
         ${pseudoClass(
           (pseudoString) =>
-            `${prefix}-x-reverse${pseudoString} > :not(template) ~ :not(template)`,
+            `${prefix}-x-reverse${pseudoString} > :not([hidden]) ~ :not([hidden])`,
           variants.space
         )} {
           --space-x-reverse: 1;
         }
         ${pseudoClass(
           (pseudoString) =>
-            `${prefix}-y-reverse${pseudoString} > :not(template) ~ :not(template)`,
+            `${prefix}-y-reverse${pseudoString} > :not([hidden]) ~ :not([hidden])`,
           variants.space
         )} {
           --space-y-reverse: 1;
