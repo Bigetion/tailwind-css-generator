@@ -1,7 +1,13 @@
 const defaultConfigOptions = require("./config");
 
 const getConfigOptions = (options = {}) => {
-  const { prefix = "", variants = {}, corePlugins = {}, theme = {} } = options;
+  const {
+    prefix = "",
+    variants = {},
+    corePlugins = {},
+    theme = {},
+    form = {},
+  } = options;
 
   const variantsKeys = [
     "accessibility",
@@ -215,6 +221,7 @@ const getConfigOptions = (options = {}) => {
     variants: newVariants,
     corePlugins: newCorePlugins,
     theme: newTheme,
+    form,
   };
 };
 

@@ -1,10 +1,14 @@
 module.exports = function generateForm(configOptions = {}) {
-  const { form = {} } = configOptions;
-  const {
-    inputBackgroundColor = "#fff",
-    inputBorderColor = "#e2e8f0",
-    focusBorderColor = "#63b3ed",
-  } = form;
+  const formOptions = Object.assign(
+    {
+      inputBackgroundColor: "#fff",
+      inputBorderColor: "#e2e8f0",
+      focusBorderColor: "#63b3ed",
+    },
+    configOptions.form
+  );
+  const { inputBackgroundColor, inputBorderColor, focusBorderColor } =
+    formOptions;
 
   const formInputBaseStyle = `
     -webkit-appearance: none;
