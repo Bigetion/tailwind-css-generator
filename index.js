@@ -1593,11 +1593,7 @@ const getConfigOptions = (options = {}) => {
   };
 };
 
-const generateCssString = (
-  getCssString = () => {},
-  options = {},
-  isResponsive = true
-) => {
+const generateCssString = (getCssString = () => {}, options = {}) => {
   const { theme = {} } = options;
   const { screens = {} } = theme;
   let orientationPrefix = "";
@@ -1726,21 +1722,19 @@ const generateCssString = (
     getCssByColors,
   });
 
-  if (isResponsive) {
-    Object.entries(screens).forEach(([screen, screenValue]) => {
-      orientationPrefix = `${screen}\\:`;
-      cssString += `
-        @media (min-width: ${screenValue}) {
-          ${getCssString({
-            orientationPrefix,
-            pseudoClass,
-            getCssByOptions,
-            getCssByColors,
-          })}     
-        }
-      `;
-    });
-  }
+  Object.entries(screens).forEach(([screen, screenValue]) => {
+    orientationPrefix = `${screen}\\:`;
+    cssString += `
+      @media (min-width: ${screenValue}) {
+        ${getCssString({
+          orientationPrefix,
+          pseudoClass,
+          getCssByOptions,
+          getCssByColors,
+        })}     
+      }
+    `;
+  });
 
   return cssString;
 };
@@ -7387,15 +7381,16 @@ function generateTailwindCssString(options = {}) {
   return cssString;
 }
 
-function index (options = {}) {
-  if (typeof window === "object") {
-    const { id = "tailwind-inline-style" } = options;
-    const cssString = generateTailwindCssString(options).replace(/\s\s+/g, " ");
+function addStyleSheet(attributeId, attributeValue, cssString) {
+  const isElementExist = document.querySelector(
+    `style[${attributeId}=${attributeValue}]`
+  );
+  if (!isElementExist) {
     const head = document.head || document.getElementsByTagName("head")[0];
     const style = document.createElement("style");
     head.appendChild(style);
     style.setAttribute("type", "text/css");
-    style.setAttribute("data-inline-style", id);
+    style.setAttribute(attributeId, attributeValue);
     if (style.styleSheet) {
       style.styleSheet.cssText = cssString;
     } else {
@@ -7404,4 +7399,12 @@ function index (options = {}) {
   }
 }
 
-module.exports = index;
+function generateTailwindCssString$1 (options = {}) {
+  if (typeof window === "object") {
+    const { id = "tailwind-css" } = options;
+    const cssString = generateTailwindCssString(options).replace(/\s\s+/g, " ");
+    addStyleSheet("data-inline-style", id, cssString);
+  }
+}
+
+generateTailwindCssString$1();
