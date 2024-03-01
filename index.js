@@ -1,332 +1,54 @@
 'use strict';
 
-const plugins = {
-  accentColor: true,
-  accessibility: true,
-  alignContent: true,
-  alignItems: true,
-  alignSelf: true,
-  appearance: true,
-  aspect: true,
-  backgroundAttachment: true,
-  backgroundClip: true,
-  backgroundColor: true,
-  backgroundImage: true,
-  backgroundOpacity: true,
-  backgroundOrigin: true,
-  backgroundPosition: true,
-  backgroundRepeat: true,
-  backgroundSize: true,
-  base: true,
-  blur: true,
-  borderCollapse: true,
-  borderColor: true,
-  borderOpacity: true,
-  borderRadius: true,
-  borderSpacing: true,
-  borderStyle: true,
-  borderWidth: true,
-  boxDecorationBreak: true,
-  boxShadow: true,
-  boxSizing: true,
-  brightness: true,
-  captionSide: true,
-  caretColor: true,
-  clear: true,
-  container: true,
-  contrast: true,
-  cursor: true,
-  display: true,
-  divideColor: true,
-  divideOpacity: true,
-  divideStyle: true,
-  divideWidth: true,
-  dropShadow: true,
-  fill: true,
-  filter: true,
-  flex: true,
-  flexBasis: true,
-  flexDirection: true,
-  flexGrow: true,
-  flexShrink: true,
-  flexWrap: true,
-  float: true,
-  fontSize: true,
-  fontSmoothing: true,
-  fontStyle: true,
-  fontVariantNumeric: true,
-  fontWeight: true,
-  form: true,
-  gap: true,
-  gradientColorStops: true,
-  grayscale: true,
-  gridAutoColumns: true,
-  gridAutoFlow: true,
-  gridAutoRows: true,
-  gridColumn: true,
-  gridColumnEnd: true,
-  gridColumnStart: true,
-  gridRow: true,
-  gridRowEnd: true,
-  gridRowStart: true,
-  gridTemplateColumns: true,
-  gridTemplateRows: true,
-  height: true,
-  hueRotate: true,
-  hyphens: true,
-  inset: true,
-  invert: true,
-  isolation: true,
-  justifyContent: true,
-  justifyItems: true,
-  justifySelf: true,
-  letterSpacing: true,
-  lineClamp: true,
-  lineHeight: true,
-  listStylePosition: true,
-  listStyleType: true,
-  margin: true,
-  maxHeight: true,
-  maxWidth: true,
-  minHeight: true,
-  minWidth: true,
-  mixBlendMode: true,
-  objectFit: true,
-  objectPosition: true,
-  opacity: true,
-  order: true,
-  outlineColor: true,
-  outlineOffset: true,
-  outlineOpacity: true,
-  outlineStyle: true,
-  outlineWidth: true,
-  overflow: true,
-  overscrollBehavior: true,
-  padding: true,
-  placeContent: true,
-  placeItems: true,
-  placeSelf: true,
-  placeholderColor: true,
-  placeholderOpacity: true,
-  pointerEvents: true,
-  position: true,
-  resize: true,
-  ringColor: true,
-  ringOffsetColor: true,
-  ringOffsetWidth: true,
-  ringOpacity: true,
-  ringWidth: true,
-  rotate: true,
-  saturate: true,
-  scale: true,
-  scrollBehavior: true,
-  scrollMargin: true,
-  scrollPadding: true,
-  scrollSnapAlign: true,
-  scrollSnapStop: true,
-  scrollSnapType: true,
-  sepia: true,
-  size: true,
-  skew: true,
-  space: true,
-  stroke: true,
-  strokeWidth: true,
-  tableLayout: true,
-  textAlign: true,
-  textColor: true,
-  textDecoration: true,
-  textDecorationColor: true,
-  textDecorationStyle: true,
-  textDecorationThickness: true,
-  textIndent: true,
-  textOpacity: true,
-  textOverflow: true,
-  textTransform: true,
-  textUnderlineOffset: true,
-  textWrap: true,
-  touchAction: true,
-  transform: true,
-  transformOrigin: true,
-  translate: true,
-  userSelect: true,
-  verticalAlign: true,
-  visibility: true,
-  whitespace: true,
-  width: true,
-  willChange: true,
-  wordBreak: true,
-  zIndex: true,
-};
-
 const variants = {
-  accentColor: ["responsive", "focus", "focus-within"],
-  accessibility: ["responsive", "focus", "focus-within"],
-  alignContent: ["responsive"],
-  alignItems: ["responsive"],
-  alignSelf: ["responsive"],
-  appearance: ["responsive"],
-  aspect: ["responsive", "hover", "focus"],
-  backgroundAttachment: ["responsive"],
-  backgroundClip: ["responsive"],
-  backgroundColor: [
-    "responsive",
-    "hover",
-    "group-hover",
-    "focus",
-    "focus-within",
-  ],
-  backgroundImage: ["responsive"],
-  backgroundOpacity: [
-    "responsive",
-    "hover",
-    "group-hover",
-    "focus",
-    "focus-within",
-  ],
-  backgroundOrigin: ["responsive"],
-  backgroundPosition: ["responsive"],
-  backgroundRepeat: ["responsive"],
-  backgroundSize: ["responsive"],
-  blur: ["responsive", "hover", "group-hover", "focus", "focus-within"],
-  borderCollapse: ["responsive"],
-  borderColor: ["responsive", "hover", "group-hover", "focus", "focus-within"],
-  borderOpacity: [
-    "responsive",
-    "hover",
-    "group-hover",
-    "focus",
-    "focus-within",
-  ],
-  borderRadius: ["responsive"],
-  borderSpacing: ["responsive"],
-  borderStyle: ["responsive"],
-  borderWidth: ["responsive"],
-  boxDecorationBreak: ["responsive"],
-  boxShadow: ["responsive", "hover", "group-hover", "focus", "focus-within"],
-  boxSizing: ["responsive"],
-  brightness: ["responsive", "hover", "group-hover", "focus", "focus-within"],
-  captionSide: ["responsive"],
-  caretColor: ["responsive", "hover", "group-hover", "focus", "focus-within"],
-  clear: ["responsive"],
-  cursor: ["responsive"],
-  contrast: ["responsive", "hover", "group-hover", "focus", "focus-within"],
-  display: ["responsive"],
-  divideColor: ["responsive"],
-  divideOpacity: ["responsive"],
-  divideStyle: ["responsive"],
-  divideWidth: ["responsive"],
-  dropShadow: ["responsive", "hover", "group-hover", "focus", "focus-within"],
-  fill: ["responsive", "hover", "focus"],
-  flex: ["responsive"],
-  flexDirection: ["responsive"],
-  flexBasis: ["responsive", "hover", "focus"],
-  flexGrow: ["responsive"],
-  flexShrink: ["responsive"],
-  flexWrap: ["responsive"],
-  float: ["responsive"],
-  fontSize: ["responsive"],
-  fontSmoothing: ["responsive"],
-  fontStyle: ["responsive"],
-  fontVariantNumeric: ["responsive"],
-  fontWeight: ["responsive"],
-  gap: ["responsive"],
-  gradientColorStops: ["responsive", "hover", "focus"],
-  grayscale: ["responsive", "hover", "group-hover", "focus", "focus-within"],
-  gridAutoColumns: ["responsive"],
-  gridAutoFlow: ["responsive"],
-  gridAutoRows: ["responsive"],
-  gridColumn: ["responsive"],
-  gridColumnEnd: ["responsive"],
-  gridColumnStart: ["responsive"],
-  gridRow: ["responsive"],
-  gridRowEnd: ["responsive"],
-  gridRowStart: ["responsive"],
-  gridTemplateColumns: ["responsive"],
-  gridTemplateRows: ["responsive"],
-  height: ["responsive"],
-  hueRotate: ["responsive", "hover", "group-hover", "focus", "focus-within"],
-  hyphens: ["responsive"],
-  inset: ["responsive"],
-  invert: ["responsive", "hover", "group-hover", "focus", "focus-within"],
-  isolation: ["responsive"],
-  justifyContent: ["responsive"],
-  justifyItems: ["responsive"],
-  justifySelf: ["responsive"],
-  letterSpacing: ["responsive"],
-  lineClamp: ["responsive"],
-  lineHeight: ["responsive"],
-  listStylePosition: ["responsive"],
-  listStyleType: ["responsive"],
-  margin: ["responsive"],
-  maxHeight: ["responsive"],
-  maxWidth: ["responsive"],
-  minHeight: ["responsive"],
-  minWidth: ["responsive"],
-  mixBlendMode: ["responsive"],
-  objectFit: ["responsive"],
-  objectPosition: ["responsive"],
-  opacity: ["responsive", "hover", "group-hover", "focus", "focus-within"],
-  order: ["responsive"],
-  outlineColor: ["responsive", "focus", "focus-within"],
-  outlineOffset: ["responsive", "focus", "focus-within"],
-  outlineOpacity: ["responsive", "focus", "focus-within"],
-  outlineStyle: ["responsive", "focus", "focus-within"],
-  outlineWidth: ["responsive", "focus", "focus-within"],
-  overflow: ["responsive"],
-  overscrollBehavior: ["responsive"],
-  padding: ["responsive"],
-  placeContent: ["responsive"],
-  placeItems: ["responsive"],
-  placeSelf: ["responsive"],
-  placeholderColor: ["responsive", "focus"],
-  placeholderOpacity: ["responsive", "focus"],
-  pointerEvents: ["responsive"],
-  position: ["responsive"],
-  resize: ["responsive"],
-  ringColor: ["responsive", "focus", "focus-within"],
-  ringOffsetColor: ["responsive", "focus", "focus-within"],
-  ringOffsetWidth: ["responsive", "focus", "focus-within"],
-  ringOpacity: ["responsive", "focus", "focus-within"],
-  ringWidth: ["responsive", "focus", "focus-within"],
-  rotate: ["responsive", "hover", "focus"],
-  saturate: ["responsive", "hover", "group-hover", "focus", "focus-within"],
-  scale: ["responsive", "hover", "focus"],
-  scrollBehavior: ["responsive"],
-  scrollMargin: ["responsive"],
-  scrollPadding: ["responsive"],
-  scrollSnapAlign: ["responsive"],
-  scrollSnapStop: ["responsive"],
-  scrollSnapType: ["responsive"],
-  sepia: ["responsive", "hover", "group-hover", "focus", "focus-within"],
-  size: ["responsive"],
-  skew: ["responsive", "hover", "focus"],
-  space: ["responsive"],
-  stroke: ["responsive", "hover", "focus"],
-  strokeWidth: ["responsive", "hover", "focus"],
-  tableLayout: ["responsive"],
-  textAlign: ["responsive"],
-  textColor: ["responsive", "hover", "group-hover", "focus", "focus-within"],
-  textDecoration: ["responsive", "focus", "focus-within", "hover"],
-  textDecorationColor: ["responsive", "focus", "focus-within", "hover"],
-  textDecorationStyle: ["responsive", "focus", "focus-within", "hover"],
-  textDecorationThickness: ["responsive", "focus", "focus-within", "hover"],
-  textIndent: ["responsive"],
-  textOpacity: ["responsive", "hover", "group-hover", "focus", "focus-within"],
-  textOverflow: ["responsive"],
-  textTransform: ["responsive"],
-  textUnderlineOffset: ["responsive"],
-  textWrap: ["responsive"],
-  touchAction: ["responsive", "hover", "focus"],
-  transformOrigin: ["responsive"],
-  translate: ["responsive", "hover", "focus"],
-  userSelect: ["responsive"],
-  verticalAlign: ["responsive"],
-  visibility: ["responsive"],
-  whitespace: ["responsive"],
-  width: ["responsive"],
-  willChange: ["responsive"],
-  wordBreak: ["responsive"],
-  zIndex: ["responsive", "focus", "focus-within"],
+  accentColor: ["hover", "focus"],
+  accessibility: ["hover", "focus"],
+  aspect: ["hover", "focus"],
+  backgroundColor: ["hover", "focus"],
+  backgroundOpacity: ["hover", "focus"],
+  blur: ["hover", "focus"],
+  borderColor: ["hover", "focus"],
+  borderOpacity: ["hover", "focus"],
+  boxShadow: ["hover", "focus"],
+  brightness: ["hover", "focus"],
+  caretColor: ["hover", "focus"],
+  contrast: ["hover", "focus"],
+  dropShadow: ["hover", "focus"],
+  fill: ["hover", "focus"],
+  flexBasis: ["hover", "focus"],
+  gradientColorStops: ["hover", "focus"],
+  grayscale: ["hover", "focus"],
+  hueRotate: ["hover", "focus"],
+  invert: ["hover", "focus"],
+  opacity: ["hover", "focus"],
+  outlineColor: ["hover", "focus"],
+  outlineOffset: ["hover", "focus"],
+  outlineOpacity: ["hover", "focus"],
+  outlineStyle: ["hover", "focus"],
+  outlineWidth: ["hover", "focus"],
+  placeholderColor: ["hover", "focus"],
+  placeholderOpacity: ["hover", "focus"],
+  ringColor: ["hover", "focus"],
+  ringOffsetColor: ["hover", "focus"],
+  ringOffsetWidth: ["hover", "focus"],
+  ringOpacity: ["hover", "focus"],
+  ringWidth: ["hover", "focus"],
+  rotate: ["hover", "focus"],
+  saturate: ["hover", "focus"],
+  scale: ["hover", "focus"],
+  sepia: ["hover", "focus"],
+  skew: ["hover", "focus"],
+  stroke: ["hover", "focus"],
+  strokeWidth: ["hover", "focus"],
+  textColor: ["hover", "focus"],
+  textDecoration: ["focus", "hover"],
+  textDecorationColor: ["focus", "hover"],
+  textDecorationStyle: ["focus", "hover"],
+  textDecorationThickness: ["focus", "hover"],
+  textOpacity: ["hover", "focus"],
+  touchAction: ["hover", "focus"],
+  translate: ["hover", "focus"],
+  zIndex: ["hover", "focus"],
 };
 
 const theme = {
@@ -1524,37 +1246,37 @@ const theme = {
 };
 
 const configOptions = {
-  prefix: "",
-  corePlugins: plugins,
   variants,
   theme,
 };
 
-const getConfigOptions = (options = {}) => {
-  const {
-    prefix = "",
-    variants = {},
-    corePlugins = {},
-    theme = {},
-    form = {},
-  } = options;
+function isFunction(functionToCheck) {
+  return (
+    functionToCheck && {}.toString.call(functionToCheck) === "[object Function]"
+  );
+}
+
+function getConfigOptions(options = {}, pluginKeys = []) {
+  const { variants = {}, theme = {} } = options;
 
   const { extend: variantsExtend = {} } = variants;
   const newVariants = {};
-  Object.keys(configOptions.variants).forEach((key) => {
-    newVariants[key] = variants[key] || configOptions.variants[key];
+  pluginKeys.forEach((key) => {
+    newVariants[key] = ["responsive"].concat(
+      variants[key] || configOptions.variants[key]
+    );
     if (variantsExtend[key]) {
       if (Array.isArray(variantsExtend[key])) {
         newVariants[key] = [].concat(newVariants[key], variantsExtend[key]);
       }
     }
+    if (newVariants[key].indexOf("hover")) {
+      newVariants[key].push("group-hover");
+    }
+    if (newVariants[key].indexOf("focus")) {
+      newVariants[key].push("focus-within");
+    }
   });
-
-  const newCorePlugins = Object.assign(
-    {},
-    configOptions.corePlugins,
-    corePlugins
-  );
 
   const { extend: themeExtend = {} } = theme;
 
@@ -1563,7 +1285,7 @@ const getConfigOptions = (options = {}) => {
 
   themeKeys.forEach((key) => {
     newTheme[key] = theme[key] || configOptions.theme[key];
-    if (typeof newTheme[key] === "function") {
+    if (isFunction(newTheme[key])) {
       newTheme[key] = newTheme[key]({
         theme: (keyRef) => {
           return configOptions.theme[keyRef];
@@ -1572,7 +1294,7 @@ const getConfigOptions = (options = {}) => {
     }
   });
   themeKeys.forEach((key) => {
-    if (typeof newTheme[key] === "function") {
+    if (isFunction(newTheme[key])) {
       newTheme[key] = newTheme[key]({
         theme: (keyRef) => {
           return newTheme[keyRef];
@@ -1585,25 +1307,17 @@ const getConfigOptions = (options = {}) => {
   });
 
   return {
-    prefix,
+    prefix: "",
+    ...options,
     variants: newVariants,
-    corePlugins: newCorePlugins,
     theme: newTheme,
-    form,
   };
-};
+}
 
-const generateCssString = (getCssString = () => {}, options = {}) => {
+function generateCssString(getCssString = () => {}, options = {}) {
   const { theme = {} } = options;
   const { screens = {} } = theme;
   let orientationPrefix = "";
-
-  const isFunction = (functionToCheck) => {
-    return (
-      functionToCheck &&
-      {}.toString.call(functionToCheck) === "[object Function]"
-    );
-  };
 
   const hexToRgb = (hex) => {
     const rgba = hex
@@ -1737,7 +1451,7 @@ const generateCssString = (getCssString = () => {}, options = {}) => {
   });
 
   return cssString;
-};
+}
 
 function generateAccentColor (configOptions = {}) {
   const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
@@ -7197,7 +6911,7 @@ function generateZIndex (configOptions = {}) {
   return responsiveCssString;
 }
 
-const generateOptions = {
+const plugins = {
   accentColor: generateAccentColor,
   base: generateBase,
   form: generateForm,
@@ -7356,8 +7070,10 @@ const generateOptions = {
 };
 
 function generateTailwindCssString(options = {}) {
-  const configOptions = getConfigOptions(options);
+  const pluginKeys = Object.keys(plugins);
+  const configOptions = getConfigOptions(options, pluginKeys);
   const { corePlugins = {} } = configOptions;
+  const corePluginKeys = Object.keys(corePlugins);
 
   let cssString = `
     *, ::after, ::before {
@@ -7373,9 +7089,11 @@ function generateTailwindCssString(options = {}) {
       --ring-shadow: 0 0 #0000;
     }
   `;
-  Object.keys(generateOptions).forEach((key) => {
-    if (corePlugins[key]) {
-      cssString += generateOptions[key](configOptions);
+  Object.keys(plugins).forEach((key) => {
+    if (corePluginKeys.indexOf(key) >= 0 && !corePlugins[key]) {
+      cssString += "";
+    } else {
+      cssString += plugins[key](configOptions);
     }
   });
   return cssString;
