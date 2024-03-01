@@ -7117,7 +7117,7 @@ function addStyleSheet(attributeId, attributeValue, cssString) {
   }
 }
 
-function generateTailwindCssString$1 (options = {}) {
+function index (options = {}) {
   if (typeof window === "object") {
     const { id = "tailwind-css" } = options;
     const cssString = generateTailwindCssString(options).replace(/\s\s+/g, " ");
@@ -7125,4 +7125,4 @@ function generateTailwindCssString$1 (options = {}) {
   }
 }
 
-generateTailwindCssString$1();
+module.exports = index;
