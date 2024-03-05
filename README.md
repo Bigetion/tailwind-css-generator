@@ -7,7 +7,7 @@ Tailwind CSS String Generator
 npm i tailwind-css-generator
 ```
 
-## Usage
+## Usage on React
 
 ```jsx
 import React from "react";
@@ -27,4 +27,22 @@ function App() {
     </div>
   );
 }
+```
+
+## Usage with cdn (Only for version 3.0.3 and above)
+
+```html
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/tailwind-css-generator@3.0.3/index.min.js"></script>
+</head>
+<body>
+  <h1 class="text-3xl font-bold underline">
+    Hello world!
+  </h1>
+</body>
+</html>
 ```
