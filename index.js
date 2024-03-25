@@ -46,6 +46,11 @@ const variants = {
   textDecorationStyle: ["focus", "hover"],
   textDecorationThickness: ["focus", "hover"],
   textOpacity: ["hover", "focus"],
+  textShadowBlur: ["hover", "focus"],
+  textShadowColor: ["hover", "focus"],
+  textShadowOpacity: ["hover", "focus"],
+  textShadowX: ["hover", "focus"],
+  textShadowY: ["hover", "focus"],
   touchAction: ["hover", "focus"],
   translate: ["hover", "focus"],
   zIndex: ["hover", "focus"],
@@ -1122,6 +1127,26 @@ const theme = {
     ...theme("spacing"),
   }),
   textOpacity: ({ theme }) => theme("opacity"),
+  textShadowBlur: ({ theme }) => theme("blur"),
+  textShadowColor: ({ theme }) => ({
+    ...theme("colors"),
+    DEFAULT: "#e5e7eb",
+  }),
+  textShadowOpacity: ({ theme }) => theme("opacity"),
+  textShadowX: {
+    0: "0px",
+    1: "1px",
+    2: "2px",
+    3: "3px",
+    4: "4px",
+    5: "5px",
+    6: "6px",
+    7: "7px",
+    8: "8px",
+    9: "9px",
+    10: "10px",
+  },
+  textShadowY: ({ theme }) => theme("textShadowX"),
   textUnderlineOffset: {
     auto: "auto",
     0: "0px",
@@ -6464,6 +6489,149 @@ function generateTextOverflow (configOptions = {}) {
   return responsiveCssString;
 }
 
+function generateTextShadowBlur (configOptions = {}) {
+  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
+
+  const prefix = `${globalPrefix}text-shadow-blur`;
+
+  const { textShadowBlur = {} } = theme;
+
+  const responsiveCssString = generateCssString(
+    ({ pseudoClass, getCssByOptions }) => {
+      const cssString = getCssByOptions(textShadowBlur, (keyTmp, value) => {
+        const key = keyTmp.toLowerCase() !== "default" ? `-${keyTmp}` : "";
+        return `
+          ${pseudoClass(`${prefix}${key}`, variants.textShadowBlur)} {
+            --text-shadow-blur: ${value};
+          }
+        `;
+      });
+      return cssString;
+    },
+    configOptions,
+    variants.textShadowBlur.indexOf("responsive") >= 0
+  );
+
+  return responsiveCssString;
+}
+
+function generateTextShadowColor (configOptions = {}) {
+  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
+
+  const prefix = `${globalPrefix}text-shadow`;
+
+  const { textShadowColor = {} } = theme;
+
+  const responsiveCssString = generateCssString(
+    ({ pseudoClass, getCssByColors }) => {
+      const cssString = getCssByColors(
+        textShadowColor,
+        (keyTmp, value, rgbValue) => {
+          if (keyTmp.toLowerCase() === "default") {
+            return "";
+          }
+          const key = keyTmp.toLowerCase() !== "default" ? `-${keyTmp}` : "";
+          let rgbPropertyValue = "";
+          if (rgbValue) {
+            rgbPropertyValue = `text-shadow: var(--text-shadow-x) var(--text-shadow-y) var(--text-shadow-blur, 0) rgba(${rgbValue}, var(--text-shadow-opacity));`;
+          }
+          return `
+            ${pseudoClass(`${prefix}${key}`, variants.textShadowColor)} {
+              --text-shadow-opacity: 1;
+              --text-shadow-x: 1px;
+              --text-shadow-y: 1px;
+              text-shadow: var(--text-shadow-x) var(--text-shadow-y) var(--text-shadow-blur, 0) ${value};${rgbPropertyValue}
+            }
+          `;
+        }
+      );
+      return cssString;
+    },
+    configOptions,
+    variants.textShadowColor.indexOf("responsive") >= 0
+  );
+
+  return responsiveCssString;
+}
+
+function generateTextShadowOpacity (configOptions = {}) {
+  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
+
+  const prefix = `${globalPrefix}text-shadow-opacity`;
+
+  const { textShadowOpacity = {} } = theme;
+
+  const responsiveCssString = generateCssString(
+    ({ pseudoClass, getCssByOptions }) => {
+      const cssString = getCssByOptions(textShadowOpacity, (keyTmp, value) => {
+        const key = keyTmp.toLowerCase() !== "default" ? `-${keyTmp}` : "";
+        return `
+          ${pseudoClass(`${prefix}${key}`, variants.textShadowOpacity)} {
+            --text-shadow-opacity: ${value};
+          }
+        `;
+      });
+      return cssString;
+    },
+    configOptions,
+    variants.textShadowOpacity.indexOf("responsive") >= 0
+  );
+
+  return responsiveCssString;
+}
+
+function generateTextShadowX (configOptions = {}) {
+  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
+
+  const prefix = `${globalPrefix}text-shadow-x`;
+
+  const { textShadowX = {} } = theme;
+
+  const responsiveCssString = generateCssString(
+    ({ pseudoClass, getCssByOptions }) => {
+      const cssString = getCssByOptions(textShadowX, (keyTmp, value) => {
+        const key = keyTmp.toLowerCase() !== "default" ? `-${keyTmp}` : "";
+        return `
+          ${pseudoClass(`${prefix}${key}`, variants.textShadowX)} {
+            --text-shadow-x: ${value};
+          }
+        `;
+      });
+      return cssString;
+    },
+    configOptions,
+    variants.textShadowX.indexOf("responsive") >= 0
+  );
+
+  return responsiveCssString;
+}
+
+function generateTextShadowY (configOptions = {}) {
+  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
+
+  const prefix = `${globalPrefix}text-shadow-y`;
+
+  const { textShadowY = {} } = theme;
+
+  const responsiveCssString = generateCssString(
+    ({ pseudoClass, getCssByOptions }) => {
+      const cssString = getCssByOptions(textShadowY, (keyTmp, value) => {
+        const key = keyTmp.toLowerCase() !== "default" ? `-${keyTmp}` : "";
+        return `
+          ${pseudoClass(`${prefix}${key}`, variants.textShadowY)} {
+            --text-shadow-y: ${value};
+          }
+        `;
+      });
+      return cssString;
+    },
+    configOptions,
+    variants.textShadowY.indexOf("responsive") >= 0
+  );
+
+  return responsiveCssString;
+}
+
 function generateTextTransform (configOptions = {}) {
   const { prefix, variants = {} } = configOptions;
 
@@ -7052,6 +7220,11 @@ const plugins = {
   textIndent: generateTextIndent,
   textOpacity: generateTextOpacity,
   textOverflow: generateTextOverflow,
+  textShadowBlur: generateTextShadowBlur,
+  textShadowColor: generateTextShadowColor,
+  textShadowOpacity: generateTextShadowOpacity,
+  textShadowX: generateTextShadowX,
+  textShadowY: generateTextShadowY,
   textTransform: generateTextTransform,
   textUnderlineOffset: generateTextUnderlineOffset,
   textWrap: generateTextWrap,
