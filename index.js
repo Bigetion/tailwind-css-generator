@@ -1493,7 +1493,7 @@ function generateAccentColor (configOptions = {}) {
           rgbPropertyValue = `accent-color: rgba(${rgbValue}, var(--accent-opacity));`;
         }
         return `
-            ${pseudoClass(`${prefix}-${key}`, variants.accentColor)} {
+            ${pseudoClass(`${prefix}-${key}`, variants.accentColor, {})} {
               --accent-opacity: 1;
               accent-color: ${value};${rgbPropertyValue}
             }
@@ -1502,15 +1502,14 @@ function generateAccentColor (configOptions = {}) {
       cssString += getCssByOptions(
         opacity,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.accentColor)} {
+          ${pseudoClass(`${prefix}-${key}`, variants.accentColor, {})} {
             --accent-opacity: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions,
-    variants.accentColor.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -1519,9 +1518,8 @@ function generateAccentColor (configOptions = {}) {
 function generateAccessibility (configOptions = {}) {
   const { prefix, variants = {} } = configOptions;
 
-  const responsiveCssString = generateCssString(
-    ({ pseudoClass }) => {
-      return `
+  const responsiveCssString = generateCssString(({ pseudoClass }) => {
+    return `
         ${pseudoClass(`${prefix}sr-only`, variants.accessibility)} {
           position: absolute;
           width: 1px;
@@ -1556,10 +1554,7 @@ function generateAccessibility (configOptions = {}) {
           forced-color-adjust: none;
         }
       `;
-    },
-    configOptions,
-    variants.accessibility.indexOf("responsive") >= 0
-  );
+  }, configOptions);
 
   return responsiveCssString;
 }
@@ -1590,8 +1585,7 @@ function generateAlignContent (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.alignContent.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -1622,8 +1616,7 @@ function generateAlignItems (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.alignItems.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -1654,8 +1647,7 @@ function generateAlignSelf (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.alignSelf.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -1678,8 +1670,7 @@ function generateAppearance (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.appearance.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -1709,8 +1700,7 @@ function generateAspect (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.aspect.indexOf("responsive") >= 0
+    configOptions
   );
 
   responsiveCssString += `
@@ -1747,8 +1737,7 @@ function generateBackgroundAttachment (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.backgroundAttachment.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -1779,8 +1768,7 @@ function generateBackgroundClip (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.backgroundClip.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -1803,7 +1791,7 @@ function generateBackgroundColor (configOptions = {}) {
             rgbPropertyValue = `background-color: rgba(${rgbValue}, var(--bg-opacity));`;
           }
           return `
-            ${pseudoClass(`${prefix}-${key}`, variants.backgroundColor)} {
+            ${pseudoClass(`${prefix}-${key}`, variants.backgroundColor, {})} {
               --bg-opacity: 1;
               background-color: ${value};${rgbPropertyValue}
             }
@@ -1812,8 +1800,7 @@ function generateBackgroundColor (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.backgroundColor.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -1838,8 +1825,7 @@ function generateBackgroundImage (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.backgroundImage.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -1864,8 +1850,7 @@ function generateBackgroundOpacity (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.backgroundOpacity.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -1895,8 +1880,7 @@ function generateBackgroundOrigin (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.backgroundOrigin.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -1921,8 +1905,7 @@ function generateBackgroundPosition (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.backgroundPosition.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -1954,8 +1937,7 @@ function generateBackgroundRepeat (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.backgroundRepeat.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -1980,8 +1962,7 @@ function generateBackgroundSize (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.backgroundSize.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -2282,8 +2263,7 @@ function generateBlur (configOptions = {}) {
       });
       return cssString;
     },
-    configOptions,
-    variants.blur.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -2308,8 +2288,7 @@ function generateBorderCollapse (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.borderCollapse.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -2336,41 +2315,41 @@ function generateBorderColor (configOptions = {}) {
             rgbPropertyValue = `border-color: rgba(${rgbValue}, var(--border-opacity));`;
           }
           return `
-            ${pseudoClass(`${prefix}${key}`, variants.borderColor)} {
+            ${pseudoClass(`${prefix}${key}`, variants.borderColor, {})} {
               --border-opacity: 1;
               border-color: ${value};${rgbPropertyValue}
             }
-            ${pseudoClass(`${prefix}-x${key}`, variants.borderColor)} {
+            ${pseudoClass(`${prefix}-x${key}`, variants.borderColor, {})} {
               --border-opacity: 1;
               border-left-color: ${value};${rgbPropertyValue}
               border-right-color: ${value};${rgbPropertyValue}
             }
-            ${pseudoClass(`${prefix}-y${key}`, variants.borderColor)} {
+            ${pseudoClass(`${prefix}-y${key}`, variants.borderColor, {})} {
               --border-opacity: 1;
               border-top-color: ${value};${rgbPropertyValue}
               border-bottom-color: ${value};${rgbPropertyValue}
             }
-            ${pseudoClass(`${prefix}-s${key}`, variants.borderColor)} {
+            ${pseudoClass(`${prefix}-s${key}`, variants.borderColor, {})} {
               --border-opacity: 1;
               border-inline-start-color: ${value};${rgbPropertyValue}
             }
-            ${pseudoClass(`${prefix}-e${key}`, variants.borderColor)} {
+            ${pseudoClass(`${prefix}-e${key}`, variants.borderColor, {})} {
               --border-opacity: 1;
               border-inline-end-color: ${value};${rgbPropertyValue}
             }
-            ${pseudoClass(`${prefix}-t${key}`, variants.borderColor)} {
+            ${pseudoClass(`${prefix}-t${key}`, variants.borderColor, {})} {
               --border-opacity: 1;
               border-top-color: ${value};${rgbPropertyValue}
             }
-            ${pseudoClass(`${prefix}-r${key}`, variants.borderColor)} {
+            ${pseudoClass(`${prefix}-r${key}`, variants.borderColor, {})} {
               --border-opacity: 1;
               border-right-color: ${value};${rgbPropertyValue}
             }
-            ${pseudoClass(`${prefix}-b${key}`, variants.borderColor)} {
+            ${pseudoClass(`${prefix}-b${key}`, variants.borderColor, {})} {
               --border-opacity: 1;
               border-bottom-color: ${value};${rgbPropertyValue}
             }
-            ${pseudoClass(`${prefix}-l${key}`, variants.borderColor)} {
+            ${pseudoClass(`${prefix}-l${key}`, variants.borderColor, {})} {
               --border-opacity: 1;
               border-left-color: ${value};${rgbPropertyValue}
             }
@@ -2379,8 +2358,7 @@ function generateBorderColor (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.borderColor.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -2405,8 +2383,7 @@ function generateBorderOpacity (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.borderOpacity.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -2479,8 +2456,7 @@ function generateBorderRadius (configOptions = {}) {
       });
       return cssString;
     },
-    configOptions,
-    variants.borderRadius.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -2511,8 +2487,7 @@ function generateBorderSpacing (configOptions = {}) {
       });
       return cssString;
     },
-    configOptions,
-    variants.borderSpacing.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -2537,8 +2512,7 @@ function generateBorderStyle (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.borderStyle.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -2589,8 +2563,7 @@ function generateBorderWidth (configOptions = {}) {
       });
       return cssString;
     },
-    configOptions,
-    variants.borderWidth.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -2616,8 +2589,7 @@ function generateBoxDecorationBreak (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.boxDecorationBreak.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -2636,7 +2608,7 @@ function generateBoxShadow (configOptions = {}) {
         const key = keyTmp.toLowerCase() !== "default" ? `-${keyTmp}` : "";
         const valueSplit = value.split(" ");
         return `
-          ${pseudoClass(`${prefix}${key}`, variants.boxShadow)} {
+          ${pseudoClass(`${prefix}${key}`, variants.boxShadow, {})} {
             --shadow: ${value};
             --shadow-colored: ${valueSplit
               .slice(0, 4)
@@ -2651,7 +2623,7 @@ function generateBoxShadow (configOptions = {}) {
         let str = "";
         if (rgbValue) {
           str += `
-            ${pseudoClass(`${prefix}-${key}`, variants.boxShadow)} {
+            ${pseudoClass(`${prefix}-${key}`, variants.boxShadow, {})} {
               --shadow-color: rgba(${rgbValue}, 0.5) !important;
               --shadow: var(--shadow-colored);
             }
@@ -2661,8 +2633,7 @@ function generateBoxShadow (configOptions = {}) {
       });
       return cssString;
     },
-    configOptions,
-    variants.boxShadow.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -2690,8 +2661,7 @@ function generateBoxSizing (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.boxSizing.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -2723,8 +2693,7 @@ function generateBrightness (configOptions = {}) {
       });
       return cssString;
     },
-    configOptions,
-    variants.brightness.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -2749,8 +2718,7 @@ function generateCaptionSide (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.captionSide.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -2771,7 +2739,7 @@ function generateCaretColor (configOptions = {}) {
           rgbPropertyValue = `caret-color: rgba(${rgbValue}, var(--caret-opacity));`;
         }
         return `
-            ${pseudoClass(`${prefix}-${key}`, variants.caretColor)} {
+            ${pseudoClass(`${prefix}-${key}`, variants.caretColor, {})} {
               --caret-opacity: 1;
               caret-color: ${value};${rgbPropertyValue}
             }
@@ -2780,15 +2748,14 @@ function generateCaretColor (configOptions = {}) {
       cssString += getCssByOptions(
         opacity,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.caretColor)} {
+          ${pseudoClass(`${prefix}-${key}`, variants.caretColor, {})} {
             --caret-opacity: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions,
-    variants.caretColor.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -2813,8 +2780,7 @@ function generateClear (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.clear.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -2873,8 +2839,7 @@ function generateContrast (configOptions = {}) {
       });
       return cssString;
     },
-    configOptions,
-    variants.contrast.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -2936,8 +2901,7 @@ function generateCursor (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.cursor.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -2983,8 +2947,7 @@ function generateDisplay (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.display.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -3008,7 +2971,8 @@ function generateDivideColor (configOptions = {}) {
             ${pseudoClass(
               (pseudoString) =>
                 `${prefix}-${key}${pseudoString} > :not([hidden]) ~ :not([hidden])`,
-              variants.divideColor
+              variants.divideColor,
+              {}
             )} {
               --divide-opacity: 1;
               border-color: ${value};${rgbPropertyValue}
@@ -3017,8 +2981,7 @@ function generateDivideColor (configOptions = {}) {
       });
       return cssString;
     },
-    configOptions,
-    variants.divideColor.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -3047,8 +3010,7 @@ function generateDivideOpacity (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.divideOpacity.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -3077,8 +3039,7 @@ function generateDivideStyle (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.divideStyle.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -3091,19 +3052,18 @@ function generateDivideWidth (configOptions = {}) {
 
   const { divideWidth = {} } = theme;
 
-  const responsiveCssString = generateCssString(
-    ({ pseudoClass }) => {
-      const generateDivideWidth = (position, keyTmp, value) => {
-        let dividePosition = "x";
-        let borderPosition1 = "left";
-        let borderPosition2 = "right";
-        if (position === "y") {
-          dividePosition = "y";
-          borderPosition1 = "top";
-          borderPosition2 = "bottom";
-        }
-        const key = keyTmp.toLowerCase() !== "default" ? `-${keyTmp}` : "";
-        return `
+  const responsiveCssString = generateCssString(({ pseudoClass }) => {
+    const generateDivideWidth = (position, keyTmp, value) => {
+      let dividePosition = "x";
+      let borderPosition1 = "left";
+      let borderPosition2 = "right";
+      if (position === "y") {
+        dividePosition = "y";
+        borderPosition1 = "top";
+        borderPosition2 = "bottom";
+      }
+      const key = keyTmp.toLowerCase() !== "default" ? `-${keyTmp}` : "";
+      return `
           ${pseudoClass(
             (pseudoString) =>
               `${prefix}-${dividePosition}${key}${pseudoString} > :not([hidden]) ~ :not([hidden])`,
@@ -3114,14 +3074,14 @@ function generateDivideWidth (configOptions = {}) {
             border-${borderPosition2}-width: calc(${value} * var(--divide-${dividePosition}-reverse));
           }
         `;
-      };
+    };
 
-      let cssString = "";
-      Object.entries(divideWidth).forEach(([key, value]) => {
-        cssString += generateDivideWidth("y", key, value);
-        cssString += generateDivideWidth("x", key, value);
-      });
-      cssString += `
+    let cssString = "";
+    Object.entries(divideWidth).forEach(([key, value]) => {
+      cssString += generateDivideWidth("y", key, value);
+      cssString += generateDivideWidth("x", key, value);
+    });
+    cssString += `
         ${pseudoClass(
           (pseudoString) =>
             `${prefix}-y-reverse${pseudoString} > :not([hidden]) ~ :not([hidden])`,
@@ -3137,11 +3097,8 @@ function generateDivideWidth (configOptions = {}) {
           --divide-x-reverse: 1;
         }
       `;
-      return cssString;
-    },
-    configOptions,
-    variants.divideWidth.indexOf("responsive") >= 0
-  );
+    return cssString;
+  }, configOptions);
 
   return responsiveCssString;
 }
@@ -3166,8 +3123,7 @@ function generateDropShadow (configOptions = {}) {
       });
       return cssString;
     },
-    configOptions,
-    variants.dropShadow.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -3184,15 +3140,14 @@ function generateFill (configOptions = {}) {
     ({ pseudoClass, getCssByColors }) => {
       const cssString = getCssByColors(fill, (key, value) => {
         return `
-            ${pseudoClass(`${prefix}-${key}`, variants.textColor)} {
+            ${pseudoClass(`${prefix}-${key}`, variants.textColor, {})} {
               fill: ${value};
             }
           `;
       });
       return cssString;
     },
-    configOptions,
-    variants.fill.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -3250,8 +3205,7 @@ function generateFlex (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.flex.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -3276,8 +3230,7 @@ function generateFlexBasis (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.flexBasis.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -3307,8 +3260,7 @@ function generateFlexDirection (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.flexDirection.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -3336,8 +3288,7 @@ function generateFlexGrow (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.flexGrow.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -3365,8 +3316,7 @@ function generateFlexShrink (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.flexShrink.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -3396,8 +3346,7 @@ function generateFlexWrap (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.flexWrap.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -3432,8 +3381,7 @@ function generateFloat (configOptions = {}) {
       `;
       return cssString;
     },
-    configOptions,
-    variants.float.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -3458,8 +3406,7 @@ function generateFontSize (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.fontSize.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -3468,9 +3415,8 @@ function generateFontSize (configOptions = {}) {
 function generateFontSmoothing (configOptions = {}) {
   const { prefix, variants = {} } = configOptions;
 
-  const responsiveCssString = generateCssString(
-    ({ pseudoClass }) => {
-      return `
+  const responsiveCssString = generateCssString(({ pseudoClass }) => {
+    return `
         ${pseudoClass(`${prefix}antialiased`, variants.fontSmoothing)} {
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
@@ -3483,10 +3429,7 @@ function generateFontSmoothing (configOptions = {}) {
           -moz-osx-font-smoothing: auto;
         }
       `;
-    },
-    configOptions,
-    variants.fontSmoothing.indexOf("responsive") >= 0
-  );
+  }, configOptions);
 
   return responsiveCssString;
 }
@@ -3511,8 +3454,7 @@ function generateFontStyle (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.fontStyle.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -3545,8 +3487,7 @@ function generateFontVariantNumeric (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.fontVariantNumeric.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -3571,8 +3512,7 @@ function generateFontWeight (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.fontWeight.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -3824,8 +3764,7 @@ function generateGap (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.gap.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -3855,14 +3794,23 @@ function generateGradientColorStops (configOptions = {}) {
           return `
             ${pseudoClass(
               `${prefix}from-${key}`,
-              variants.gradientColorStops
+              variants.gradientColorStops,
+              {}
             )} {
               --gradient-from-color: ${value};${rgbFromPropertyValue}
             }
-            ${pseudoClass(`${prefix}via-${key}`, variants.gradientColorStops)} {
+            ${pseudoClass(
+              `${prefix}via-${key}`,
+              variants.gradientColorStops,
+              {}
+            )} {
               --gradient-via-color: ${value};${rgbViaPropertyValue}
             }
-            ${pseudoClass(`${prefix}to-${key}`, variants.gradientColorStops)} {
+            ${pseudoClass(
+              `${prefix}to-${key}`,
+              variants.gradientColorStops,
+              {}
+            )} {
               --gradient-to-color: ${value};${rgbToPropertyValue}
             }
           `;
@@ -3870,8 +3818,7 @@ function generateGradientColorStops (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.gradientColorStops.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -3903,8 +3850,7 @@ function generateGrayscale (configOptions = {}) {
       });
       return cssString;
     },
-    configOptions,
-    variants.grayscale.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -3929,8 +3875,7 @@ function generateGridAutoColumns (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.gridAutoColumns.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -3960,8 +3905,7 @@ function generateGridAutoFlow (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.gridAutoFlow.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -3986,8 +3930,7 @@ function generateGridAutoRows (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.gridAutoRows.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -4012,8 +3955,7 @@ function generateGridColumn (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.gridColumn.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -4038,8 +3980,7 @@ function generateGridColumnEnd (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.gridColumnEnd.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -4064,8 +4005,7 @@ function generateGridColumnStart (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.gridColumnStart.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -4090,8 +4030,7 @@ function generateGridRow (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.gridRow.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -4116,8 +4055,7 @@ function generateGridRowEnd (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.gridRowEnd.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -4142,8 +4080,7 @@ function generateGridRowStart (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.gridRowStart.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -4178,8 +4115,7 @@ function generateGridTemplateColumns (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.gridTemplateColumns.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -4214,8 +4150,7 @@ function generateGridTemplateRows (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.gridTemplateRows.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -4240,8 +4175,7 @@ function generateHeight (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.height.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -4276,8 +4210,7 @@ function generateHueRotate (configOptions = {}) {
       });
       return cssString;
     },
-    configOptions,
-    variants.hueRotate.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -4303,8 +4236,7 @@ function generateHyphens (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.hyphens.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -4359,8 +4291,7 @@ function generateInset (configOptions = {}) {
       });
       return cssString;
     },
-    configOptions,
-    variants.inset.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -4392,8 +4323,7 @@ function generateInvert (configOptions = {}) {
       });
       return cssString;
     },
-    configOptions,
-    variants.invert.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -4421,8 +4351,7 @@ function generateIsolation (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.isolation.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -4454,8 +4383,7 @@ function generateJustifyContent (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.justifyContent.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -4480,8 +4408,7 @@ function generateJustifyItems (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.justifyItems.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -4506,8 +4433,7 @@ function generateJustifySelf (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.justifySelf.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -4532,8 +4458,7 @@ function generateLetterSpacing (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.letterSpacing.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -4561,8 +4486,7 @@ function generateLineClamp (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.lineClamp.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -4587,8 +4511,7 @@ function generateLineHeight (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.lineHeight.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -4613,8 +4536,7 @@ function generateListStylePosition (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.listStylePosition.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -4639,8 +4561,7 @@ function generateListStyleType (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.listStyleType.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -4698,8 +4619,7 @@ function generateMargin (configOptions = {}) {
       });
       return cssString;
     },
-    configOptions,
-    variants.margin.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -4724,8 +4644,7 @@ function generateMaxHeight (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.maxHeight.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -4750,8 +4669,7 @@ function generateMaxWidth (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.maxWidth.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -4776,8 +4694,7 @@ function generateMinHeight (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.minHeight.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -4802,8 +4719,7 @@ function generateMinWidth (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.minWidth.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -4857,8 +4773,7 @@ function generateMixBlendMode (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.mixBlendMode.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -4883,8 +4798,7 @@ function generateObjectFit (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.objectFit.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -4919,8 +4833,7 @@ function generateObjectPosition (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.objectPosition.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -4952,8 +4865,7 @@ function generateOpacity (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.opacity.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -4978,8 +4890,7 @@ function generateOrder (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.order.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -5006,7 +4917,7 @@ function generateOutlineColor (configOptions = {}) {
             rgbPropertyValue = `outline-color: rgba(${rgbValue}, var(--outline-opacity));`;
           }
           return `
-            ${pseudoClass(`${prefix}${key}`, variants.outlineColor)} {
+            ${pseudoClass(`${prefix}${key}`, variants.outlineColor, {})} {
               --outline-opacity: 1;
               outline-color: ${value};${rgbPropertyValue}
             }
@@ -5015,8 +4926,7 @@ function generateOutlineColor (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.outlineColor.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -5040,8 +4950,7 @@ function generateOutlineOffset (configOptions = {}) {
       });
       return cssString;
     },
-    configOptions,
-    variants.outlineOffset.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -5066,8 +4975,7 @@ function generateOutlineOpacity (configOptions = {}) {
       });
       return cssString;
     },
-    configOptions,
-    variants.outlineOpacity.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -5100,8 +5008,7 @@ function generateOutlineStyle (configOptions = {}) {
       });
       return cssString;
     },
-    configOptions,
-    variants.outlineStyle.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -5125,8 +5032,7 @@ function generateOutlineWidth (configOptions = {}) {
       });
       return cssString;
     },
-    configOptions,
-    variants.outlineWidth.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -5165,8 +5071,7 @@ function generateOverflow (configOptions = {}) {
       `;
       return cssString;
     },
-    configOptions,
-    variants.overflow.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -5197,8 +5102,7 @@ function generateOverscrollBehavior (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.overscrollBehavior.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -5249,8 +5153,7 @@ function generatePadding (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.padding.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -5283,8 +5186,7 @@ function generatePlaceContent (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.placeContent.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -5309,8 +5211,7 @@ function generatePlaceItems (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.placeItems.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -5335,8 +5236,7 @@ function generatePlaceSelf (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.placeSelf.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -5363,7 +5263,8 @@ function generatePlaceholderColor (configOptions = {}) {
             ${pseudoClass(
               (pseudoString) =>
                 `${prefix}-${key}${pseudoString}${placeholderPseudo}`,
-              variants.placeholderColor
+              variants.placeholderColor,
+              {}
             )} {
               ${propertyValue}
             }
@@ -5378,8 +5279,7 @@ function generatePlaceholderColor (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.placeholderColor.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -5413,8 +5313,7 @@ function generatePlaceholderOpacity (configOptions = {}) {
       });
       return cssString;
     },
-    configOptions,
-    variants.placeholderOpacity.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -5423,9 +5322,8 @@ function generatePlaceholderOpacity (configOptions = {}) {
 function generatePointerEvents (configOptions = {}) {
   const { prefix, variants = {} } = configOptions;
 
-  const responsiveCssString = generateCssString(
-    ({ pseudoClass }) => {
-      return `
+  const responsiveCssString = generateCssString(({ pseudoClass }) => {
+    return `
         ${pseudoClass(`${prefix}pointer-events-none`, variants.pointerEvents)} {
           pointer-events: none;
         }
@@ -5433,10 +5331,7 @@ function generatePointerEvents (configOptions = {}) {
           pointer-events: auto;
         }
       `;
-    },
-    configOptions,
-    variants.pointerEvents.indexOf("responsive") >= 0
-  );
+  }, configOptions);
 
   return responsiveCssString;
 }
@@ -5458,8 +5353,7 @@ function generatePosition (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.position.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -5489,8 +5383,7 @@ function generateResize (configOptions = {}) {
       });
       return cssString;
     },
-    configOptions,
-    variants.resize.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -5512,7 +5405,7 @@ function generateRingColor (configOptions = {}) {
           rgbPropertyValue = `--ring-color: rgba(${rgbValue}, var(--ring-opacity));`;
         }
         return `
-            ${pseudoClass(`${prefix}${key}`, variants.ringColor)} {
+            ${pseudoClass(`${prefix}${key}`, variants.ringColor, {})} {
               --ring-opacity: 1;
               --ring-color: ${value};${rgbPropertyValue}
             }
@@ -5520,8 +5413,7 @@ function generateRingColor (configOptions = {}) {
       });
       return cssString;
     },
-    configOptions,
-    variants.ringColor.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -5539,15 +5431,14 @@ function generateRingOffsetColor (configOptions = {}) {
       const cssString = getCssByColors(
         ringOffsetColor,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.ringOffsetColor)} {
+          ${pseudoClass(`${prefix}-${key}`, variants.ringOffsetColor, {})} {
             --ring-offset-color: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions,
-    variants.ringOffsetColor.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -5572,8 +5463,7 @@ function generateRingOffsetWidth (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.ringOffsetWidth.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -5598,8 +5488,7 @@ function generateRingOpacity (configOptions = {}) {
       });
       return cssString;
     },
-    configOptions,
-    variants.ringOpacity.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -5631,8 +5520,7 @@ function generateRingWidth (configOptions = {}) {
       `;
       return cssString;
     },
-    configOptions,
-    variants.ringWidth.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -5664,8 +5552,7 @@ function generateSaturate (configOptions = {}) {
       });
       return cssString;
     },
-    configOptions,
-    variants.saturate.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -5697,8 +5584,7 @@ function generateRotate (configOptions = {}) {
       });
       return cssString;
     },
-    configOptions,
-    variants.rotate.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -5730,8 +5616,7 @@ function generateScale (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.scale.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -5754,8 +5639,7 @@ function generateScrollBehavior (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.scrollBehavior.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -5813,8 +5697,7 @@ function generateScrollMargin (configOptions = {}) {
       });
       return cssString;
     },
-    configOptions,
-    variants.scrollMargin.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -5872,8 +5755,7 @@ function generateScrollPadding (configOptions = {}) {
       });
       return cssString;
     },
-    configOptions,
-    variants.scrollPadding.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -5903,8 +5785,7 @@ function generateScrollSnapAlign (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.scrollSnapAlign.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -5929,8 +5810,7 @@ function generateScrollSnapStop (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.scrollSnapStop.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -5969,8 +5849,7 @@ function generateScrollSnapType (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.scrollSnapType.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -6002,8 +5881,7 @@ function generateSepia (configOptions = {}) {
       });
       return cssString;
     },
-    configOptions,
-    variants.sepia.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -6029,8 +5907,7 @@ function generateSize (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.size.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -6065,8 +5942,7 @@ function generateSkew (configOptions = {}) {
       });
       return cssString;
     },
-    configOptions,
-    variants.skew.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -6083,18 +5959,17 @@ function generateSpace (configOptions = {}) {
     space[`-${key}`] = `-${value}`.replace("--", "-");
   });
 
-  const responsiveCssString = generateCssString(
-    ({ pseudoClass }) => {
-      const generateSpace = (position, key, value) => {
-        let spacePosition = "x";
-        let margin1 = "left";
-        let margin2 = "right";
-        if (position === "y") {
-          spacePosition = "y";
-          margin1 = "top";
-          margin2 = "bottom";
-        }
-        return `
+  const responsiveCssString = generateCssString(({ pseudoClass }) => {
+    const generateSpace = (position, key, value) => {
+      let spacePosition = "x";
+      let margin1 = "left";
+      let margin2 = "right";
+      if (position === "y") {
+        spacePosition = "y";
+        margin1 = "top";
+        margin2 = "bottom";
+      }
+      return `
           ${pseudoClass(
             (pseudoString) =>
               `${prefix}-${spacePosition}-${key}${pseudoString} > :not([hidden]) ~ :not([hidden])`,
@@ -6114,13 +5989,13 @@ function generateSpace (configOptions = {}) {
             margin-${margin2}: calc(-${value} * var(--space-${spacePosition}-reverse));
           }
         `;
-      };
-      let cssString = "";
-      Object.entries(space).forEach(([space, spaceValue]) => {
-        cssString += generateSpace("y", space, spaceValue);
-        cssString += generateSpace("x", space, spaceValue);
-      });
-      cssString += `
+    };
+    let cssString = "";
+    Object.entries(space).forEach(([space, spaceValue]) => {
+      cssString += generateSpace("y", space, spaceValue);
+      cssString += generateSpace("x", space, spaceValue);
+    });
+    cssString += `
         ${pseudoClass(
           (pseudoString) =>
             `${prefix}-x-reverse${pseudoString} > :not([hidden]) ~ :not([hidden])`,
@@ -6136,11 +6011,8 @@ function generateSpace (configOptions = {}) {
           --space-y-reverse: 1;
         }
       `;
-      return cssString;
-    },
-    configOptions,
-    variants.space.indexOf("responsive") >= 0
-  );
+    return cssString;
+  }, configOptions);
 
   return responsiveCssString;
 }
@@ -6156,15 +6028,14 @@ function generateStroke (configOptions = {}) {
     ({ pseudoClass, getCssByColors }) => {
       const cssString = getCssByColors(stroke, (key, value) => {
         return `
-            ${pseudoClass(`${prefix}-${key}`, variants.textColor)} {
+            ${pseudoClass(`${prefix}-${key}`, variants.textColor, {})} {
               stroke: ${value};
             }
           `;
       });
       return cssString;
     },
-    configOptions,
-    variants.stroke.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -6189,8 +6060,7 @@ function generateStrokeWidth (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.strokeWidth.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -6215,8 +6085,7 @@ function generateTableLayout (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.tableLayout.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -6241,8 +6110,7 @@ function generateTextAlign (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.textAlign.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -6263,7 +6131,7 @@ function generateTextColor (configOptions = {}) {
           rgbPropertyValue = `color: rgba(${rgbValue}, var(--text-opacity));`;
         }
         return `
-            ${pseudoClass(`${prefix}-${key}`, variants.textColor)} {
+            ${pseudoClass(`${prefix}-${key}`, variants.textColor, {})} {
               --text-opacity: 1;
               color: ${value};${rgbPropertyValue}
             }
@@ -6271,8 +6139,7 @@ function generateTextColor (configOptions = {}) {
       });
       return cssString;
     },
-    configOptions,
-    variants.textColor.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -6300,8 +6167,7 @@ function generateTextDecoration (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.textDecoration.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -6324,7 +6190,11 @@ function generateTextDecorationColor (configOptions = {}) {
             rgbPropertyValue = `text-decoration-color: rgba(${rgbValue}, var(--text-decoration-opacity));`;
           }
           return `
-            ${pseudoClass(`${prefix}-${key}`, variants.textDecorationColor)} {
+            ${pseudoClass(
+              `${prefix}-${key}`,
+              variants.textDecorationColor,
+              {}
+            )} {
               --text-decoration-opacity: 1;
               text-decoration-color: ${value};${rgbPropertyValue}
             }
@@ -6334,15 +6204,14 @@ function generateTextDecorationColor (configOptions = {}) {
       cssString += getCssByOptions(
         opacity,
         (key, value) => `
-          ${pseudoClass(`${prefix}-opacity-${key}`, variants.opacity)} {
+          ${pseudoClass(`${prefix}-opacity-${key}`, variants.opacity, {})} {
             --text-decoration-opacity: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions,
-    variants.textDecorationColor.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -6367,8 +6236,7 @@ function generateTextDecorationStyle (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.textDecorationStyle.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -6393,8 +6261,7 @@ function generateTextDecorationThickness (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.textDecorationThickness.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -6427,8 +6294,7 @@ function generateTextIndent (configOptions = {}) {
       });
       return cssString;
     },
-    configOptions,
-    variants.textIndent.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -6453,8 +6319,7 @@ function generateTextOpacity (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.textOpacity.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -6482,8 +6347,7 @@ function generateTextOverflow (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.textDecoration.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -6508,8 +6372,7 @@ function generateTextShadowBlur (configOptions = {}) {
       });
       return cssString;
     },
-    configOptions,
-    variants.textShadowBlur.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -6536,7 +6399,7 @@ function generateTextShadowColor (configOptions = {}) {
             rgbPropertyValue = `text-shadow: var(--text-shadow-x) var(--text-shadow-y) var(--text-shadow-blur, 0) rgba(${rgbValue}, var(--text-shadow-opacity));`;
           }
           return `
-            ${pseudoClass(`${prefix}${key}`, variants.textShadowColor)} {
+            ${pseudoClass(`${prefix}${key}`, variants.textShadowColor, {})} {
               --text-shadow-opacity: 1;
               --text-shadow-x: 1px;
               --text-shadow-y: 1px;
@@ -6547,8 +6410,7 @@ function generateTextShadowColor (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.textShadowColor.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -6573,8 +6435,7 @@ function generateTextShadowOpacity (configOptions = {}) {
       });
       return cssString;
     },
-    configOptions,
-    variants.textShadowOpacity.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -6599,8 +6460,7 @@ function generateTextShadowX (configOptions = {}) {
       });
       return cssString;
     },
-    configOptions,
-    variants.textShadowX.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -6625,8 +6485,7 @@ function generateTextShadowY (configOptions = {}) {
       });
       return cssString;
     },
-    configOptions,
-    variants.textShadowY.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -6654,8 +6513,7 @@ function generateTextTransform (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.textTransform.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -6680,8 +6538,7 @@ function generateTextUnderlineOffset (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.textUnderlineOffset.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -6704,8 +6561,7 @@ function generateTextWrap (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.textDecoration.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -6741,8 +6597,7 @@ function generateTouchAction (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.touchAction.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -6795,8 +6650,7 @@ function generateTransformOrigin (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.transformOrigin.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -6831,8 +6685,7 @@ function generateTranslate (configOptions = {}) {
       });
       return cssString;
     },
-    configOptions,
-    variants.translate.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -6860,8 +6713,7 @@ function generateUserSelect (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.userSelect.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -6895,8 +6747,7 @@ function generateVerticalAlign (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.verticalAlign.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -6923,8 +6774,7 @@ function generateVisibility (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.visibility.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -6957,8 +6807,7 @@ function generateWhitespace (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.whitespace.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -6983,8 +6832,7 @@ function generateWidth (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.width.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -6993,9 +6841,8 @@ function generateWidth (configOptions = {}) {
 function generateWordBreak (configOptions = {}) {
   const { prefix, variants = {} } = configOptions;
 
-  const responsiveCssString = generateCssString(
-    ({ pseudoClass }) => {
-      const cssString = `
+  const responsiveCssString = generateCssString(({ pseudoClass }) => {
+    const cssString = `
 				${pseudoClass(`${prefix}break-normal`, variants.wordBreak)} {
 					overflow-wrap: normal;
 					word-break: normal;
@@ -7010,11 +6857,8 @@ function generateWordBreak (configOptions = {}) {
 					word-break: keep-all;
 				}
 			`;
-      return cssString;
-    },
-    configOptions,
-    variants.wordBreak.indexOf("responsive") >= 0
-  );
+    return cssString;
+  }, configOptions);
 
   return responsiveCssString;
 }
@@ -7043,8 +6887,7 @@ function generateWillChange (configOptions = {}) {
       );
       return cssString;
     },
-    configOptions,
-    variants.willChange.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
@@ -7072,8 +6915,7 @@ function generateZIndex (configOptions = {}) {
       });
       return cssString;
     },
-    configOptions,
-    variants.zIndex.indexOf("responsive") >= 0
+    configOptions
   );
 
   return responsiveCssString;
