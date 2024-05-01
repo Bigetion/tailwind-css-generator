@@ -4944,7 +4944,7 @@ function generator$10(configOptions = {}) {
       const cssString = getCssByOptions(outlineOffset, (key, value) => {
         return `
           ${pseudoClass(`${prefix}-${key}`, variants.outlineOffset)} {
-            outline-offset: ${value}px;
+            outline-offset: ${value};
           }
         `;
       });
@@ -5026,7 +5026,7 @@ function generator$Z(configOptions = {}) {
       const cssString = getCssByOptions(outlineWidth, (key, value) => {
         return `
           ${pseudoClass(`${prefix}-${key}`, variants.outlineWidth)} {
-            outline-width: ${value}px;
+            outline-width: ${value};
           }
         `;
       });
@@ -5509,6 +5509,7 @@ function generator$J(configOptions = {}) {
           ${pseudoClass(`${prefix}${key}`, variants.ringWidth)} {
             --ring-offset-shadow: var(--ring-inset) 0 0 0 var(--ring-offset-width) var(--ring-offset-color);
             --ring-shadow: var(--ring-inset) 0 0 0 calc(${value} + var(--ring-offset-width)) var(--ring-color);
+            box-shadow: var(--ring-offset-shadow), var(--ring-shadow);
           }
         `;
       });
