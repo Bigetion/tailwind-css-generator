@@ -1102,6 +1102,11 @@ const theme = {
     72: "18rem",
     80: "20rem",
     96: "24rem",
+    "screen-sm": "640px",
+    "screen-md": "768px",
+    "screen-lg": "1024px",
+    "screen-xl": "1280px",
+    "screen-2xl": "1536px",
   },
   stroke: ({ theme }) => ({
     none: "none",
