@@ -1,6 +1,6 @@
 {
   "name": "tailwind-css-generator",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "Tailwind CSS Generator",
   "type": "module",
   "main": "index.js",

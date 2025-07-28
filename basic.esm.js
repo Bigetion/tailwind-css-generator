@@ -2365,6 +2365,67 @@ function generator32(configOptions2 = {}) {
   return responsiveCssString;
 }
 
+// src/generators/space.js
+function generator33(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
+  const prefix = `${globalPrefix}space`;
+  const { space = {} } = theme2;
+  Object.entries(space).forEach(([key, value]) => {
+    space[`-${key}`] = `-${value}`.replace("--", "-");
+  });
+  const responsiveCssString = generateCssString(({ pseudoClass }) => {
+    const generateSpace = (position, key, value) => {
+      let spacePosition = "x";
+      let margin1 = "left";
+      let margin2 = "right";
+      if (position === "y") {
+        spacePosition = "y";
+        margin1 = "top";
+        margin2 = "bottom";
+      }
+      return `
+          ${pseudoClass(
+        (pseudoString) => `${prefix}-${spacePosition}-${key}${pseudoString} > :not([hidden]) ~ :not([hidden])`,
+        variants2.space
+      )} {
+            --space-${spacePosition}-reverse: 0;
+            margin-${margin1}: calc(${value} * calc(1 - var(--space-${spacePosition}-reverse)));
+            margin-${margin2}: calc(${value} * var(--space-${spacePosition}-reverse));
+          }
+          ${pseudoClass(
+        (pseudoString) => `-${prefix}-${spacePosition}-${key}${pseudoString} > :not([hidden]) ~ :not([hidden])`,
+        variants2.space
+      )} {
+            --space-${spacePosition}-reverse: 0;
+            margin-${margin1}: calc(-${value} * calc(1 - var(--space-${spacePosition}-reverse)));
+            margin-${margin2}: calc(-${value} * var(--space-${spacePosition}-reverse));
+          }
+        `;
+    };
+    let cssString = "";
+    Object.entries(space).forEach(([space2, spaceValue]) => {
+      cssString += generateSpace("y", space2, spaceValue);
+      cssString += generateSpace("x", space2, spaceValue);
+    });
+    cssString += `
+        ${pseudoClass(
+      (pseudoString) => `${prefix}-x-reverse${pseudoString} > :not([hidden]) ~ :not([hidden])`,
+      variants2.space
+    )} {
+          --space-x-reverse: 1;
+        }
+        ${pseudoClass(
+      (pseudoString) => `${prefix}-y-reverse${pseudoString} > :not([hidden]) ~ :not([hidden])`,
+      variants2.space
+    )} {
+          --space-y-reverse: 1;
+        }
+      `;
+    return cssString;
+  }, configOptions2);
+  return responsiveCssString;
+}
+
 // src/mini/basic.js
 var basicPlugins = {
   // Display
@@ -2372,6 +2433,7 @@ var basicPlugins = {
   // Spacing (Margin & Padding)
   margin: generator2,
   padding: generator3,
+  space: generator33,
   // Flexbox
   flex: generator4,
   flexDirection: generator5,

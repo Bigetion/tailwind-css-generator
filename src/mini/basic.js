@@ -35,6 +35,7 @@ import generateOverflow from "../generators/overflow.js";
 import generateAspect from "../generators/aspect.js";
 import generateContainer from "../generators/container.js";
 import generateOrder from "../generators/order.js";
+import generateSpace from "../generators/space.js";
 
 const basicPlugins = {
   // Display
@@ -43,6 +44,7 @@ const basicPlugins = {
   // Spacing (Margin & Padding)
   margin: generateMargin,
   padding: generatePadding,
+  space: generateSpace,
   
   // Flexbox
   flex: generateFlex,
