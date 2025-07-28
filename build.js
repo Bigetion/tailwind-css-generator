@@ -3,7 +3,6 @@ import fs from 'fs';
 import path from 'path';
 
 const buildOptions = {
-  entryPoints: ['src/index.js'],
   bundle: true,
   sourcemap: false,
   target: ['es2018'],
@@ -14,50 +13,81 @@ async function buildAll() {
   try {
     console.log('🚀 Building Tailwind CSS Generator...\n');
 
+    // Main build - Full version
+    console.log('📦 Building Full Version...');
+    
     // CommonJS build
-    console.log('📦 Building CommonJS...');
     await build({
       ...buildOptions,
+      entryPoints: ['src/index.js'],
       format: 'cjs',
       outfile: 'index.js',
       platform: 'node',
-      banner: {
-        js: '// CommonJS build for Node.js'
-      }
+      banner: { js: '// CommonJS build for Node.js' }
     });
-    console.log('✅ CommonJS build complete\n');
 
     // ES Modules build
-    console.log('📦 Building ES Modules...');
     await build({
       ...buildOptions,
+      entryPoints: ['src/index.js'],
       format: 'esm',
       outfile: 'index.esm.js',
       platform: 'neutral',
     });
-    console.log('✅ ES Modules build complete\n');
 
     // Minified build for CDN
-    console.log('📦 Building minified version...');
     await build({
       ...buildOptions,
+      entryPoints: ['src/index.js'],
       format: 'esm',
       outfile: 'index.min.js',
       platform: 'neutral',
       minify: true,
       globalName: 'generateTailwindCss',
     });
-    console.log('✅ Minified build complete\n');
+    console.log('✅ Full version builds complete\n');
+
+    // Basic builds - Compact version with essential utilities
+    console.log('📦 Building Basic Version...');
+    
+    await build({
+      ...buildOptions,
+      entryPoints: ['src/mini/basic.js'],
+      format: 'esm',
+      outfile: 'basic.esm.js',
+      platform: 'neutral',
+    });
+
+    await build({
+      ...buildOptions,
+      entryPoints: ['src/mini/basic.js'],
+      format: 'esm',
+      outfile: 'basic.min.js',
+      platform: 'neutral',
+      minify: true,
+      globalName: 'generateTailwindBasic',
+    });
+    console.log('✅ Basic version builds complete\n');
 
     // Get file sizes
-    const cjsSize = (fs.statSync('index.js').size / 1024).toFixed(1);
-    const esmSize = (fs.statSync('index.esm.js').size / 1024).toFixed(1);
-    const minSize = (fs.statSync('index.min.js').size / 1024).toFixed(1);
+    const fullCjsSize = (fs.statSync('index.js').size / 1024).toFixed(1);
+    const fullEsmSize = (fs.statSync('index.esm.js').size / 1024).toFixed(1);
+    const fullMinSize = (fs.statSync('index.min.js').size / 1024).toFixed(1);
+    
+    const basicEsmSize = (fs.statSync('basic.esm.js').size / 1024).toFixed(1);
+    const basicMinSize = (fs.statSync('basic.min.js').size / 1024).toFixed(1);
 
     console.log('📊 Build Summary:');
-    console.log(`   CommonJS: ${cjsSize} KB`);
-    console.log(`   ES Modules: ${esmSize} KB`);
-    console.log(`   Minified: ${minSize} KB`);
+    console.log('   🎯 Full Version (All Utilities):');
+    console.log(`      CommonJS: ${fullCjsSize} KB`);
+    console.log(`      ES Modules: ${fullEsmSize} KB`);
+    console.log(`      Minified: ${fullMinSize} KB`);
+    console.log('   🚀 Basic Version (Essential Utilities):');
+    console.log(`      ES Modules: ${basicEsmSize} KB`);
+    console.log(`      Minified: ${basicMinSize} KB`);
+    
+    const savings = ((1 - basicMinSize / fullMinSize) * 100).toFixed(1);
+    console.log(`   💡 Size reduction: ${savings}% smaller than full version`);
     console.log('\n🎉 All builds completed successfully!');
 
   } catch (error) {
