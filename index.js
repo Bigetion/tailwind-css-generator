@@ -1,6 +1,33 @@
-'use strict';
+// CommonJS build for Node.js
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
-const variants = {
+// src/index.js
+var src_exports = {};
+__export(src_exports, {
+  default: () => generateInlineStyle,
+  generateTailwindCssString: () => generateTailwindCssString,
+  getConfigOptions: () => getConfigOptions
+});
+module.exports = __toCommonJS(src_exports);
+
+// src/config/variants.js
+var variants = {
   accentColor: ["hover", "focus"],
   accessibility: ["hover", "focus"],
   aspect: ["hover", "focus"],
@@ -53,45 +80,43 @@ const variants = {
   textShadowY: ["hover", "focus"],
   touchAction: ["hover", "focus"],
   translate: ["hover", "focus"],
-  zIndex: ["hover", "focus"],
+  zIndex: ["hover", "focus"]
 };
+var variants_default = variants;
 
-const theme = {
-  accentColor: ({ theme }) => ({
-    ...theme("colors"),
-    auto: "auto",
+// src/config/theme.js
+var theme = {
+  accentColor: ({ theme: theme2 }) => ({
+    ...theme2("colors"),
+    auto: "auto"
   }),
   aspectRatio: {
     auto: "auto",
     square: "1 / 1",
-    video: "16 / 9",
+    video: "16 / 9"
   },
-  backdropBlur: ({ theme }) => theme("blur"),
-  backdropBrightness: ({ theme }) => theme("brightness"),
-  backdropContrast: ({ theme }) => theme("contrast"),
-  backdropGrayscale: ({ theme }) => theme("grayscale"),
-  backdropHueRotate: ({ theme }) => theme("hueRotate"),
-  backdropInvert: ({ theme }) => theme("invert"),
-  backdropOpacity: ({ theme }) => theme("opacity"),
-  backdropSaturate: ({ theme }) => theme("saturate"),
-  backdropSepia: ({ theme }) => theme("sepia"),
-  backgroundColor: ({ theme }) => theme("colors"),
+  backdropBlur: ({ theme: theme2 }) => theme2("blur"),
+  backdropBrightness: ({ theme: theme2 }) => theme2("brightness"),
+  backdropContrast: ({ theme: theme2 }) => theme2("contrast"),
+  backdropGrayscale: ({ theme: theme2 }) => theme2("grayscale"),
+  backdropHueRotate: ({ theme: theme2 }) => theme2("hueRotate"),
+  backdropInvert: ({ theme: theme2 }) => theme2("invert"),
+  backdropOpacity: ({ theme: theme2 }) => theme2("opacity"),
+  backdropSaturate: ({ theme: theme2 }) => theme2("saturate"),
+  backdropSepia: ({ theme: theme2 }) => theme2("sepia"),
+  backgroundColor: ({ theme: theme2 }) => theme2("colors"),
   backgroundImage: {
     none: "none",
     "gradient-to-t": "linear-gradient(to top, var(--gradient-color-stops))",
-    "gradient-to-tr":
-      "linear-gradient(to top right, var(--gradient-color-stops))",
+    "gradient-to-tr": "linear-gradient(to top right, var(--gradient-color-stops))",
     "gradient-to-r": "linear-gradient(to right, var(--gradient-color-stops))",
-    "gradient-to-br":
-      "linear-gradient(to bottom right, var(--gradient-color-stops))",
+    "gradient-to-br": "linear-gradient(to bottom right, var(--gradient-color-stops))",
     "gradient-to-b": "linear-gradient(to bottom, var(--gradient-color-stops))",
-    "gradient-to-bl":
-      "linear-gradient(to bottom left, var(--gradient-color-stops))",
+    "gradient-to-bl": "linear-gradient(to bottom left, var(--gradient-color-stops))",
     "gradient-to-l": "linear-gradient(to left, var(--gradient-color-stops))",
-    "gradient-to-tl":
-      "linear-gradient(to top left, var(--gradient-color-stops))",
+    "gradient-to-tl": "linear-gradient(to top left, var(--gradient-color-stops))"
   },
-  backgroundOpacity: ({ theme }) => theme("opacity"),
+  backgroundOpacity: ({ theme: theme2 }) => theme2("opacity"),
   backgroundPosition: {
     bottom: "bottom",
     center: "center",
@@ -101,12 +126,12 @@ const theme = {
     right: "right",
     "right-bottom": "right bottom",
     "right-top": "right top",
-    top: "top",
+    top: "top"
   },
   backgroundSize: {
     auto: "auto",
     cover: "cover",
-    contain: "contain",
+    contain: "contain"
   },
   blur: {
     0: "0",
@@ -117,13 +142,13 @@ const theme = {
     lg: "16px",
     xl: "24px",
     "2xl": "40px",
-    "3xl": "64px",
+    "3xl": "64px"
   },
-  borderColor: ({ theme }) => ({
-    ...theme("colors"),
-    DEFAULT: "#e5e7eb",
+  borderColor: ({ theme: theme2 }) => ({
+    ...theme2("colors"),
+    DEFAULT: "#e5e7eb"
   }),
-  borderOpacity: ({ theme }) => theme("opacity"),
+  borderOpacity: ({ theme: theme2 }) => theme2("opacity"),
   borderRadius: {
     none: "0px",
     sm: "0.125rem",
@@ -133,17 +158,17 @@ const theme = {
     xl: "0.75rem",
     "2xl": "1rem",
     "3xl": "1.5rem",
-    full: "9999px",
+    full: "9999px"
   },
-  borderSpacing: ({ theme }) => ({
-    ...theme("spacing"),
+  borderSpacing: ({ theme: theme2 }) => ({
+    ...theme2("spacing")
   }),
   borderWidth: {
     DEFAULT: "1px",
     0: "0px",
     2: "2px",
     4: "4px",
-    8: "8px",
+    8: "8px"
   },
   boxShadow: {
     sm: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
@@ -153,9 +178,9 @@ const theme = {
     xl: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
     "2xl": "0 25px 50px -12px rgb(0 0 0 / 0.25)",
     inner: "inset 0 2px 4px 0 rgb(0 0 0 / 0.05)",
-    none: "none",
+    none: "none"
   },
-  boxShadowColor: ({ theme }) => theme("colors"),
+  boxShadowColor: ({ theme: theme2 }) => theme2("colors"),
   brightness: {
     0: "0",
     50: ".5",
@@ -167,9 +192,9 @@ const theme = {
     110: "1.1",
     125: "1.25",
     150: "1.5",
-    200: "2",
+    200: "2"
   },
-  caretColor: ({ theme }) => theme("colors"),
+  caretColor: ({ theme: theme2 }) => theme2("colors"),
   colors: {
     transparent: "transparent",
     current: "currentColor",
@@ -185,7 +210,7 @@ const theme = {
       600: "#475569",
       700: "#334155",
       800: "#1e293b",
-      900: "#0f172a",
+      900: "#0f172a"
     },
     gray: {
       50: "#f9fafb",
@@ -197,7 +222,7 @@ const theme = {
       600: "#4b5563",
       700: "#374151",
       800: "#1f2937",
-      900: "#111827",
+      900: "#111827"
     },
     zinc: {
       50: "#fafafa",
@@ -209,7 +234,7 @@ const theme = {
       600: "#52525b",
       700: "#3f3f46",
       800: "#27272a",
-      900: "#18181b",
+      900: "#18181b"
     },
     neutral: {
       50: "#fafafa",
@@ -221,7 +246,7 @@ const theme = {
       600: "#525252",
       700: "#404040",
       800: "#262626",
-      900: "#171717",
+      900: "#171717"
     },
     stone: {
       50: "#fafaf9",
@@ -233,7 +258,7 @@ const theme = {
       600: "#57534e",
       700: "#44403c",
       800: "#292524",
-      900: "#1c1917",
+      900: "#1c1917"
     },
     red: {
       50: "#fef2f2",
@@ -245,7 +270,7 @@ const theme = {
       600: "#dc2626",
       700: "#b91c1c",
       800: "#991b1b",
-      900: "#7f1d1d",
+      900: "#7f1d1d"
     },
     orange: {
       50: "#fff7ed",
@@ -257,7 +282,7 @@ const theme = {
       600: "#ea580c",
       700: "#c2410c",
       800: "#9a3412",
-      900: "#7c2d12",
+      900: "#7c2d12"
     },
     amber: {
       50: "#fffbeb",
@@ -269,7 +294,7 @@ const theme = {
       600: "#d97706",
       700: "#b45309",
       800: "#92400e",
-      900: "#78350f",
+      900: "#78350f"
     },
     yellow: {
       50: "#fefce8",
@@ -281,7 +306,7 @@ const theme = {
       600: "#ca8a04",
       700: "#a16207",
       800: "#854d0e",
-      900: "#713f12",
+      900: "#713f12"
     },
     lime: {
       50: "#f7fee7",
@@ -293,7 +318,7 @@ const theme = {
       600: "#65a30d",
       700: "#4d7c0f",
       800: "#3f6212",
-      900: "#365314",
+      900: "#365314"
     },
     green: {
       50: "#f0fdf4",
@@ -305,7 +330,7 @@ const theme = {
       600: "#16a34a",
       700: "#15803d",
       800: "#166534",
-      900: "#14532d",
+      900: "#14532d"
     },
     emerald: {
       50: "#ecfdf5",
@@ -317,7 +342,7 @@ const theme = {
       600: "#059669",
       700: "#047857",
       800: "#065f46",
-      900: "#064e3b",
+      900: "#064e3b"
     },
     teal: {
       50: "#f0fdfa",
@@ -329,7 +354,7 @@ const theme = {
       600: "#0d9488",
       700: "#0f766e",
       800: "#115e59",
-      900: "#134e4a",
+      900: "#134e4a"
     },
     cyan: {
       50: "#ecfeff",
@@ -341,7 +366,7 @@ const theme = {
       600: "#0891b2",
       700: "#0e7490",
       800: "#155e75",
-      900: "#164e63",
+      900: "#164e63"
     },
     sky: {
       50: "#f0f9ff",
@@ -353,7 +378,7 @@ const theme = {
       600: "#0284c7",
       700: "#0369a1",
       800: "#075985",
-      900: "#0c4a6e",
+      900: "#0c4a6e"
     },
     blue: {
       50: "#eff6ff",
@@ -365,7 +390,7 @@ const theme = {
       600: "#2563eb",
       700: "#1d4ed8",
       800: "#1e40af",
-      900: "#1e3a8a",
+      900: "#1e3a8a"
     },
     indigo: {
       50: "#eef2ff",
@@ -377,7 +402,7 @@ const theme = {
       600: "#4f46e5",
       700: "#4338ca",
       800: "#3730a3",
-      900: "#312e81",
+      900: "#312e81"
     },
     violet: {
       50: "#f5f3ff",
@@ -389,7 +414,7 @@ const theme = {
       600: "#7c3aed",
       700: "#6d28d9",
       800: "#5b21b6",
-      900: "#4c1d95",
+      900: "#4c1d95"
     },
     purple: {
       50: "#faf5ff",
@@ -401,7 +426,7 @@ const theme = {
       600: "#9333ea",
       700: "#7e22ce",
       800: "#6b21a8",
-      900: "#581c87",
+      900: "#581c87"
     },
     fuchsia: {
       50: "#fdf4ff",
@@ -413,7 +438,7 @@ const theme = {
       600: "#c026d3",
       700: "#a21caf",
       800: "#86198f",
-      900: "#701a75",
+      900: "#701a75"
     },
     pink: {
       50: "#fdf2f8",
@@ -425,7 +450,7 @@ const theme = {
       600: "#db2777",
       700: "#be185d",
       800: "#9d174d",
-      900: "#831843",
+      900: "#831843"
     },
     rose: {
       50: "#fff1f2",
@@ -437,8 +462,8 @@ const theme = {
       600: "#e11d48",
       700: "#be123c",
       800: "#9f1239",
-      900: "#881337",
-    },
+      900: "#881337"
+    }
   },
   columns: {
     auto: "auto",
@@ -466,11 +491,11 @@ const theme = {
     "4xl": "56rem",
     "5xl": "64rem",
     "6xl": "72rem",
-    "7xl": "80rem",
+    "7xl": "80rem"
   },
   container: {},
   content: {
-    none: "none",
+    none: "none"
   },
   contrast: {
     0: "0",
@@ -479,7 +504,7 @@ const theme = {
     100: "1",
     125: "1.25",
     150: "1.5",
-    200: "2",
+    200: "2"
   },
   cursor: {
     auto: "auto",
@@ -517,11 +542,11 @@ const theme = {
     "nesw-resize": "nesw-resize",
     "nwse-resize": "nwse-resize",
     "zoom-in": "zoom-in",
-    "zoom-out": "zoom-out",
+    "zoom-out": "zoom-out"
   },
-  divideColor: ({ theme }) => theme("borderColor"),
-  divideOpacity: ({ theme }) => theme("borderOpacity"),
-  divideWidth: ({ theme }) => theme("borderWidth"),
+  divideColor: ({ theme: theme2 }) => theme2("borderColor"),
+  divideOpacity: ({ theme: theme2 }) => theme2("borderOpacity"),
+  divideWidth: ({ theme: theme2 }) => theme2("borderWidth"),
   dropShadow: {
     sm: "0 1px 1px rgb(0 0 0 / 0.05)",
     DEFAULT: "0 1px 2px rgb(0 0 0 / 0.1) , 0 1px 1px rgb(0 0 0 / 0.06)",
@@ -529,21 +554,21 @@ const theme = {
     lg: "0 10px 8px rgb(0 0 0 / 0.04) , 0 4px 3px rgb(0 0 0 / 0.1)",
     xl: "0 20px 13px rgb(0 0 0 / 0.03) , 0 8px 5px rgb(0 0 0 / 0.08)",
     "2xl": "0 25px 25px rgb(0 0 0 / 0.15)",
-    none: "0 0 #0000",
+    none: "0 0 #0000"
   },
-  fill: ({ theme }) => ({
+  fill: ({ theme: theme2 }) => ({
     none: "none",
-    ...theme("colors"),
+    ...theme2("colors")
   }),
   flex: {
     1: "1 1 0%",
     auto: "1 1 auto",
     initial: "0 1 auto",
-    none: "none",
+    none: "none"
   },
-  flexBasis: ({ theme }) => ({
+  flexBasis: ({ theme: theme2 }) => ({
     auto: "auto",
-    ...theme("spacing"),
+    ...theme2("spacing"),
     "1/2": "50%",
     "1/3": "33.333333%",
     "2/3": "66.666667%",
@@ -570,15 +595,15 @@ const theme = {
     "9/12": "75%",
     "10/12": "83.333333%",
     "11/12": "91.666667%",
-    full: "100%",
+    full: "100%"
   }),
   flexGrow: {
     0: "0",
-    DEFAULT: "1",
+    DEFAULT: "1"
   },
   flexShrink: {
     0: "0",
-    DEFAULT: "1",
+    DEFAULT: "1"
   },
   fontSize: {
     xs: "0.75rem",
@@ -593,7 +618,7 @@ const theme = {
     "6xl": "3.75rem",
     "7xl": "4.5rem",
     "8xl": "6rem",
-    "9xl": "8rem",
+    "9xl": "8rem"
   },
   fontWeight: {
     thin: "100",
@@ -604,10 +629,10 @@ const theme = {
     semibold: "600",
     bold: "700",
     extrabold: "800",
-    black: "900",
+    black: "900"
   },
-  gap: ({ theme }) => theme("spacing"),
-  gradientColorStops: ({ theme }) => theme("colors"),
+  gap: ({ theme: theme2 }) => theme2("spacing"),
+  gradientColorStops: ({ theme: theme2 }) => theme2("colors"),
   gradientColorStopPositions: {
     "0%": "0%",
     "5%": "5%",
@@ -629,23 +654,23 @@ const theme = {
     "85%": "85%",
     "90%": "90%",
     "95%": "95%",
-    "100%": "100%",
+    "100%": "100%"
   },
   grayscale: {
     0: "0",
-    DEFAULT: "100%",
+    DEFAULT: "100%"
   },
   gridAutoColumns: {
     auto: "auto",
     min: "min-content",
     max: "max-content",
-    fr: "minmax(0, 1fr)",
+    fr: "minmax(0, 1fr)"
   },
   gridAutoRows: {
     auto: "auto",
     min: "min-content",
     max: "max-content",
-    fr: "minmax(0, 1fr)",
+    fr: "minmax(0, 1fr)"
   },
   gridColumn: {
     auto: "auto",
@@ -661,7 +686,7 @@ const theme = {
     "span-10": "span 10 / span 10",
     "span-11": "span 11 / span 11",
     "span-12": "span 12 / span 12",
-    "span-full": "1 / -1",
+    "span-full": "1 / -1"
   },
   gridColumnEnd: {
     auto: "auto",
@@ -677,7 +702,7 @@ const theme = {
     10: "10",
     11: "11",
     12: "12",
-    13: "13",
+    13: "13"
   },
   gridColumnStart: {
     auto: "auto",
@@ -693,7 +718,7 @@ const theme = {
     10: "10",
     11: "11",
     12: "12",
-    13: "13",
+    13: "13"
   },
   gridRow: {
     auto: "auto",
@@ -709,7 +734,7 @@ const theme = {
     "span-10": "span 10 / span 10",
     "span-11": "span 11 / span 11",
     "span-12": "span 12 / span 12",
-    "span-full": "1 / -1",
+    "span-full": "1 / -1"
   },
   gridRowEnd: {
     auto: "auto",
@@ -725,7 +750,7 @@ const theme = {
     10: "10",
     11: "11",
     12: "12",
-    13: "13",
+    13: "13"
   },
   gridRowStart: {
     auto: "auto",
@@ -741,7 +766,7 @@ const theme = {
     10: "10",
     11: "11",
     12: "12",
-    13: "13",
+    13: "13"
   },
   gridTemplateColumns: {
     none: "none",
@@ -757,7 +782,7 @@ const theme = {
     9: "repeat(9, minmax(0, 1fr))",
     10: "repeat(10, minmax(0, 1fr))",
     11: "repeat(11, minmax(0, 1fr))",
-    12: "repeat(12, minmax(0, 1fr))",
+    12: "repeat(12, minmax(0, 1fr))"
   },
   gridTemplateRows: {
     none: "none",
@@ -773,11 +798,11 @@ const theme = {
     9: "repeat(9, minmax(0, 1fr))",
     10: "repeat(10, minmax(0, 1fr))",
     11: "repeat(11, minmax(0, 1fr))",
-    12: "repeat(12, minmax(0, 1fr))",
+    12: "repeat(12, minmax(0, 1fr))"
   },
-  height: ({ theme }) => ({
+  height: ({ theme: theme2 }) => ({
     auto: "auto",
-    ...theme("spacing"),
+    ...theme2("spacing"),
     "1/2": "50%",
     "1/3": "33.333333%",
     "2/3": "66.666667%",
@@ -800,7 +825,7 @@ const theme = {
     dvh: "100dvh",
     min: "min-content",
     max: "max-content",
-    fit: "fit-content",
+    fit: "fit-content"
   }),
   hueRotate: {
     0: "0deg",
@@ -808,22 +833,22 @@ const theme = {
     30: "30deg",
     60: "60deg",
     90: "90deg",
-    180: "180deg",
+    180: "180deg"
   },
-  inset: ({ theme }) => ({
+  inset: ({ theme: theme2 }) => ({
     auto: "auto",
-    ...theme("spacing"),
+    ...theme2("spacing"),
     "1/2": "50%",
     "1/3": "33.333333%",
     "2/3": "66.666667%",
     "1/4": "25%",
     "2/4": "50%",
     "3/4": "75%",
-    full: "100%",
+    full: "100%"
   }),
   invert: {
     0: "0",
-    DEFAULT: "100%",
+    DEFAULT: "100%"
   },
   letterSpacing: {
     tighter: "-0.05em",
@@ -831,7 +856,7 @@ const theme = {
     normal: "0em",
     wide: "0.025em",
     wider: "0.05em",
-    widest: "0.1em",
+    widest: "0.1em"
   },
   lineClamp: {
     1: "1",
@@ -839,7 +864,7 @@ const theme = {
     3: "3",
     4: "4",
     5: "5",
-    6: "6",
+    6: "6"
   },
   lineHeight: {
     none: "1",
@@ -855,19 +880,19 @@ const theme = {
     7: "1.75rem",
     8: "2rem",
     9: "2.25rem",
-    10: "2.5rem",
+    10: "2.5rem"
   },
   listStyleType: {
     none: "none",
     disc: "disc",
-    decimal: "decimal",
+    decimal: "decimal"
   },
-  margin: ({ theme }) => ({
+  margin: ({ theme: theme2 }) => ({
     auto: "auto",
-    ...theme("spacing"),
+    ...theme2("spacing")
   }),
-  maxHeight: ({ theme }) => ({
-    ...theme("spacing"),
+  maxHeight: ({ theme: theme2 }) => ({
+    ...theme2("spacing"),
     none: "none",
     full: "100%",
     screen: "100vh",
@@ -876,10 +901,10 @@ const theme = {
     dvh: "100dvh",
     min: "min-content",
     max: "max-content",
-    fit: "fit-content",
+    fit: "fit-content"
   }),
-  maxWidth: ({ theme }) => ({
-    ...theme("spacing"),
+  maxWidth: ({ theme: theme2 }) => ({
+    ...theme2("spacing"),
     none: "none",
     xs: "20rem",
     sm: "24rem",
@@ -896,10 +921,10 @@ const theme = {
     min: "min-content",
     max: "max-content",
     fit: "fit-content",
-    prose: "65ch",
+    prose: "65ch"
   }),
-  minHeight: ({ theme }) => ({
-    ...theme("spacing"),
+  minHeight: ({ theme: theme2 }) => ({
+    ...theme2("spacing"),
     full: "100%",
     screen: "100vh",
     svh: "100svh",
@@ -907,14 +932,14 @@ const theme = {
     dvh: "100dvh",
     min: "min-content",
     max: "max-content",
-    fit: "fit-content",
+    fit: "fit-content"
   }),
-  minWidth: ({ theme }) => ({
-    ...theme("spacing"),
+  minWidth: ({ theme: theme2 }) => ({
+    ...theme2("spacing"),
     full: "100%",
     min: "min-content",
     max: "max-content",
-    fit: "fit-content",
+    fit: "fit-content"
   }),
   objectPosition: {
     bottom: "bottom",
@@ -925,7 +950,7 @@ const theme = {
     right: "right",
     "right-bottom": "right bottom",
     "right-top": "right top",
-    top: "top",
+    top: "top"
   },
   opacity: {
     0: "0",
@@ -948,7 +973,7 @@ const theme = {
     85: "0.85",
     90: "0.9",
     95: "0.95",
-    100: "1",
+    100: "1"
   },
   order: {
     first: "-9999",
@@ -965,42 +990,42 @@ const theme = {
     9: "9",
     10: "10",
     11: "11",
-    12: "12",
+    12: "12"
   },
-  outlineColor: ({ theme }) => theme("colors"),
+  outlineColor: ({ theme: theme2 }) => theme2("colors"),
   outlineOffset: {
     0: "0px",
     1: "1px",
     2: "2px",
     4: "4px",
-    8: "8px",
+    8: "8px"
   },
-  outlineOpacity: ({ theme }) => theme("opacity"),
+  outlineOpacity: ({ theme: theme2 }) => theme2("opacity"),
   outlineWidth: {
     0: "0px",
     1: "1px",
     2: "2px",
     4: "4px",
-    8: "8px",
+    8: "8px"
   },
-  padding: ({ theme }) => theme("spacing"),
-  placeholderColor: ({ theme }) => theme("colors"),
-  placeholderOpacity: ({ theme }) => theme("opacity"),
-  ringColor: ({ theme }) => ({
+  padding: ({ theme: theme2 }) => theme2("spacing"),
+  placeholderColor: ({ theme: theme2 }) => theme2("colors"),
+  placeholderOpacity: ({ theme: theme2 }) => theme2("opacity"),
+  ringColor: ({ theme: theme2 }) => ({
     DEFAULT: "#3b82f6",
-    ...theme("colors"),
+    ...theme2("colors")
   }),
-  ringOffsetColor: ({ theme }) => theme("colors"),
+  ringOffsetColor: ({ theme: theme2 }) => theme2("colors"),
   ringOffsetWidth: {
     0: "0px",
     1: "1px",
     2: "2px",
     4: "4px",
-    8: "8px",
+    8: "8px"
   },
-  ringOpacity: ({ theme }) => ({
+  ringOpacity: ({ theme: theme2 }) => ({
     DEFAULT: "0.5",
-    ...theme("opacity"),
+    ...theme2("opacity")
   }),
   ringWidth: {
     DEFAULT: "3px",
@@ -1008,7 +1033,7 @@ const theme = {
     1: "1px",
     2: "2px",
     4: "4px",
-    8: "8px",
+    8: "8px"
   },
   rotate: {
     0: "0deg",
@@ -1019,14 +1044,14 @@ const theme = {
     12: "12deg",
     45: "45deg",
     90: "90deg",
-    180: "180deg",
+    180: "180deg"
   },
   saturate: {
     0: "0",
     50: ".5",
     100: "1",
     150: "1.5",
-    200: "2",
+    200: "2"
   },
   scale: {
     0: "0",
@@ -1038,22 +1063,22 @@ const theme = {
     105: "1.05",
     110: "1.1",
     125: "1.25",
-    150: "1.5",
+    150: "1.5"
   },
   screens: {
     sm: "640px",
     md: "768px",
     lg: "1024px",
     xl: "1280px",
-    "2xl": "1536px",
+    "2xl": "1536px"
   },
-  scrollMargin: ({ theme }) => ({
-    ...theme("spacing"),
+  scrollMargin: ({ theme: theme2 }) => ({
+    ...theme2("spacing")
   }),
-  scrollPadding: ({ theme }) => theme("spacing"),
+  scrollPadding: ({ theme: theme2 }) => theme2("spacing"),
   sepia: {
     0: "0",
-    DEFAULT: "100%",
+    DEFAULT: "100%"
   },
   skew: {
     0: "0deg",
@@ -1061,10 +1086,10 @@ const theme = {
     2: "2deg",
     3: "3deg",
     6: "6deg",
-    12: "12deg",
+    12: "12deg"
   },
-  space: ({ theme }) => ({
-    ...theme("spacing"),
+  space: ({ theme: theme2 }) => ({
+    ...theme2("spacing")
   }),
   spacing: {
     px: "1px",
@@ -1106,19 +1131,19 @@ const theme = {
     "screen-md": "768px",
     "screen-lg": "1024px",
     "screen-xl": "1280px",
-    "screen-2xl": "1536px",
+    "screen-2xl": "1536px"
   },
-  stroke: ({ theme }) => ({
+  stroke: ({ theme: theme2 }) => ({
     none: "none",
-    ...theme("colors"),
+    ...theme2("colors")
   }),
   strokeWidth: {
     0: "0",
     1: "1",
-    2: "2",
+    2: "2"
   },
-  textColor: ({ theme }) => theme("colors"),
-  textDecorationColor: ({ theme }) => theme("colors"),
+  textColor: ({ theme: theme2 }) => theme2("colors"),
+  textDecorationColor: ({ theme: theme2 }) => theme2("colors"),
   textDecorationThickness: {
     auto: "auto",
     "from-font": "from-font",
@@ -1126,18 +1151,18 @@ const theme = {
     1: "1px",
     2: "2px",
     4: "4px",
-    8: "8px",
+    8: "8px"
   },
-  textIndent: ({ theme }) => ({
-    ...theme("spacing"),
+  textIndent: ({ theme: theme2 }) => ({
+    ...theme2("spacing")
   }),
-  textOpacity: ({ theme }) => theme("opacity"),
-  textShadowBlur: ({ theme }) => theme("blur"),
-  textShadowColor: ({ theme }) => ({
-    ...theme("colors"),
-    DEFAULT: "#e5e7eb",
+  textOpacity: ({ theme: theme2 }) => theme2("opacity"),
+  textShadowBlur: ({ theme: theme2 }) => theme2("blur"),
+  textShadowColor: ({ theme: theme2 }) => ({
+    ...theme2("colors"),
+    DEFAULT: "#e5e7eb"
   }),
-  textShadowOpacity: ({ theme }) => theme("opacity"),
+  textShadowOpacity: ({ theme: theme2 }) => theme2("opacity"),
   textShadowX: {
     0: "0px",
     1: "1px",
@@ -1149,16 +1174,16 @@ const theme = {
     7: "7px",
     8: "8px",
     9: "9px",
-    10: "10px",
+    10: "10px"
   },
-  textShadowY: ({ theme }) => theme("textShadowX"),
+  textShadowY: ({ theme: theme2 }) => theme2("textShadowX"),
   textUnderlineOffset: {
     auto: "auto",
     0: "0px",
     1: "1px",
     2: "2px",
     4: "4px",
-    8: "8px",
+    8: "8px"
   },
   transformOrigin: {
     center: "center",
@@ -1169,21 +1194,21 @@ const theme = {
     bottom: "bottom",
     "bottom-left": "bottom left",
     left: "left",
-    "top-left": "top left",
+    "top-left": "top left"
   },
-  translate: ({ theme }) => ({
-    ...theme("spacing"),
+  translate: ({ theme: theme2 }) => ({
+    ...theme2("spacing"),
     "1/2": "50%",
     "1/3": "33.333333%",
     "2/3": "66.666667%",
     "1/4": "25%",
     "2/4": "50%",
     "3/4": "75%",
-    full: "100%",
+    full: "100%"
   }),
-  size: ({ theme }) => ({
+  size: ({ theme: theme2 }) => ({
     auto: "auto",
-    ...theme("spacing"),
+    ...theme2("spacing"),
     "1/2": "50%",
     "1/3": "33.333333%",
     "2/3": "66.666667%",
@@ -1213,11 +1238,11 @@ const theme = {
     full: "100%",
     min: "min-content",
     max: "max-content",
-    fit: "fit-content",
+    fit: "fit-content"
   }),
-  width: ({ theme }) => ({
+  width: ({ theme: theme2 }) => ({
     auto: "auto",
-    ...theme("spacing"),
+    ...theme2("spacing"),
     "1/2": "50%",
     "1/3": "33.333333%",
     "2/3": "66.666667%",
@@ -1251,13 +1276,13 @@ const theme = {
     dvw: "100dvw",
     min: "min-content",
     max: "max-content",
-    fit: "fit-content",
+    fit: "fit-content"
   }),
   willChange: {
     auto: "auto",
     scroll: "scroll-position",
     contents: "contents",
-    transform: "transform",
+    transform: "transform"
   },
   zIndex: {
     0: "0",
@@ -1271,29 +1296,38 @@ const theme = {
     80: "80",
     90: "90",
     100: "100",
-    auto: "auto",
-  },
+    auto: "auto"
+  }
 };
+var theme_default = theme;
 
-const configOptions = {
-  variants,
-  theme,
+// src/config/vars.js
+var vars = {
+  transform: `transform: translateX(var(--transform-translate-x, 0)) translateY(var(--transform-translate-y, 0)) rotate(var(--transform-rotate, 0)) skewX(var(--transform-skew-x, 0)) skewY(var(--transform-skew-y, 0)) scaleX(var(--transform-scale-x, 1)) scaleY(var(--transform-scale-y, 1));`,
+  filter: `filter: blur(var(--blur, 0)) brightness(var(--brightness, 1)) contrast(var(--contrast, 1)) grayscale(var(--grayscale, 0)) hue-rotate(var(--hue-rotate, 0deg)) invert(var(--invert, 0)) saturate(var(--saturate, 1)) sepia(var(--sepia, 0)) drop-shadow(var(--drop-shadow, 0 0 #0000));`,
+  backdropFilter: `-webkit-backdrop-filter: blur(var(--backdrop-blur, 0)) brightness(var(--backdrop-brightness, 1)) contrast(var(--backdrop-contrast, 1)) grayscale(var(--backdrop-grayscale, 0)) hue-rotate(var(--backdrop-hue-rotate, 0deg)) invert(var(--backdrop-invert, 0)) opacity(var(--backdrop-opacity, 1)) saturate(var(--backdrop-saturate, 1)) sepia(var(--backdrop-sepia, 0)); backdrop-filter: blur(var(--backdrop-blur, 0)) brightness(var(--backdrop-brightness, 1)) contrast(var(--backdrop-contrast, 1)) grayscale(var(--backdrop-grayscale, 0)) hue-rotate(var(--backdrop-hue-rotate, 0deg)) invert(var(--backdrop-invert, 0)) opacity(var(--backdrop-opacity, 1)) saturate(var(--backdrop-saturate, 1)) sepia(var(--backdrop-sepia, 0));`
 };
+var vars_default = vars;
 
+// src/config/index.js
+var configOptions = {
+  variants: variants_default,
+  theme: theme_default,
+  vars: vars_default
+};
+var config_default = configOptions;
+
+// src/utils/index.js
 function isFunction(functionToCheck) {
-  return (
-    functionToCheck && {}.toString.call(functionToCheck) === "[object Function]"
-  );
+  return functionToCheck && {}.toString.call(functionToCheck) === "[object Function]";
 }
-
 function getConfigOptions(options = {}, pluginKeys = []) {
-  const { variants = {}, theme = {} } = options;
-
-  const { extend: variantsExtend = {} } = variants;
+  const { variants: variants2 = {}, theme: theme2 = {} } = options;
+  const { extend: variantsExtend = {} } = variants2;
   const newVariants = {};
   pluginKeys.forEach((key) => {
     newVariants[key] = ["responsive"].concat(
-      variants[key] || configOptions.variants[key]
+      variants2[key] || config_default.variants[key]
     );
     if (variantsExtend[key]) {
       if (Array.isArray(variantsExtend[key])) {
@@ -1307,19 +1341,16 @@ function getConfigOptions(options = {}, pluginKeys = []) {
       newVariants[key].push("focus-within");
     }
   });
-
-  const { extend: themeExtend = {} } = theme;
-
+  const { extend: themeExtend = {} } = theme2;
   const newTheme = {};
-  const themeKeys = Object.keys(configOptions.theme);
-
+  const themeKeys = Object.keys(config_default.theme);
   themeKeys.forEach((key) => {
-    newTheme[key] = theme[key] || configOptions.theme[key];
+    newTheme[key] = theme2[key] || config_default.theme[key];
     if (isFunction(newTheme[key])) {
       newTheme[key] = newTheme[key]({
         theme: (keyRef) => {
-          return configOptions.theme[keyRef];
-        },
+          return config_default.theme[keyRef];
+        }
       });
     }
   });
@@ -1328,68 +1359,53 @@ function getConfigOptions(options = {}, pluginKeys = []) {
       newTheme[key] = newTheme[key]({
         theme: (keyRef) => {
           return newTheme[keyRef];
-        },
+        }
       });
     }
     if (themeExtend[key]) {
       newTheme[key] = Object.assign({}, newTheme[key], themeExtend[key]);
     }
   });
-
   return {
     prefix: "",
+    ...config_default,
     ...options,
     variants: newVariants,
-    theme: newTheme,
+    theme: newTheme
   };
 }
-
-function generateCssString(getCssString = () => {}, options = {}) {
-  const { theme = {} } = options;
-  const { screens = {} } = theme;
+function generateCssString(getCssString = () => {
+}, options = {}) {
+  const { theme: theme2 = {} } = options;
+  const { screens = {} } = theme2;
   let orientationPrefix = "";
-
   const hexToRgb = (hex) => {
-    const rgba = hex
-      .replace(
-        /^#?([a-f\d])([a-f\d])([a-f\d])$/i,
-        (...args) =>
-          "#" + args[1] + args[1] + args[2] + args[2] + args[3] + args[3]
-      )
-      .substring(1)
-      .match(/.{2}/g)
-      .map((x) => parseInt(x, 16))
-      .join(",");
-
-    if (rgba.indexOf("NaN") >= 0) return "";
+    const rgba = hex.replace(
+      /^#?([a-f\d])([a-f\d])([a-f\d])$/i,
+      (...args) => "#" + args[1] + args[1] + args[2] + args[2] + args[3] + args[3]
+    ).substring(1).match(/.{2}/g).map((x) => parseInt(x, 16)).join(",");
+    if (rgba.indexOf("NaN") >= 0)
+      return "";
     return rgba;
   };
-
   const pseudoClass = (value, pseudoElements = ["hover", "focus"]) => {
     const classArray = [
-      `.${orientationPrefix}${isFunction(value) ? value("") : value}`,
+      `.${orientationPrefix}${isFunction(value) ? value("") : value}`
     ];
     if (Array.isArray(pseudoElements)) {
       pseudoElements.forEach((pseudoItem) => {
         if (typeof pseudoItem === "string") {
-          if (
-            pseudoItem !== "" &&
-            [
-              "responsive",
-              "group-hover",
-              "group-focus",
-              "first",
-              "last",
-              "odd",
-              "even",
-            ].indexOf(pseudoItem) < 0
-          ) {
+          if (pseudoItem !== "" && [
+            "responsive",
+            "group-hover",
+            "group-focus",
+            "first",
+            "last",
+            "odd",
+            "even"
+          ].indexOf(pseudoItem) < 0) {
             classArray.push(
-              `.${orientationPrefix}${pseudoItem}\\:${
-                isFunction(value)
-                  ? value(`:${pseudoItem}`)
-                  : `${value}:${pseudoItem}`
-              }`
+              `.${orientationPrefix}${pseudoItem}\\:${isFunction(value) ? value(`:${pseudoItem}`) : `${value}:${pseudoItem}`}`
             );
           }
         }
@@ -1397,44 +1413,33 @@ function generateCssString(getCssString = () => {}, options = {}) {
       ["hover", "focus"].forEach((item) => {
         if (pseudoElements.indexOf(`group-${item}`) >= 0) {
           classArray.push(
-            `.group:${item} .${orientationPrefix}group-${item}\\:${
-              isFunction(value) ? value() : value
-            }`
+            `.group:${item} .${orientationPrefix}group-${item}\\:${isFunction(value) ? value() : value}`
           );
         }
       });
       ["first", "last"].forEach((item) => {
         if (pseudoElements.indexOf(item) >= 0) {
           classArray.push(
-            `.${orientationPrefix}${item}\\:${
-              isFunction(value)
-                ? value(`:${item}-child`)
-                : `${value}:${item}-child`
-            }`
+            `.${orientationPrefix}${item}\\:${isFunction(value) ? value(`:${item}-child`) : `${value}:${item}-child`}`
           );
         }
       });
       ["odd", "even"].forEach((item) => {
         if (pseudoElements.indexOf(item) >= 0) {
           classArray.push(
-            `.${orientationPrefix}${item}\\:${
-              isFunction(value)
-                ? value(`:nth-child(${item})`)
-                : `${value}:nth-child(${item})`
-            }`
+            `.${orientationPrefix}${item}\\:${isFunction(value) ? value(`:nth-child(${item})`) : `${value}:nth-child(${item})`}`
           );
         }
       });
     }
     return classArray.join(", ");
   };
-
-  const getCssByOptions = (options = {}, getStr = () => {}) => {
-    let nOptions = Object.assign({}, options);
-    if (Array.isArray(options)) {
-      nOptions = options.reduce(
-        (currentObj, value) =>
-          Object.assign({}, currentObj, { [value]: value }),
+  const getCssByOptions = (options2 = {}, getStr = () => {
+  }) => {
+    let nOptions = Object.assign({}, options2);
+    if (Array.isArray(options2)) {
+      nOptions = options2.reduce(
+        (currentObj, value) => Object.assign({}, currentObj, { [value]: value }),
         {}
       );
     }
@@ -1444,8 +1449,8 @@ function generateCssString(getCssString = () => {}, options = {}) {
     });
     return str;
   };
-
-  const getCssByColors = (colors, getStr = () => {}) => {
+  const getCssByColors = (colors, getStr = () => {
+  }) => {
     let str = "";
     Object.entries(colors).forEach(([key1, value1]) => {
       if (typeof value1 === "string") {
@@ -1458,38 +1463,33 @@ function generateCssString(getCssString = () => {}, options = {}) {
     });
     return str;
   };
-
   let cssString = getCssString({
     orientationPrefix,
     pseudoClass,
     getCssByOptions,
-    getCssByColors,
+    getCssByColors
   });
-
   Object.entries(screens).forEach(([screen, screenValue]) => {
     orientationPrefix = `${screen}\\:`;
     cssString += `
       @media (min-width: ${screenValue}) {
         ${getCssString({
-          orientationPrefix,
-          pseudoClass,
-          getCssByOptions,
-          getCssByColors,
-        })}     
+      orientationPrefix,
+      pseudoClass,
+      getCssByOptions,
+      getCssByColors
+    })}     
       }
     `;
   });
-
   return cssString;
 }
 
-function generator$2u(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/accentColor.js
+function generator(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}accent`;
-
-  const { accentColor, opacity = {} } = theme;
-
+  const { accentColor, opacity = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByColors, getCssByOptions }) => {
       let cssString = getCssByColors(accentColor, (key, value, rgbValue) => {
@@ -1498,7 +1498,7 @@ function generator$2u(configOptions = {}) {
           rgbPropertyValue = `accent-color: rgba(${rgbValue}, var(--accent-opacity));`;
         }
         return `
-            ${pseudoClass(`${prefix}-${key}`, variants.accentColor, {})} {
+            ${pseudoClass(`${prefix}-${key}`, variants2.accentColor, {})} {
               --accent-opacity: 1;
               accent-color: ${value};${rgbPropertyValue}
             }
@@ -1507,25 +1507,24 @@ function generator$2u(configOptions = {}) {
       cssString += getCssByOptions(
         opacity,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.accentColor, {})} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.accentColor, {})} {
             --accent-opacity: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$2t(configOptions = {}) {
-  const { prefix, variants = {} } = configOptions;
-
+// src/generators/accessibility.js
+function generator2(configOptions2 = {}) {
+  const { prefix, variants: variants2 = {} } = configOptions2;
   const responsiveCssString = generateCssString(({ pseudoClass }) => {
     return `
-        ${pseudoClass(`${prefix}sr-only`, variants.accessibility)} {
+        ${pseudoClass(`${prefix}sr-only`, variants2.accessibility)} {
           position: absolute;
           width: 1px;
           height: 1px;
@@ -1536,7 +1535,7 @@ function generator$2t(configOptions = {}) {
           white-space: nowrap;
           border-width: 0;
         }
-        ${pseudoClass(`${prefix}not-sr-only`, variants.accessibility)} {
+        ${pseudoClass(`${prefix}not-sr-only`, variants2.accessibility)} {
           position: static;
           width: auto;
           height: auto;
@@ -1547,156 +1546,142 @@ function generator$2t(configOptions = {}) {
           white-space: normal;
         }
         ${pseudoClass(
-          `${prefix}forced-color-adjust-auto`,
-          variants.accessibility
-        )} {
+      `${prefix}forced-color-adjust-auto`,
+      variants2.accessibility
+    )} {
           forced-color-adjust: auto;
         }
         ${pseudoClass(
-          `${prefix}forced-color-adjust-none`,
-          variants.accessibility
-        )} {
+      `${prefix}forced-color-adjust-none`,
+      variants2.accessibility
+    )} {
           forced-color-adjust: none;
         }
       `;
-  }, configOptions);
-
+  }, configOptions2);
   return responsiveCssString;
 }
 
-function generator$2s(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/alignContent.js
+function generator3(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}content`;
-
   const propertyOptions = {
     start: "flex-start",
     end: "flex-end",
     center: "center",
     between: "space-between",
     around: "space-around",
-    evenly: "space-evenly",
+    evenly: "space-evenly"
   };
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.alignContent)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.alignContent)} {
             align-content: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$2r(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/alignItems.js
+function generator4(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}items`;
-
   const propertyOptions = {
     start: "flex-start",
     end: "flex-end",
     center: "center",
     baseline: "baseline",
-    stretch: "stretch",
+    stretch: "stretch"
   };
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.alignItems)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.alignItems)} {
             align-items: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$2q(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/alignSelf.js
+function generator5(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}self`;
-
   const propertyOptions = {
     auto: "auto",
     start: "flex-start",
     end: "flex-end",
     center: "center",
-    stretch: "stretch",
+    stretch: "stretch"
   };
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.alignSelf)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.alignSelf)} {
             align-self: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$2p(configOptions = {}) {
-  const { prefix, variants = {} } = configOptions;
-
+// src/generators/appearance.js
+function generator6(configOptions2 = {}) {
+  const { prefix, variants: variants2 = {} } = configOptions2;
   const propertyOptions = ["auto", "none"];
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}appearance-${key}`, variants.appearance)} {
+          ${pseudoClass(`${prefix}appearance-${key}`, variants2.appearance)} {
             appearance: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$2o(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/aspect.js
+function generator7(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}aspect`;
-
-  const { spacing = {} } = theme;
-
+  const { spacing = {} } = theme2;
   let responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         spacing,
         (key) => `
-          ${pseudoClass(`${prefix}-h-${key}`, variants.aspect)} {
+          ${pseudoClass(`${prefix}-h-${key}`, variants2.aspect)} {
             --aspect-h: ${key};
           }
-          ${pseudoClass(`${prefix}-w-${key}`, variants.aspect)} {
+          ${pseudoClass(`${prefix}-w-${key}`, variants2.aspect)} {
             position: relative;
             padding-bottom: calc(var(--aspect-h) / var(--aspect-w) * 100%);
             --aspect-w: ${key};
@@ -1705,9 +1690,8 @@ function generator$2o(configOptions = {}) {
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   responsiveCssString += `
     .aspect>* {
       position: absolute;
@@ -1719,53 +1703,47 @@ function generator$2o(configOptions = {}) {
       left: 0;
     }
   `;
-
   return responsiveCssString;
 }
 
-function generator$2n(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/backgroundAttachment.js
+function generator8(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}bg`;
-
   const propertyOptions = ["fixed", "local", "scroll"];
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.backgroundAttachment)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.backgroundAttachment)} {
             background-attachment: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$2m(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/backgroundClip.js
+function generator9(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}bg-clip`;
-
   const propertyOptions = {
     border: "border-box",
     padding: "padding-box",
     content: "content-box",
-    text: "text",
+    text: "text"
   };
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.backgroundClip)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.backgroundClip)} {
             -webkit-background-clip: ${value};
             background-clip: ${value};
           }
@@ -1773,19 +1751,16 @@ function generator$2m(configOptions = {}) {
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$2l(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/backgroundColor.js
+function generator10(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}bg`;
-
-  const { backgroundColor = {} } = theme;
-
+  const { backgroundColor = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByColors }) => {
       const cssString = getCssByColors(
@@ -1796,7 +1771,7 @@ function generator$2l(configOptions = {}) {
             rgbPropertyValue = `background-color: rgba(${rgbValue}, var(--bg-opacity));`;
           }
           return `
-            ${pseudoClass(`${prefix}-${key}`, variants.backgroundColor, {})} {
+            ${pseudoClass(`${prefix}-${key}`, variants2.backgroundColor, {})} {
               --bg-opacity: 1;
               background-color: ${value};${rgbPropertyValue}
             }
@@ -1805,79 +1780,70 @@ function generator$2l(configOptions = {}) {
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$2k(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/backgroundImage.js
+function generator11(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}bg`;
-
-  const { backgroundImage = {} } = theme;
-
+  const { backgroundImage = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         backgroundImage,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.backgroundImage)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.backgroundImage)} {
             background-image: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$2j(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/backgroundOpacity.js
+function generator12(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}bg-opacity`;
-
-  const { backgroundOpacity = {} } = theme;
-
+  const { backgroundOpacity = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         backgroundOpacity,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.backgroundOpacity)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.backgroundOpacity)} {
             --bg-opacity: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$2i(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/backgroundOrigin.js
+function generator13(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}bg-origin`;
-
   const propertyOptions = {
     border: "border-box",
     padding: "padding-box",
-    content: "content-box",
+    content: "content-box"
   };
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.backgroundOrigin)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.backgroundOrigin)} {
             -webkit-background-origin: ${value};
             background-origin: ${value};
           }
@@ -1885,95 +1851,86 @@ function generator$2i(configOptions = {}) {
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$2h(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/backgroundPosition.js
+function generator14(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}bg`;
-
-  const { backgroundPosition = {} } = theme;
-
+  const { backgroundPosition = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         backgroundPosition,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.backgroundPosition)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.backgroundPosition)} {
             background-position: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$2g(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/backgroundRepeat.js
+function generator15(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}bg`;
-
   const propertyOptions = {
     repeat: "repeat",
     "no-repeat": "no-repeat",
     "repeat-x": "repeat-x",
     "repeat-y": "repeat-y",
     "repeat-round": "round",
-    "repeat-space": "space",
+    "repeat-space": "space"
   };
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.backgroundRepeat)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.backgroundRepeat)} {
             background-repeat: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$2f(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/backgroundSize.js
+function generator16(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}bg`;
-
-  const { backgroundSize = {} } = theme;
-
+  const { backgroundSize = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         backgroundSize,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.backgroundSize)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.backgroundSize)} {
             background-size: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$2e() {
+// src/generators/base.js
+function generator17() {
   return `
     html {
       line-height: 1.15;
@@ -2242,70 +2199,69 @@ function generator$2e() {
   `;
 }
 
-function generator$2d(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/blur.js
+function generator18(configOptions2 = {}) {
+  const {
+    prefix: globalPrefix,
+    variants: variants2 = {},
+    theme: theme2 = {},
+    vars: vars2 = {}
+  } = configOptions2;
   const prefix = `${globalPrefix}blur`;
   const basePrefix = prefix.replace(globalPrefix, "");
-
-  const { blur = {} } = theme;
-
+  const { blur = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(blur, (keyTmp, value) => {
         const key = keyTmp.toLowerCase() !== "default" ? `-${keyTmp}` : "";
         return `
-          ${pseudoClass(`${prefix}${key}`, variants.blur)} {
-            --blur: blur(${value}) !important;
+          ${pseudoClass(`${prefix}${key}`, variants2.blur)} {
+            --blur: ${value};
+            ${vars2.filter}
           }
           ${pseudoClass(
-            `${prefix.replace(basePrefix, `backdrop-${basePrefix}`)}${key}`,
-            variants.blur
-          )} {
-            --backdrop-blur: blur(${value}) !important;
+          `${prefix.replace(basePrefix, `backdrop-${basePrefix}`)}${key}`,
+          variants2.blur
+        )} {
+            --backdrop-blur: ${value};
+            ${vars2.backdropFilter}
           }
         `;
       });
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$2c(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/borderCollapse.js
+function generator19(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}border`;
-
   const propertyOptions = ["collapse", "separate"];
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.borderCollapse)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.borderCollapse)} {
             border-collapse: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$2b(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/borderColor.js
+function generator20(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}border`;
-
-  const { borderColor = {} } = theme;
-
+  const { borderColor = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByColors }) => {
       const cssString = getCssByColors(
@@ -2320,41 +2276,41 @@ function generator$2b(configOptions = {}) {
             rgbPropertyValue = `border-color: rgba(${rgbValue}, var(--border-opacity));`;
           }
           return `
-            ${pseudoClass(`${prefix}${key}`, variants.borderColor, {})} {
+            ${pseudoClass(`${prefix}${key}`, variants2.borderColor, {})} {
               --border-opacity: 1;
               border-color: ${value};${rgbPropertyValue}
             }
-            ${pseudoClass(`${prefix}-x${key}`, variants.borderColor, {})} {
+            ${pseudoClass(`${prefix}-x${key}`, variants2.borderColor, {})} {
               --border-opacity: 1;
               border-left-color: ${value};${rgbPropertyValue}
               border-right-color: ${value};${rgbPropertyValue}
             }
-            ${pseudoClass(`${prefix}-y${key}`, variants.borderColor, {})} {
+            ${pseudoClass(`${prefix}-y${key}`, variants2.borderColor, {})} {
               --border-opacity: 1;
               border-top-color: ${value};${rgbPropertyValue}
               border-bottom-color: ${value};${rgbPropertyValue}
             }
-            ${pseudoClass(`${prefix}-s${key}`, variants.borderColor, {})} {
+            ${pseudoClass(`${prefix}-s${key}`, variants2.borderColor, {})} {
               --border-opacity: 1;
               border-inline-start-color: ${value};${rgbPropertyValue}
             }
-            ${pseudoClass(`${prefix}-e${key}`, variants.borderColor, {})} {
+            ${pseudoClass(`${prefix}-e${key}`, variants2.borderColor, {})} {
               --border-opacity: 1;
               border-inline-end-color: ${value};${rgbPropertyValue}
             }
-            ${pseudoClass(`${prefix}-t${key}`, variants.borderColor, {})} {
+            ${pseudoClass(`${prefix}-t${key}`, variants2.borderColor, {})} {
               --border-opacity: 1;
               border-top-color: ${value};${rgbPropertyValue}
             }
-            ${pseudoClass(`${prefix}-r${key}`, variants.borderColor, {})} {
+            ${pseudoClass(`${prefix}-r${key}`, variants2.borderColor, {})} {
               --border-opacity: 1;
               border-right-color: ${value};${rgbPropertyValue}
             }
-            ${pseudoClass(`${prefix}-b${key}`, variants.borderColor, {})} {
+            ${pseudoClass(`${prefix}-b${key}`, variants2.borderColor, {})} {
               --border-opacity: 1;
               border-bottom-color: ${value};${rgbPropertyValue}
             }
-            ${pseudoClass(`${prefix}-l${key}`, variants.borderColor, {})} {
+            ${pseudoClass(`${prefix}-l${key}`, variants2.borderColor, {})} {
               --border-opacity: 1;
               border-left-color: ${value};${rgbPropertyValue}
             }
@@ -2363,130 +2319,121 @@ function generator$2b(configOptions = {}) {
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$2a(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/borderOpacity.js
+function generator21(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}border-opacity`;
-
-  const { borderOpacity = {} } = theme;
-
+  const { borderOpacity = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         borderOpacity,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.borderOpacity)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.borderOpacity)} {
             --border-opacity: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$29(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/borderRadius.js
+function generator22(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}rounded`;
-
-  const { borderRadius = {} } = theme;
-
+  const { borderRadius = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(borderRadius, (keyTmp, value) => {
         const key = keyTmp.toLowerCase() !== "default" ? `-${keyTmp}` : "";
         return `
-          ${pseudoClass(`${prefix}${key}`, variants.borderRadius)} {
+          ${pseudoClass(`${prefix}${key}`, variants2.borderRadius)} {
             border-radius: ${value};
           }
-          ${pseudoClass(`${prefix}-s${key}`, variants.borderRadius)} {
+          ${pseudoClass(`${prefix}-s${key}`, variants2.borderRadius)} {
             border-start-start-radius: ${value};
             border-end-start-radius: ${value};
           }
-          ${pseudoClass(`${prefix}-e${key}`, variants.borderRadius)} {
+          ${pseudoClass(`${prefix}-e${key}`, variants2.borderRadius)} {
             border-start-end-radius: ${value};
             border-end-end-radius: ${value};
           }
-          ${pseudoClass(`${prefix}-t${key}`, variants.borderRadius)} {
+          ${pseudoClass(`${prefix}-t${key}`, variants2.borderRadius)} {
             border-top-left-radius: ${value};
             border-top-right-radius: ${value};
           }
-          ${pseudoClass(`${prefix}-r${key}`, variants.borderRadius)} {
+          ${pseudoClass(`${prefix}-r${key}`, variants2.borderRadius)} {
             border-top-right-radius: ${value};
             border-bottom-right-radius: ${value};
           }
-          ${pseudoClass(`${prefix}-b${key}`, variants.borderRadius)} {
+          ${pseudoClass(`${prefix}-b${key}`, variants2.borderRadius)} {
             border-bottom-right-radius: ${value};
             border-bottom-left-radius: ${value};
           }
-          ${pseudoClass(`${prefix}-l${key}`, variants.borderRadius)} {
+          ${pseudoClass(`${prefix}-l${key}`, variants2.borderRadius)} {
             border-top-left-radius: ${value};
             border-bottom-left-radius: ${value};
           }
-          ${pseudoClass(`${prefix}-ss${key}`, variants.borderRadius)} {
+          ${pseudoClass(`${prefix}-ss${key}`, variants2.borderRadius)} {
             border-start-start-radius: ${value};
           }
-          ${pseudoClass(`${prefix}-se${key}`, variants.borderRadius)} {
+          ${pseudoClass(`${prefix}-se${key}`, variants2.borderRadius)} {
             border-start-end-radius: ${value};
           }
-          ${pseudoClass(`${prefix}-ee${key}`, variants.borderRadius)} {
+          ${pseudoClass(`${prefix}-ee${key}`, variants2.borderRadius)} {
             border-end-end-radius: ${value};
           }
-          ${pseudoClass(`${prefix}-es${key}`, variants.borderRadius)} {
+          ${pseudoClass(`${prefix}-es${key}`, variants2.borderRadius)} {
             border-end-start-radius: ${value};
           }
-          ${pseudoClass(`${prefix}-tl${key}`, variants.borderRadius)} {
+          ${pseudoClass(`${prefix}-tl${key}`, variants2.borderRadius)} {
             border-top-left-radius: ${value};
           }
-          ${pseudoClass(`${prefix}-tr${key}`, variants.borderRadius)} {
+          ${pseudoClass(`${prefix}-tr${key}`, variants2.borderRadius)} {
             border-top-right-radius: ${value};
           }
-          ${pseudoClass(`${prefix}-br${key}`, variants.borderRadius)} {
+          ${pseudoClass(`${prefix}-br${key}`, variants2.borderRadius)} {
             border-bottom-right-radius: ${value};
           }
-          ${pseudoClass(`${prefix}-bl${key}`, variants.borderRadius)} {
+          ${pseudoClass(`${prefix}-bl${key}`, variants2.borderRadius)} {
             border-bottom-left-radius: ${value};
           }
         `;
       });
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$28(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/borderSpacing.js
+function generator23(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}border-spacing`;
-
-  const { borderSpacing = {} } = theme;
-
+  const { borderSpacing = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(borderSpacing, (keyTmp, value) => {
         const key = keyTmp.toLowerCase() !== "default" ? `-${keyTmp}` : "";
         return `
-          ${pseudoClass(`${prefix}${key}`, variants.borderSpacing)} {
+          ${pseudoClass(`${prefix}${key}`, variants2.borderSpacing)} {
             border-spacing: ${value};
           }
-          ${pseudoClass(`${prefix}-x${key}`, variants.borderSpacing)} {
+          ${pseudoClass(`${prefix}-x${key}`, variants2.borderSpacing)} {
             --border-spacing-x: ${value};
             border-spacing: var(--border-spacing-x) var(--border-spacing-y, 0);
           }
-          ${pseudoClass(`${prefix}-y${key}`, variants.borderSpacing)} {
+          ${pseudoClass(`${prefix}-y${key}`, variants2.borderSpacing)} {
             --border-spacing-y: ${value};
             border-spacing: var(--border-spacing-x, 0) var(--border-spacing-y);
           }
@@ -2494,101 +2441,92 @@ function generator$28(configOptions = {}) {
       });
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$27(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/borderStyle.js
+function generator24(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}border`;
-
   const propertyOptions = ["solid", "dashed", "dotted", "double", "none"];
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.borderStyle)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.borderStyle)} {
             border-style: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$26(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/borderWidth.js
+function generator25(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}border`;
-
-  const { borderWidth = {} } = theme;
-
+  const { borderWidth = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(borderWidth, (keyTmp, value) => {
         const key = keyTmp.toLowerCase() !== "default" ? `-${keyTmp}` : "";
         return `
-          ${pseudoClass(`${prefix}${key}`, variants.borderWidth)} {
+          ${pseudoClass(`${prefix}${key}`, variants2.borderWidth)} {
             border-width: ${value};
           }
-          ${pseudoClass(`${prefix}-x${key}`, variants.borderWidth)} {
+          ${pseudoClass(`${prefix}-x${key}`, variants2.borderWidth)} {
             border-left-width: ${value};
             border-right-width: ${value};
           }
-          ${pseudoClass(`${prefix}-y${key}`, variants.borderWidth)} {
+          ${pseudoClass(`${prefix}-y${key}`, variants2.borderWidth)} {
             border-top-width: ${value};
             border-bottom-width: ${value};
           }
-          ${pseudoClass(`${prefix}-s${key}`, variants.borderWidth)} {
+          ${pseudoClass(`${prefix}-s${key}`, variants2.borderWidth)} {
             border-inline-start-width: ${value};
           }
-          ${pseudoClass(`${prefix}-e${key}`, variants.borderWidth)} {
+          ${pseudoClass(`${prefix}-e${key}`, variants2.borderWidth)} {
             border-inline-end-width: ${value};
           }
-          ${pseudoClass(`${prefix}-t${key}`, variants.borderWidth)} {
+          ${pseudoClass(`${prefix}-t${key}`, variants2.borderWidth)} {
             border-top-width: ${value};
           }
-          ${pseudoClass(`${prefix}-r${key}`, variants.borderWidth)} {
+          ${pseudoClass(`${prefix}-r${key}`, variants2.borderWidth)} {
             border-right-width: ${value};
           }
-          ${pseudoClass(`${prefix}-b${key}`, variants.borderWidth)} {
+          ${pseudoClass(`${prefix}-b${key}`, variants2.borderWidth)} {
             border-bottom-width: ${value};
           }
-          ${pseudoClass(`${prefix}-l${key}`, variants.borderWidth)} {
+          ${pseudoClass(`${prefix}-l${key}`, variants2.borderWidth)} {
             border-left-width: ${value};
           }
         `;
       });
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$25(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/boxDecorationBreak.js
+function generator26(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}box-decoration`;
-
   const propertyOptions = ["slice", "clone"];
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.boxDecorationBreak)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.boxDecorationBreak)} {
             box-decoration-break: ${value};
             -webkit-box-decoration-break: ${value};
           }
@@ -2596,30 +2534,25 @@ function generator$25(configOptions = {}) {
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$24(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/boxShadow.js
+function generator27(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}shadow`;
-
-  const { boxShadowColor, boxShadow = {} } = theme;
-
+  const { boxShadowColor, boxShadow = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions, getCssByColors }) => {
       let cssString = getCssByOptions(boxShadow, (keyTmp, value) => {
         const key = keyTmp.toLowerCase() !== "default" ? `-${keyTmp}` : "";
         const valueSplit = value.split(" ");
         return `
-          ${pseudoClass(`${prefix}${key}`, variants.boxShadow, {})} {
+          ${pseudoClass(`${prefix}${key}`, variants2.boxShadow, {})} {
             --shadow: ${value};
-            --shadow-colored: ${valueSplit
-              .slice(0, 4)
-              .join(" ")} var(--shadow-color);
+            --shadow-colored: ${valueSplit.slice(0, 4).join(" ")} var(--shadow-color);
             box-shadow: var(--ring-offset-shadow, 0 0 #0000),var(--ring-shadow, 0 0 #0000),var(--shadow);
           }
         `;
@@ -2630,7 +2563,7 @@ function generator$24(configOptions = {}) {
         let str = "";
         if (rgbValue) {
           str += `
-            ${pseudoClass(`${prefix}-${key}`, variants.boxShadow, {})} {
+            ${pseudoClass(`${prefix}-${key}`, variants2.boxShadow, {})} {
               --shadow-color: rgba(${rgbValue}, 0.5) !important;
               --shadow: var(--shadow-colored);
             }
@@ -2640,104 +2573,99 @@ function generator$24(configOptions = {}) {
       });
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$23(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/boxSizing.js
+function generator28(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}box`;
-
   const propertyOptions = {
     border: "border-box",
-    content: "content-box",
+    content: "content-box"
   };
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.boxSizing)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.boxSizing)} {
             box-sizing: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$22(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/brightness.js
+function generator29(configOptions2 = {}) {
+  const {
+    prefix: globalPrefix,
+    variants: variants2 = {},
+    theme: theme2 = {},
+    vars: vars2 = {}
+  } = configOptions2;
   const prefix = `${globalPrefix}brightness`;
   const basePrefix = prefix.replace(globalPrefix, "");
-
-  const { brightness = {} } = theme;
-
+  const { brightness = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(brightness, (keyTmp, value) => {
         const key = keyTmp.toLowerCase() !== "default" ? `-${keyTmp}` : "";
         return `
-          ${pseudoClass(`${prefix}${key}`, variants.brightness)} {
-            --brightness: brightness(${value}) !important;
+          ${pseudoClass(`${prefix}${key}`, variants2.brightness)} {
+            --brightness: ${value};
+            ${vars2.filter}
           }
           ${pseudoClass(
-            `${prefix.replace(basePrefix, `backdrop-${basePrefix}`)}${key}`,
-            variants.brightness
-          )} {
-            --backdrop-brightness: brightness(${value}) !important;
+          `${prefix.replace(basePrefix, `backdrop-${basePrefix}`)}${key}`,
+          variants2.brightness
+        )} {
+            --backdrop-brightness: ${value};
+            ${vars2.backdropFilter}
           }
         `;
       });
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$21(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/captionSide.js
+function generator30(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}caption`;
-
   const propertyOptions = ["top", "bottom"];
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.captionSide)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.captionSide)} {
             caption-side: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$20(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/caretColor.js
+function generator31(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}caret`;
-
-  const { caretColor, opacity = {} } = theme;
-
+  const { caretColor, opacity = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByColors, getCssByOptions }) => {
       let cssString = getCssByColors(caretColor, (key, value, rgbValue) => {
@@ -2746,7 +2674,7 @@ function generator$20(configOptions = {}) {
           rgbPropertyValue = `caret-color: rgba(${rgbValue}, var(--caret-opacity));`;
         }
         return `
-            ${pseudoClass(`${prefix}-${key}`, variants.caretColor, {})} {
+            ${pseudoClass(`${prefix}-${key}`, variants2.caretColor, {})} {
               --caret-opacity: 1;
               caret-color: ${value};${rgbPropertyValue}
             }
@@ -2755,50 +2683,45 @@ function generator$20(configOptions = {}) {
       cssString += getCssByOptions(
         opacity,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.caretColor, {})} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.caretColor, {})} {
             --caret-opacity: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1$(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/clear.js
+function generator32(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}clear`;
-
   const propertyOptions = ["left", "right", "both", "none"];
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.clear)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.clear)} {
             clear: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1_(configOptions = {}) {
-  const { prefix: globalPrefix = "", theme = {} } = configOptions;
-  const { screens = {} } = theme;
-
+// src/generators/container.js
+function generator33(configOptions2 = {}) {
+  const { prefix: globalPrefix = "", theme: theme2 = {} } = configOptions2;
+  const { screens = {} } = theme2;
   const prefix = `${globalPrefix}container`;
-
   const responsiveCssString = generateCssString(({ orientationPrefix }) => {
     let cssString = `
       .${orientationPrefix}${prefix} {
@@ -2815,48 +2738,50 @@ function generator$1_(configOptions = {}) {
       `;
     });
     return cssString;
-  }, configOptions);
-
+  }, configOptions2);
   return responsiveCssString;
 }
 
-function generator$1Z(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/contrast.js
+function generator34(configOptions2 = {}) {
+  const {
+    prefix: globalPrefix,
+    variants: variants2 = {},
+    theme: theme2 = {},
+    vars: vars2 = {}
+  } = configOptions2;
   const prefix = `${globalPrefix}contrast`;
   const basePrefix = prefix.replace(globalPrefix, "");
-
-  const { contrast = {} } = theme;
-
+  const { contrast = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(contrast, (keyTmp, value) => {
         const key = keyTmp.toLowerCase() !== "default" ? `-${keyTmp}` : "";
         return `
-          ${pseudoClass(`${prefix}${key}`, variants.contrast)} {
-            --contrast: contrast(${value}) !important;
+          ${pseudoClass(`${prefix}${key}`, variants2.contrast)} {
+            --contrast: ${value};
+            ${vars2.filter}
           }
           ${pseudoClass(
-            `${prefix.replace(basePrefix, `backdrop-${basePrefix}`)}${key}`,
-            variants.contrast
-          )} {
-            --backdrop-contrast: contrast(${value}) !important;
+          `${prefix.replace(basePrefix, `backdrop-${basePrefix}`)}${key}`,
+          variants2.contrast
+        )} {
+            --backdrop-contrast: ${value};
+            ${vars2.backdropFilter}
           }
         `;
       });
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1Y(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/cursor.js
+function generator35(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}cursor`;
-
   const propertyOptions = [
     "auto",
     "default",
@@ -2893,30 +2818,28 @@ function generator$1Y(configOptions = {}) {
     "nesw-resize",
     "nwse-resize",
     "zoom-in",
-    "zoom-out",
+    "zoom-out"
   ];
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.cursor)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.cursor)} {
             cursor: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1X(configOptions = {}) {
-  const { prefix, variants = {} } = configOptions;
-
+// src/generators/display.js
+function generator36(configOptions2 = {}) {
+  const { prefix, variants: variants2 = {} } = configOptions2;
   const propertyOptions = [
     "block",
     "inline-block",
@@ -2936,37 +2859,33 @@ function generator$1X(configOptions = {}) {
     "grid",
     "inline-grid",
     "contents",
-    "none",
+    "none"
   ];
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
           ${pseudoClass(
-            key === "none" ? `${prefix}hidden` : `${prefix}${key}`,
-            variants.display
-          )} {
+          key === "none" ? `${prefix}hidden` : `${prefix}${key}`,
+          variants2.display
+        )} {
             display: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1W(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/divideColor.js
+function generator37(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}divide`;
-
-  const { divideColor = {} } = theme;
-
+  const { divideColor = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByColors }) => {
       const cssString = getCssByColors(divideColor, (key, value, rgbValue) => {
@@ -2976,11 +2895,10 @@ function generator$1W(configOptions = {}) {
         }
         return `
             ${pseudoClass(
-              (pseudoString) =>
-                `${prefix}-${key}${pseudoString} > :not([hidden]) ~ :not([hidden])`,
-              variants.divideColor,
-              {}
-            )} {
+          (pseudoString) => `${prefix}-${key}${pseudoString} > :not([hidden]) ~ :not([hidden])`,
+          variants2.divideColor,
+          {}
+        )} {
               --divide-opacity: 1;
               border-color: ${value};${rgbPropertyValue}
             }
@@ -2988,77 +2906,66 @@ function generator$1W(configOptions = {}) {
       });
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1V(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/divideOpacity.js
+function generator38(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}divide-opacity`;
-
-  const { divideOpacity = {} } = theme;
-
+  const { divideOpacity = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         divideOpacity,
         (key, value) => `
           ${pseudoClass(
-            (pseudoString) =>
-              `${prefix}-${key}${pseudoString} > :not([hidden]) ~ :not([hidden])`,
-            variants.divideOpacity
-          )} {
+          (pseudoString) => `${prefix}-${key}${pseudoString} > :not([hidden]) ~ :not([hidden])`,
+          variants2.divideOpacity
+        )} {
             --divide-opacity: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1U(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/divideStyle.js
+function generator39(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}divide`;
-
   const propertyOptions = ["solid", "dashed", "dotted", "double", "none"];
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
           ${pseudoClass(
-            (pseudoString) =>
-              `${prefix}-${key}${pseudoString} > :not([hidden]) ~ :not([hidden])`,
-            variants.divideStyle
-          )} {
+          (pseudoString) => `${prefix}-${key}${pseudoString} > :not([hidden]) ~ :not([hidden])`,
+          variants2.divideStyle
+        )} {
             border-style: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1T(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/divideWidth.js
+function generator40(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}divide`;
-
-  const { divideWidth = {} } = theme;
-
+  const { divideWidth = {} } = theme2;
   const responsiveCssString = generateCssString(({ pseudoClass }) => {
     const generateDivideWidth = (position, keyTmp, value) => {
       let dividePosition = "x";
@@ -3072,17 +2979,15 @@ function generator$1T(configOptions = {}) {
       const key = keyTmp.toLowerCase() !== "default" ? `-${keyTmp}` : "";
       return `
           ${pseudoClass(
-            (pseudoString) =>
-              `${prefix}-${dividePosition}${key}${pseudoString} > :not([hidden]) ~ :not([hidden])`,
-            variants.divideWidth
-          )}  {
+        (pseudoString) => `${prefix}-${dividePosition}${key}${pseudoString} > :not([hidden]) ~ :not([hidden])`,
+        variants2.divideWidth
+      )}  {
             --divide-${dividePosition}-reverse: 0;
             border-${borderPosition1}-width: calc(${value} * calc(1 - var(--divide-${dividePosition}-reverse)));
             border-${borderPosition2}-width: calc(${value} * var(--divide-${dividePosition}-reverse));
           }
         `;
     };
-
     let cssString = "";
     Object.entries(divideWidth).forEach(([key, value]) => {
       cssString += generateDivideWidth("y", key, value);
@@ -3090,297 +2995,246 @@ function generator$1T(configOptions = {}) {
     });
     cssString += `
         ${pseudoClass(
-          (pseudoString) =>
-            `${prefix}-y-reverse${pseudoString} > :not([hidden]) ~ :not([hidden])`,
-          variants.divideWidth
-        )} {
+      (pseudoString) => `${prefix}-y-reverse${pseudoString} > :not([hidden]) ~ :not([hidden])`,
+      variants2.divideWidth
+    )} {
           --divide-y-reverse: 1;
         }
         ${pseudoClass(
-          (pseudoString) =>
-            `${prefix}-x-reverse${pseudoString} > :not([hidden]) ~ :not([hidden])`,
-          variants.divideWidth
-        )} {
+      (pseudoString) => `${prefix}-x-reverse${pseudoString} > :not([hidden]) ~ :not([hidden])`,
+      variants2.divideWidth
+    )} {
           --divide-x-reverse: 1;
         }
       `;
     return cssString;
-  }, configOptions);
-
+  }, configOptions2);
   return responsiveCssString;
 }
 
-function generator$1S(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/dropShadow.js
+function generator41(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}drop-shadow`;
-
-  const { dropShadow = {} } = theme;
-
+  const { dropShadow = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(dropShadow, (keyTmp, value) => {
         const key = keyTmp.toLowerCase() !== "default" ? `-${keyTmp}` : "";
         const values = value.split(",").map((o) => `drop-shadow(${o.trim()})`);
         return `
-          ${pseudoClass(`${prefix}${key}`, variants.dropShadow)} {
+          ${pseudoClass(`${prefix}${key}`, variants2.dropShadow)} {
             --drop-shadow:  ${values.join(" ")} !important;
           }
         `;
       });
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1R(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/fill.js
+function generator42(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}fill`;
-
-  const { fill = {} } = theme;
-
+  const { fill = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByColors }) => {
       const cssString = getCssByColors(fill, (key, value) => {
         return `
-            ${pseudoClass(`${prefix}-${key}`, variants.textColor, {})} {
+            ${pseudoClass(`${prefix}-${key}`, variants2.textColor, {})} {
               fill: ${value};
             }
           `;
       });
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1Q({ prefix }) {
+// src/generators/filter.js
+function generator43({ prefix }) {
   return `    
-  .${prefix}filter {
-    --blur: ;
-    --brightness: ;
-    --contrast: ;
-    --grayscale: ;
-    --hue-rotate: ;
-    --invert: ;
-    --saturate: ;
-    --sepia: ;
-    --drop-shadow: ;
-    filter: var(--blur) var(--brightness) var(--contrast) var(--grayscale) var(--hue-rotate) var(--invert) var(--saturate) var(--sepia) var(--drop-shadow);
-
-    --backdrop-blur: ;
-    --backdrop-brightness: ;
-    --backdrop-contrast: ;
-    --backdrop-grayscale: ;
-    --backdrop-hue-rotate: ;
-    --backdrop-invert: ;
-    --backdrop-opacity: ;
-    --backdrop-saturate: ;
-    --backdrop-sepia: ;
-    -webkit-backdrop-filter: var(--backdrop-blur) var(--backdrop-brightness) var(--backdrop-contrast) var(--backdrop-grayscale) var(--backdrop-hue-rotate) var(--backdrop-invert) var(--backdrop-opacity) var(--backdrop-saturate) var(--backdrop-sepia);
-    backdrop-filter: var(--backdrop-blur) var(--backdrop-brightness) var(--backdrop-contrast) var(--backdrop-grayscale) var(--backdrop-hue-rotate) var(--backdrop-invert) var(--backdrop-opacity) var(--backdrop-saturate) var(--backdrop-sepia);
-  }
   .${prefix}filter-none {
-    filter: none;
-    backdrop-filter: none;
+    filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
   }
 `;
 }
 
-function generator$1P(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/flex.js
+function generator44(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}flex`;
-
-  const { flex = {} } = theme;
-
+  const { flex = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         flex,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.flex)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.flex)} {
             flex: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1O(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/flexBasis.js
+function generator45(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}basis`;
-
-  const { flexBasis = {} } = theme;
-
+  const { flexBasis = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         flexBasis,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.flexBasis)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.flexBasis)} {
             flex-basis: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1N(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/flexDirection.js
+function generator46(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}flex`;
-
   const propertyOptions = {
     row: "row",
     "row-reverse": "row-reverse",
     col: "column",
-    "col-reverse": "column-reverse",
+    "col-reverse": "column-reverse"
   };
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.flexDirection)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.flexDirection)} {
             flex-direction: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1M(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/flexGrow.js
+function generator47(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}grow`;
-
-  const { flexGrow = {} } = theme;
-
+  const { flexGrow = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         flexGrow,
         (key, value) => `
           ${pseudoClass(
-            key.toLowerCase() === "default" ? prefix : `${prefix}-${key}`,
-            variants.flexGrow
-          )} {
+          key.toLowerCase() === "default" ? prefix : `${prefix}-${key}`,
+          variants2.flexGrow
+        )} {
             flex-grow: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1L(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/flexShrink.js
+function generator48(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}shrink`;
-
-  const { flexShrink = {} } = theme;
-
+  const { flexShrink = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         flexShrink,
         (key, value) => `
           ${pseudoClass(
-            key.toLowerCase() === "default" ? prefix : `${prefix}-${key}`,
-            variants.flexShrink
-          )} {
+          key.toLowerCase() === "default" ? prefix : `${prefix}-${key}`,
+          variants2.flexShrink
+        )} {
             flex-shrink: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1K(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/flexWrap.js
+function generator49(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}flex`;
-
   const propertyOptions = {
     wrap: "wrap",
     "wrap-reverse": "wrap-reverse",
     "no-wrap": "nowrap",
-    nowrap: "nowrap",
+    nowrap: "nowrap"
   };
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.flexWrap)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.flexWrap)} {
             flex-wrap: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1J(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/float.js
+function generator50(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}float`;
-
   const propertyOptions = ["left", "right", "none"];
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       let cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.float)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.float)} {
             float: ${value};
           }
         `
       );
       cssString += `
         ${pseudoClass(
-          (pseudoString) => `${globalPrefix}clearfix${pseudoString}:after`,
-          variants.float
-        )} {
+        (pseudoString) => `${globalPrefix}clearfix${pseudoString}:after`,
+        variants2.float
+      )} {
           content: "";
           display: table;
           clear: both;
@@ -3388,88 +3242,81 @@ function generator$1J(configOptions = {}) {
       `;
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1I(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/fontSize.js
+function generator51(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}text`;
-
-  const { fontSize = {} } = theme;
-
+  const { fontSize = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         fontSize,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.fontSize)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.fontSize)} {
             font-size: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1H(configOptions = {}) {
-  const { prefix, variants = {} } = configOptions;
-
+// src/generators/fontSmoothing.js
+function generator52(configOptions2 = {}) {
+  const { prefix, variants: variants2 = {} } = configOptions2;
   const responsiveCssString = generateCssString(({ pseudoClass }) => {
     return `
-        ${pseudoClass(`${prefix}antialiased`, variants.fontSmoothing)} {
+        ${pseudoClass(`${prefix}antialiased`, variants2.fontSmoothing)} {
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
         }
         ${pseudoClass(
-          `${prefix}subpixel-antialiased`,
-          variants.fontSmoothing
-        )} {
+      `${prefix}subpixel-antialiased`,
+      variants2.fontSmoothing
+    )} {
           -webkit-font-smoothing: auto;
           -moz-osx-font-smoothing: auto;
         }
       `;
-  }, configOptions);
-
+  }, configOptions2);
   return responsiveCssString;
 }
 
-function generator$1G(configOptions = {}) {
-  const { prefix, variants = {} } = configOptions;
-
+// src/generators/fontStyle.js
+function generator53(configOptions2 = {}) {
+  const { prefix, variants: variants2 = {} } = configOptions2;
   const propertyOptions = {
     italic: "italic",
-    "not-italic": "normal",
+    "not-italic": "normal"
   };
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}${key}`, variants.fontStyle)} {
+          ${pseudoClass(`${prefix}${key}`, variants2.fontStyle)} {
             font-style: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1F(configOptions = {}) {
-  const { prefix, variants = {} } = configOptions;
-
+// src/generators/fontVariantNumeric.js
+function generator54(configOptions2 = {}) {
+  const { prefix, variants: variants2 = {} } = configOptions2;
   const propertyOptions = {
     "normal-nums": "normal",
     ordinal: "ordinal",
@@ -3479,99 +3326,87 @@ function generator$1F(configOptions = {}) {
     "proportional-nums": "proportional-nums",
     "tabular-nums": "tabular-nums",
     "diagonal-fractions": "diagonal-fractions",
-    "stacked-fractions": "stacked-fractions",
+    "stacked-fractions": "stacked-fractions"
   };
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.fontVariantNumeric)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.fontVariantNumeric)} {
             font-variant-numeric: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1E(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/fontWeight.js
+function generator55(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}font`;
-
-  const { fontWeight = {} } = theme;
-
+  const { fontWeight = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         fontWeight,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.fontWeight)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.fontWeight)} {
             font-weight: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1D(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/gap.js
+function generator56(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}gap`;
-
-  const { gap = {} } = theme;
-
+  const { gap = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         gap,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.gap)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.gap)} {
             gap: ${value};
           }
-          ${pseudoClass(`${prefix}-x-${key}`, variants.gap)} {
+          ${pseudoClass(`${prefix}-x-${key}`, variants2.gap)} {
             column-gap: ${value};
           }
-          ${pseudoClass(`${prefix}-y-${key}`, variants.gap)} {
+          ${pseudoClass(`${prefix}-y-${key}`, variants2.gap)} {
             row-gap: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1C(configOptions = {}) {
-  const { prefix, variants = {}, theme = {} } = configOptions;
-
-  const { gradientColorStops = {} } = theme;
-
+// src/generators/gradientColorStops.js
+function generator57(configOptions2 = {}) {
+  const { prefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
+  const { gradientColorStops = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByColors }) => {
       const cssString = getCssByColors(
         gradientColorStops,
         (key, value, rgbValue) => {
-          let rgbFromPropertyValue =
-            "--gradient-color-stops: var(--gradient-from-color),var(--gradient-to-color,rgba(255,255,255,0));";
-          let rgbViaPropertyValue =
-            "--gradient-color-stops: var(--gradient-from-color),var(--gradient-via-color),var(--gradient-to-color,rgba(255,255,255,0));";
-          let rgbToPropertyValue =
-            "--gradient-color-stops: var(--gradient-from-color),var(--gradient-to-color,rgba(255,255,255,0));";
+          let rgbFromPropertyValue = "--gradient-color-stops: var(--gradient-from-color),var(--gradient-to-color,rgba(255,255,255,0));";
+          let rgbViaPropertyValue = "--gradient-color-stops: var(--gradient-from-color),var(--gradient-via-color),var(--gradient-to-color,rgba(255,255,255,0));";
+          let rgbToPropertyValue = "--gradient-color-stops: var(--gradient-from-color),var(--gradient-to-color,rgba(255,255,255,0));";
           if (rgbValue) {
             rgbFromPropertyValue = `--gradient-color-stops: var(--gradient-from-color),var(--gradient-to-color,rgba(${rgbValue},0));`;
             rgbViaPropertyValue = `--gradient-color-stops: var(--gradient-from-color),var(--gradient-via-color),var(--gradient-to-color,rgba(${rgbValue},0));`;
@@ -3579,24 +3414,24 @@ function generator$1C(configOptions = {}) {
           }
           return `
             ${pseudoClass(
-              `${prefix}from-${key}`,
-              variants.gradientColorStops,
-              {}
-            )} {
+            `${prefix}from-${key}`,
+            variants2.gradientColorStops,
+            {}
+          )} {
               --gradient-from-color: ${value};${rgbFromPropertyValue}
             }
             ${pseudoClass(
-              `${prefix}via-${key}`,
-              variants.gradientColorStops,
-              {}
-            )} {
+            `${prefix}via-${key}`,
+            variants2.gradientColorStops,
+            {}
+          )} {
               --gradient-via-color: ${value};${rgbViaPropertyValue}
             }
             ${pseudoClass(
-              `${prefix}to-${key}`,
-              variants.gradientColorStops,
-              {}
-            )} {
+            `${prefix}to-${key}`,
+            variants2.gradientColorStops,
+            {}
+          )} {
               --gradient-to-color: ${value};${rgbToPropertyValue}
             }
           `;
@@ -3604,290 +3439,262 @@ function generator$1C(configOptions = {}) {
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1B(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/grayscale.js
+function generator58(configOptions2 = {}) {
+  const {
+    prefix: globalPrefix,
+    variants: variants2 = {},
+    theme: theme2 = {},
+    vars: vars2 = {}
+  } = configOptions2;
   const prefix = `${globalPrefix}grayscale`;
   const basePrefix = prefix.replace(globalPrefix, "");
-
-  const { grayscale = {} } = theme;
-
+  const { grayscale = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(grayscale, (keyTmp, value) => {
         const key = keyTmp.toLowerCase() !== "default" ? `-${keyTmp}` : "";
         return `
-          ${pseudoClass(`${prefix}${key}`, variants.grayscale)} {
-            --grayscale: grayscale(${value}) !important;
+          ${pseudoClass(`${prefix}${key}`, variants2.grayscale)} {
+            --grayscale: ${value};
+            ${vars2.filter}
           }
           ${pseudoClass(
-            `${prefix.replace(basePrefix, `backdrop-${basePrefix}`)}${key}`,
-            variants.grayscale
-          )} {
-            --backdrop-grayscale: grayscale(${value}) !important;
+          `${prefix.replace(basePrefix, `backdrop-${basePrefix}`)}${key}`,
+          variants2.grayscale
+        )} {
+            --backdrop-grayscale: ${value};
+            ${vars2.backdropFilter}
           }
         `;
       });
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1A(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/gridAutoColumns.js
+function generator59(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   let prefix = `${globalPrefix}auto-cols`;
-
-  const { gridAutoColumns = {} } = theme;
-
+  const { gridAutoColumns = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         gridAutoColumns,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.gridAutoColumns)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.gridAutoColumns)} {
             grid-auto-columns: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1z(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/gridAutoFlow.js
+function generator60(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}grid-flow`;
-
   const propertyOptions = {
     row: "row",
     col: "column",
     "row-dense": "row dense",
-    "col-dense": "column dense",
+    "col-dense": "column dense"
   };
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.gridAutoFlow)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.gridAutoFlow)} {
             grid-auto-flow: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1y(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/gridAutoRows.js
+function generator61(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   let prefix = `${globalPrefix}auto-rows`;
-
-  const { gridAutoRows = {} } = theme;
-
+  const { gridAutoRows = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         gridAutoRows,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.gridAutoRows)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.gridAutoRows)} {
             grid-auto-rows: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1x(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/gridColumn.js
+function generator62(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   let prefix = `${globalPrefix}col`;
-
-  const { gridColumn = {} } = theme;
-
+  const { gridColumn = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         gridColumn,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.gridColumn)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.gridColumn)} {
             grid-column: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1w(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/gridColumnEnd.js
+function generator63(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   let prefix = `${globalPrefix}col-end`;
-
-  const { gridColumnEnd = {} } = theme;
-
+  const { gridColumnEnd = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         gridColumnEnd,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.gridColumnEnd)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.gridColumnEnd)} {
             grid-column-end: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1v(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/gridColumnStart.js
+function generator64(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   let prefix = `${globalPrefix}col-start`;
-
-  const { gridColumnStart = {} } = theme;
-
+  const { gridColumnStart = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         gridColumnStart,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.gridColumnStart)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.gridColumnStart)} {
             grid-column-start: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1u(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/gridRow.js
+function generator65(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   let prefix = `${globalPrefix}row`;
-
-  const { gridRow = {} } = theme;
-
+  const { gridRow = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         gridRow,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.gridRow)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.gridRow)} {
             grid-row: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1t(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/gridRowEnd.js
+function generator66(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   let prefix = `${globalPrefix}row-end`;
-
-  const { gridRowEnd = {} } = theme;
-
+  const { gridRowEnd = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         gridRowEnd,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.gridRowEnd)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.gridRowEnd)} {
             grid-row-end: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1s(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/gridRowStart.js
+function generator67(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   let prefix = `${globalPrefix}row-start`;
-
-  const { gridRowStart = {} } = theme;
-
+  const { gridRowStart = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         gridRowStart,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.gridRowStart)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.gridRowStart)} {
             grid-row-start: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1r(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/gridTemplateColumns.js
+function generator68(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   let prefix = `${globalPrefix}grid-cols`;
-
-  const { gridTemplateColumns = {} } = theme;
-
+  const { gridTemplateColumns = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       let cssString = getCssByOptions(
         gridTemplateColumns,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.gridTemplateColumns)} {
-            grid-template-columns: ${
-              isNaN(value) ? value : `repeat(${value}, minmax(0, 1fr))`
-            };
+          ${pseudoClass(`${prefix}-${key}`, variants2.gridTemplateColumns)} {
+            grid-template-columns: ${isNaN(value) ? value : `repeat(${value}, minmax(0, 1fr))`};
           }
         `
       );
@@ -3901,28 +3708,23 @@ function generator$1r(configOptions = {}) {
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1q(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/gridTemplateRows.js
+function generator69(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   let prefix = `${globalPrefix}grid-rows`;
-
-  const { gridTemplateRows = {} } = theme;
-
+  const { gridTemplateRows = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       let cssString = getCssByOptions(
         gridTemplateRows,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.gridTemplateRows)} {
-            grid-template-rows: ${
-              isNaN(value) ? value : `repeat(${value}, minmax(0, 1fr));`
-            };
+          ${pseudoClass(`${prefix}-${key}`, variants2.gridTemplateRows)} {
+            grid-template-rows: ${isNaN(value) ? value : `repeat(${value}, minmax(0, 1fr));`};
           }
         `
       );
@@ -3936,85 +3738,94 @@ function generator$1q(configOptions = {}) {
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1p(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/height.js
+function generator70(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}h`;
-
-  const { height = {} } = theme;
-
+  const { height = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         height,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.height)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.height)} {
             height: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1o(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
-  const { hueRotate = {} } = theme;
-
+// src/generators/hueRotate.js
+function generator71(configOptions2 = {}) {
+  const {
+    prefix: globalPrefix,
+    variants: variants2 = {},
+    theme: theme2 = {},
+    vars: vars2 = {}
+  } = configOptions2;
+  const { hueRotate = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
-      const cssString = getCssByOptions(hueRotate, (keyTmp, value) => {
-        let prefix = `${globalPrefix}hue-rotate`;
+      const cssString = getCssByOptions(hueRotate, (key, value) => {
+        const prefix = `${globalPrefix}hue-rotate`;
+        const negativePrefix = `${globalPrefix}-hue-rotate`;
         const basePrefix = prefix.replace(globalPrefix, "");
-        let key = keyTmp;
-        if (`${key}`.indexOf("-") >= 0) {
-          key = key.split("-").join("");
-          prefix = `${globalPrefix}-hue-rotate`;
-        }
         return `
-          ${pseudoClass(`${prefix}-${key}`, variants.hueRotate)} {
-            --hue-rotate: hue-rotate(${value}) !important;
+          ${pseudoClass(`${prefix}-${key}`, variants2.hueRotate)} {
+            --hue-rotate: ${value};
+            ${vars2.filter}
           }
           ${pseudoClass(
-            `${prefix.replace(basePrefix, `backdrop-${basePrefix}`)}-${key}`,
-            variants.hueRotate
-          )} {
-            --backdrop-hue-rotate: hue-rotate(${value}) !important;
+          `${prefix.replace(basePrefix, `backdrop-${basePrefix}`)}-${key}`,
+          variants2.hueRotate
+        )} {
+            --backdrop-hue-rotate: ${value};
+            ${vars2.backdropFilter}
+          }
+          ${pseudoClass(`${negativePrefix}-${key}`, variants2.hueRotate)} {
+            --hue-rotate: -${value};
+            ${vars2.filter}
+          }
+          ${pseudoClass(
+          `${negativePrefix.replace(
+            basePrefix,
+            `backdrop-${basePrefix}`
+          )}-${key}`,
+          variants2.hueRotate
+        )} {
+            --backdrop-hue-rotate: -${value};
+            ${vars2.backdropFilter}
           }
         `;
       });
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1n(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/hyphens.js
+function generator72(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}hyphens`;
-
   const propertyOptions = ["none", "manual", "auto"];
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.hyphens)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.hyphens)} {
             -webkit-hyphens: ${value};
             hyphens: ${value};
           }
@@ -4022,21 +3833,18 @@ function generator$1n(configOptions = {}) {
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1m(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
-  const { inset = {} } = theme;
-
+// src/generators/inset.js
+function generator73(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
+  const { inset = {} } = theme2;
   Object.entries(inset).forEach(([key, value]) => {
     inset[`-${key}`] = `-${value}`.replace("--", "-");
   });
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(inset, (keyTmp, value) => {
@@ -4047,222 +3855,208 @@ function generator$1m(configOptions = {}) {
           prefix += "-";
         }
         return `
-          ${pseudoClass(`${prefix}inset-${key}`, variants.inset)} {
+          ${pseudoClass(`${prefix}inset-${key}`, variants2.inset)} {
             right: ${value};
             left: ${value};
             top: ${value};
             bottom: ${value};
           }
-          ${pseudoClass(`${prefix}inset-x-${key}`, variants.inset)} {
+          ${pseudoClass(`${prefix}inset-x-${key}`, variants2.inset)} {
             right: ${value};
             left: ${value};
           }
-          ${pseudoClass(`${prefix}inset-y-${key}`, variants.inset)} {
+          ${pseudoClass(`${prefix}inset-y-${key}`, variants2.inset)} {
             top: ${value};
             bottom: ${value};
           }
-          ${pseudoClass(`${prefix}right-${key}`, variants.inset)} {
+          ${pseudoClass(`${prefix}right-${key}`, variants2.inset)} {
             right: ${value};
           }
-          ${pseudoClass(`${prefix}left-${key}`, variants.inset)} {
+          ${pseudoClass(`${prefix}left-${key}`, variants2.inset)} {
             left: ${value};
           }
-          ${pseudoClass(`${prefix}top-${key}`, variants.inset)} {
+          ${pseudoClass(`${prefix}top-${key}`, variants2.inset)} {
             top: ${value};
           }
-          ${pseudoClass(`${prefix}bottom-${key}`, variants.inset)} {
+          ${pseudoClass(`${prefix}bottom-${key}`, variants2.inset)} {
             bottom: ${value};
           }
         `;
       });
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1l(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/invert.js
+function generator74(configOptions2 = {}) {
+  const {
+    prefix: globalPrefix,
+    variants: variants2 = {},
+    theme: theme2 = {},
+    vars: vars2 = {}
+  } = configOptions2;
   const prefix = `${globalPrefix}invert`;
   const basePrefix = prefix.replace(globalPrefix, "");
-
-  const { invert = {} } = theme;
-
+  const { invert = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(invert, (keyTmp, value) => {
         const key = keyTmp.toLowerCase() !== "default" ? `-${keyTmp}` : "";
         return `
-          ${pseudoClass(`${prefix}${key}`, variants.invert)} {
-            --invert: invert(${value}) !important;
+          ${pseudoClass(`${prefix}${key}`, variants2.invert)} {
+            --invert: ${value};
+            ${vars2.filter}
           }
           ${pseudoClass(
-            `${prefix.replace(basePrefix, `backdrop-${basePrefix}`)}${key}`,
-            variants.invert
-          )} {
-            --backdrop-invert: invert(${value}) !important;
+          `${prefix.replace(basePrefix, `backdrop-${basePrefix}`)}${key}`,
+          variants2.invert
+        )} {
+            --backdrop-invert: ${value};
+            ${vars2.backdropFilter}
           }
         `;
       });
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1k(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/isolation.js
+function generator75(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}`;
-
   const propertyOptions = {
     isolate: "isolate",
-    "isolation-auto": "no-repeat",
+    "isolation-auto": "no-repeat"
   };
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}${key}`, variants.isolation)} {
+          ${pseudoClass(`${prefix}${key}`, variants2.isolation)} {
             isolation: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1j(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/justifyContent.js
+function generator76(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}justify`;
-
   const propertyOptions = {
     start: "flex-start",
     end: "flex-end",
     center: "center",
     between: "space-between",
     around: "space-around",
-    evenly: "space-evenly",
+    evenly: "space-evenly"
   };
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.justifyContent)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.justifyContent)} {
             justify-content: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1i(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/justifyItems.js
+function generator77(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}justify-items`;
-
   const propertyOptions = ["auto", "start", "end", "center", "stretch"];
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.justifyItems)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.justifyItems)} {
             justify-items: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1h(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/justifySelf.js
+function generator78(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}justify-self`;
-
   const propertyOptions = ["auto", "start", "end", "center", "stretch"];
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.justifySelf)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.justifySelf)} {
             justify-self: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1g(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/letterSpacing.js
+function generator79(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}tracking`;
-
-  const { letterSpacing = {} } = theme;
-
+  const { letterSpacing = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         letterSpacing,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.letterSpacing)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.letterSpacing)} {
             letter-spacing: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1f(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/lineClamp.js
+function generator80(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}line-clamp`;
-
-  const { lineClamp = {} } = theme;
-
+  const { lineClamp = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         lineClamp,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.lineClamp)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.lineClamp)} {
             overflow: hidden;
             display: -webkit-box;
             -webkit-box-orient: ${value === "none" ? "horizontal" : "vertical"};
@@ -4272,96 +4066,84 @@ function generator$1f(configOptions = {}) {
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1e(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/lineHeight.js
+function generator81(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}leading`;
-
-  const { lineHeight = {} } = theme;
-
+  const { lineHeight = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         lineHeight,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.lineHeight)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.lineHeight)} {
             line-height: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1d(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/listStylePosition.js
+function generator82(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}list`;
-
   const propertyOptions = ["inside", "outside"];
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.listStylePosition)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.listStylePosition)} {
             list-style-position: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1c(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/listStyleType.js
+function generator83(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}list`;
-
-  const { listStyleType = {} } = theme;
-
+  const { listStyleType = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         listStyleType,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.listStyleType)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.listStyleType)} {
             list-style-type: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1b(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
-  const { margin = {} } = theme;
-
+// src/generators/margin.js
+function generator84(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
+  const { margin = {} } = theme2;
   Object.entries(margin).forEach(([key, value]) => {
     margin[`-${key}`] = `-${value}`.replace("--", "-");
   });
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(margin, (keyTmp, value) => {
@@ -4372,150 +4154,136 @@ function generator$1b(configOptions = {}) {
           prefix = `${globalPrefix}-m`;
         }
         return `
-          ${pseudoClass(`${prefix}-${key}`, variants.margin)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.margin)} {
             margin: ${value};
           }
-          ${pseudoClass(`${prefix}y-${key}`, variants.margin)} {
+          ${pseudoClass(`${prefix}y-${key}`, variants2.margin)} {
             margin-top: ${value};
             margin-bottom: ${value};
           }
-          ${pseudoClass(`${prefix}x-${key}`, variants.margin)} {
+          ${pseudoClass(`${prefix}x-${key}`, variants2.margin)} {
             margin-left: ${value};
             margin-right: ${value};
           }
-          ${pseudoClass(`${prefix}t-${key}`, variants.margin)} {
+          ${pseudoClass(`${prefix}t-${key}`, variants2.margin)} {
             margin-top: ${value};
           }
-          ${pseudoClass(`${prefix}r-${key}`, variants.margin)} {
+          ${pseudoClass(`${prefix}r-${key}`, variants2.margin)} {
             margin-right: ${value};
           }
-          ${pseudoClass(`${prefix}b-${key}`, variants.margin)} {
+          ${pseudoClass(`${prefix}b-${key}`, variants2.margin)} {
             margin-bottom: ${value};
           }
-          ${pseudoClass(`${prefix}l-${key}`, variants.margin)} {
+          ${pseudoClass(`${prefix}l-${key}`, variants2.margin)} {
             margin-left: ${value};
           }
-          ${pseudoClass(`${prefix}s-${key}`, variants.margin)} {
+          ${pseudoClass(`${prefix}s-${key}`, variants2.margin)} {
             margin-inline-start: ${value};
           }
-          ${pseudoClass(`${prefix}e-${key}`, variants.margin)} {
+          ${pseudoClass(`${prefix}e-${key}`, variants2.margin)} {
             margin-inline-end: ${value};
           }
         `;
       });
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$1a(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/maxHeight.js
+function generator85(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}max-h`;
-
-  const { maxHeight = {} } = theme;
-
+  const { maxHeight = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         maxHeight,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.maxHeight)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.maxHeight)} {
             max-height: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$19(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/maxWidth.js
+function generator86(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}max-w`;
-
-  const { maxWidth = {} } = theme;
-
+  const { maxWidth = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         maxWidth,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.maxWidth)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.maxWidth)} {
             max-width: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$18(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/minHeight.js
+function generator87(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}min-h`;
-
-  const { minHeight = {} } = theme;
-
+  const { minHeight = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         minHeight,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.minHeight)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.minHeight)} {
             min-height: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$17(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/minWidth.js
+function generator88(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}min-w`;
-
-  const { minWidth = {} } = theme;
-
+  const { minWidth = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         minWidth,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.minWidth)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.minWidth)} {
             min-width: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$16(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/mixBlendMode.js
+function generator89(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}mix-blend`;
-
   const propertyOptions = [
     "normal",
     "multiply",
@@ -4533,15 +4301,14 @@ function generator$16(configOptions = {}) {
     "saturation",
     "color",
     "luminosity",
-    "plus-lighter",
+    "plus-lighter"
   ];
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       let cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.mixBlendMode)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.mixBlendMode)} {
             mix-blend-mode: ${value};
           }
         `
@@ -4550,51 +4317,46 @@ function generator$16(configOptions = {}) {
         propertyOptions,
         (key, value) => `
           ${pseudoClass(
-            `${prefix.replace("mix", "bg")}-${key}`,
-            variants.mixBlendMode
-          )} {
+          `${prefix.replace("mix", "bg")}-${key}`,
+          variants2.mixBlendMode
+        )} {
             background-blend-mode: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$15(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/objectFit.js
+function generator90(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}object`;
-
   const propertyOptions = ["contain", "cover", "fill", "none", "scale-down"];
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.objectFit)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.objectFit)} {
             object-fit: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$14(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/objectPosition.js
+function generator91(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}object`;
-
   const propertyOptions = [
     "bottom",
     "center",
@@ -4604,91 +4366,88 @@ function generator$14(configOptions = {}) {
     "right",
     "right-bottom",
     "right-top",
-    "top",
+    "top"
   ];
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.objectPosition)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.objectPosition)} {
             object-position: ${value.split("-").join(" ")};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$13(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/opacity.js
+function generator92(configOptions2 = {}) {
+  const {
+    prefix: globalPrefix,
+    variants: variants2 = {},
+    theme: theme2 = {},
+    vars: vars2 = {}
+  } = configOptions2;
   const prefix = `${globalPrefix}opacity`;
   const basePrefix = prefix.replace(globalPrefix, "");
-
-  const { opacity = {} } = theme;
-
+  const { opacity = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         opacity,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.opacity)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.opacity)} {
             opacity: ${value};
+            ${vars2.filter}
           }
           ${pseudoClass(
-            `${prefix.replace(basePrefix, `backdrop-${basePrefix}`)}-${key}`,
-            variants.opacity
-          )} {
+          `${prefix.replace(basePrefix, `backdrop-${basePrefix}`)}-${key}`,
+          variants2.opacity
+        )} {
             --backdrop-opacity: opacity(${value});
+            ${vars2.backdropFilter}
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$12(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/order.js
+function generator93(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}order`;
-
-  const { order = {} } = theme;
-
+  const { order = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         order,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.order)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.order)} {
             order: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$11(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/outlineColor.js
+function generator94(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}outline`;
-
-  const { outlineColor = {} } = theme;
-
+  const { outlineColor = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByColors }) => {
       const cssString = getCssByColors(
@@ -4703,7 +4462,7 @@ function generator$11(configOptions = {}) {
             rgbPropertyValue = `outline-color: rgba(${rgbValue}, var(--outline-opacity));`;
           }
           return `
-            ${pseudoClass(`${prefix}${key}`, variants.outlineColor, {})} {
+            ${pseudoClass(`${prefix}${key}`, variants2.outlineColor, {})} {
               --outline-opacity: 1;
               outline-color: ${value};${rgbPropertyValue}
             }
@@ -4712,244 +4471,221 @@ function generator$11(configOptions = {}) {
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$10(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/outlineOffset.js
+function generator95(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}outline-offset`;
-
-  const { outlineOffset = {} } = theme;
-
+  const { outlineOffset = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(outlineOffset, (key, value) => {
         return `
-          ${pseudoClass(`${prefix}-${key}`, variants.outlineOffset)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.outlineOffset)} {
             outline-offset: ${value};
           }
         `;
       });
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$$(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/outlineOpacity.js
+function generator96(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}outline-opacity`;
-
-  const { outlineOpacity = {} } = theme;
-
+  const { outlineOpacity = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(outlineOpacity, (keyTmp, value) => {
         const key = keyTmp.toLowerCase() !== "default" ? `-${keyTmp}` : "";
         return `
-          ${pseudoClass(`${prefix}${key}`, variants.outlineOpacity)} {
+          ${pseudoClass(`${prefix}${key}`, variants2.outlineOpacity)} {
             --outline-opacity: ${value};
           }
         `;
       });
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$_(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/outlineStyle.js
+function generator97(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}outline`;
-
   const propertyOptions = ["none", "solid", "dashed", "dotted", "double"];
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(propertyOptions, (keyTmp, value) => {
         const key = keyTmp !== "solid" ? `-${keyTmp}` : "";
         if (key === "none") {
           return `
-            ${pseudoClass(`${prefix}-${key}`, variants.outlineStyle)} {
+            ${pseudoClass(`${prefix}-${key}`, variants2.outlineStyle)} {
               outline: 2px solid transparent;
               outline-offset: 2px;
             }
           `;
         }
         return `
-          ${pseudoClass(`${prefix}${key}`, variants.outlineStyle)} {
+          ${pseudoClass(`${prefix}${key}`, variants2.outlineStyle)} {
             outline-style: ${value};
           }
         `;
       });
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$Z(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/outlineWidth.js
+function generator98(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}outline`;
-
-  const { outlineWidth = {} } = theme;
-
+  const { outlineWidth = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(outlineWidth, (key, value) => {
         return `
-          ${pseudoClass(`${prefix}-${key}`, variants.outlineWidth)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.outlineWidth)} {
             outline-width: ${value};
           }
         `;
       });
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$Y(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/overflow.js
+function generator99(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}overflow`;
-
   const propertyOptions = ["auto", "hidden", "visible", "scroll"];
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       let cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.overflow)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.overflow)} {
             overflow: ${value};
           }
-          ${pseudoClass(`${prefix}-x-${key}`, variants.overflow)} {
+          ${pseudoClass(`${prefix}-x-${key}`, variants2.overflow)} {
             overflow-x: ${value};
           }
-          ${pseudoClass(`${prefix}-y-${key}`, variants.overflow)} {
+          ${pseudoClass(`${prefix}-y-${key}`, variants2.overflow)} {
             overflow-y: ${value};
           }
         `
       );
       cssString += `
-        ${pseudoClass(`${globalPrefix}scrolling-touch`, variants.overflow)} {
+        ${pseudoClass(`${globalPrefix}scrolling-touch`, variants2.overflow)} {
           -webkit-overflow-scrolling: touch;
         }
-        ${pseudoClass(`${globalPrefix}scrolling-auto`, variants.overflow)} {
+        ${pseudoClass(`${globalPrefix}scrolling-auto`, variants2.overflow)} {
           -webkit-overflow-scrolling: auto;
         }
       `;
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$X(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/overscrollBehavior.js
+function generator100(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}overscroll`;
-
   const propertyOptions = ["auto", "contain", "none"];
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.overscrollBehavior)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.overscrollBehavior)} {
             overscroll-behavior: ${value};
           }
-          ${pseudoClass(`${prefix}-x-${key}`, variants.overscrollBehavior)} {
+          ${pseudoClass(`${prefix}-x-${key}`, variants2.overscrollBehavior)} {
             overscroll-behavior-x: ${value};
           }
-          ${pseudoClass(`${prefix}-y-${key}`, variants.overscrollBehavior)} {
+          ${pseudoClass(`${prefix}-y-${key}`, variants2.overscrollBehavior)} {
             overscroll-behavior-y: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$W(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/padding.js
+function generator101(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}p`;
-
-  const { padding = {} } = theme;
-
+  const { padding = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         padding,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.padding)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.padding)} {
             padding: ${value};
           }
-          ${pseudoClass(`${prefix}y-${key}`, variants.padding)} {
+          ${pseudoClass(`${prefix}y-${key}`, variants2.padding)} {
             padding-top: ${value};
             padding-bottom: ${value};
           }
-          ${pseudoClass(`${prefix}x-${key}`, variants.padding)} {
+          ${pseudoClass(`${prefix}x-${key}`, variants2.padding)} {
             padding-left: ${value};
             padding-right: ${value};
           }
-          ${pseudoClass(`${prefix}t-${key}`, variants.padding)} {
+          ${pseudoClass(`${prefix}t-${key}`, variants2.padding)} {
             padding-top: ${value};
           }
-          ${pseudoClass(`${prefix}r-${key}`, variants.padding)} {
+          ${pseudoClass(`${prefix}r-${key}`, variants2.padding)} {
             padding-right: ${value};
           }
-          ${pseudoClass(`${prefix}b-${key}`, variants.padding)} {
+          ${pseudoClass(`${prefix}b-${key}`, variants2.padding)} {
             padding-bottom: ${value};
           }
-          ${pseudoClass(`${prefix}l-${key}`, variants.padding)} {
+          ${pseudoClass(`${prefix}l-${key}`, variants2.padding)} {
             padding-left: ${value};
           }
-          ${pseudoClass(`${prefix}s-${key}`, variants.padding)} {
+          ${pseudoClass(`${prefix}s-${key}`, variants2.padding)} {
             padding-inline-start: ${value};
           }
-          ${pseudoClass(`${prefix}e-${key}`, variants.padding)} {
+          ${pseudoClass(`${prefix}e-${key}`, variants2.padding)} {
             padding-inline-end: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$V(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/placeContent.js
+function generator102(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}place-content`;
-
   const propertyOptions = {
     start: "start",
     end: "end",
@@ -4957,84 +4693,74 @@ function generator$V(configOptions = {}) {
     between: "space-between",
     around: "space-around",
     evenly: "space-evenly",
-    stretch: "stretch",
+    stretch: "stretch"
   };
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.placeContent)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.placeContent)} {
             place-content: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$U(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/placeItems.js
+function generator103(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}place-items`;
-
   const propertyOptions = ["auto", "start", "end", "center", "stretch"];
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.placeItems)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.placeItems)} {
             place-items: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$T(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/placeSelf.js
+function generator104(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}place-self`;
-
   const propertyOptions = ["auto", "start", "end", "center", "stretch"];
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.placeSelf)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.placeSelf)} {
             place-self: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$S(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/placeholderColor.js
+function generator105(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}placeholder`;
-
-  const { placeholderColor = {} } = theme;
-
+  const { placeholderColor = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByColors }) => {
       const cssString = getCssByColors(
@@ -5047,11 +4773,10 @@ function generator$S(configOptions = {}) {
           const propertyValue = `--placeholder-opacity: 1; color: ${value}; ${rgbPropertyValue}`;
           const placeholderColorString = (placeholderPseudo) => `
             ${pseudoClass(
-              (pseudoString) =>
-                `${prefix}-${key}${pseudoString}${placeholderPseudo}`,
-              variants.placeholderColor,
-              {}
-            )} {
+            (pseudoString) => `${prefix}-${key}${pseudoString}${placeholderPseudo}`,
+            variants2.placeholderColor,
+            {}
+          )} {
               ${propertyValue}
             }
           `;
@@ -5065,28 +4790,24 @@ function generator$S(configOptions = {}) {
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$R(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/placeholderOpacity.js
+function generator106(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}placeholder-opacity`;
-
-  const { placeholderOpacity = {} } = theme;
-
+  const { placeholderOpacity = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(placeholderOpacity, (key, value) => {
         const placeholderOpacityString = (placeholderPseudo) => `
           ${pseudoClass(
-            (pseudoString) =>
-              `${prefix}-${key}${pseudoString}${placeholderPseudo}`,
-            variants.placeholderColor
-          )} {
+          (pseudoString) => `${prefix}-${key}${pseudoString}${placeholderPseudo}`,
+          variants2.placeholderColor
+        )} {
             --placeholder-opacity: ${value};
           }
         `;
@@ -5099,89 +4820,80 @@ function generator$R(configOptions = {}) {
       });
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$Q(configOptions = {}) {
-  const { prefix, variants = {} } = configOptions;
-
+// src/generators/pointerEvents.js
+function generator107(configOptions2 = {}) {
+  const { prefix, variants: variants2 = {} } = configOptions2;
   const responsiveCssString = generateCssString(({ pseudoClass }) => {
     return `
-        ${pseudoClass(`${prefix}pointer-events-none`, variants.pointerEvents)} {
+        ${pseudoClass(`${prefix}pointer-events-none`, variants2.pointerEvents)} {
           pointer-events: none;
         }
-        ${pseudoClass(`${prefix}pointer-events-auto`, variants.pointerEvents)} {
+        ${pseudoClass(`${prefix}pointer-events-auto`, variants2.pointerEvents)} {
           pointer-events: auto;
         }
       `;
-  }, configOptions);
-
+  }, configOptions2);
   return responsiveCssString;
 }
 
-function generator$P(configOptions = {}) {
-  const { prefix, variants = {} } = configOptions;
-
+// src/generators/position.js
+function generator108(configOptions2 = {}) {
+  const { prefix, variants: variants2 = {} } = configOptions2;
   const propertyOptions = ["static", "fixed", "absolute", "relative", "sticky"];
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}${key}`, variants.position)} {
+          ${pseudoClass(`${prefix}${key}`, variants2.position)} {
             position: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$O(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/resize.js
+function generator109(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}resize`;
-
   const propertyOptions = {
     none: "none",
     y: "vertical",
     x: "horizontal",
-    default: "both",
+    default: "both"
   };
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(propertyOptions, (keyTmp, value) => {
         const key = keyTmp.toLowerCase() !== "default" ? `-${keyTmp}` : "";
         return `
-          ${pseudoClass(`${prefix}${key}`, variants.resize)} {
+          ${pseudoClass(`${prefix}${key}`, variants2.resize)} {
             resize: ${value};
           }
         `;
       });
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$N(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/ringColor.js
+function generator110(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}ring`;
-
-  const { ringColor = {} } = theme;
-
+  const { ringColor = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByColors }) => {
       const cssString = getCssByColors(ringColor, (keyTmp, value, rgbValue) => {
@@ -5191,7 +4903,7 @@ function generator$N(configOptions = {}) {
           rgbPropertyValue = `--ring-color: rgba(${rgbValue}, var(--ring-opacity));`;
         }
         return `
-            ${pseudoClass(`${prefix}${key}`, variants.ringColor, {})} {
+            ${pseudoClass(`${prefix}${key}`, variants2.ringColor, {})} {
               --ring-opacity: 1;
               --ring-color: ${value};${rgbPropertyValue}
             }
@@ -5199,100 +4911,88 @@ function generator$N(configOptions = {}) {
       });
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$M(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/ringOffsetColor.js
+function generator111(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}ring-offset`;
-
-  const { ringOffsetColor = {} } = theme;
-
+  const { ringOffsetColor = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByColors }) => {
       const cssString = getCssByColors(
         ringOffsetColor,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.ringOffsetColor, {})} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.ringOffsetColor, {})} {
             --ring-offset-color: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$L(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/ringOffsetWidth.js
+function generator112(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}ring-offset`;
-
-  const { ringOffsetWidth = {} } = theme;
-
+  const { ringOffsetWidth = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         ringOffsetWidth,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.ringOffsetWidth)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.ringOffsetWidth)} {
             --ring-offset-width: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$K(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/ringOpacity.js
+function generator113(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}ring-opacity`;
-
-  const { ringOpacity = {} } = theme;
-
+  const { ringOpacity = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(ringOpacity, (keyTmp, value) => {
         const key = keyTmp.toLowerCase() !== "default" ? `-${keyTmp}` : "";
         return `
-          ${pseudoClass(`${prefix}${key}`, variants.ringOpacity)} {
+          ${pseudoClass(`${prefix}${key}`, variants2.ringOpacity)} {
             --ring-opacity: ${value};
           }
         `;
       });
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$J(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/ringWidth.js
+function generator114(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}ring`;
-
-  const { ringWidth = {} } = theme;
-
+  const { ringWidth = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       let cssString = getCssByOptions(ringWidth, (keyTmp, value) => {
         const key = keyTmp.toLowerCase() !== "default" ? `-${keyTmp}` : "";
         return `
-          ${pseudoClass(`${prefix}${key}`, variants.ringWidth)} {
+          ${pseudoClass(`${prefix}${key}`, variants2.ringWidth)} {
             --ring-offset-shadow: var(--ring-inset) 0 0 0 var(--ring-offset-width) var(--ring-offset-color);
             --ring-shadow: var(--ring-inset) 0 0 0 calc(${value} + var(--ring-offset-width)) var(--ring-color);
             box-shadow: var(--ring-offset-shadow), var(--ring-shadow);
@@ -5300,59 +5000,65 @@ function generator$J(configOptions = {}) {
         `;
       });
       cssString += `  
-        ${pseudoClass(`${prefix}-inset`, variants.ringWidth)} {
+        ${pseudoClass(`${prefix}-inset`, variants2.ringWidth)} {
           --ring-inset: inset;
         }
       `;
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$I(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/saturate.js
+function generator115(configOptions2 = {}) {
+  const {
+    prefix: globalPrefix,
+    variants: variants2 = {},
+    theme: theme2 = {},
+    vars: vars2 = {}
+  } = configOptions2;
   const prefix = `${globalPrefix}saturate`;
   const basePrefix = prefix.replace(globalPrefix, "");
-
-  const { saturate = {} } = theme;
-
+  const { saturate = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(saturate, (keyTmp, value) => {
         const key = keyTmp.toLowerCase() !== "default" ? `-${keyTmp}` : "";
         return `
-          ${pseudoClass(`${prefix}${key}`, variants.saturate)} {
-            --saturate: saturate(${value}) !important;
+          ${pseudoClass(`${prefix}${key}`, variants2.saturate)} {
+            --saturate: ${value};
+            ${vars2.filter}
           }
           ${pseudoClass(
-            `${prefix.replace(basePrefix, `backdrop-${basePrefix}`)}${key}`,
-            variants.saturate
-          )} {
-            --backdrop-saturate: saturate(${value}) !important;
+          `${prefix.replace(basePrefix, `backdrop-${basePrefix}`)}${key}`,
+          variants2.saturate
+        )} {
+            --backdrop-saturate: ${value};
+            ${vars2.backdropFilter}
           }
         `;
       });
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$H(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
-  const { rotate = {} } = theme;
-
+// src/generators/rotate.js
+function generator116(configOptions2 = {}) {
+  const {
+    prefix: globalPrefix,
+    variants: variants2 = {},
+    theme: theme2 = {},
+    vars: vars2 = {}
+  } = configOptions2;
+  const { rotate = {} } = theme2;
   Object.entries(rotate).forEach(([key, value]) => {
     rotate[`-${key}`] = `-${value}`.replace("--", "-");
   });
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(rotate, (keyTmp, value) => {
@@ -5363,83 +5069,84 @@ function generator$H(configOptions = {}) {
           prefix = `${globalPrefix}-rotate`;
         }
         return `
-          ${pseudoClass(`${prefix}-${key}`, variants.rotate)} {
-            --transform-rotate: ${value} !important;
+          ${pseudoClass(`${prefix}-${key}`, variants2.rotate)} {
+            --transform-rotate: ${value};
+            ${vars2.transform}
           }
         `;
       });
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$G(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/scale.js
+function generator117(configOptions2 = {}) {
+  const {
+    prefix: globalPrefix,
+    variants: variants2 = {},
+    theme: theme2 = {},
+    vars: vars2 = {}
+  } = configOptions2;
   const prefix = `${globalPrefix}scale`;
-
-  const { scale = {} } = theme;
-
+  const { scale = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         scale,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.scale)} {
-            --transform-scale-x: ${value} !important;
-            --transform-scale-y: ${value} !important;
+          ${pseudoClass(`${prefix}-${key}`, variants2.scale)} {
+            --transform-scale-x: ${value};
+            --transform-scale-y: ${value};
+            ${vars2.transform}
           }
-          ${pseudoClass(`${prefix}-x-${key}`, variants.scale)} {
-            --transform-scale-x: ${value} !important;
+          ${pseudoClass(`${prefix}-x-${key}`, variants2.scale)} {
+            --transform-scale-x: ${value};
+            ${vars2.transform}
           }
-          ${pseudoClass(`${prefix}-y-${key}`, variants.scale)} {
-            --transform-scale-y: ${value} !important;
+          ${pseudoClass(`${prefix}-y-${key}`, variants2.scale)} {
+            --transform-scale-y: ${value};
+            ${vars2.transform}
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$F(configOptions = {}) {
-  const { prefix, variants = {} } = configOptions;
-
+// src/generators/scrollBehavior.js
+function generator118(configOptions2 = {}) {
+  const { prefix, variants: variants2 = {} } = configOptions2;
   const propertyOptions = ["auto", "smooth"];
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}scroll-${key}`, variants.scrollBehavior)} {
+          ${pseudoClass(`${prefix}scroll-${key}`, variants2.scrollBehavior)} {
             scroll-behavior: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$E(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
-  const { scrollMargin = {} } = theme;
-
+// src/generators/scrollMargin.js
+function generator119(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
+  const { scrollMargin = {} } = theme2;
   Object.entries(scrollMargin).forEach(([key, value]) => {
     scrollMargin[`-${key}`] = `-${value}`.replace("--", "-");
   });
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(scrollMargin, (keyTmp, value) => {
@@ -5450,54 +5157,51 @@ function generator$E(configOptions = {}) {
           prefix = `${globalPrefix}-scroll-m`;
         }
         return `
-          ${pseudoClass(`${prefix}-${key}`, variants.scrollMargin)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.scrollMargin)} {
             scroll-margin: ${value};
           }
-          ${pseudoClass(`${prefix}y-${key}`, variants.scrollMargin)} {
+          ${pseudoClass(`${prefix}y-${key}`, variants2.scrollMargin)} {
             scroll-margin-top: ${value};
             scroll-margin-bottom: ${value};
           }
-          ${pseudoClass(`${prefix}x-${key}`, variants.scrollMargin)} {
+          ${pseudoClass(`${prefix}x-${key}`, variants2.scrollMargin)} {
             scroll-margin-left: ${value};
             scroll-margin-right: ${value};
           }
-          ${pseudoClass(`${prefix}t-${key}`, variants.scrollMargin)} {
+          ${pseudoClass(`${prefix}t-${key}`, variants2.scrollMargin)} {
             scroll-margin-top: ${value};
           }
-          ${pseudoClass(`${prefix}r-${key}`, variants.scrollMargin)} {
+          ${pseudoClass(`${prefix}r-${key}`, variants2.scrollMargin)} {
             scroll-margin-right: ${value};
           }
-          ${pseudoClass(`${prefix}b-${key}`, variants.scrollMargin)} {
+          ${pseudoClass(`${prefix}b-${key}`, variants2.scrollMargin)} {
             scroll-margin-bottom: ${value};
           }
-          ${pseudoClass(`${prefix}l-${key}`, variants.scrollMargin)} {
+          ${pseudoClass(`${prefix}l-${key}`, variants2.scrollMargin)} {
             scroll-margin-left: ${value};
           }
-          ${pseudoClass(`${prefix}s-${key}`, variants.scrollMargin)} {
+          ${pseudoClass(`${prefix}s-${key}`, variants2.scrollMargin)} {
             scroll-margin-inline-start: ${value};
           }
-          ${pseudoClass(`${prefix}e-${key}`, variants.scrollMargin)} {
+          ${pseudoClass(`${prefix}e-${key}`, variants2.scrollMargin)} {
             scroll-margin-inline-end: ${value};
           }
         `;
       });
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$D(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
-  const { scrollPadding = {} } = theme;
-
+// src/generators/scrollPadding.js
+function generator120(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
+  const { scrollPadding = {} } = theme2;
   Object.entries(scrollPadding).forEach(([key, value]) => {
     scrollPadding[`-${key}`] = `-${value}`.replace("--", "-");
   });
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(scrollPadding, (keyTmp, value) => {
@@ -5508,118 +5212,109 @@ function generator$D(configOptions = {}) {
           prefix = `${globalPrefix}-p`;
         }
         return `
-          ${pseudoClass(`${prefix}-${key}`, variants.scrollPadding)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.scrollPadding)} {
             scroll-padding: ${value};
           }
-          ${pseudoClass(`${prefix}y-${key}`, variants.scrollPadding)} {
+          ${pseudoClass(`${prefix}y-${key}`, variants2.scrollPadding)} {
             scroll-padding-top: ${value};
             scroll-padding-bottom: ${value};
           }
-          ${pseudoClass(`${prefix}x-${key}`, variants.scrollPadding)} {
+          ${pseudoClass(`${prefix}x-${key}`, variants2.scrollPadding)} {
             scroll-padding-left: ${value};
             scroll-padding-right: ${value};
           }
-          ${pseudoClass(`${prefix}t-${key}`, variants.scrollPadding)} {
+          ${pseudoClass(`${prefix}t-${key}`, variants2.scrollPadding)} {
             scroll-padding-top: ${value};
           }
-          ${pseudoClass(`${prefix}r-${key}`, variants.scrollPadding)} {
+          ${pseudoClass(`${prefix}r-${key}`, variants2.scrollPadding)} {
             scroll-padding-right: ${value};
           }
-          ${pseudoClass(`${prefix}b-${key}`, variants.scrollPadding)} {
+          ${pseudoClass(`${prefix}b-${key}`, variants2.scrollPadding)} {
             scroll-padding-bottom: ${value};
           }
-          ${pseudoClass(`${prefix}l-${key}`, variants.scrollPadding)} {
+          ${pseudoClass(`${prefix}l-${key}`, variants2.scrollPadding)} {
             scroll-padding-left: ${value};
           }
-          ${pseudoClass(`${prefix}s-${key}`, variants.scrollPadding)} {
+          ${pseudoClass(`${prefix}s-${key}`, variants2.scrollPadding)} {
             scroll-padding-inline-start: ${value};
           }
-          ${pseudoClass(`${prefix}e-${key}`, variants.scrollPadding)} {
+          ${pseudoClass(`${prefix}e-${key}`, variants2.scrollPadding)} {
             scroll-padding-inline-end: ${value};
           }
         `;
       });
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$C(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/scrollSnapAlign.js
+function generator121(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}snap`;
-
   const propertyOptions = {
     start: "start",
     end: "end",
     center: "center",
-    "align-none": "none",
+    "align-none": "none"
   };
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.scrollSnapAlign)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.scrollSnapAlign)} {
             scroll-snap-align: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$B(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/scrollSnapStop.js
+function generator122(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}snap`;
-
   const propertyOptions = ["normal", "always"];
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.scrollSnapStop)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.scrollSnapStop)} {
             scroll-snap-stop: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$A(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/scrollSnapType.js
+function generator123(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}snap`;
-
   const propertyOptions = {
     none: "none",
     x: "x var(--scroll-snap-strictness)",
     y: "y var(--scroll-snap-strictness)",
-    both: "both var(--scroll-snap-strictness)",
+    both: "both var(--scroll-snap-strictness)"
   };
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       let cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.scrollSnapType)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.scrollSnapType)} {
             --scroll-snap-strictness: proximity;
             scroll-snap-type: ${value};
           }
@@ -5628,64 +5323,65 @@ function generator$A(configOptions = {}) {
       cssString += getCssByOptions(
         ["mandatory", "proximity"],
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.scrollSnapType)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.scrollSnapType)} {
             --scroll-snap-strictness: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$z(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/sepia.js
+function generator124(configOptions2 = {}) {
+  const {
+    prefix: globalPrefix,
+    variants: variants2 = {},
+    theme: theme2 = {},
+    vars: vars2 = {}
+  } = configOptions2;
   const prefix = `${globalPrefix}sepia`;
   const basePrefix = prefix.replace(globalPrefix, "");
-
-  const { sepia = {} } = theme;
-
+  const { sepia = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(sepia, (keyTmp, value) => {
         const key = keyTmp.toLowerCase() !== "default" ? `-${keyTmp}` : "";
         return `
-          ${pseudoClass(`${prefix}${key}`, variants.sepia)} {
-            --sepia: sepia(${value}) !important;
+          ${pseudoClass(`${prefix}${key}`, variants2.sepia)} {
+            --sepia: ${value};
+            ${vars2.filter}
           }
           ${pseudoClass(
-            `${prefix.replace(basePrefix, `backdrop-${basePrefix}`)}${key}`,
-            variants.sepia
-          )} {
-            --backdrop-sepia: sepia(${value}) !important;
+          `${prefix.replace(basePrefix, `backdrop-${basePrefix}`)}${key}`,
+          variants2.sepia
+        )} {
+            --backdrop-sepia: ${value};
+            ${vars2.backdropFilter}
           }
         `;
       });
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$y(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/size.js
+function generator125(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}size`;
-
-  const { size = {} } = theme;
-
+  const { size = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         size,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.size)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.size)} {
             width: ${value};
             height: ${value};
           }
@@ -5693,21 +5389,23 @@ function generator$y(configOptions = {}) {
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$x(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
-  const { skew = {} } = theme;
-
+// src/generators/skew.js
+function generator126(configOptions2 = {}) {
+  const {
+    prefix: globalPrefix,
+    variants: variants2 = {},
+    theme: theme2 = {},
+    vars: vars2 = {}
+  } = configOptions2;
+  const { skew = {} } = theme2;
   Object.entries(skew).forEach(([key, value]) => {
     skew[`-${key}`] = `-${value}`.replace("--", "-");
   });
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(skew, (keyTmp, value) => {
@@ -5718,33 +5416,31 @@ function generator$x(configOptions = {}) {
           prefix = `${globalPrefix}-skew`;
         }
         return `
-          ${pseudoClass(`${prefix}-x-${key}`, variants.skew)} {
-            --transform-skew-x: ${value} !important;
+          ${pseudoClass(`${prefix}-x-${key}`, variants2.skew)} {
+            --transform-skew-x: ${value};
+            ${vars2.transform}
           }
-          ${pseudoClass(`${prefix}-y-${key}`, variants.skew)} {
-            --transform-skew-y: ${value} !important;
+          ${pseudoClass(`${prefix}-y-${key}`, variants2.skew)} {
+            --transform-skew-y: ${value};
+            ${vars2.transform}
           }
         `;
       });
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$w(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/space.js
+function generator127(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}space`;
-
-  const { space = {} } = theme;
-
+  const { space = {} } = theme2;
   Object.entries(space).forEach(([key, value]) => {
     space[`-${key}`] = `-${value}`.replace("--", "-");
   });
-
   const responsiveCssString = generateCssString(({ pseudoClass }) => {
     const generateSpace = (position, key, value) => {
       let spacePosition = "x";
@@ -5757,19 +5453,17 @@ function generator$w(configOptions = {}) {
       }
       return `
           ${pseudoClass(
-            (pseudoString) =>
-              `${prefix}-${spacePosition}-${key}${pseudoString} > :not([hidden]) ~ :not([hidden])`,
-            variants.space
-          )} {
+        (pseudoString) => `${prefix}-${spacePosition}-${key}${pseudoString} > :not([hidden]) ~ :not([hidden])`,
+        variants2.space
+      )} {
             --space-${spacePosition}-reverse: 0;
             margin-${margin1}: calc(${value} * calc(1 - var(--space-${spacePosition}-reverse)));
             margin-${margin2}: calc(${value} * var(--space-${spacePosition}-reverse));
           }
           ${pseudoClass(
-            (pseudoString) =>
-              `-${prefix}-${spacePosition}-${key}${pseudoString} > :not([hidden]) ~ :not([hidden])`,
-            variants.space
-          )} {
+        (pseudoString) => `-${prefix}-${spacePosition}-${key}${pseudoString} > :not([hidden]) ~ :not([hidden])`,
+        variants2.space
+      )} {
             --space-${spacePosition}-reverse: 0;
             margin-${margin1}: calc(-${value} * calc(1 - var(--space-${spacePosition}-reverse)));
             margin-${margin2}: calc(-${value} * var(--space-${spacePosition}-reverse));
@@ -5777,138 +5471,121 @@ function generator$w(configOptions = {}) {
         `;
     };
     let cssString = "";
-    Object.entries(space).forEach(([space, spaceValue]) => {
-      cssString += generateSpace("y", space, spaceValue);
-      cssString += generateSpace("x", space, spaceValue);
+    Object.entries(space).forEach(([space2, spaceValue]) => {
+      cssString += generateSpace("y", space2, spaceValue);
+      cssString += generateSpace("x", space2, spaceValue);
     });
     cssString += `
         ${pseudoClass(
-          (pseudoString) =>
-            `${prefix}-x-reverse${pseudoString} > :not([hidden]) ~ :not([hidden])`,
-          variants.space
-        )} {
+      (pseudoString) => `${prefix}-x-reverse${pseudoString} > :not([hidden]) ~ :not([hidden])`,
+      variants2.space
+    )} {
           --space-x-reverse: 1;
         }
         ${pseudoClass(
-          (pseudoString) =>
-            `${prefix}-y-reverse${pseudoString} > :not([hidden]) ~ :not([hidden])`,
-          variants.space
-        )} {
+      (pseudoString) => `${prefix}-y-reverse${pseudoString} > :not([hidden]) ~ :not([hidden])`,
+      variants2.space
+    )} {
           --space-y-reverse: 1;
         }
       `;
     return cssString;
-  }, configOptions);
-
+  }, configOptions2);
   return responsiveCssString;
 }
 
-function generator$v(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/stroke.js
+function generator128(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}stroke`;
-
-  const { stroke } = theme;
-
+  const { stroke } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByColors }) => {
       const cssString = getCssByColors(stroke, (key, value) => {
         return `
-            ${pseudoClass(`${prefix}-${key}`, variants.textColor, {})} {
+            ${pseudoClass(`${prefix}-${key}`, variants2.textColor, {})} {
               stroke: ${value};
             }
           `;
       });
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$u(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/strokeWidth.js
+function generator129(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}stroke`;
-
-  const { strokeWidth = {} } = theme;
-
+  const { strokeWidth = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         strokeWidth,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.strokeWidth)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.strokeWidth)} {
             stroke-width: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$t(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/tableLayout.js
+function generator130(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}table`;
-
   const propertyOptions = ["auto", "fixed"];
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.tableLayout)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.tableLayout)} {
             table-layout: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$s(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/textAlign.js
+function generator131(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}text`;
-
   const propertyOptions = ["left", "center", "right", "justify"];
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.textAlign)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.textAlign)} {
             text-align: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$r(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/textColor.js
+function generator132(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}text`;
-
-  const { textColor } = theme;
-
+  const { textColor } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByColors }) => {
       const cssString = getCssByColors(textColor, (key, value, rgbValue) => {
@@ -5917,7 +5594,7 @@ function generator$r(configOptions = {}) {
           rgbPropertyValue = `color: rgba(${rgbValue}, var(--text-opacity));`;
         }
         return `
-            ${pseudoClass(`${prefix}-${key}`, variants.textColor, {})} {
+            ${pseudoClass(`${prefix}-${key}`, variants2.textColor, {})} {
               --text-opacity: 1;
               color: ${value};${rgbPropertyValue}
             }
@@ -5925,47 +5602,42 @@ function generator$r(configOptions = {}) {
       });
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$q(configOptions = {}) {
-  const { prefix, variants = {} } = configOptions;
-
+// src/generators/textDecoration.js
+function generator133(configOptions2 = {}) {
+  const { prefix, variants: variants2 = {} } = configOptions2;
   const propertyOptions = {
     underline: "underline",
     overline: "overline",
     "line-through": "line-through",
-    "no-underline": "none",
+    "no-underline": "none"
   };
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}${key}`, variants.textDecoration)} {
+          ${pseudoClass(`${prefix}${key}`, variants2.textDecoration)} {
             text-decoration: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$p(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/textDecorationColor.js
+function generator134(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}decoration`;
-
-  const { textDecorationColor = {}, opacity = {} } = theme;
-
+  const { textDecorationColor = {}, opacity = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByColors, getCssByOptions }) => {
       let cssString = getCssByColors(
@@ -5977,10 +5649,10 @@ function generator$p(configOptions = {}) {
           }
           return `
             ${pseudoClass(
-              `${prefix}-${key}`,
-              variants.textDecorationColor,
-              {}
-            )} {
+            `${prefix}-${key}`,
+            variants2.textDecorationColor,
+            {}
+          )} {
               --text-decoration-opacity: 1;
               text-decoration-color: ${value};${rgbPropertyValue}
             }
@@ -5990,78 +5662,69 @@ function generator$p(configOptions = {}) {
       cssString += getCssByOptions(
         opacity,
         (key, value) => `
-          ${pseudoClass(`${prefix}-opacity-${key}`, variants.opacity, {})} {
+          ${pseudoClass(`${prefix}-opacity-${key}`, variants2.opacity, {})} {
             --text-decoration-opacity: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$o(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/textDecorationStyle.js
+function generator135(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}decoration`;
-
   const propertyOptions = ["solid", "double", "dotted", "dashed", "wavy"];
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.textDecorationStyle)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.textDecorationStyle)} {
             text-decoration-style: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$n(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/textDecorationThickness.js
+function generator136(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}decoration`;
-
-  const { textDecorationThickness = {} } = theme;
-
+  const { textDecorationThickness = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         textDecorationThickness,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.textDecorationThickness)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.textDecorationThickness)} {
             text-decoration-thickness: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$m(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
-  const { textIndent = {} } = theme;
-
+// src/generators/textIndent.js
+function generator137(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
+  const { textIndent = {} } = theme2;
   Object.entries(textIndent).forEach(([key, value]) => {
     textIndent[`-${key}`] = `-${value}`.replace("--", "-");
   });
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(textIndent, (keyTmp, value) => {
@@ -6071,106 +5734,94 @@ function generator$m(configOptions = {}) {
           key = key.split("-").join("");
           prefix = `${globalPrefix}-indent`;
         }
-
         return `
-          ${pseudoClass(`${prefix}-${key}`, variants.textIndent)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.textIndent)} {
             text-indent: ${value};
           }
         `;
       });
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$l(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/textOpacity.js
+function generator138(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}text-opacity`;
-
-  const { textOpacity = {} } = theme;
-
+  const { textOpacity = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         textOpacity,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.textOpacity)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.textOpacity)} {
             --text-opacity: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$k(configOptions = {}) {
-  const { prefix, variants = {} } = configOptions;
-
+// src/generators/textOverflow.js
+function generator139(configOptions2 = {}) {
+  const { prefix, variants: variants2 = {} } = configOptions2;
   const propertyOptions = ["ellipsis", "clip"];
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}truncate`, variants.textOverflow)} {
+          ${pseudoClass(`${prefix}truncate`, variants2.textOverflow)} {
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
           }
-          ${pseudoClass(`${prefix}text-${key}`, variants.textDecoration)} {
+          ${pseudoClass(`${prefix}text-${key}`, variants2.textDecoration)} {
             text-overflow: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$j(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/textShadowBlur.js
+function generator140(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}text-shadow-blur`;
-
-  const { textShadowBlur = {} } = theme;
-
+  const { textShadowBlur = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(textShadowBlur, (keyTmp, value) => {
         const key = keyTmp.toLowerCase() !== "default" ? `-${keyTmp}` : "";
         return `
-          ${pseudoClass(`${prefix}${key}`, variants.textShadowBlur)} {
+          ${pseudoClass(`${prefix}${key}`, variants2.textShadowBlur)} {
             --text-shadow-blur: ${value};
           }
         `;
       });
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$i(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/textShadowColor.js
+function generator141(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}text-shadow`;
-
-  const { textShadowColor = {} } = theme;
-
+  const { textShadowColor = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByColors }) => {
       const cssString = getCssByColors(
@@ -6185,7 +5836,7 @@ function generator$i(configOptions = {}) {
             rgbPropertyValue = `text-shadow: var(--text-shadow-x) var(--text-shadow-y) var(--text-shadow-blur, 0) rgba(${rgbValue}, var(--text-shadow-opacity));`;
           }
           return `
-            ${pseudoClass(`${prefix}${key}`, variants.textShadowColor, {})} {
+            ${pseudoClass(`${prefix}${key}`, variants2.textShadowColor, {})} {
               --text-shadow-opacity: 1;
               --text-shadow-x: 1px;
               --text-shadow-y: 1px;
@@ -6196,168 +5847,150 @@ function generator$i(configOptions = {}) {
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$h(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/textShadowOpacity.js
+function generator142(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}text-shadow-opacity`;
-
-  const { textShadowOpacity = {} } = theme;
-
+  const { textShadowOpacity = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(textShadowOpacity, (keyTmp, value) => {
         const key = keyTmp.toLowerCase() !== "default" ? `-${keyTmp}` : "";
         return `
-          ${pseudoClass(`${prefix}${key}`, variants.textShadowOpacity)} {
+          ${pseudoClass(`${prefix}${key}`, variants2.textShadowOpacity)} {
             --text-shadow-opacity: ${value};
           }
         `;
       });
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$g(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/textShadowX.js
+function generator143(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}text-shadow-x`;
-
-  const { textShadowX = {} } = theme;
-
+  const { textShadowX = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(textShadowX, (keyTmp, value) => {
         const key = keyTmp.toLowerCase() !== "default" ? `-${keyTmp}` : "";
         return `
-          ${pseudoClass(`${prefix}${key}`, variants.textShadowX)} {
+          ${pseudoClass(`${prefix}${key}`, variants2.textShadowX)} {
             --text-shadow-x: ${value};
           }
         `;
       });
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$f(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/textShadowY.js
+function generator144(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}text-shadow-y`;
-
-  const { textShadowY = {} } = theme;
-
+  const { textShadowY = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(textShadowY, (keyTmp, value) => {
         const key = keyTmp.toLowerCase() !== "default" ? `-${keyTmp}` : "";
         return `
-          ${pseudoClass(`${prefix}${key}`, variants.textShadowY)} {
+          ${pseudoClass(`${prefix}${key}`, variants2.textShadowY)} {
             --text-shadow-y: ${value};
           }
         `;
       });
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$e(configOptions = {}) {
-  const { prefix, variants = {} } = configOptions;
-
+// src/generators/textTransform.js
+function generator145(configOptions2 = {}) {
+  const { prefix, variants: variants2 = {} } = configOptions2;
   const propertyOptions = {
     uppercase: "uppercase",
     lowercase: "lowercase",
     capitalize: "capitalize",
-    "normal-case": "none",
+    "normal-case": "none"
   };
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}${key}`, variants.textTransform)} {
+          ${pseudoClass(`${prefix}${key}`, variants2.textTransform)} {
             text-transform: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$d(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/textUnderlineOffset.js
+function generator146(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}underline-offset`;
-
-  const { textUnderlineOffset = {} } = theme;
-
+  const { textUnderlineOffset = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         textUnderlineOffset,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.textUnderlineOffset)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.textUnderlineOffset)} {
             text-underline-offset: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$c(configOptions = {}) {
-  const { prefix, variants = {} } = configOptions;
-
+// src/generators/textWrap.js
+function generator147(configOptions2 = {}) {
+  const { prefix, variants: variants2 = {} } = configOptions2;
   const propertyOptions = ["wrap", "nowrap", "balance", "pretty"];
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}text-${key}`, variants.textDecoration)} {
+          ${pseudoClass(`${prefix}text-${key}`, variants2.textDecoration)} {
             text-wrap: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$b(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/touchAction.js
+function generator148(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}touch`;
-
   const propertyOptions = [
     "auto",
     "none",
@@ -6368,50 +6001,38 @@ function generator$b(configOptions = {}) {
     "pan-up",
     "pan-down",
     "pinch-zoom",
-    "manipulation",
+    "manipulation"
   ];
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.touchAction)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.touchAction)} {
             touch-action: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$a({ prefix }) {
+// src/generators/transform.js
+function generator149({ prefix }) {
   return `    
-  .${prefix}transform {
-    --transform-translate-x: 0;
-    --transform-translate-y: 0;
-    --transform-rotate: 0;
-    --transform-skew-x: 0;
-    --transform-skew-y: 0;
-    --transform-scale-x: 1;
-    --transform-scale-y: 1;
-    transform: translateX(var(--transform-translate-x)) translateY(var(--transform-translate-y)) rotate(var(--transform-rotate)) skewX(var(--transform-skew-x)) skewY(var(--transform-skew-y)) scaleX(var(--transform-scale-x)) scaleY(var(--transform-scale-y));
-  }
   .${prefix}transform-none {
-    transform: none;
+    transform: none !important;
   }
 `;
 }
 
-function generator$9(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/transformOrigin.js
+function generator150(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}origin`;
-
   const propertyOptions = [
     "center",
     "top",
@@ -6421,36 +6042,37 @@ function generator$9(configOptions = {}) {
     "bottom",
     "bottom-left",
     "left",
-    "top-left",
+    "top-left"
   ];
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.transformOrigin)} {
-            transform-origin: ${value.replace("-", " ")} !important;
+          ${pseudoClass(`${prefix}-${key}`, variants2.transformOrigin)} {
+            transform-origin: ${value.replace("-", " ")};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$8(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
-  const { translate = {} } = theme;
-
+// src/generators/translate.js
+function generator151(configOptions2 = {}) {
+  const {
+    prefix: globalPrefix,
+    variants: variants2 = {},
+    theme: theme2 = {},
+    vars: vars2 = {}
+  } = configOptions2;
+  const { translate = {} } = theme2;
   Object.entries(translate).forEach(([key, value]) => {
     translate[`-${key}`] = `-${value}`.replace("--", "-");
   });
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(translate, (keyTmp, value) => {
@@ -6461,35 +6083,34 @@ function generator$8(configOptions = {}) {
           prefix = `${globalPrefix}-translate`;
         }
         return `
-          ${pseudoClass(`${prefix}-x-${key}`, variants.translate)} {
-            --transform-translate-x: ${value} !important;
+          ${pseudoClass(`${prefix}-x-${key}`, variants2.translate)} {
+            --transform-translate-x: ${value};
+            ${vars2.transform}
           }
-          ${pseudoClass(`${prefix}-y-${key}`, variants.translate)} {
-            --transform-translate-y: ${value} !important;
+          ${pseudoClass(`${prefix}-y-${key}`, variants2.translate)} {
+            --transform-translate-y: ${value};
+            ${vars2.transform}
           }
         `;
       });
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$7(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/userSelect.js
+function generator152(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}select`;
-
   const propertyOptions = ["none", "text", "all", "auto"];
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.userSelect)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.userSelect)} {
             -webkit-user-select: ${value};
             -moz-user-select: ${value};
             -ms-user-select: ${value};
@@ -6499,17 +6120,15 @@ function generator$7(configOptions = {}) {
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$6(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/verticalAlign.js
+function generator153(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}align`;
-
   const propertyOptions = [
     "baseline",
     "top",
@@ -6518,59 +6137,54 @@ function generator$6(configOptions = {}) {
     "text-top",
     "text-bottom",
     "text-sub",
-    "text-super",
+    "text-super"
   ];
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.verticalAlign)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.verticalAlign)} {
             vertical-align: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$5(configOptions = {}) {
-  const { prefix, variants = {} } = configOptions;
-
+// src/generators/visibility.js
+function generator154(configOptions2 = {}) {
+  const { prefix, variants: variants2 = {} } = configOptions2;
   const propertyOptions = {
     visible: "visible",
     collapse: "collapse",
-    invisible: "hidden",
+    invisible: "hidden"
   };
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}${key}`, variants.visibility)} {
+          ${pseudoClass(`${prefix}${key}`, variants2.visibility)} {
             visibility: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$4(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/whitespace.js
+function generator155(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}whitespace`;
-
   const propertyOptions = [
     "normal",
     "nowrap",
@@ -6578,112 +6192,102 @@ function generator$4(configOptions = {}) {
     "pre",
     "pre-line",
     "pre-wrap",
-    "break-spaces",
+    "break-spaces"
   ];
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.whitespace)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.whitespace)} {
             white-space: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$3(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
+// src/generators/width.js
+function generator156(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}w`;
-
-  const { width = {} } = theme;
-
+  const { width = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         width,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.width)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.width)} {
             width: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator$2(configOptions = {}) {
-  const { prefix, variants = {} } = configOptions;
-
+// src/generators/wordBreak.js
+function generator157(configOptions2 = {}) {
+  const { prefix, variants: variants2 = {} } = configOptions2;
   const responsiveCssString = generateCssString(({ pseudoClass }) => {
     const cssString = `
-				${pseudoClass(`${prefix}break-normal`, variants.wordBreak)} {
+				${pseudoClass(`${prefix}break-normal`, variants2.wordBreak)} {
 					overflow-wrap: normal;
 					word-break: normal;
 				}
-				${pseudoClass(`${prefix}break-words`, variants.wordBreak)} {
+				${pseudoClass(`${prefix}break-words`, variants2.wordBreak)} {
 					overflow-wrap: break-word;
 				}
-				${pseudoClass(`${prefix}break-all`, variants.wordBreak)} {
+				${pseudoClass(`${prefix}break-all`, variants2.wordBreak)} {
 					word-break: break-all;
 				}
-				${pseudoClass(`${prefix}break-keep`, variants.wordBreak)} {
+				${pseudoClass(`${prefix}break-keep`, variants2.wordBreak)} {
 					word-break: keep-all;
 				}
 			`;
     return cssString;
-  }, configOptions);
-
+  }, configOptions2);
   return responsiveCssString;
 }
 
-function generator$1(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {} } = configOptions;
-
+// src/generators/willChange.js
+function generator158(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}will-change`;
-
   const propertyOptions = {
     auto: "auto",
     scroll: "scroll-position",
     contents: "contents",
-    transform: "transform",
+    transform: "transform"
   };
-
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(
         propertyOptions,
         (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants.willChange)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.willChange)} {
             will-change: ${value};
           }
         `
       );
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-function generator(configOptions = {}) {
-  const { prefix: globalPrefix, variants = {}, theme = {} } = configOptions;
-
-  const { zIndex = {} } = theme;
-
+// src/generators/zIndex.js
+function generator159(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
+  const { zIndex = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByOptions }) => {
       const cssString = getCssByOptions(zIndex, (keyTmp, value) => {
@@ -6694,187 +6298,185 @@ function generator(configOptions = {}) {
           prefix = `${globalPrefix}-z`;
         }
         return `
-          ${pseudoClass(`${prefix}-${key}`, variants.zIndex)} {
+          ${pseudoClass(`${prefix}-${key}`, variants2.zIndex)} {
             z-index: ${value};
           }
         `;
       });
       return cssString;
     },
-    configOptions
+    configOptions2
   );
-
   return responsiveCssString;
 }
 
-const plugins = {
-  accentColor: generator$2u,
-  base: generator$2e,
-  accessibility: generator$2t,
-  alignContent: generator$2s,
-  alignItems: generator$2r,
-  alignSelf: generator$2q,
-  appearance: generator$2p,
-  aspect: generator$2o,
-  backgroundAttachment: generator$2n,
-  backgroundClip: generator$2m,
-  backgroundColor: generator$2l,
-  backgroundImage: generator$2k,
-  backgroundOpacity: generator$2j,
-  backgroundOrigin: generator$2i,
-  backgroundPosition: generator$2h,
-  backgroundRepeat: generator$2g,
-  backgroundSize: generator$2f,
-  blur: generator$2d,
-  borderCollapse: generator$2c,
-  borderColor: generator$2b,
-  borderOpacity: generator$2a,
-  borderRadius: generator$29,
-  borderSpacing: generator$28,
-  borderStyle: generator$27,
-  borderWidth: generator$26,
-  boxDecorationBreak: generator$25,
-  boxShadow: generator$24,
-  boxSizing: generator$23,
-  brightness: generator$22,
-  captionSide: generator$21,
-  caretColor: generator$20,
-  clear: generator$1$,
-  container: generator$1_,
-  contrast: generator$1Z,
-  cursor: generator$1Y,
-  display: generator$1X,
-  divideColor: generator$1W,
-  divideOpacity: generator$1V,
-  divideStyle: generator$1U,
-  divideWidth: generator$1T,
-  dropShadow: generator$1S,
-  fill: generator$1R,
-  filter: generator$1Q,
-  flex: generator$1P,
-  flexBasis: generator$1O,
-  flexDirection: generator$1N,
-  flexGrow: generator$1M,
-  flexShrink: generator$1L,
-  flexWrap: generator$1K,
-  float: generator$1J,
-  fontSize: generator$1I,
-  fontSmoothing: generator$1H,
-  fontStyle: generator$1G,
-  fontVariantNumeric: generator$1F,
-  fontWeight: generator$1E,
-  gap: generator$1D,
-  gradientColorStops: generator$1C,
-  grayscale: generator$1B,
-  gridAutoColumns: generator$1A,
-  gridAutoFlow: generator$1z,
-  gridAutoRows: generator$1y,
-  gridColumn: generator$1x,
-  gridColumnEnd: generator$1w,
-  gridColumnStart: generator$1v,
-  gridRow: generator$1u,
-  gridRowEnd: generator$1t,
-  gridRowStart: generator$1s,
-  gridTemplateColumns: generator$1r,
-  gridTemplateRows: generator$1q,
-  height: generator$1p,
-  hueRotate: generator$1o,
-  hyphens: generator$1n,
-  inset: generator$1m,
-  invert: generator$1l,
-  isolation: generator$1k,
-  justifyContent: generator$1j,
-  justifyItems: generator$1i,
-  justifySelf: generator$1h,
-  letterSpacing: generator$1g,
-  lineClamp: generator$1f,
-  lineHeight: generator$1e,
-  listStylePosition: generator$1d,
-  listStyleType: generator$1c,
-  margin: generator$1b,
-  maxHeight: generator$1a,
-  maxWidth: generator$19,
-  minHeight: generator$18,
-  minWidth: generator$17,
-  objectFit: generator$15,
-  mixBlendMode: generator$16,
-  objectPosition: generator$14,
-  opacity: generator$13,
-  order: generator$12,
-  outlineColor: generator$11,
-  outlineOffset: generator$10,
-  outlineOpacity: generator$$,
-  outlineStyle: generator$_,
-  outlineWidth: generator$Z,
-  overflow: generator$Y,
-  overscrollBehavior: generator$X,
-  padding: generator$W,
-  placeContent: generator$V,
-  placeItems: generator$U,
-  placeSelf: generator$T,
-  placeholderColor: generator$S,
-  placeholderOpacity: generator$R,
-  pointerEvents: generator$Q,
-  position: generator$P,
-  resize: generator$O,
-  ringColor: generator$N,
-  ringOffsetColor: generator$M,
-  ringOffsetWidth: generator$L,
-  ringOpacity: generator$K,
-  ringWidth: generator$J,
-  rotate: generator$H,
-  saturate: generator$I,
-  scale: generator$G,
-  scrollBehavior: generator$F,
-  scrollMargin: generator$E,
-  scrollPadding: generator$D,
-  scrollSnapAlign: generator$C,
-  scrollSnapStop: generator$B,
-  scrollSnapType: generator$A,
-  sepia: generator$z,
-  size: generator$y,
-  skew: generator$x,
-  space: generator$w,
-  stroke: generator$v,
-  strokeWidth: generator$u,
-  tableLayout: generator$t,
-  textAlign: generator$s,
-  textColor: generator$r,
-  textDecoration: generator$q,
-  textDecorationColor: generator$p,
-  textDecorationStyle: generator$o,
-  textDecorationThickness: generator$n,
-  textIndent: generator$m,
-  textOpacity: generator$l,
-  textOverflow: generator$k,
-  textShadowBlur: generator$j,
-  textShadowColor: generator$i,
-  textShadowOpacity: generator$h,
-  textShadowX: generator$g,
-  textShadowY: generator$f,
-  textTransform: generator$e,
-  textUnderlineOffset: generator$d,
-  textWrap: generator$c,
-  touchAction: generator$b,
-  transform: generator$a,
-  transformOrigin: generator$9,
-  translate: generator$8,
-  userSelect: generator$7,
-  verticalAlign: generator$6,
-  visibility: generator$5,
-  whitespace: generator$4,
-  width: generator$3,
-  willChange: generator$1,
-  wordBreak: generator$2,
-  zIndex: generator,
+// src/index.js
+var plugins = {
+  accentColor: generator,
+  base: generator17,
+  accessibility: generator2,
+  alignContent: generator3,
+  alignItems: generator4,
+  alignSelf: generator5,
+  appearance: generator6,
+  aspect: generator7,
+  backgroundAttachment: generator8,
+  backgroundClip: generator9,
+  backgroundColor: generator10,
+  backgroundImage: generator11,
+  backgroundOpacity: generator12,
+  backgroundOrigin: generator13,
+  backgroundPosition: generator14,
+  backgroundRepeat: generator15,
+  backgroundSize: generator16,
+  blur: generator18,
+  borderCollapse: generator19,
+  borderColor: generator20,
+  borderOpacity: generator21,
+  borderRadius: generator22,
+  borderSpacing: generator23,
+  borderStyle: generator24,
+  borderWidth: generator25,
+  boxDecorationBreak: generator26,
+  boxShadow: generator27,
+  boxSizing: generator28,
+  brightness: generator29,
+  captionSide: generator30,
+  caretColor: generator31,
+  clear: generator32,
+  container: generator33,
+  contrast: generator34,
+  cursor: generator35,
+  display: generator36,
+  divideColor: generator37,
+  divideOpacity: generator38,
+  divideStyle: generator39,
+  divideWidth: generator40,
+  dropShadow: generator41,
+  fill: generator42,
+  filter: generator43,
+  flex: generator44,
+  flexBasis: generator45,
+  flexDirection: generator46,
+  flexGrow: generator47,
+  flexShrink: generator48,
+  flexWrap: generator49,
+  float: generator50,
+  fontSize: generator51,
+  fontSmoothing: generator52,
+  fontStyle: generator53,
+  fontVariantNumeric: generator54,
+  fontWeight: generator55,
+  gap: generator56,
+  gradientColorStops: generator57,
+  grayscale: generator58,
+  gridAutoColumns: generator59,
+  gridAutoFlow: generator60,
+  gridAutoRows: generator61,
+  gridColumn: generator62,
+  gridColumnEnd: generator63,
+  gridColumnStart: generator64,
+  gridRow: generator65,
+  gridRowEnd: generator66,
+  gridRowStart: generator67,
+  gridTemplateColumns: generator68,
+  gridTemplateRows: generator69,
+  height: generator70,
+  hueRotate: generator71,
+  hyphens: generator72,
+  inset: generator73,
+  invert: generator74,
+  isolation: generator75,
+  justifyContent: generator76,
+  justifyItems: generator77,
+  justifySelf: generator78,
+  letterSpacing: generator79,
+  lineClamp: generator80,
+  lineHeight: generator81,
+  listStylePosition: generator82,
+  listStyleType: generator83,
+  margin: generator84,
+  maxHeight: generator85,
+  maxWidth: generator86,
+  minHeight: generator87,
+  minWidth: generator88,
+  objectFit: generator90,
+  mixBlendMode: generator89,
+  objectPosition: generator91,
+  opacity: generator92,
+  order: generator93,
+  outlineColor: generator94,
+  outlineOffset: generator95,
+  outlineOpacity: generator96,
+  outlineStyle: generator97,
+  outlineWidth: generator98,
+  overflow: generator99,
+  overscrollBehavior: generator100,
+  padding: generator101,
+  placeContent: generator102,
+  placeItems: generator103,
+  placeSelf: generator104,
+  placeholderColor: generator105,
+  placeholderOpacity: generator106,
+  pointerEvents: generator107,
+  position: generator108,
+  resize: generator109,
+  ringColor: generator110,
+  ringOffsetColor: generator111,
+  ringOffsetWidth: generator112,
+  ringOpacity: generator113,
+  ringWidth: generator114,
+  rotate: generator116,
+  saturate: generator115,
+  scale: generator117,
+  scrollBehavior: generator118,
+  scrollMargin: generator119,
+  scrollPadding: generator120,
+  scrollSnapAlign: generator121,
+  scrollSnapStop: generator122,
+  scrollSnapType: generator123,
+  sepia: generator124,
+  size: generator125,
+  skew: generator126,
+  space: generator127,
+  stroke: generator128,
+  strokeWidth: generator129,
+  tableLayout: generator130,
+  textAlign: generator131,
+  textColor: generator132,
+  textDecoration: generator133,
+  textDecorationColor: generator134,
+  textDecorationStyle: generator135,
+  textDecorationThickness: generator136,
+  textIndent: generator137,
+  textOpacity: generator138,
+  textOverflow: generator139,
+  textShadowBlur: generator140,
+  textShadowColor: generator141,
+  textShadowOpacity: generator142,
+  textShadowX: generator143,
+  textShadowY: generator144,
+  textTransform: generator145,
+  textUnderlineOffset: generator146,
+  textWrap: generator147,
+  touchAction: generator148,
+  transform: generator149,
+  transformOrigin: generator150,
+  translate: generator151,
+  userSelect: generator152,
+  verticalAlign: generator153,
+  visibility: generator154,
+  whitespace: generator155,
+  width: generator156,
+  willChange: generator158,
+  wordBreak: generator157,
+  zIndex: generator159
 };
-
 function generateTailwindCssString(options = {}) {
   const pluginKeys = Object.keys(plugins);
-  const configOptions = getConfigOptions(options, pluginKeys);
-  const { corePlugins = {} } = configOptions;
+  const configOptions2 = getConfigOptions(options, pluginKeys);
+  const { corePlugins = {} } = configOptions2;
   const corePluginKeys = Object.keys(corePlugins);
-
   let cssString = `
     *, ::after, ::before {
       --border-opacity: 1;
@@ -6893,12 +6495,11 @@ function generateTailwindCssString(options = {}) {
     if (corePluginKeys.indexOf(key) >= 0 && !corePlugins[key]) {
       cssString += "";
     } else {
-      cssString += plugins[key](configOptions);
+      cssString += plugins[key](configOptions2);
     }
   });
   return cssString;
 }
-
 function addStyleSheet(attributeId, attributeValue, cssString) {
   const isElementExist = document.querySelector(
     `style[${attributeId}=${attributeValue}]`
@@ -6916,7 +6517,6 @@ function addStyleSheet(attributeId, attributeValue, cssString) {
     }
   }
 }
-
 function generateInlineStyle(options = {}) {
   if (typeof window === "object") {
     const { id = "tailwind-css" } = options;
@@ -6924,5 +6524,8 @@ function generateInlineStyle(options = {}) {
     addStyleSheet("data-inline-style", id, cssString);
   }
 }
-
-module.exports = generateInlineStyle;
+// Annotate the CommonJS export names for ESM import in node:
+0 && (module.exports = {
+  generateTailwindCssString,
+  getConfigOptions
+});

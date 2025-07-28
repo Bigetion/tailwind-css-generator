@@ -1,0 +1,24 @@
+import { generateCssString } from "../utils/index.js";
+
+export default function generator(configOptions = {}) {
+  const { prefix, variants = {} } = configOptions;
+
+  const propertyOptions = ["static", "fixed", "absolute", "relative", "sticky"];
+
+  const responsiveCssString = generateCssString(
+    ({ pseudoClass, getCssByOptions }) => {
+      const cssString = getCssByOptions(
+        propertyOptions,
+        (key, value) => `
+          ${pseudoClass(`${prefix}${key}`, variants.position)} {
+            position: ${value};
+          }
+        `
+      );
+      return cssString;
+    },
+    configOptions
+  );
+
+  return responsiveCssString;
+}
