@@ -11,7 +11,6 @@ import generateBackgroundAttachment from "./generators/backgroundAttachment.js";
 import generateBackgroundClip from "./generators/backgroundClip.js";
 import generateBackgroundColor from "./generators/backgroundColor.js";
 import generateBackgroundImage from "./generators/backgroundImage.js";
-import generateBackgroundOpacity from "./generators/backgroundOpacity.js";
 import generateBackgroundOrigin from "./generators/backgroundOrigin.js";
 import generateBackgroundPosition from "./generators/backgroundPosition.js";
 import generateBackgroundRepeat from "./generators/backgroundRepeat.js";
@@ -20,7 +19,6 @@ import generateBase from "./generators/base.js";
 import generateBlur from "./generators/blur.js";
 import generateBorderCollapse from "./generators/borderCollapse.js";
 import generateBorderColor from "./generators/borderColor.js";
-import generateBorderOpacity from "./generators/borderOpacity.js";
 import generateBorderRadius from "./generators/borderRadius.js";
 import generateBorderSpacing from "./generators/borderSpacing.js";
 import generateBorderStyle from "./generators/borderStyle.js";
@@ -33,14 +31,15 @@ import generateCaptionSide from "./generators/captionSide.js";
 import generateCaretColor from "./generators/caretColor.js";
 import generateClear from "./generators/clear.js";
 import generateContainer from "./generators/container.js";
+import generateContainerQuery from "./generators/containerQuery.js";
 import generateContrast from "./generators/contrast.js";
 import generateCursor from "./generators/cursor.js";
 import generateDisplay from "./generators/display.js";
 import generateDivideColor from "./generators/divideColor.js";
-import generateDivideOpacity from "./generators/divideOpacity.js";
 import generateDivideStyle from "./generators/divideStyle.js";
 import generateDivideWidth from "./generators/divideWidth.js";
 import generateDropShadow from "./generators/dropShadow.js";
+import generateFieldSizing from "./generators/fieldSizing.js";
 import generateFill from "./generators/fill.js";
 import generateFilter from "./generators/filter.js";
 import generateFlex from "./generators/flex.js";
@@ -73,6 +72,8 @@ import generateHeight from "./generators/height.js";
 import generateHueRotate from "./generators/hueRotate.js";
 import generateHyphens from "./generators/hyphens.js";
 import generateInset from "./generators/inset.js";
+import generateInsetRing from "./generators/insetRing.js";
+import generateInsetShadow from "./generators/insetShadow.js";
 import generateInvert from "./generators/invert.js";
 import generateIsolation from "./generators/isolation.js";
 import generateJustifyContent from "./generators/justifyContent.js";
@@ -84,6 +85,7 @@ import generateLineHeight from "./generators/lineHeight.js";
 import generateListStylePosition from "./generators/listStylePosition.js";
 import generateListStyleType from "./generators/listStyleType.js";
 import generateMargin from "./generators/margin.js";
+import generateMask from "./generators/mask.js";
 import generateMaxHeight from "./generators/maxHeight.js";
 import generateMaxWidth from "./generators/maxWidth.js";
 import generateMinHeight from "./generators/minHeight.js";
@@ -95,7 +97,6 @@ import generateOpacity from "./generators/opacity.js";
 import generateOrder from "./generators/order.js";
 import generateOutlineColor from "./generators/outlineColor.js";
 import generateOutlineOffset from "./generators/outlineOffset.js";
-import generateOutlineOpacity from "./generators/outlineOpacity.js";
 import generateOutlineStyle from "./generators/outlineStyle.js";
 import generateOutlineWidth from "./generators/outlineWidth.js";
 import generateOverflow from "./generators/overflow.js";
@@ -105,14 +106,12 @@ import generatePlaceContent from "./generators/placeContent.js";
 import generatePlaceItems from "./generators/placeItems.js";
 import generatePlaceSelf from "./generators/placeSelf.js";
 import generatePlaceholderColor from "./generators/placeholderColor.js";
-import generatePlaceholderOpacity from "./generators/placeholderOpacity.js";
 import generatePointerEvents from "./generators/pointerEvents.js";
 import generatePosition from "./generators/position.js";
 import generateResize from "./generators/resize.js";
 import generateRingColor from "./generators/ringColor.js";
 import generateRingOffsetColor from "./generators/ringOffsetColor.js";
 import generateRingOffsetWidth from "./generators/ringOffsetWidth.js";
-import generateRingOpacity from "./generators/ringOpacity.js";
 import generateRingWidth from "./generators/ringWidth.js";
 import generateSaturate from "./generators/saturate.js";
 import generateRotate from "./generators/rotate.js";
@@ -137,7 +136,6 @@ import generateTextDecorationColor from "./generators/textDecorationColor.js";
 import generateTextDecorationStyle from "./generators/textDecorationStyle.js";
 import generateTextDecorationThickness from "./generators/textDecorationThickness.js";
 import generateTextIndent from "./generators/textIndent.js";
-import generateTextOpacity from "./generators/textOpacity.js";
 import generateTextOverflow from "./generators/textOverflow.js";
 import generateTextShadowBlur from "./generators/textShadowBlur.js";
 import generateTextShadowColor from "./generators/textShadowColor.js";
@@ -149,6 +147,7 @@ import generateTextUnderlineOffset from "./generators/textUnderlineOffset.js";
 import generateTextWrap from "./generators/textWrap.js";
 import generateTouchAction from "./generators/touchAction.js";
 import generateTransform from "./generators/transform.js";
+import generateTransform3d from "./generators/transform3d.js";
 import generateTransformOrigin from "./generators/transformOrigin.js";
 import generateTranslate from "./generators/translate.js";
 import generateUserSelect from "./generators/userSelect.js";
@@ -173,7 +172,6 @@ const plugins = {
   backgroundClip: generateBackgroundClip,
   backgroundColor: generateBackgroundColor,
   backgroundImage: generateBackgroundImage,
-  backgroundOpacity: generateBackgroundOpacity,
   backgroundOrigin: generateBackgroundOrigin,
   backgroundPosition: generateBackgroundPosition,
   backgroundRepeat: generateBackgroundRepeat,
@@ -181,7 +179,6 @@ const plugins = {
   blur: generateBlur,
   borderCollapse: generateBorderCollapse,
   borderColor: generateBorderColor,
-  borderOpacity: generateBorderOpacity,
   borderRadius: generateBorderRadius,
   borderSpacing: generateBorderSpacing,
   borderStyle: generateBorderStyle,
@@ -194,14 +191,15 @@ const plugins = {
   caretColor: generateCaretColor,
   clear: generateClear,
   container: generateContainer,
+  containerQuery: generateContainerQuery,
   contrast: generateContrast,
   cursor: generateCursor,
   display: generateDisplay,
   divideColor: generateDivideColor,
-  divideOpacity: generateDivideOpacity,
   divideStyle: generateDivideStyle,
   divideWidth: generateDivideWidth,
   dropShadow: generateDropShadow,
+  fieldSizing: generateFieldSizing,
   fill: generateFill,
   filter: generateFilter,
   flex: generateFlex,
@@ -234,6 +232,8 @@ const plugins = {
   hueRotate: generateHueRotate,
   hyphens: generateHyphens,
   inset: generateInset,
+  insetRing: generateInsetRing,
+  insetShadow: generateInsetShadow,
   invert: generateInvert,
   isolation: generateIsolation,
   justifyContent: generateJustifyContent,
@@ -245,6 +245,7 @@ const plugins = {
   listStylePosition: generateListStylePosition,
   listStyleType: generateListStyleType,
   margin: generateMargin,
+  mask: generateMask,
   maxHeight: generateMaxHeight,
   maxWidth: generateMaxWidth,
   minHeight: generateMinHeight,
@@ -256,7 +257,6 @@ const plugins = {
   order: generateOrder,
   outlineColor: generateOutlineColor,
   outlineOffset: generateOutlineOffset,
-  outlineOpacity: generateOutlineOpacity,
   outlineStyle: generateOutlineStyle,
   outlineWidth: generateOutlineWidth,
   overflow: generateOverflow,
@@ -266,14 +266,12 @@ const plugins = {
   placeItems: generatePlaceItems,
   placeSelf: generatePlaceSelf,
   placeholderColor: generatePlaceholderColor,
-  placeholderOpacity: generatePlaceholderOpacity,
   pointerEvents: generatePointerEvents,
   position: generatePosition,
   resize: generateResize,
   ringColor: generateRingColor,
   ringOffsetColor: generateRingOffsetColor,
   ringOffsetWidth: generateRingOffsetWidth,
-  ringOpacity: generateRingOpacity,
   ringWidth: generateRingWidth,
   rotate: generateRotate,
   saturate: generateSaturate,
@@ -298,7 +296,6 @@ const plugins = {
   textDecorationStyle: generateTextDecorationStyle,
   textDecorationThickness: generateTextDecorationThickness,
   textIndent: generateTextIndent,
-  textOpacity: generateTextOpacity,
   textOverflow: generateTextOverflow,
   textShadowBlur: generateTextShadowBlur,
   textShadowColor: generateTextShadowColor,
@@ -310,6 +307,7 @@ const plugins = {
   textWrap: generateTextWrap,
   touchAction: generateTouchAction,
   transform: generateTransform,
+  transform3d: generateTransform3d,
   transformOrigin: generateTransformOrigin,
   translate: generateTranslate,
   userSelect: generateUserSelect,
@@ -328,20 +326,7 @@ function generateTailwindCssString(options = {}) {
   const { corePlugins = {} } = configOptions;
   const corePluginKeys = Object.keys(corePlugins);
 
-  let cssString = `
-    *, ::after, ::before {
-      --border-opacity: 1;
-      border-color:rgba(229, 231, 235, var(--border-opacity));
-    }
-    *, ::before, ::after {
-      --ring-inset: var(--empty,/*!*/ /*!*/);
-      --ring-offset-width: 0px;
-      --ring-offset-color: #fff;
-      --ring-color: rgba(59, 130, 246, 0.5);
-      --ring-offset-shadow: 0 0 #0000;
-      --ring-shadow: 0 0 #0000;
-    }
-  `;
+  let cssString = "";
   Object.keys(plugins).forEach((key) => {
     if (corePluginKeys.indexOf(key) >= 0 && !corePlugins[key]) {
       cssString += "";

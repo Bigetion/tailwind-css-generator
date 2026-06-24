@@ -4,10 +4,8 @@ declare namespace variants {
     let accessibility: string[];
     let aspect: string[];
     let backgroundColor: string[];
-    let backgroundOpacity: string[];
     let blur: string[];
     let borderColor: string[];
-    let borderOpacity: string[];
     let boxShadow: string[];
     let brightness: string[];
     let caretColor: string[];
@@ -18,19 +16,18 @@ declare namespace variants {
     let gradientColorStops: string[];
     let grayscale: string[];
     let hueRotate: string[];
+    let insetRing: string[];
+    let insetShadow: string[];
     let invert: string[];
     let opacity: string[];
     let outlineColor: string[];
     let outlineOffset: string[];
-    let outlineOpacity: string[];
     let outlineStyle: string[];
     let outlineWidth: string[];
     let placeholderColor: string[];
-    let placeholderOpacity: string[];
     let ringColor: string[];
     let ringOffsetColor: string[];
     let ringOffsetWidth: string[];
-    let ringOpacity: string[];
     let ringWidth: string[];
     let rotate: string[];
     let saturate: string[];
@@ -44,13 +41,14 @@ declare namespace variants {
     let textDecorationColor: string[];
     let textDecorationStyle: string[];
     let textDecorationThickness: string[];
-    let textOpacity: string[];
     let textShadowBlur: string[];
     let textShadowColor: string[];
     let textShadowOpacity: string[];
     let textShadowX: string[];
     let textShadowY: string[];
     let touchAction: string[];
+    let mask: string[];
+    let transform3d: string[];
     let translate: string[];
     let zIndex: string[];
 }

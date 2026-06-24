@@ -103,6 +103,14 @@ function generateCssString(getCssString = () => {}, options = {}) {
               "last",
               "odd",
               "even",
+              // Task 10.1: not-* variants (handled separately below)
+              "not-hover",
+              "not-focus",
+              "not-disabled",
+              // Task 10.2: in-hover variant (handled separately below)
+              "in-hover",
+              // Task 10.3: starting variant (handled at rule level in generateCssString)
+              "starting",
             ].indexOf(pseudoItem) < 0
           ) {
             classArray.push(
@@ -146,6 +154,23 @@ function generateCssString(getCssString = () => {}, options = {}) {
           );
         }
       });
+      // Task 10.1: not-* variants — selector uses :not(:{pseudo}) negation
+      ["not-hover", "not-focus", "not-disabled"].forEach((notItem) => {
+        if (pseudoElements.indexOf(notItem) >= 0) {
+          const pseudo = notItem.replace("not-", "");
+          const className = isFunction(value) ? value("") : value;
+          classArray.push(
+            `.${orientationPrefix}${notItem}\\:${className}:not(:${pseudo})`
+          );
+        }
+      });
+      // Task 10.2: in-hover variant — implicit group variant (parent .group:hover)
+      if (pseudoElements.indexOf("in-hover") >= 0) {
+        const className = isFunction(value) ? value("") : value;
+        classArray.push(
+          `.group:hover .${orientationPrefix}in-hover\\:${className}`
+        );
+      }
     }
     return classArray.join(", ");
   };
@@ -200,6 +225,28 @@ function generateCssString(getCssString = () => {}, options = {}) {
       }
     `;
   });
+
+  // Task 10.3: starting: variant — wrap output in @starting-style at-rule.
+  // Uses a dedicated pseudoClass that only emits .starting\:{class} selectors
+  // (no base class, no other variants) so the block contains only starting: rules.
+  orientationPrefix = "";
+  const pseudoClassStarting = (value) => {
+    const className = isFunction(value) ? value("") : value;
+    return `.starting\\:${className}`;
+  };
+  const startingCssContent = getCssString({
+    orientationPrefix,
+    pseudoClass: pseudoClassStarting,
+    getCssByOptions,
+    getCssByColors,
+  });
+  if (startingCssContent && startingCssContent.trim()) {
+    cssString += `
+      @starting-style {
+        ${startingCssContent}
+      }
+    `;
+  }
 
   return cssString;
 }

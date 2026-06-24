@@ -11,12 +11,8 @@ export default function generator(configOptions = {}) {
     ({ pseudoClass, getCssByColors }) => {
       const cssString = getCssByColors(
         placeholderColor,
-        (key, value, rgbValue) => {
-          let rgbPropertyValue = "";
-          if (rgbValue) {
-            rgbPropertyValue = `color: rgba(${rgbValue}, var(--placeholder-opacity));`;
-          }
-          const propertyValue = `--placeholder-opacity: 1; color: ${value}; ${rgbPropertyValue}`;
+        (key, value) => {
+          const propertyValue = `color: ${value};`;
           const placeholderColorString = (placeholderPseudo) => `
             ${pseudoClass(
               (pseudoString) =>

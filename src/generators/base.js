@@ -182,7 +182,7 @@ export default function generator() {
       box-sizing: border-box;
       border-width: 0;
       border-style: solid;
-      border-color: #e2e8f0;
+      border-color: currentColor;
     }
     hr {
       border-top-width: 1px;

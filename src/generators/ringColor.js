@@ -9,16 +9,11 @@ export default function generator(configOptions = {}) {
 
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByColors }) => {
-      const cssString = getCssByColors(ringColor, (keyTmp, value, rgbValue) => {
+      const cssString = getCssByColors(ringColor, (keyTmp, value) => {
         const key = keyTmp.toLowerCase() !== "default" ? `-${keyTmp}` : "";
-        let rgbPropertyValue = "";
-        if (rgbValue) {
-          rgbPropertyValue = `--ring-color: rgba(${rgbValue}, var(--ring-opacity));`;
-        }
         return `
             ${pseudoClass(`${prefix}${key}`, variants.ringColor, {})} {
-              --ring-opacity: 1;
-              --ring-color: ${value};${rgbPropertyValue}
+              --tw-ring-color: ${value};
             }
           `;
       });

@@ -70,7 +70,7 @@ import generateTailwindBasic from "tailwind-css-generator/basic.esm.js";
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.jsdelivr.net/npm/tailwind-css-generator@4.0.0/index.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tailwind-css-generator@5.0.0/index.min.js"></script>
 </head>
 <body>
   <h1 class="text-3xl font-bold underline">
@@ -91,7 +91,7 @@ import generateTailwindBasic from "tailwind-css-generator/basic.esm.js";
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.jsdelivr.net/npm/tailwind-css-generator@4.0.0/basic.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tailwind-css-generator@5.0.0/basic.min.js"></script>
 </head>
 <body>
   <div class="flex flex-col gap-4 p-6 max-w-md mx-auto">
@@ -305,6 +305,76 @@ npm run build:types  # TypeScript definitions
 ## Browser Support
 
 This library works in all modern browsers and Node.js environments.
+
+## Migration from v4.x
+
+This section documents the breaking changes introduced in v5.0.0 when upgrading from v4.x.
+
+### Deleted Classes
+
+The following opacity utility classes have been removed. Tailwind v4 uses the color modifier `/` syntax directly on color utilities instead.
+
+| Deleted Class | v4 Replacement |
+|---------------|----------------|
+| `bg-opacity-*` | Use `bg-{color}/{opacity}` e.g. `bg-blue-500/50` |
+| `text-opacity-*` | Use `text-{color}/{opacity}` e.g. `text-red-500/75` |
+| `border-opacity-*` | Use `border-{color}/{opacity}` |
+| `divide-opacity-*` | Use `divide-{color}/{opacity}` |
+| `placeholder-opacity-*` | Use `placeholder-{color}/{opacity}` |
+| `ring-opacity-*` | Use `ring-{color}/{opacity}` |
+| `outline-opacity-*` | Use `outline-{color}/{opacity}` |
+
+**Example migration:**
+```html
+<!-- v4.x (old) -->
+<div class="bg-blue-500 bg-opacity-50">...</div>
+
+<!-- v5.0 (new) -->
+<div class="bg-blue-500/50">...</div>
+```
+
+### Renamed Classes
+
+The following classes have been renamed to their canonical Tailwind v4 names. The old v3 aliases are no longer generated.
+
+| Old Class (v4.x) | New Class (v5.0) |
+|------------------|------------------|
+| `bg-gradient-to-t` | `bg-linear-to-t` |
+| `bg-gradient-to-tr` | `bg-linear-to-tr` |
+| `bg-gradient-to-r` | `bg-linear-to-r` |
+| `bg-gradient-to-br` | `bg-linear-to-br` |
+| `bg-gradient-to-b` | `bg-linear-to-b` |
+| `bg-gradient-to-bl` | `bg-linear-to-bl` |
+| `bg-gradient-to-l` | `bg-linear-to-l` |
+| `bg-gradient-to-tl` | `bg-linear-to-tl` |
+| `flex-grow` | `grow` |
+| `flex-grow-0` | `grow-0` |
+| `flex-shrink` | `shrink` |
+| `flex-shrink-0` | `shrink-0` |
+| `overflow-ellipsis` | `text-ellipsis` |
+| `decoration-slice` | `box-decoration-slice` |
+| `decoration-clone` | `box-decoration-clone` |
+
+**Example migration:**
+```html
+<!-- v4.x (old) -->
+<div class="bg-gradient-to-r from-blue-500 to-purple-500 flex-grow overflow-ellipsis">...</div>
+
+<!-- v5.0 (new) -->
+<div class="bg-linear-to-r from-blue-500 to-purple-500 grow text-ellipsis">...</div>
+```
+
+### New Utilities in v5.0
+
+v5.0 also adds several new utility generators:
+- **3D Transforms**: `rotate-x-*`, `rotate-y-*`, `rotate-z-*`, `translate-z-*`, `scale-z-*`, `perspective-*`, `backface-*`, `transform-style-*`
+- **Container Queries**: `@container`, `@sm:`, `@md:`, `@lg:`, and other `@{size}:` breakpoints
+- **Field Sizing**: `field-sizing-fixed`, `field-sizing-content`
+- **Inset Shadow**: `inset-shadow-*` with size and color variants
+- **Inset Ring**: `inset-ring-*` with width and color variants
+- **Mask Utilities**: `mask-none`, `mask-linear-to-*`, `mask-radial*`, `mask-size-*`, `mask-position-*`, `mask-repeat-*`
+- **New Variants**: `not-hover:`, `not-focus:`, `not-disabled:`, `in-hover:`, `starting:`
+- **OKLCH Colors**: All colors updated to OKLCH P3 format with new shade `950` and four new neutral palettes (`mauve`, `olive`, `mist`, `taupe`)
 
 ## License
 

@@ -9,39 +9,31 @@ export default function generator(configOptions = {}) {
     ({ pseudoClass, getCssByColors }) => {
       const cssString = getCssByColors(
         gradientColorStops,
-        (key, value, rgbValue) => {
-          let rgbFromPropertyValue =
-            "--gradient-color-stops: var(--gradient-from-color),var(--gradient-to-color,rgba(255,255,255,0));";
-          let rgbViaPropertyValue =
-            "--gradient-color-stops: var(--gradient-from-color),var(--gradient-via-color),var(--gradient-to-color,rgba(255,255,255,0));";
-          let rgbToPropertyValue =
-            "--gradient-color-stops: var(--gradient-from-color),var(--gradient-to-color,rgba(255,255,255,0));";
-          if (rgbValue) {
-            rgbFromPropertyValue = `--gradient-color-stops: var(--gradient-from-color),var(--gradient-to-color,rgba(${rgbValue},0));`;
-            rgbViaPropertyValue = `--gradient-color-stops: var(--gradient-from-color),var(--gradient-via-color),var(--gradient-to-color,rgba(${rgbValue},0));`;
-            rgbToPropertyValue = `--gradient-color-stops: var(--gradient-from-color),var(--gradient-to-color,rgba(${rgbValue},0));`;
-          }
+        (key, value) => {
           return `
             ${pseudoClass(
               `${prefix}from-${key}`,
               variants.gradientColorStops,
               {}
             )} {
-              --gradient-from-color: ${value};${rgbFromPropertyValue}
+              --tw-gradient-from: ${value};
+              --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via, transparent), var(--tw-gradient-to);
             }
             ${pseudoClass(
               `${prefix}via-${key}`,
               variants.gradientColorStops,
               {}
             )} {
-              --gradient-via-color: ${value};${rgbViaPropertyValue}
+              --tw-gradient-via: ${value};
+              --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via, transparent), var(--tw-gradient-to);
             }
             ${pseudoClass(
               `${prefix}to-${key}`,
               variants.gradientColorStops,
               {}
             )} {
-              --gradient-to-color: ${value};${rgbToPropertyValue}
+              --tw-gradient-to: ${value};
+              --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via, transparent), var(--tw-gradient-to);
             }
           `;
         }
@@ -51,5 +43,15 @@ export default function generator(configOptions = {}) {
     configOptions
   );
 
-  return responsiveCssString;
+  // Percent position stop classes — no variants, plain classes only
+  let percentStopsCss = "";
+  for (let n = 0; n <= 100; n += 5) {
+    percentStopsCss += `
+      .${prefix}from-${n}\\% { --tw-gradient-from-position: ${n}%; }
+      .${prefix}via-${n}\\% { --tw-gradient-via-position: ${n}%; }
+      .${prefix}to-${n}\\% { --tw-gradient-to-position: ${n}%; }
+    `;
+  }
+
+  return responsiveCssString + percentStopsCss;
 }

@@ -9,15 +9,10 @@ export default function generator(configOptions = {}) {
 
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByColors }) => {
-      const cssString = getCssByColors(textColor, (key, value, rgbValue) => {
-        let rgbPropertyValue = "";
-        if (rgbValue) {
-          rgbPropertyValue = `color: rgba(${rgbValue}, var(--text-opacity));`;
-        }
+      const cssString = getCssByColors(textColor, (key, value) => {
         return `
             ${pseudoClass(`${prefix}-${key}`, variants.textColor, {})} {
-              --text-opacity: 1;
-              color: ${value};${rgbPropertyValue}
+              color: ${value};
             }
           `;
       });

@@ -1,56 +1,54 @@
 // src/config/variants.js
 var variants = {
-  accentColor: ["hover", "focus"],
+  accentColor: ["hover", "focus", "not-hover", "not-focus", "not-disabled"],
   accessibility: ["hover", "focus"],
   aspect: ["hover", "focus"],
-  backgroundColor: ["hover", "focus"],
-  backgroundOpacity: ["hover", "focus"],
+  backgroundColor: ["hover", "focus", "not-hover", "not-focus", "not-disabled"],
   blur: ["hover", "focus"],
-  borderColor: ["hover", "focus"],
-  borderOpacity: ["hover", "focus"],
+  borderColor: ["hover", "focus", "not-hover", "not-focus", "not-disabled"],
   boxShadow: ["hover", "focus"],
   brightness: ["hover", "focus"],
-  caretColor: ["hover", "focus"],
+  caretColor: ["hover", "focus", "not-hover", "not-focus", "not-disabled"],
   contrast: ["hover", "focus"],
   dropShadow: ["hover", "focus"],
-  fill: ["hover", "focus"],
+  fill: ["hover", "focus", "not-hover", "not-focus", "not-disabled"],
   flexBasis: ["hover", "focus"],
-  gradientColorStops: ["hover", "focus"],
+  gradientColorStops: ["hover", "focus", "not-hover", "not-focus", "not-disabled"],
   grayscale: ["hover", "focus"],
   hueRotate: ["hover", "focus"],
+  insetRing: ["hover", "focus"],
+  insetShadow: ["hover", "focus"],
   invert: ["hover", "focus"],
   opacity: ["hover", "focus"],
-  outlineColor: ["hover", "focus"],
+  outlineColor: ["hover", "focus", "not-hover", "not-focus", "not-disabled"],
   outlineOffset: ["hover", "focus"],
-  outlineOpacity: ["hover", "focus"],
   outlineStyle: ["hover", "focus"],
   outlineWidth: ["hover", "focus"],
-  placeholderColor: ["hover", "focus"],
-  placeholderOpacity: ["hover", "focus"],
-  ringColor: ["hover", "focus"],
-  ringOffsetColor: ["hover", "focus"],
+  placeholderColor: ["hover", "focus", "not-hover", "not-focus", "not-disabled"],
+  ringColor: ["hover", "focus", "not-hover", "not-focus", "not-disabled"],
+  ringOffsetColor: ["hover", "focus", "not-hover", "not-focus", "not-disabled"],
   ringOffsetWidth: ["hover", "focus"],
-  ringOpacity: ["hover", "focus"],
   ringWidth: ["hover", "focus"],
   rotate: ["hover", "focus"],
   saturate: ["hover", "focus"],
   scale: ["hover", "focus"],
   sepia: ["hover", "focus"],
   skew: ["hover", "focus"],
-  stroke: ["hover", "focus"],
+  stroke: ["hover", "focus", "not-hover", "not-focus", "not-disabled"],
   strokeWidth: ["hover", "focus"],
-  textColor: ["hover", "focus"],
+  textColor: ["hover", "focus", "not-hover", "not-focus", "not-disabled"],
   textDecoration: ["focus", "hover"],
-  textDecorationColor: ["focus", "hover"],
+  textDecorationColor: ["focus", "hover", "not-hover", "not-focus", "not-disabled"],
   textDecorationStyle: ["focus", "hover"],
   textDecorationThickness: ["focus", "hover"],
-  textOpacity: ["hover", "focus"],
   textShadowBlur: ["hover", "focus"],
-  textShadowColor: ["hover", "focus"],
+  textShadowColor: ["hover", "focus", "not-hover", "not-focus", "not-disabled"],
   textShadowOpacity: ["hover", "focus"],
   textShadowX: ["hover", "focus"],
   textShadowY: ["hover", "focus"],
   touchAction: ["hover", "focus"],
+  mask: ["hover", "focus"],
+  transform3d: ["hover", "focus"],
   translate: ["hover", "focus"],
   zIndex: ["hover", "focus"]
 };
@@ -79,16 +77,15 @@ var theme = {
   backgroundColor: ({ theme: theme2 }) => theme2("colors"),
   backgroundImage: {
     none: "none",
-    "gradient-to-t": "linear-gradient(to top, var(--gradient-color-stops))",
-    "gradient-to-tr": "linear-gradient(to top right, var(--gradient-color-stops))",
-    "gradient-to-r": "linear-gradient(to right, var(--gradient-color-stops))",
-    "gradient-to-br": "linear-gradient(to bottom right, var(--gradient-color-stops))",
-    "gradient-to-b": "linear-gradient(to bottom, var(--gradient-color-stops))",
-    "gradient-to-bl": "linear-gradient(to bottom left, var(--gradient-color-stops))",
-    "gradient-to-l": "linear-gradient(to left, var(--gradient-color-stops))",
-    "gradient-to-tl": "linear-gradient(to top left, var(--gradient-color-stops))"
+    "linear-to-t": "linear-gradient(to top, var(--tw-gradient-stops))",
+    "linear-to-tr": "linear-gradient(to top right, var(--tw-gradient-stops))",
+    "linear-to-r": "linear-gradient(to right, var(--tw-gradient-stops))",
+    "linear-to-br": "linear-gradient(to bottom right, var(--tw-gradient-stops))",
+    "linear-to-b": "linear-gradient(to bottom, var(--tw-gradient-stops))",
+    "linear-to-bl": "linear-gradient(to bottom left, var(--tw-gradient-stops))",
+    "linear-to-l": "linear-gradient(to left, var(--tw-gradient-stops))",
+    "linear-to-tl": "linear-gradient(to top left, var(--tw-gradient-stops))"
   },
-  backgroundOpacity: ({ theme: theme2 }) => theme2("opacity"),
   backgroundPosition: {
     bottom: "bottom",
     center: "center",
@@ -120,7 +117,6 @@ var theme = {
     ...theme2("colors"),
     DEFAULT: "#e5e7eb"
   }),
-  borderOpacity: ({ theme: theme2 }) => theme2("opacity"),
   borderRadius: {
     none: "0px",
     sm: "0.125rem",
@@ -170,271 +166,345 @@ var theme = {
   colors: {
     transparent: "transparent",
     current: "currentColor",
-    black: "#000000",
-    white: "#ffffff",
+    black: "oklch(0% 0 0)",
+    white: "oklch(100% 0 0)",
     slate: {
-      50: "#f8fafc",
-      100: "#f1f5f9",
-      200: "#e2e8f0",
-      300: "#cbd5e1",
-      400: "#94a3b8",
-      500: "#64748b",
-      600: "#475569",
-      700: "#334155",
-      800: "#1e293b",
-      900: "#0f172a"
+      50: "oklch(0.984 0.003 247.9)",
+      100: "oklch(0.968 0.007 247.9)",
+      200: "oklch(0.929 0.013 255.5)",
+      300: "oklch(0.869 0.022 252.9)",
+      400: "oklch(0.704 0.04  256.8)",
+      500: "oklch(0.554 0.046 257.4)",
+      600: "oklch(0.446 0.043 257.3)",
+      700: "oklch(0.372 0.044 257.4)",
+      800: "oklch(0.279 0.041 260.0)",
+      900: "oklch(0.208 0.042 265.8)",
+      950: "oklch(0.129 0.042 264.7)"
     },
     gray: {
-      50: "#f9fafb",
-      100: "#f3f4f6",
-      200: "#e5e7eb",
-      300: "#d1d5db",
-      400: "#9ca3af",
-      500: "#6b7280",
-      600: "#4b5563",
-      700: "#374151",
-      800: "#1f2937",
-      900: "#111827"
+      50: "oklch(0.985 0.002 247.9)",
+      100: "oklch(0.967 0.003 264.5)",
+      200: "oklch(0.928 0.006 264.5)",
+      300: "oklch(0.872 0.010 258.3)",
+      400: "oklch(0.707 0.022 261.3)",
+      500: "oklch(0.551 0.027 264.4)",
+      600: "oklch(0.446 0.030 256.8)",
+      700: "oklch(0.373 0.034 259.7)",
+      800: "oklch(0.278 0.033 256.8)",
+      900: "oklch(0.210 0.034 264.7)",
+      950: "oklch(0.130 0.028 261.7)"
     },
     zinc: {
-      50: "#fafafa",
-      100: "#f4f4f5",
-      200: "#e4e4e7",
-      300: "#d4d4d8",
-      400: "#a1a1aa",
-      500: "#71717a",
-      600: "#52525b",
-      700: "#3f3f46",
-      800: "#27272a",
-      900: "#18181b"
+      50: "oklch(0.985 0.000   0.0)",
+      100: "oklch(0.967 0.001 286.4)",
+      200: "oklch(0.920 0.004 286.3)",
+      300: "oklch(0.871 0.006 286.3)",
+      400: "oklch(0.705 0.015 286.1)",
+      500: "oklch(0.552 0.016 285.9)",
+      600: "oklch(0.442 0.017 285.8)",
+      700: "oklch(0.370 0.013 285.8)",
+      800: "oklch(0.274 0.006 286.0)",
+      900: "oklch(0.210 0.006 285.9)",
+      950: "oklch(0.141 0.005 285.8)"
     },
     neutral: {
-      50: "#fafafa",
-      100: "#f5f5f5",
-      200: "#e5e5e5",
-      300: "#d4d4d4",
-      400: "#a3a3a3",
-      500: "#737373",
-      600: "#525252",
-      700: "#404040",
-      800: "#262626",
-      900: "#171717"
+      50: "oklch(0.985 0.000   0.0)",
+      100: "oklch(0.970 0.000   0.0)",
+      200: "oklch(0.922 0.000   0.0)",
+      300: "oklch(0.870 0.000   0.0)",
+      400: "oklch(0.708 0.000   0.0)",
+      500: "oklch(0.556 0.000   0.0)",
+      600: "oklch(0.439 0.000   0.0)",
+      700: "oklch(0.371 0.000   0.0)",
+      800: "oklch(0.269 0.000   0.0)",
+      900: "oklch(0.205 0.000   0.0)",
+      950: "oklch(0.145 0.000   0.0)"
     },
     stone: {
-      50: "#fafaf9",
-      100: "#f5f5f4",
-      200: "#e7e5e4",
-      300: "#d6d3d1",
-      400: "#a8a29e",
-      500: "#78716c",
-      600: "#57534e",
-      700: "#44403c",
-      800: "#292524",
-      900: "#1c1917"
+      50: "oklch(0.985 0.001  67.4)",
+      100: "oklch(0.970 0.002  75.2)",
+      200: "oklch(0.923 0.006  75.2)",
+      300: "oklch(0.869 0.011  65.3)",
+      400: "oklch(0.709 0.023  56.0)",
+      500: "oklch(0.553 0.028  50.3)",
+      600: "oklch(0.444 0.024  48.7)",
+      700: "oklch(0.374 0.020  50.9)",
+      800: "oklch(0.268 0.015  52.9)",
+      900: "oklch(0.216 0.012  56.0)",
+      950: "oklch(0.147 0.009  50.9)"
     },
     red: {
-      50: "#fef2f2",
-      100: "#fee2e2",
-      200: "#fecaca",
-      300: "#fca5a5",
-      400: "#f87171",
-      500: "#ef4444",
-      600: "#dc2626",
-      700: "#b91c1c",
-      800: "#991b1b",
-      900: "#7f1d1d"
+      50: "oklch(0.971 0.013  17.4)",
+      100: "oklch(0.936 0.032  17.7)",
+      200: "oklch(0.885 0.062  18.3)",
+      300: "oklch(0.808 0.114  19.6)",
+      400: "oklch(0.704 0.191  22.2)",
+      500: "oklch(0.637 0.237  25.3)",
+      600: "oklch(0.577 0.245  27.3)",
+      700: "oklch(0.505 0.213  27.5)",
+      800: "oklch(0.444 0.177  26.3)",
+      900: "oklch(0.396 0.141  25.7)",
+      950: "oklch(0.258 0.092  26.0)"
     },
     orange: {
-      50: "#fff7ed",
-      100: "#ffedd5",
-      200: "#fed7aa",
-      300: "#fdba74",
-      400: "#fb923c",
-      500: "#f97316",
-      600: "#ea580c",
-      700: "#c2410c",
-      800: "#9a3412",
-      900: "#7c2d12"
+      50: "oklch(0.980 0.016  73.7)",
+      100: "oklch(0.954 0.038  75.2)",
+      200: "oklch(0.901 0.076  70.7)",
+      300: "oklch(0.837 0.128  66.3)",
+      400: "oklch(0.750 0.183  55.9)",
+      500: "oklch(0.705 0.213  47.6)",
+      600: "oklch(0.646 0.222  41.1)",
+      700: "oklch(0.553 0.195  38.4)",
+      800: "oklch(0.470 0.157  37.5)",
+      900: "oklch(0.408 0.123  38.1)",
+      950: "oklch(0.266 0.079  36.3)"
     },
     amber: {
-      50: "#fffbeb",
-      100: "#fef3c7",
-      200: "#fde68a",
-      300: "#fcd34d",
-      400: "#fbbf24",
-      500: "#f59e0b",
-      600: "#d97706",
-      700: "#b45309",
-      800: "#92400e",
-      900: "#78350f"
+      50: "oklch(0.987 0.022  95.3)",
+      100: "oklch(0.962 0.059  95.6)",
+      200: "oklch(0.924 0.120  95.2)",
+      300: "oklch(0.879 0.169  91.6)",
+      400: "oklch(0.828 0.189  84.6)",
+      500: "oklch(0.769 0.188  70.1)",
+      600: "oklch(0.666 0.179  58.3)",
+      700: "oklch(0.555 0.163  48.9)",
+      800: "oklch(0.473 0.137  46.2)",
+      900: "oklch(0.414 0.112  45.9)",
+      950: "oklch(0.279 0.077  45.2)"
     },
     yellow: {
-      50: "#fefce8",
-      100: "#fef9c3",
-      200: "#fef08a",
-      300: "#fde047",
-      400: "#facc15",
-      500: "#eab308",
-      600: "#ca8a04",
-      700: "#a16207",
-      800: "#854d0e",
-      900: "#713f12"
+      50: "oklch(0.987 0.026 102.2)",
+      100: "oklch(0.973 0.071 103.2)",
+      200: "oklch(0.945 0.129 101.5)",
+      300: "oklch(0.905 0.182  98.1)",
+      400: "oklch(0.852 0.199  91.3)",
+      500: "oklch(0.795 0.184  86.0)",
+      600: "oklch(0.681 0.162  75.8)",
+      700: "oklch(0.554 0.135  66.4)",
+      800: "oklch(0.476 0.114  61.9)",
+      900: "oklch(0.421 0.095  57.7)",
+      950: "oklch(0.286 0.066  53.8)"
     },
     lime: {
-      50: "#f7fee7",
-      100: "#ecfccb",
-      200: "#d9f99d",
-      300: "#bef264",
-      400: "#a3e635",
-      500: "#84cc16",
-      600: "#65a30d",
-      700: "#4d7c0f",
-      800: "#3f6212",
-      900: "#365314"
+      50: "oklch(0.986 0.031 129.5)",
+      100: "oklch(0.967 0.067 130.9)",
+      200: "oklch(0.938 0.127 130.7)",
+      300: "oklch(0.897 0.196 126.5)",
+      400: "oklch(0.841 0.238 128.5)",
+      500: "oklch(0.768 0.233 130.9)",
+      600: "oklch(0.648 0.200 131.4)",
+      700: "oklch(0.532 0.157 131.6)",
+      800: "oklch(0.453 0.124 130.9)",
+      900: "oklch(0.405 0.101 131.1)",
+      950: "oklch(0.274 0.072 132.1)"
     },
     green: {
-      50: "#f0fdf4",
-      100: "#dcfce7",
-      200: "#bbf7d0",
-      300: "#86efac",
-      400: "#4ade80",
-      500: "#22c55e",
-      600: "#16a34a",
-      700: "#15803d",
-      800: "#166534",
-      900: "#14532d"
+      50: "oklch(0.982 0.018 155.8)",
+      100: "oklch(0.962 0.044 156.7)",
+      200: "oklch(0.925 0.084 155.9)",
+      300: "oklch(0.871 0.150 154.4)",
+      400: "oklch(0.792 0.209 151.7)",
+      500: "oklch(0.723 0.219 149.6)",
+      600: "oklch(0.627 0.194 149.2)",
+      700: "oklch(0.527 0.154 150.1)",
+      800: "oklch(0.448 0.119 151.3)",
+      900: "oklch(0.393 0.095 152.5)",
+      950: "oklch(0.266 0.065 152.9)"
     },
     emerald: {
-      50: "#ecfdf5",
-      100: "#d1fae5",
-      200: "#a7f3d0",
-      300: "#6ee7b7",
-      400: "#34d399",
-      500: "#10b981",
-      600: "#059669",
-      700: "#047857",
-      800: "#065f46",
-      900: "#064e3b"
+      50: "oklch(0.979 0.021 166.1)",
+      100: "oklch(0.950 0.052 163.1)",
+      200: "oklch(0.905 0.093 164.2)",
+      300: "oklch(0.845 0.143 164.9)",
+      400: "oklch(0.765 0.177 163.2)",
+      500: "oklch(0.696 0.170 162.5)",
+      600: "oklch(0.596 0.145 163.2)",
+      700: "oklch(0.508 0.118 165.6)",
+      800: "oklch(0.432 0.095 166.9)",
+      900: "oklch(0.378 0.077 168.9)",
+      950: "oklch(0.262 0.051 172.6)"
     },
     teal: {
-      50: "#f0fdfa",
-      100: "#ccfbf1",
-      200: "#99f6e4",
-      300: "#5eead4",
-      400: "#2dd4bf",
-      500: "#14b8a6",
-      600: "#0d9488",
-      700: "#0f766e",
-      800: "#115e59",
-      900: "#134e4a"
+      50: "oklch(0.984 0.014 180.7)",
+      100: "oklch(0.953 0.051 180.8)",
+      200: "oklch(0.910 0.096 180.4)",
+      300: "oklch(0.855 0.138 181.1)",
+      400: "oklch(0.777 0.152 181.1)",
+      500: "oklch(0.704 0.140 182.5)",
+      600: "oklch(0.600 0.118 184.7)",
+      700: "oklch(0.511 0.096 186.4)",
+      800: "oklch(0.437 0.078 188.2)",
+      900: "oklch(0.386 0.063 188.4)",
+      950: "oklch(0.277 0.046 192.5)"
     },
     cyan: {
-      50: "#ecfeff",
-      100: "#cffafe",
-      200: "#a5f3fc",
-      300: "#67e8f9",
-      400: "#22d3ee",
-      500: "#06b6d4",
-      600: "#0891b2",
-      700: "#0e7490",
-      800: "#155e75",
-      900: "#164e63"
+      50: "oklch(0.984 0.019 200.9)",
+      100: "oklch(0.956 0.045 203.4)",
+      200: "oklch(0.917 0.080 205.0)",
+      300: "oklch(0.865 0.127 207.1)",
+      400: "oklch(0.789 0.154 211.1)",
+      500: "oklch(0.715 0.143 215.2)",
+      600: "oklch(0.609 0.126 221.7)",
+      700: "oklch(0.520 0.105 223.1)",
+      800: "oklch(0.450 0.085 224.3)",
+      900: "oklch(0.398 0.070 227.4)",
+      950: "oklch(0.302 0.056 229.7)"
     },
     sky: {
-      50: "#f0f9ff",
-      100: "#e0f2fe",
-      200: "#bae6fd",
-      300: "#7dd3fc",
-      400: "#38bdf8",
-      500: "#0ea5e9",
-      600: "#0284c7",
-      700: "#0369a1",
-      800: "#075985",
-      900: "#0c4a6e"
+      50: "oklch(0.977 0.013 236.6)",
+      100: "oklch(0.951 0.026 236.8)",
+      200: "oklch(0.901 0.058 230.9)",
+      300: "oklch(0.828 0.111 230.3)",
+      400: "oklch(0.746 0.160 232.7)",
+      500: "oklch(0.685 0.169 237.3)",
+      600: "oklch(0.588 0.158 241.9)",
+      700: "oklch(0.500 0.134 242.7)",
+      800: "oklch(0.443 0.110 240.8)",
+      900: "oklch(0.391 0.090 240.9)",
+      950: "oklch(0.293 0.066 243.2)"
     },
     blue: {
-      50: "#eff6ff",
-      100: "#dbeafe",
-      200: "#bfdbfe",
-      300: "#93c5fd",
-      400: "#60a5fa",
-      500: "#3b82f6",
-      600: "#2563eb",
-      700: "#1d4ed8",
-      800: "#1e40af",
-      900: "#1e3a8a"
+      50: "oklch(0.970 0.014 254.6)",
+      100: "oklch(0.932 0.032 255.6)",
+      200: "oklch(0.882 0.059 254.1)",
+      300: "oklch(0.809 0.105 251.8)",
+      400: "oklch(0.707 0.165 254.6)",
+      500: "oklch(0.623 0.214 259.1)",
+      600: "oklch(0.546 0.245 262.9)",
+      700: "oklch(0.488 0.243 264.4)",
+      800: "oklch(0.424 0.199 265.6)",
+      900: "oklch(0.379 0.146 265.5)",
+      950: "oklch(0.282 0.091 267.9)"
     },
     indigo: {
-      50: "#eef2ff",
-      100: "#e0e7ff",
-      200: "#c7d2fe",
-      300: "#a5b4fc",
-      400: "#818cf8",
-      500: "#6366f1",
-      600: "#4f46e5",
-      700: "#4338ca",
-      800: "#3730a3",
-      900: "#312e81"
+      50: "oklch(0.962 0.018 272.3)",
+      100: "oklch(0.930 0.034 272.8)",
+      200: "oklch(0.870 0.065 274.0)",
+      300: "oklch(0.785 0.115 274.7)",
+      400: "oklch(0.673 0.182 276.9)",
+      500: "oklch(0.585 0.233 277.1)",
+      600: "oklch(0.511 0.262 276.9)",
+      700: "oklch(0.457 0.240 277.0)",
+      800: "oklch(0.398 0.195 277.4)",
+      900: "oklch(0.359 0.144 278.7)",
+      950: "oklch(0.257 0.090 281.3)"
     },
     violet: {
-      50: "#f5f3ff",
-      100: "#ede9fe",
-      200: "#ddd6fe",
-      300: "#c4b5fd",
-      400: "#a78bfa",
-      500: "#8b5cf6",
-      600: "#7c3aed",
-      700: "#6d28d9",
-      800: "#5b21b6",
-      900: "#4c1d95"
+      50: "oklch(0.969 0.016 293.8)",
+      100: "oklch(0.943 0.029 294.6)",
+      200: "oklch(0.894 0.057 293.3)",
+      300: "oklch(0.811 0.111 293.6)",
+      400: "oklch(0.702 0.183 293.5)",
+      500: "oklch(0.606 0.250 292.7)",
+      600: "oklch(0.541 0.281 293.0)",
+      700: "oklch(0.491 0.270 292.6)",
+      800: "oklch(0.432 0.232 292.8)",
+      900: "oklch(0.380 0.189 293.7)",
+      950: "oklch(0.283 0.141 291.1)"
     },
     purple: {
-      50: "#faf5ff",
-      100: "#f3e8ff",
-      200: "#e9d5ff",
-      300: "#d8b4fe",
-      400: "#c084fc",
-      500: "#a855f7",
-      600: "#9333ea",
-      700: "#7e22ce",
-      800: "#6b21a8",
-      900: "#581c87"
+      50: "oklch(0.977 0.014 308.3)",
+      100: "oklch(0.946 0.033 307.1)",
+      200: "oklch(0.902 0.063 306.7)",
+      300: "oklch(0.827 0.119 306.3)",
+      400: "oklch(0.714 0.203 305.3)",
+      500: "oklch(0.627 0.265 303.9)",
+      600: "oklch(0.558 0.288 302.3)",
+      700: "oklch(0.496 0.265 301.9)",
+      800: "oklch(0.438 0.218 303.7)",
+      900: "oklch(0.381 0.176 304.1)",
+      950: "oklch(0.291 0.149 302.7)"
     },
     fuchsia: {
-      50: "#fdf4ff",
-      100: "#fae8ff",
-      200: "#f5d0fe",
-      300: "#f0abfc",
-      400: "#e879f9",
-      500: "#d946ef",
-      600: "#c026d3",
-      700: "#a21caf",
-      800: "#86198f",
-      900: "#701a75"
+      50: "oklch(0.977 0.017 320.1)",
+      100: "oklch(0.952 0.037 318.9)",
+      200: "oklch(0.903 0.076 319.6)",
+      300: "oklch(0.833 0.145 321.4)",
+      400: "oklch(0.740 0.238 322.2)",
+      500: "oklch(0.667 0.295 322.1)",
+      600: "oklch(0.591 0.293 321.5)",
+      700: "oklch(0.518 0.253 323.1)",
+      800: "oklch(0.452 0.211 324.1)",
+      900: "oklch(0.401 0.170 325.6)",
+      950: "oklch(0.293 0.136 325.7)"
     },
     pink: {
-      50: "#fdf2f8",
-      100: "#fce7f3",
-      200: "#fbcfe8",
-      300: "#f9a8d4",
-      400: "#f472b6",
-      500: "#ec4899",
-      600: "#db2777",
-      700: "#be185d",
-      800: "#9d174d",
-      900: "#831843"
+      50: "oklch(0.971 0.014 343.2)",
+      100: "oklch(0.948 0.028 342.3)",
+      200: "oklch(0.899 0.061 343.2)",
+      300: "oklch(0.823 0.120 346.0)",
+      400: "oklch(0.718 0.202 349.8)",
+      500: "oklch(0.656 0.241 354.3)",
+      600: "oklch(0.592 0.249   0.6)",
+      700: "oklch(0.525 0.223   3.9)",
+      800: "oklch(0.459 0.187   3.8)",
+      900: "oklch(0.408 0.153   2.4)",
+      950: "oklch(0.284 0.109   3.9)"
     },
     rose: {
-      50: "#fff1f2",
-      100: "#ffe4e6",
-      200: "#fecdd3",
-      300: "#fda4af",
-      400: "#fb7185",
-      500: "#f43f5e",
-      600: "#e11d48",
-      700: "#be123c",
-      800: "#9f1239",
-      900: "#881337"
+      50: "oklch(0.969 0.015  12.4)",
+      100: "oklch(0.941 0.030  12.6)",
+      200: "oklch(0.892 0.058  10.0)",
+      300: "oklch(0.810 0.117  11.6)",
+      400: "oklch(0.712 0.194  13.4)",
+      500: "oklch(0.645 0.246  16.4)",
+      600: "oklch(0.586 0.253  17.6)",
+      700: "oklch(0.514 0.222  16.9)",
+      800: "oklch(0.455 0.188  13.9)",
+      900: "oklch(0.410 0.159  10.9)",
+      950: "oklch(0.271 0.105  12.1)"
+    },
+    mauve: {
+      50: "oklch(0.980 0.005 300.0)",
+      100: "oklch(0.960 0.010 300.0)",
+      200: "oklch(0.920 0.018 300.0)",
+      300: "oklch(0.860 0.028 300.0)",
+      400: "oklch(0.720 0.040 300.0)",
+      500: "oklch(0.580 0.052 300.0)",
+      600: "oklch(0.470 0.048 300.0)",
+      700: "oklch(0.380 0.040 300.0)",
+      800: "oklch(0.280 0.030 300.0)",
+      900: "oklch(0.200 0.022 300.0)",
+      950: "oklch(0.130 0.015 300.0)"
+    },
+    olive: {
+      50: "oklch(0.980 0.015  90.0)",
+      100: "oklch(0.960 0.022  90.0)",
+      200: "oklch(0.920 0.032  90.0)",
+      300: "oklch(0.860 0.045  90.0)",
+      400: "oklch(0.720 0.060  90.0)",
+      500: "oklch(0.580 0.072  90.0)",
+      600: "oklch(0.470 0.065  90.0)",
+      700: "oklch(0.380 0.055  90.0)",
+      800: "oklch(0.280 0.040  90.0)",
+      900: "oklch(0.200 0.028  90.0)",
+      950: "oklch(0.130 0.018  90.0)"
+    },
+    mist: {
+      50: "oklch(0.982 0.008 200.0)",
+      100: "oklch(0.962 0.014 200.0)",
+      200: "oklch(0.922 0.022 200.0)",
+      300: "oklch(0.862 0.034 200.0)",
+      400: "oklch(0.722 0.048 200.0)",
+      500: "oklch(0.582 0.060 200.0)",
+      600: "oklch(0.472 0.055 200.0)",
+      700: "oklch(0.382 0.045 200.0)",
+      800: "oklch(0.282 0.032 200.0)",
+      900: "oklch(0.202 0.022 200.0)",
+      950: "oklch(0.128 0.012 200.0)"
+    },
+    taupe: {
+      50: "oklch(0.978 0.008  60.0)",
+      100: "oklch(0.958 0.014  60.0)",
+      200: "oklch(0.918 0.022  60.0)",
+      300: "oklch(0.858 0.034  60.0)",
+      400: "oklch(0.718 0.048  60.0)",
+      500: "oklch(0.578 0.060  60.0)",
+      600: "oklch(0.468 0.055  60.0)",
+      700: "oklch(0.378 0.045  60.0)",
+      800: "oklch(0.278 0.032  60.0)",
+      900: "oklch(0.198 0.022  60.0)",
+      950: "oklch(0.128 0.014  60.0)"
     }
   },
   columns: {
@@ -466,6 +536,30 @@ var theme = {
     "7xl": "80rem"
   },
   container: {},
+  containers: {
+    xs: "20rem",
+    // 320px
+    sm: "24rem",
+    // 384px
+    md: "28rem",
+    // 448px
+    lg: "32rem",
+    // 512px
+    xl: "36rem",
+    // 576px
+    "2xl": "42rem",
+    // 672px
+    "3xl": "48rem",
+    // 768px
+    "4xl": "56rem",
+    // 896px
+    "5xl": "64rem",
+    // 1024px
+    "6xl": "72rem",
+    // 1152px
+    "7xl": "80rem"
+    // 1280px
+  },
   content: {
     none: "none"
   },
@@ -517,7 +611,6 @@ var theme = {
     "zoom-out": "zoom-out"
   },
   divideColor: ({ theme: theme2 }) => theme2("borderColor"),
-  divideOpacity: ({ theme: theme2 }) => theme2("borderOpacity"),
   divideWidth: ({ theme: theme2 }) => theme2("borderWidth"),
   dropShadow: {
     sm: "0 1px 1px rgb(0 0 0 / 0.05)",
@@ -972,7 +1065,6 @@ var theme = {
     4: "4px",
     8: "8px"
   },
-  outlineOpacity: ({ theme: theme2 }) => theme2("opacity"),
   outlineWidth: {
     0: "0px",
     1: "1px",
@@ -982,7 +1074,6 @@ var theme = {
   },
   padding: ({ theme: theme2 }) => theme2("spacing"),
   placeholderColor: ({ theme: theme2 }) => theme2("colors"),
-  placeholderOpacity: ({ theme: theme2 }) => theme2("opacity"),
   ringColor: ({ theme: theme2 }) => ({
     DEFAULT: "#3b82f6",
     ...theme2("colors")
@@ -995,10 +1086,6 @@ var theme = {
     4: "4px",
     8: "8px"
   },
-  ringOpacity: ({ theme: theme2 }) => ({
-    DEFAULT: "0.5",
-    ...theme2("opacity")
-  }),
   ringWidth: {
     DEFAULT: "3px",
     0: "0px",
@@ -1128,7 +1215,6 @@ var theme = {
   textIndent: ({ theme: theme2 }) => ({
     ...theme2("spacing")
   }),
-  textOpacity: ({ theme: theme2 }) => theme2("opacity"),
   textShadowBlur: ({ theme: theme2 }) => theme2("blur"),
   textShadowColor: ({ theme: theme2 }) => ({
     ...theme2("colors"),
@@ -1374,7 +1460,15 @@ function generateCssString(getCssString = () => {
             "first",
             "last",
             "odd",
-            "even"
+            "even",
+            // Task 10.1: not-* variants (handled separately below)
+            "not-hover",
+            "not-focus",
+            "not-disabled",
+            // Task 10.2: in-hover variant (handled separately below)
+            "in-hover",
+            // Task 10.3: starting variant (handled at rule level in generateCssString)
+            "starting"
           ].indexOf(pseudoItem) < 0) {
             classArray.push(
               `.${orientationPrefix}${pseudoItem}\\:${isFunction(value) ? value(`:${pseudoItem}`) : `${value}:${pseudoItem}`}`
@@ -1403,6 +1497,21 @@ function generateCssString(getCssString = () => {
           );
         }
       });
+      ["not-hover", "not-focus", "not-disabled"].forEach((notItem) => {
+        if (pseudoElements.indexOf(notItem) >= 0) {
+          const pseudo = notItem.replace("not-", "");
+          const className = isFunction(value) ? value("") : value;
+          classArray.push(
+            `.${orientationPrefix}${notItem}\\:${className}:not(:${pseudo})`
+          );
+        }
+      });
+      if (pseudoElements.indexOf("in-hover") >= 0) {
+        const className = isFunction(value) ? value("") : value;
+        classArray.push(
+          `.group:hover .${orientationPrefix}in-hover\\:${className}`
+        );
+      }
     }
     return classArray.join(", ");
   };
@@ -1454,6 +1563,24 @@ function generateCssString(getCssString = () => {
       }
     `;
   });
+  orientationPrefix = "";
+  const pseudoClassStarting = (value) => {
+    const className = isFunction(value) ? value("") : value;
+    return `.starting\\:${className}`;
+  };
+  const startingCssContent = getCssString({
+    orientationPrefix,
+    pseudoClass: pseudoClassStarting,
+    getCssByOptions,
+    getCssByColors
+  });
+  if (startingCssContent && startingCssContent.trim()) {
+    cssString += `
+      @starting-style {
+        ${startingCssContent}
+      }
+    `;
+  }
   return cssString;
 }
 
@@ -1461,29 +1588,16 @@ function generateCssString(getCssString = () => {
 function generator(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}accent`;
-  const { accentColor, opacity = {} } = theme2;
+  const { accentColor } = theme2;
   const responsiveCssString = generateCssString(
-    ({ pseudoClass, getCssByColors, getCssByOptions }) => {
-      let cssString = getCssByColors(accentColor, (key, value, rgbValue) => {
-        let rgbPropertyValue = "";
-        if (rgbValue) {
-          rgbPropertyValue = `accent-color: rgba(${rgbValue}, var(--accent-opacity));`;
-        }
+    ({ pseudoClass, getCssByColors }) => {
+      const cssString = getCssByColors(accentColor, (key, value) => {
         return `
             ${pseudoClass(`${prefix}-${key}`, variants2.accentColor, {})} {
-              --accent-opacity: 1;
-              accent-color: ${value};${rgbPropertyValue}
+              accent-color: ${value};
             }
           `;
       });
-      cssString += getCssByOptions(
-        opacity,
-        (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants2.accentColor, {})} {
-            --accent-opacity: ${value};
-          }
-        `
-      );
       return cssString;
     },
     configOptions2
@@ -1737,15 +1851,10 @@ function generator10(configOptions2 = {}) {
     ({ pseudoClass, getCssByColors }) => {
       const cssString = getCssByColors(
         backgroundColor,
-        (key, value, rgbValue) => {
-          let rgbPropertyValue = "";
-          if (rgbValue) {
-            rgbPropertyValue = `background-color: rgba(${rgbValue}, var(--bg-opacity));`;
-          }
+        (key, value) => {
           return `
             ${pseudoClass(`${prefix}-${key}`, variants2.backgroundColor, {})} {
-              --bg-opacity: 1;
-              background-color: ${value};${rgbPropertyValue}
+              background-color: ${value};
             }
           `;
         }
@@ -1779,30 +1888,8 @@ function generator11(configOptions2 = {}) {
   return responsiveCssString;
 }
 
-// src/generators/backgroundOpacity.js
-function generator12(configOptions2 = {}) {
-  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
-  const prefix = `${globalPrefix}bg-opacity`;
-  const { backgroundOpacity = {} } = theme2;
-  const responsiveCssString = generateCssString(
-    ({ pseudoClass, getCssByOptions }) => {
-      const cssString = getCssByOptions(
-        backgroundOpacity,
-        (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants2.backgroundOpacity)} {
-            --bg-opacity: ${value};
-          }
-        `
-      );
-      return cssString;
-    },
-    configOptions2
-  );
-  return responsiveCssString;
-}
-
 // src/generators/backgroundOrigin.js
-function generator13(configOptions2 = {}) {
+function generator12(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}bg-origin`;
   const propertyOptions = {
@@ -1829,7 +1916,7 @@ function generator13(configOptions2 = {}) {
 }
 
 // src/generators/backgroundPosition.js
-function generator14(configOptions2 = {}) {
+function generator13(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}bg`;
   const { backgroundPosition = {} } = theme2;
@@ -1851,7 +1938,7 @@ function generator14(configOptions2 = {}) {
 }
 
 // src/generators/backgroundRepeat.js
-function generator15(configOptions2 = {}) {
+function generator14(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}bg`;
   const propertyOptions = {
@@ -1880,7 +1967,7 @@ function generator15(configOptions2 = {}) {
 }
 
 // src/generators/backgroundSize.js
-function generator16(configOptions2 = {}) {
+function generator15(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}bg`;
   const { backgroundSize = {} } = theme2;
@@ -1902,7 +1989,7 @@ function generator16(configOptions2 = {}) {
 }
 
 // src/generators/base.js
-function generator17() {
+function generator16() {
   return `
     html {
       line-height: 1.15;
@@ -2086,7 +2173,7 @@ function generator17() {
       box-sizing: border-box;
       border-width: 0;
       border-style: solid;
-      border-color: #e2e8f0;
+      border-color: currentColor;
     }
     hr {
       border-top-width: 1px;
@@ -2172,7 +2259,7 @@ function generator17() {
 }
 
 // src/generators/blur.js
-function generator18(configOptions2 = {}) {
+function generator17(configOptions2 = {}) {
   const {
     prefix: globalPrefix,
     variants: variants2 = {},
@@ -2208,7 +2295,7 @@ function generator18(configOptions2 = {}) {
 }
 
 // src/generators/borderCollapse.js
-function generator19(configOptions2 = {}) {
+function generator18(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}border`;
   const propertyOptions = ["collapse", "separate"];
@@ -2230,7 +2317,7 @@ function generator19(configOptions2 = {}) {
 }
 
 // src/generators/borderColor.js
-function generator20(configOptions2 = {}) {
+function generator19(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}border`;
   const { borderColor = {} } = theme2;
@@ -2238,53 +2325,40 @@ function generator20(configOptions2 = {}) {
     ({ pseudoClass, getCssByColors }) => {
       const cssString = getCssByColors(
         borderColor,
-        (keyTmp, value, rgbValue) => {
+        (keyTmp, value) => {
           if (keyTmp.toLowerCase() === "default") {
             return "";
           }
           const key = keyTmp.toLowerCase() !== "default" ? `-${keyTmp}` : "";
-          let rgbPropertyValue = "";
-          if (rgbValue) {
-            rgbPropertyValue = `border-color: rgba(${rgbValue}, var(--border-opacity));`;
-          }
           return `
             ${pseudoClass(`${prefix}${key}`, variants2.borderColor, {})} {
-              --border-opacity: 1;
-              border-color: ${value};${rgbPropertyValue}
+              border-color: ${value};
             }
             ${pseudoClass(`${prefix}-x${key}`, variants2.borderColor, {})} {
-              --border-opacity: 1;
-              border-left-color: ${value};${rgbPropertyValue}
-              border-right-color: ${value};${rgbPropertyValue}
+              border-left-color: ${value};
+              border-right-color: ${value};
             }
             ${pseudoClass(`${prefix}-y${key}`, variants2.borderColor, {})} {
-              --border-opacity: 1;
-              border-top-color: ${value};${rgbPropertyValue}
-              border-bottom-color: ${value};${rgbPropertyValue}
+              border-top-color: ${value};
+              border-bottom-color: ${value};
             }
             ${pseudoClass(`${prefix}-s${key}`, variants2.borderColor, {})} {
-              --border-opacity: 1;
-              border-inline-start-color: ${value};${rgbPropertyValue}
+              border-inline-start-color: ${value};
             }
             ${pseudoClass(`${prefix}-e${key}`, variants2.borderColor, {})} {
-              --border-opacity: 1;
-              border-inline-end-color: ${value};${rgbPropertyValue}
+              border-inline-end-color: ${value};
             }
             ${pseudoClass(`${prefix}-t${key}`, variants2.borderColor, {})} {
-              --border-opacity: 1;
-              border-top-color: ${value};${rgbPropertyValue}
+              border-top-color: ${value};
             }
             ${pseudoClass(`${prefix}-r${key}`, variants2.borderColor, {})} {
-              --border-opacity: 1;
-              border-right-color: ${value};${rgbPropertyValue}
+              border-right-color: ${value};
             }
             ${pseudoClass(`${prefix}-b${key}`, variants2.borderColor, {})} {
-              --border-opacity: 1;
-              border-bottom-color: ${value};${rgbPropertyValue}
+              border-bottom-color: ${value};
             }
             ${pseudoClass(`${prefix}-l${key}`, variants2.borderColor, {})} {
-              --border-opacity: 1;
-              border-left-color: ${value};${rgbPropertyValue}
+              border-left-color: ${value};
             }
           `;
         }
@@ -2296,30 +2370,8 @@ function generator20(configOptions2 = {}) {
   return responsiveCssString;
 }
 
-// src/generators/borderOpacity.js
-function generator21(configOptions2 = {}) {
-  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
-  const prefix = `${globalPrefix}border-opacity`;
-  const { borderOpacity = {} } = theme2;
-  const responsiveCssString = generateCssString(
-    ({ pseudoClass, getCssByOptions }) => {
-      const cssString = getCssByOptions(
-        borderOpacity,
-        (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants2.borderOpacity)} {
-            --border-opacity: ${value};
-          }
-        `
-      );
-      return cssString;
-    },
-    configOptions2
-  );
-  return responsiveCssString;
-}
-
 // src/generators/borderRadius.js
-function generator22(configOptions2 = {}) {
+function generator20(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}rounded`;
   const { borderRadius = {} } = theme2;
@@ -2389,7 +2441,7 @@ function generator22(configOptions2 = {}) {
 }
 
 // src/generators/borderSpacing.js
-function generator23(configOptions2 = {}) {
+function generator21(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}border-spacing`;
   const { borderSpacing = {} } = theme2;
@@ -2419,7 +2471,7 @@ function generator23(configOptions2 = {}) {
 }
 
 // src/generators/borderStyle.js
-function generator24(configOptions2 = {}) {
+function generator22(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}border`;
   const propertyOptions = ["solid", "dashed", "dotted", "double", "none"];
@@ -2441,7 +2493,7 @@ function generator24(configOptions2 = {}) {
 }
 
 // src/generators/borderWidth.js
-function generator25(configOptions2 = {}) {
+function generator23(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}border`;
   const { borderWidth = {} } = theme2;
@@ -2489,7 +2541,7 @@ function generator25(configOptions2 = {}) {
 }
 
 // src/generators/boxDecorationBreak.js
-function generator26(configOptions2 = {}) {
+function generator24(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}box-decoration`;
   const propertyOptions = ["slice", "clone"];
@@ -2512,7 +2564,7 @@ function generator26(configOptions2 = {}) {
 }
 
 // src/generators/boxShadow.js
-function generator27(configOptions2 = {}) {
+function generator25(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}shadow`;
   const { boxShadowColor, boxShadow = {} } = theme2;
@@ -2551,7 +2603,7 @@ function generator27(configOptions2 = {}) {
 }
 
 // src/generators/boxSizing.js
-function generator28(configOptions2 = {}) {
+function generator26(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}box`;
   const propertyOptions = {
@@ -2576,7 +2628,7 @@ function generator28(configOptions2 = {}) {
 }
 
 // src/generators/brightness.js
-function generator29(configOptions2 = {}) {
+function generator27(configOptions2 = {}) {
   const {
     prefix: globalPrefix,
     variants: variants2 = {},
@@ -2612,7 +2664,7 @@ function generator29(configOptions2 = {}) {
 }
 
 // src/generators/captionSide.js
-function generator30(configOptions2 = {}) {
+function generator28(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}caption`;
   const propertyOptions = ["top", "bottom"];
@@ -2634,32 +2686,19 @@ function generator30(configOptions2 = {}) {
 }
 
 // src/generators/caretColor.js
-function generator31(configOptions2 = {}) {
+function generator29(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}caret`;
-  const { caretColor, opacity = {} } = theme2;
+  const { caretColor } = theme2;
   const responsiveCssString = generateCssString(
-    ({ pseudoClass, getCssByColors, getCssByOptions }) => {
-      let cssString = getCssByColors(caretColor, (key, value, rgbValue) => {
-        let rgbPropertyValue = "";
-        if (rgbValue) {
-          rgbPropertyValue = `caret-color: rgba(${rgbValue}, var(--caret-opacity));`;
-        }
+    ({ pseudoClass, getCssByColors }) => {
+      const cssString = getCssByColors(caretColor, (key, value) => {
         return `
             ${pseudoClass(`${prefix}-${key}`, variants2.caretColor, {})} {
-              --caret-opacity: 1;
-              caret-color: ${value};${rgbPropertyValue}
+              caret-color: ${value};
             }
           `;
       });
-      cssString += getCssByOptions(
-        opacity,
-        (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants2.caretColor, {})} {
-            --caret-opacity: ${value};
-          }
-        `
-      );
       return cssString;
     },
     configOptions2
@@ -2668,7 +2707,7 @@ function generator31(configOptions2 = {}) {
 }
 
 // src/generators/clear.js
-function generator32(configOptions2 = {}) {
+function generator30(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}clear`;
   const propertyOptions = ["left", "right", "both", "none"];
@@ -2690,7 +2729,7 @@ function generator32(configOptions2 = {}) {
 }
 
 // src/generators/container.js
-function generator33(configOptions2 = {}) {
+function generator31(configOptions2 = {}) {
   const { prefix: globalPrefix = "", theme: theme2 = {} } = configOptions2;
   const { screens = {} } = theme2;
   const prefix = `${globalPrefix}container`;
@@ -2714,8 +2753,49 @@ function generator33(configOptions2 = {}) {
   return responsiveCssString;
 }
 
+// src/generators/containerQuery.js
+function generator32(configOptions2 = {}) {
+  const { prefix: globalPrefix = "", theme: theme2 = {} } = configOptions2;
+  const { containers = {} } = theme2;
+  const namedContainers = ["sidebar", "main", "card", "modal", "header", "footer"];
+  const displayUtilities = [
+    { cls: "block", value: "block" },
+    { cls: "flex", value: "flex" },
+    { cls: "grid", value: "grid" },
+    { cls: "hidden", value: "none" },
+    { cls: "inline", value: "inline" },
+    { cls: "inline-block", value: "inline-block" },
+    { cls: "inline-flex", value: "inline-flex" }
+  ];
+  let cssString = "";
+  cssString += `
+    .${globalPrefix}\\@container {
+      container-type: inline-size;
+    }
+  `;
+  namedContainers.forEach((name) => {
+    cssString += `
+      .${globalPrefix}\\@container\\/${name} {
+        container-type: inline-size;
+        container-name: ${name};
+      }
+    `;
+  });
+  Object.entries(containers).forEach(([bp, value]) => {
+    const innerRules = displayUtilities.map(({ cls, value: displayValue }) => {
+      return `
+        .${globalPrefix}\\@${bp}\\:${cls} { display: ${displayValue}; }`;
+    }).join("");
+    cssString += `
+    @container (min-width: ${value}) {${innerRules}
+    }
+  `;
+  });
+  return cssString;
+}
+
 // src/generators/contrast.js
-function generator34(configOptions2 = {}) {
+function generator33(configOptions2 = {}) {
   const {
     prefix: globalPrefix,
     variants: variants2 = {},
@@ -2751,7 +2831,7 @@ function generator34(configOptions2 = {}) {
 }
 
 // src/generators/cursor.js
-function generator35(configOptions2 = {}) {
+function generator34(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}cursor`;
   const propertyOptions = [
@@ -2810,7 +2890,7 @@ function generator35(configOptions2 = {}) {
 }
 
 // src/generators/display.js
-function generator36(configOptions2 = {}) {
+function generator35(configOptions2 = {}) {
   const { prefix, variants: variants2 = {} } = configOptions2;
   const propertyOptions = [
     "block",
@@ -2854,25 +2934,20 @@ function generator36(configOptions2 = {}) {
 }
 
 // src/generators/divideColor.js
-function generator37(configOptions2 = {}) {
+function generator36(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}divide`;
   const { divideColor = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByColors }) => {
-      const cssString = getCssByColors(divideColor, (key, value, rgbValue) => {
-        let rgbPropertyValue = "";
-        if (rgbValue) {
-          rgbPropertyValue = `border-color: rgba(${rgbValue}, var(--divide-opacity));`;
-        }
+      const cssString = getCssByColors(divideColor, (key, value) => {
         return `
             ${pseudoClass(
           (pseudoString) => `${prefix}-${key}${pseudoString} > :not([hidden]) ~ :not([hidden])`,
           variants2.divideColor,
           {}
         )} {
-              --divide-opacity: 1;
-              border-color: ${value};${rgbPropertyValue}
+              border-color: ${value};
             }
           `;
       });
@@ -2883,33 +2958,8 @@ function generator37(configOptions2 = {}) {
   return responsiveCssString;
 }
 
-// src/generators/divideOpacity.js
-function generator38(configOptions2 = {}) {
-  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
-  const prefix = `${globalPrefix}divide-opacity`;
-  const { divideOpacity = {} } = theme2;
-  const responsiveCssString = generateCssString(
-    ({ pseudoClass, getCssByOptions }) => {
-      const cssString = getCssByOptions(
-        divideOpacity,
-        (key, value) => `
-          ${pseudoClass(
-          (pseudoString) => `${prefix}-${key}${pseudoString} > :not([hidden]) ~ :not([hidden])`,
-          variants2.divideOpacity
-        )} {
-            --divide-opacity: ${value};
-          }
-        `
-      );
-      return cssString;
-    },
-    configOptions2
-  );
-  return responsiveCssString;
-}
-
 // src/generators/divideStyle.js
-function generator39(configOptions2 = {}) {
+function generator37(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}divide`;
   const propertyOptions = ["solid", "dashed", "dotted", "double", "none"];
@@ -2934,7 +2984,7 @@ function generator39(configOptions2 = {}) {
 }
 
 // src/generators/divideWidth.js
-function generator40(configOptions2 = {}) {
+function generator38(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}divide`;
   const { divideWidth = {} } = theme2;
@@ -2985,7 +3035,7 @@ function generator40(configOptions2 = {}) {
 }
 
 // src/generators/dropShadow.js
-function generator41(configOptions2 = {}) {
+function generator39(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}drop-shadow`;
   const { dropShadow = {} } = theme2;
@@ -3007,8 +3057,21 @@ function generator41(configOptions2 = {}) {
   return responsiveCssString;
 }
 
+// src/generators/fieldSizing.js
+function generator40(configOptions2 = {}) {
+  const { prefix = "" } = configOptions2;
+  return `
+    .${prefix}field-sizing-fixed {
+      field-sizing: fixed;
+    }
+    .${prefix}field-sizing-content {
+      field-sizing: content;
+    }
+  `;
+}
+
 // src/generators/fill.js
-function generator42(configOptions2 = {}) {
+function generator41(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}fill`;
   const { fill = {} } = theme2;
@@ -3029,7 +3092,7 @@ function generator42(configOptions2 = {}) {
 }
 
 // src/generators/filter.js
-function generator43({ prefix }) {
+function generator42({ prefix }) {
   return `    
   .${prefix}filter-none {
     filter: none !important;
@@ -3040,7 +3103,7 @@ function generator43({ prefix }) {
 }
 
 // src/generators/flex.js
-function generator44(configOptions2 = {}) {
+function generator43(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}flex`;
   const { flex = {} } = theme2;
@@ -3062,7 +3125,7 @@ function generator44(configOptions2 = {}) {
 }
 
 // src/generators/flexBasis.js
-function generator45(configOptions2 = {}) {
+function generator44(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}basis`;
   const { flexBasis = {} } = theme2;
@@ -3084,7 +3147,7 @@ function generator45(configOptions2 = {}) {
 }
 
 // src/generators/flexDirection.js
-function generator46(configOptions2 = {}) {
+function generator45(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}flex`;
   const propertyOptions = {
@@ -3111,7 +3174,7 @@ function generator46(configOptions2 = {}) {
 }
 
 // src/generators/flexGrow.js
-function generator47(configOptions2 = {}) {
+function generator46(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}grow`;
   const { flexGrow = {} } = theme2;
@@ -3136,7 +3199,7 @@ function generator47(configOptions2 = {}) {
 }
 
 // src/generators/flexShrink.js
-function generator48(configOptions2 = {}) {
+function generator47(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}shrink`;
   const { flexShrink = {} } = theme2;
@@ -3161,7 +3224,7 @@ function generator48(configOptions2 = {}) {
 }
 
 // src/generators/flexWrap.js
-function generator49(configOptions2 = {}) {
+function generator48(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}flex`;
   const propertyOptions = {
@@ -3188,7 +3251,7 @@ function generator49(configOptions2 = {}) {
 }
 
 // src/generators/float.js
-function generator50(configOptions2 = {}) {
+function generator49(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}float`;
   const propertyOptions = ["left", "right", "none"];
@@ -3220,7 +3283,7 @@ function generator50(configOptions2 = {}) {
 }
 
 // src/generators/fontSize.js
-function generator51(configOptions2 = {}) {
+function generator50(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}text`;
   const { fontSize = {} } = theme2;
@@ -3242,7 +3305,7 @@ function generator51(configOptions2 = {}) {
 }
 
 // src/generators/fontSmoothing.js
-function generator52(configOptions2 = {}) {
+function generator51(configOptions2 = {}) {
   const { prefix, variants: variants2 = {} } = configOptions2;
   const responsiveCssString = generateCssString(({ pseudoClass }) => {
     return `
@@ -3263,7 +3326,7 @@ function generator52(configOptions2 = {}) {
 }
 
 // src/generators/fontStyle.js
-function generator53(configOptions2 = {}) {
+function generator52(configOptions2 = {}) {
   const { prefix, variants: variants2 = {} } = configOptions2;
   const propertyOptions = {
     italic: "italic",
@@ -3287,7 +3350,7 @@ function generator53(configOptions2 = {}) {
 }
 
 // src/generators/fontVariantNumeric.js
-function generator54(configOptions2 = {}) {
+function generator53(configOptions2 = {}) {
   const { prefix, variants: variants2 = {} } = configOptions2;
   const propertyOptions = {
     "normal-nums": "normal",
@@ -3318,7 +3381,7 @@ function generator54(configOptions2 = {}) {
 }
 
 // src/generators/fontWeight.js
-function generator55(configOptions2 = {}) {
+function generator54(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}font`;
   const { fontWeight = {} } = theme2;
@@ -3340,7 +3403,7 @@ function generator55(configOptions2 = {}) {
 }
 
 // src/generators/gap.js
-function generator56(configOptions2 = {}) {
+function generator55(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}gap`;
   const { gap = {} } = theme2;
@@ -3368,43 +3431,38 @@ function generator56(configOptions2 = {}) {
 }
 
 // src/generators/gradientColorStops.js
-function generator57(configOptions2 = {}) {
+function generator56(configOptions2 = {}) {
   const { prefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const { gradientColorStops = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByColors }) => {
       const cssString = getCssByColors(
         gradientColorStops,
-        (key, value, rgbValue) => {
-          let rgbFromPropertyValue = "--gradient-color-stops: var(--gradient-from-color),var(--gradient-to-color,rgba(255,255,255,0));";
-          let rgbViaPropertyValue = "--gradient-color-stops: var(--gradient-from-color),var(--gradient-via-color),var(--gradient-to-color,rgba(255,255,255,0));";
-          let rgbToPropertyValue = "--gradient-color-stops: var(--gradient-from-color),var(--gradient-to-color,rgba(255,255,255,0));";
-          if (rgbValue) {
-            rgbFromPropertyValue = `--gradient-color-stops: var(--gradient-from-color),var(--gradient-to-color,rgba(${rgbValue},0));`;
-            rgbViaPropertyValue = `--gradient-color-stops: var(--gradient-from-color),var(--gradient-via-color),var(--gradient-to-color,rgba(${rgbValue},0));`;
-            rgbToPropertyValue = `--gradient-color-stops: var(--gradient-from-color),var(--gradient-to-color,rgba(${rgbValue},0));`;
-          }
+        (key, value) => {
           return `
             ${pseudoClass(
             `${prefix}from-${key}`,
             variants2.gradientColorStops,
             {}
           )} {
-              --gradient-from-color: ${value};${rgbFromPropertyValue}
+              --tw-gradient-from: ${value};
+              --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via, transparent), var(--tw-gradient-to);
             }
             ${pseudoClass(
             `${prefix}via-${key}`,
             variants2.gradientColorStops,
             {}
           )} {
-              --gradient-via-color: ${value};${rgbViaPropertyValue}
+              --tw-gradient-via: ${value};
+              --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via, transparent), var(--tw-gradient-to);
             }
             ${pseudoClass(
             `${prefix}to-${key}`,
             variants2.gradientColorStops,
             {}
           )} {
-              --gradient-to-color: ${value};${rgbToPropertyValue}
+              --tw-gradient-to: ${value};
+              --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via, transparent), var(--tw-gradient-to);
             }
           `;
         }
@@ -3413,11 +3471,19 @@ function generator57(configOptions2 = {}) {
     },
     configOptions2
   );
-  return responsiveCssString;
+  let percentStopsCss = "";
+  for (let n = 0; n <= 100; n += 5) {
+    percentStopsCss += `
+      .${prefix}from-${n}\\% { --tw-gradient-from-position: ${n}%; }
+      .${prefix}via-${n}\\% { --tw-gradient-via-position: ${n}%; }
+      .${prefix}to-${n}\\% { --tw-gradient-to-position: ${n}%; }
+    `;
+  }
+  return responsiveCssString + percentStopsCss;
 }
 
 // src/generators/grayscale.js
-function generator58(configOptions2 = {}) {
+function generator57(configOptions2 = {}) {
   const {
     prefix: globalPrefix,
     variants: variants2 = {},
@@ -3453,7 +3519,7 @@ function generator58(configOptions2 = {}) {
 }
 
 // src/generators/gridAutoColumns.js
-function generator59(configOptions2 = {}) {
+function generator58(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   let prefix = `${globalPrefix}auto-cols`;
   const { gridAutoColumns = {} } = theme2;
@@ -3475,7 +3541,7 @@ function generator59(configOptions2 = {}) {
 }
 
 // src/generators/gridAutoFlow.js
-function generator60(configOptions2 = {}) {
+function generator59(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}grid-flow`;
   const propertyOptions = {
@@ -3502,7 +3568,7 @@ function generator60(configOptions2 = {}) {
 }
 
 // src/generators/gridAutoRows.js
-function generator61(configOptions2 = {}) {
+function generator60(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   let prefix = `${globalPrefix}auto-rows`;
   const { gridAutoRows = {} } = theme2;
@@ -3524,7 +3590,7 @@ function generator61(configOptions2 = {}) {
 }
 
 // src/generators/gridColumn.js
-function generator62(configOptions2 = {}) {
+function generator61(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   let prefix = `${globalPrefix}col`;
   const { gridColumn = {} } = theme2;
@@ -3546,7 +3612,7 @@ function generator62(configOptions2 = {}) {
 }
 
 // src/generators/gridColumnEnd.js
-function generator63(configOptions2 = {}) {
+function generator62(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   let prefix = `${globalPrefix}col-end`;
   const { gridColumnEnd = {} } = theme2;
@@ -3568,7 +3634,7 @@ function generator63(configOptions2 = {}) {
 }
 
 // src/generators/gridColumnStart.js
-function generator64(configOptions2 = {}) {
+function generator63(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   let prefix = `${globalPrefix}col-start`;
   const { gridColumnStart = {} } = theme2;
@@ -3590,7 +3656,7 @@ function generator64(configOptions2 = {}) {
 }
 
 // src/generators/gridRow.js
-function generator65(configOptions2 = {}) {
+function generator64(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   let prefix = `${globalPrefix}row`;
   const { gridRow = {} } = theme2;
@@ -3612,7 +3678,7 @@ function generator65(configOptions2 = {}) {
 }
 
 // src/generators/gridRowEnd.js
-function generator66(configOptions2 = {}) {
+function generator65(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   let prefix = `${globalPrefix}row-end`;
   const { gridRowEnd = {} } = theme2;
@@ -3634,7 +3700,7 @@ function generator66(configOptions2 = {}) {
 }
 
 // src/generators/gridRowStart.js
-function generator67(configOptions2 = {}) {
+function generator66(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   let prefix = `${globalPrefix}row-start`;
   const { gridRowStart = {} } = theme2;
@@ -3656,7 +3722,7 @@ function generator67(configOptions2 = {}) {
 }
 
 // src/generators/gridTemplateColumns.js
-function generator68(configOptions2 = {}) {
+function generator67(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   let prefix = `${globalPrefix}grid-cols`;
   const { gridTemplateColumns = {} } = theme2;
@@ -3686,7 +3752,7 @@ function generator68(configOptions2 = {}) {
 }
 
 // src/generators/gridTemplateRows.js
-function generator69(configOptions2 = {}) {
+function generator68(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   let prefix = `${globalPrefix}grid-rows`;
   const { gridTemplateRows = {} } = theme2;
@@ -3716,7 +3782,7 @@ function generator69(configOptions2 = {}) {
 }
 
 // src/generators/height.js
-function generator70(configOptions2 = {}) {
+function generator69(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}h`;
   const { height = {} } = theme2;
@@ -3738,7 +3804,7 @@ function generator70(configOptions2 = {}) {
 }
 
 // src/generators/hueRotate.js
-function generator71(configOptions2 = {}) {
+function generator70(configOptions2 = {}) {
   const {
     prefix: globalPrefix,
     variants: variants2 = {},
@@ -3788,7 +3854,7 @@ function generator71(configOptions2 = {}) {
 }
 
 // src/generators/hyphens.js
-function generator72(configOptions2 = {}) {
+function generator71(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}hyphens`;
   const propertyOptions = ["none", "manual", "auto"];
@@ -3811,7 +3877,7 @@ function generator72(configOptions2 = {}) {
 }
 
 // src/generators/inset.js
-function generator73(configOptions2 = {}) {
+function generator72(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const { inset = {} } = theme2;
   Object.entries(inset).forEach(([key, value]) => {
@@ -3862,8 +3928,77 @@ function generator73(configOptions2 = {}) {
   return responsiveCssString;
 }
 
-// src/generators/invert.js
+// src/generators/insetRing.js
+function generator73(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
+  const prefix = `${globalPrefix}inset-ring`;
+  const { colors = {} } = theme2;
+  const widths = { 0: "0", 1: "1", 2: "2", 4: "4", 8: "8" };
+  const responsiveCssString = generateCssString(
+    ({ pseudoClass, getCssByColors, getCssByOptions }) => {
+      let cssString = getCssByOptions(widths, (keyTmp, value) => {
+        return `
+          ${pseudoClass(`${prefix}-${keyTmp}`, variants2.insetRing)} {
+            box-shadow: inset 0 0 0 ${value}px var(--tw-inset-ring-color, currentColor);
+          }
+        `;
+      });
+      cssString += getCssByColors(colors, (keyTmp, value) => {
+        const key = keyTmp.toLowerCase() !== "default" ? `-${keyTmp}` : "";
+        return `
+          ${pseudoClass(`${prefix}${key}`, variants2.insetRing, {})} {
+            --tw-inset-ring-color: ${value};
+          }
+        `;
+      });
+      return cssString;
+    },
+    configOptions2
+  );
+  return responsiveCssString;
+}
+
+// src/generators/insetShadow.js
 function generator74(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
+  const prefix = `${globalPrefix}inset-shadow`;
+  const { colors = {} } = theme2;
+  const insetShadowSizes = {
+    none: "none",
+    xs: "inset 0 1px 1px rgba(0,0,0,0.05)",
+    sm: "inset 0 1px 2px rgba(0,0,0,0.05)",
+    DEFAULT: "inset 0 2px 4px rgba(0,0,0,0.05)",
+    md: "inset 0 4px 6px rgba(0,0,0,0.07)",
+    lg: "inset 0 8px 8px rgba(0,0,0,0.1)"
+  };
+  const responsiveCssString = generateCssString(
+    ({ pseudoClass, getCssByColors }) => {
+      let cssString = "";
+      Object.entries(insetShadowSizes).forEach(([keyTmp, value]) => {
+        const key = keyTmp.toLowerCase() !== "default" ? `-${keyTmp}` : "";
+        cssString += `
+          ${pseudoClass(`${prefix}${key}`, variants2.insetShadow, {})} {
+            box-shadow: ${value};
+          }
+        `;
+      });
+      cssString += getCssByColors(colors, (keyTmp, value) => {
+        const key = keyTmp.toLowerCase() !== "default" ? `-${keyTmp}` : "";
+        return `
+          ${pseudoClass(`${prefix}${key}`, variants2.insetShadow, {})} {
+            --tw-inset-shadow-color: ${value};
+          }
+        `;
+      });
+      return cssString;
+    },
+    configOptions2
+  );
+  return responsiveCssString;
+}
+
+// src/generators/invert.js
+function generator75(configOptions2 = {}) {
   const {
     prefix: globalPrefix,
     variants: variants2 = {},
@@ -3899,7 +4034,7 @@ function generator74(configOptions2 = {}) {
 }
 
 // src/generators/isolation.js
-function generator75(configOptions2 = {}) {
+function generator76(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}`;
   const propertyOptions = {
@@ -3924,7 +4059,7 @@ function generator75(configOptions2 = {}) {
 }
 
 // src/generators/justifyContent.js
-function generator76(configOptions2 = {}) {
+function generator77(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}justify`;
   const propertyOptions = {
@@ -3953,7 +4088,7 @@ function generator76(configOptions2 = {}) {
 }
 
 // src/generators/justifyItems.js
-function generator77(configOptions2 = {}) {
+function generator78(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}justify-items`;
   const propertyOptions = ["auto", "start", "end", "center", "stretch"];
@@ -3975,7 +4110,7 @@ function generator77(configOptions2 = {}) {
 }
 
 // src/generators/justifySelf.js
-function generator78(configOptions2 = {}) {
+function generator79(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}justify-self`;
   const propertyOptions = ["auto", "start", "end", "center", "stretch"];
@@ -3997,7 +4132,7 @@ function generator78(configOptions2 = {}) {
 }
 
 // src/generators/letterSpacing.js
-function generator79(configOptions2 = {}) {
+function generator80(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}tracking`;
   const { letterSpacing = {} } = theme2;
@@ -4019,7 +4154,7 @@ function generator79(configOptions2 = {}) {
 }
 
 // src/generators/lineClamp.js
-function generator80(configOptions2 = {}) {
+function generator81(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}line-clamp`;
   const { lineClamp = {} } = theme2;
@@ -4044,7 +4179,7 @@ function generator80(configOptions2 = {}) {
 }
 
 // src/generators/lineHeight.js
-function generator81(configOptions2 = {}) {
+function generator82(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}leading`;
   const { lineHeight = {} } = theme2;
@@ -4066,7 +4201,7 @@ function generator81(configOptions2 = {}) {
 }
 
 // src/generators/listStylePosition.js
-function generator82(configOptions2 = {}) {
+function generator83(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}list`;
   const propertyOptions = ["inside", "outside"];
@@ -4088,7 +4223,7 @@ function generator82(configOptions2 = {}) {
 }
 
 // src/generators/listStyleType.js
-function generator83(configOptions2 = {}) {
+function generator84(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}list`;
   const { listStyleType = {} } = theme2;
@@ -4110,7 +4245,7 @@ function generator83(configOptions2 = {}) {
 }
 
 // src/generators/margin.js
-function generator84(configOptions2 = {}) {
+function generator85(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const { margin = {} } = theme2;
   Object.entries(margin).forEach(([key, value]) => {
@@ -4164,8 +4299,115 @@ function generator84(configOptions2 = {}) {
   return responsiveCssString;
 }
 
+// src/generators/mask.js
+function generator86(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
+  const prefix = `${globalPrefix}mask`;
+  const responsiveCssString = generateCssString(
+    ({ pseudoClass }) => {
+      let cssString = "";
+      cssString += `
+        ${pseudoClass(`${prefix}-none`, [])} {
+          -webkit-mask-image: none;
+          mask-image: none;
+        }
+      `;
+      const linearDirections = {
+        "to-t": "to top",
+        "to-tr": "to top right",
+        "to-r": "to right",
+        "to-br": "to bottom right",
+        "to-b": "to bottom",
+        "to-bl": "to bottom left",
+        "to-l": "to left",
+        "to-tl": "to top left"
+      };
+      Object.entries(linearDirections).forEach(([key, direction]) => {
+        cssString += `
+          ${pseudoClass(`${prefix}-linear-${key}`, variants2.mask)} {
+            -webkit-mask-image: linear-gradient(${direction}, black, transparent);
+            mask-image: linear-gradient(${direction}, black, transparent);
+          }
+        `;
+      });
+      cssString += `
+        ${pseudoClass(`${prefix}-radial`, [])} {
+          -webkit-mask-image: radial-gradient(ellipse at center, black, transparent);
+          mask-image: radial-gradient(ellipse at center, black, transparent);
+        }
+      `;
+      const radialPositions = {
+        "top-left": "top left",
+        "top": "top",
+        "top-right": "top right",
+        "left": "left",
+        "center": "center",
+        "right": "right",
+        "bottom-left": "bottom left",
+        "bottom": "bottom",
+        "bottom-right": "bottom right"
+      };
+      Object.entries(radialPositions).forEach(([key, position]) => {
+        cssString += `
+          ${pseudoClass(`${prefix}-radial-at-${key}`, [])} {
+            -webkit-mask-image: radial-gradient(ellipse at ${position}, black, transparent);
+            mask-image: radial-gradient(ellipse at ${position}, black, transparent);
+          }
+        `;
+      });
+      const maskSizes = ["auto", "cover", "contain"];
+      maskSizes.forEach((size) => {
+        cssString += `
+          ${pseudoClass(`${prefix}-size-${size}`, variants2.mask)} {
+            -webkit-mask-size: ${size};
+            mask-size: ${size};
+          }
+        `;
+      });
+      const maskRepeats = {
+        "repeat": "repeat",
+        "no-repeat": "no-repeat",
+        "repeat-x": "repeat-x",
+        "repeat-y": "repeat-y",
+        "repeat-round": "round",
+        "repeat-space": "space"
+      };
+      Object.entries(maskRepeats).forEach(([key, value]) => {
+        cssString += `
+          ${pseudoClass(`${prefix}-${key}`, [])} {
+            -webkit-mask-repeat: ${value};
+            mask-repeat: ${value};
+          }
+        `;
+      });
+      const maskPositions = {
+        "top-left": "top left",
+        "top": "top",
+        "top-right": "top right",
+        "left": "left",
+        "center": "center",
+        "right": "right",
+        "bottom-left": "bottom left",
+        "bottom": "bottom",
+        "bottom-right": "bottom right"
+      };
+      Object.entries(maskPositions).forEach(([key, position]) => {
+        cssString += `
+          ${pseudoClass(`${prefix}-position-${key}`, [])} {
+            -webkit-mask-position: ${position};
+            mask-position: ${position};
+          }
+        `;
+      });
+      return cssString;
+    },
+    configOptions2
+  );
+  return responsiveCssString;
+}
+
 // src/generators/maxHeight.js
-function generator85(configOptions2 = {}) {
+function generator87(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}max-h`;
   const { maxHeight = {} } = theme2;
@@ -4187,7 +4429,7 @@ function generator85(configOptions2 = {}) {
 }
 
 // src/generators/maxWidth.js
-function generator86(configOptions2 = {}) {
+function generator88(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}max-w`;
   const { maxWidth = {} } = theme2;
@@ -4209,7 +4451,7 @@ function generator86(configOptions2 = {}) {
 }
 
 // src/generators/minHeight.js
-function generator87(configOptions2 = {}) {
+function generator89(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}min-h`;
   const { minHeight = {} } = theme2;
@@ -4231,7 +4473,7 @@ function generator87(configOptions2 = {}) {
 }
 
 // src/generators/minWidth.js
-function generator88(configOptions2 = {}) {
+function generator90(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}min-w`;
   const { minWidth = {} } = theme2;
@@ -4253,7 +4495,7 @@ function generator88(configOptions2 = {}) {
 }
 
 // src/generators/mixBlendMode.js
-function generator89(configOptions2 = {}) {
+function generator91(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}mix-blend`;
   const propertyOptions = [
@@ -4304,7 +4546,7 @@ function generator89(configOptions2 = {}) {
 }
 
 // src/generators/objectFit.js
-function generator90(configOptions2 = {}) {
+function generator92(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}object`;
   const propertyOptions = ["contain", "cover", "fill", "none", "scale-down"];
@@ -4326,7 +4568,7 @@ function generator90(configOptions2 = {}) {
 }
 
 // src/generators/objectPosition.js
-function generator91(configOptions2 = {}) {
+function generator93(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}object`;
   const propertyOptions = [
@@ -4358,7 +4600,7 @@ function generator91(configOptions2 = {}) {
 }
 
 // src/generators/opacity.js
-function generator92(configOptions2 = {}) {
+function generator94(configOptions2 = {}) {
   const {
     prefix: globalPrefix,
     variants: variants2 = {},
@@ -4394,7 +4636,7 @@ function generator92(configOptions2 = {}) {
 }
 
 // src/generators/order.js
-function generator93(configOptions2 = {}) {
+function generator95(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}order`;
   const { order = {} } = theme2;
@@ -4416,7 +4658,7 @@ function generator93(configOptions2 = {}) {
 }
 
 // src/generators/outlineColor.js
-function generator94(configOptions2 = {}) {
+function generator96(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}outline`;
   const { outlineColor = {} } = theme2;
@@ -4449,7 +4691,7 @@ function generator94(configOptions2 = {}) {
 }
 
 // src/generators/outlineOffset.js
-function generator95(configOptions2 = {}) {
+function generator97(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}outline-offset`;
   const { outlineOffset = {} } = theme2;
@@ -4469,30 +4711,8 @@ function generator95(configOptions2 = {}) {
   return responsiveCssString;
 }
 
-// src/generators/outlineOpacity.js
-function generator96(configOptions2 = {}) {
-  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
-  const prefix = `${globalPrefix}outline-opacity`;
-  const { outlineOpacity = {} } = theme2;
-  const responsiveCssString = generateCssString(
-    ({ pseudoClass, getCssByOptions }) => {
-      const cssString = getCssByOptions(outlineOpacity, (keyTmp, value) => {
-        const key = keyTmp.toLowerCase() !== "default" ? `-${keyTmp}` : "";
-        return `
-          ${pseudoClass(`${prefix}${key}`, variants2.outlineOpacity)} {
-            --outline-opacity: ${value};
-          }
-        `;
-      });
-      return cssString;
-    },
-    configOptions2
-  );
-  return responsiveCssString;
-}
-
 // src/generators/outlineStyle.js
-function generator97(configOptions2 = {}) {
+function generator98(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}outline`;
   const propertyOptions = ["none", "solid", "dashed", "dotted", "double"];
@@ -4522,7 +4742,7 @@ function generator97(configOptions2 = {}) {
 }
 
 // src/generators/outlineWidth.js
-function generator98(configOptions2 = {}) {
+function generator99(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}outline`;
   const { outlineWidth = {} } = theme2;
@@ -4543,7 +4763,7 @@ function generator98(configOptions2 = {}) {
 }
 
 // src/generators/overflow.js
-function generator99(configOptions2 = {}) {
+function generator100(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}overflow`;
   const propertyOptions = ["auto", "hidden", "visible", "scroll"];
@@ -4579,7 +4799,7 @@ function generator99(configOptions2 = {}) {
 }
 
 // src/generators/overscrollBehavior.js
-function generator100(configOptions2 = {}) {
+function generator101(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}overscroll`;
   const propertyOptions = ["auto", "contain", "none"];
@@ -4607,7 +4827,7 @@ function generator100(configOptions2 = {}) {
 }
 
 // src/generators/padding.js
-function generator101(configOptions2 = {}) {
+function generator102(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}p`;
   const { padding = {} } = theme2;
@@ -4655,7 +4875,7 @@ function generator101(configOptions2 = {}) {
 }
 
 // src/generators/placeContent.js
-function generator102(configOptions2 = {}) {
+function generator103(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}place-content`;
   const propertyOptions = {
@@ -4685,7 +4905,7 @@ function generator102(configOptions2 = {}) {
 }
 
 // src/generators/placeItems.js
-function generator103(configOptions2 = {}) {
+function generator104(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}place-items`;
   const propertyOptions = ["auto", "start", "end", "center", "stretch"];
@@ -4707,7 +4927,7 @@ function generator103(configOptions2 = {}) {
 }
 
 // src/generators/placeSelf.js
-function generator104(configOptions2 = {}) {
+function generator105(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}place-self`;
   const propertyOptions = ["auto", "start", "end", "center", "stretch"];
@@ -4729,7 +4949,7 @@ function generator104(configOptions2 = {}) {
 }
 
 // src/generators/placeholderColor.js
-function generator105(configOptions2 = {}) {
+function generator106(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}placeholder`;
   const { placeholderColor = {} } = theme2;
@@ -4737,12 +4957,8 @@ function generator105(configOptions2 = {}) {
     ({ pseudoClass, getCssByColors }) => {
       const cssString = getCssByColors(
         placeholderColor,
-        (key, value, rgbValue) => {
-          let rgbPropertyValue = "";
-          if (rgbValue) {
-            rgbPropertyValue = `color: rgba(${rgbValue}, var(--placeholder-opacity));`;
-          }
-          const propertyValue = `--placeholder-opacity: 1; color: ${value}; ${rgbPropertyValue}`;
+        (key, value) => {
+          const propertyValue = `color: ${value};`;
           const placeholderColorString = (placeholderPseudo) => `
             ${pseudoClass(
             (pseudoString) => `${prefix}-${key}${pseudoString}${placeholderPseudo}`,
@@ -4760,36 +4976,6 @@ function generator105(configOptions2 = {}) {
           `;
         }
       );
-      return cssString;
-    },
-    configOptions2
-  );
-  return responsiveCssString;
-}
-
-// src/generators/placeholderOpacity.js
-function generator106(configOptions2 = {}) {
-  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
-  const prefix = `${globalPrefix}placeholder-opacity`;
-  const { placeholderOpacity = {} } = theme2;
-  const responsiveCssString = generateCssString(
-    ({ pseudoClass, getCssByOptions }) => {
-      const cssString = getCssByOptions(placeholderOpacity, (key, value) => {
-        const placeholderOpacityString = (placeholderPseudo) => `
-          ${pseudoClass(
-          (pseudoString) => `${prefix}-${key}${pseudoString}${placeholderPseudo}`,
-          variants2.placeholderColor
-        )} {
-            --placeholder-opacity: ${value};
-          }
-        `;
-        return `
-          ${placeholderOpacityString("::-webkit-input-placeholder")}
-          ${placeholderOpacityString("::-moz-placeholder")}
-          ${placeholderOpacityString(":-ms-input-placeholder")}
-          ${placeholderOpacityString(":-moz-placeholder")}
-        `;
-      });
       return cssString;
     },
     configOptions2
@@ -4868,16 +5054,11 @@ function generator110(configOptions2 = {}) {
   const { ringColor = {} } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByColors }) => {
-      const cssString = getCssByColors(ringColor, (keyTmp, value, rgbValue) => {
+      const cssString = getCssByColors(ringColor, (keyTmp, value) => {
         const key = keyTmp.toLowerCase() !== "default" ? `-${keyTmp}` : "";
-        let rgbPropertyValue = "";
-        if (rgbValue) {
-          rgbPropertyValue = `--ring-color: rgba(${rgbValue}, var(--ring-opacity));`;
-        }
         return `
             ${pseudoClass(`${prefix}${key}`, variants2.ringColor, {})} {
-              --ring-opacity: 1;
-              --ring-color: ${value};${rgbPropertyValue}
+              --tw-ring-color: ${value};
             }
           `;
       });
@@ -4932,30 +5113,8 @@ function generator112(configOptions2 = {}) {
   return responsiveCssString;
 }
 
-// src/generators/ringOpacity.js
-function generator113(configOptions2 = {}) {
-  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
-  const prefix = `${globalPrefix}ring-opacity`;
-  const { ringOpacity = {} } = theme2;
-  const responsiveCssString = generateCssString(
-    ({ pseudoClass, getCssByOptions }) => {
-      const cssString = getCssByOptions(ringOpacity, (keyTmp, value) => {
-        const key = keyTmp.toLowerCase() !== "default" ? `-${keyTmp}` : "";
-        return `
-          ${pseudoClass(`${prefix}${key}`, variants2.ringOpacity)} {
-            --ring-opacity: ${value};
-          }
-        `;
-      });
-      return cssString;
-    },
-    configOptions2
-  );
-  return responsiveCssString;
-}
-
 // src/generators/ringWidth.js
-function generator114(configOptions2 = {}) {
+function generator113(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}ring`;
   const { ringWidth = {} } = theme2;
@@ -4984,7 +5143,7 @@ function generator114(configOptions2 = {}) {
 }
 
 // src/generators/saturate.js
-function generator115(configOptions2 = {}) {
+function generator114(configOptions2 = {}) {
   const {
     prefix: globalPrefix,
     variants: variants2 = {},
@@ -5020,7 +5179,7 @@ function generator115(configOptions2 = {}) {
 }
 
 // src/generators/rotate.js
-function generator116(configOptions2 = {}) {
+function generator115(configOptions2 = {}) {
   const {
     prefix: globalPrefix,
     variants: variants2 = {},
@@ -5055,7 +5214,7 @@ function generator116(configOptions2 = {}) {
 }
 
 // src/generators/scale.js
-function generator117(configOptions2 = {}) {
+function generator116(configOptions2 = {}) {
   const {
     prefix: globalPrefix,
     variants: variants2 = {},
@@ -5092,7 +5251,7 @@ function generator117(configOptions2 = {}) {
 }
 
 // src/generators/scrollBehavior.js
-function generator118(configOptions2 = {}) {
+function generator117(configOptions2 = {}) {
   const { prefix, variants: variants2 = {} } = configOptions2;
   const propertyOptions = ["auto", "smooth"];
   const responsiveCssString = generateCssString(
@@ -5113,7 +5272,7 @@ function generator118(configOptions2 = {}) {
 }
 
 // src/generators/scrollMargin.js
-function generator119(configOptions2 = {}) {
+function generator118(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const { scrollMargin = {} } = theme2;
   Object.entries(scrollMargin).forEach(([key, value]) => {
@@ -5168,7 +5327,7 @@ function generator119(configOptions2 = {}) {
 }
 
 // src/generators/scrollPadding.js
-function generator120(configOptions2 = {}) {
+function generator119(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const { scrollPadding = {} } = theme2;
   Object.entries(scrollPadding).forEach(([key, value]) => {
@@ -5223,7 +5382,7 @@ function generator120(configOptions2 = {}) {
 }
 
 // src/generators/scrollSnapAlign.js
-function generator121(configOptions2 = {}) {
+function generator120(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}snap`;
   const propertyOptions = {
@@ -5250,7 +5409,7 @@ function generator121(configOptions2 = {}) {
 }
 
 // src/generators/scrollSnapStop.js
-function generator122(configOptions2 = {}) {
+function generator121(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}snap`;
   const propertyOptions = ["normal", "always"];
@@ -5272,7 +5431,7 @@ function generator122(configOptions2 = {}) {
 }
 
 // src/generators/scrollSnapType.js
-function generator123(configOptions2 = {}) {
+function generator122(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}snap`;
   const propertyOptions = {
@@ -5308,7 +5467,7 @@ function generator123(configOptions2 = {}) {
 }
 
 // src/generators/sepia.js
-function generator124(configOptions2 = {}) {
+function generator123(configOptions2 = {}) {
   const {
     prefix: globalPrefix,
     variants: variants2 = {},
@@ -5344,7 +5503,7 @@ function generator124(configOptions2 = {}) {
 }
 
 // src/generators/size.js
-function generator125(configOptions2 = {}) {
+function generator124(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}size`;
   const { size = {} } = theme2;
@@ -5367,7 +5526,7 @@ function generator125(configOptions2 = {}) {
 }
 
 // src/generators/skew.js
-function generator126(configOptions2 = {}) {
+function generator125(configOptions2 = {}) {
   const {
     prefix: globalPrefix,
     variants: variants2 = {},
@@ -5406,7 +5565,7 @@ function generator126(configOptions2 = {}) {
 }
 
 // src/generators/space.js
-function generator127(configOptions2 = {}) {
+function generator126(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}space`;
   const { space = {} } = theme2;
@@ -5467,7 +5626,7 @@ function generator127(configOptions2 = {}) {
 }
 
 // src/generators/stroke.js
-function generator128(configOptions2 = {}) {
+function generator127(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}stroke`;
   const { stroke } = theme2;
@@ -5488,7 +5647,7 @@ function generator128(configOptions2 = {}) {
 }
 
 // src/generators/strokeWidth.js
-function generator129(configOptions2 = {}) {
+function generator128(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}stroke`;
   const { strokeWidth = {} } = theme2;
@@ -5510,7 +5669,7 @@ function generator129(configOptions2 = {}) {
 }
 
 // src/generators/tableLayout.js
-function generator130(configOptions2 = {}) {
+function generator129(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}table`;
   const propertyOptions = ["auto", "fixed"];
@@ -5532,7 +5691,7 @@ function generator130(configOptions2 = {}) {
 }
 
 // src/generators/textAlign.js
-function generator131(configOptions2 = {}) {
+function generator130(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}text`;
   const propertyOptions = ["left", "center", "right", "justify"];
@@ -5554,21 +5713,16 @@ function generator131(configOptions2 = {}) {
 }
 
 // src/generators/textColor.js
-function generator132(configOptions2 = {}) {
+function generator131(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}text`;
   const { textColor } = theme2;
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByColors }) => {
-      const cssString = getCssByColors(textColor, (key, value, rgbValue) => {
-        let rgbPropertyValue = "";
-        if (rgbValue) {
-          rgbPropertyValue = `color: rgba(${rgbValue}, var(--text-opacity));`;
-        }
+      const cssString = getCssByColors(textColor, (key, value) => {
         return `
             ${pseudoClass(`${prefix}-${key}`, variants2.textColor, {})} {
-              --text-opacity: 1;
-              color: ${value};${rgbPropertyValue}
+              color: ${value};
             }
           `;
       });
@@ -5580,7 +5734,7 @@ function generator132(configOptions2 = {}) {
 }
 
 // src/generators/textDecoration.js
-function generator133(configOptions2 = {}) {
+function generator132(configOptions2 = {}) {
   const { prefix, variants: variants2 = {} } = configOptions2;
   const propertyOptions = {
     underline: "underline",
@@ -5606,7 +5760,7 @@ function generator133(configOptions2 = {}) {
 }
 
 // src/generators/textDecorationColor.js
-function generator134(configOptions2 = {}) {
+function generator133(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}decoration`;
   const { textDecorationColor = {}, opacity = {} } = theme2;
@@ -5647,7 +5801,7 @@ function generator134(configOptions2 = {}) {
 }
 
 // src/generators/textDecorationStyle.js
-function generator135(configOptions2 = {}) {
+function generator134(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}decoration`;
   const propertyOptions = ["solid", "double", "dotted", "dashed", "wavy"];
@@ -5669,7 +5823,7 @@ function generator135(configOptions2 = {}) {
 }
 
 // src/generators/textDecorationThickness.js
-function generator136(configOptions2 = {}) {
+function generator135(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}decoration`;
   const { textDecorationThickness = {} } = theme2;
@@ -5691,7 +5845,7 @@ function generator136(configOptions2 = {}) {
 }
 
 // src/generators/textIndent.js
-function generator137(configOptions2 = {}) {
+function generator136(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const { textIndent = {} } = theme2;
   Object.entries(textIndent).forEach(([key, value]) => {
@@ -5719,30 +5873,8 @@ function generator137(configOptions2 = {}) {
   return responsiveCssString;
 }
 
-// src/generators/textOpacity.js
-function generator138(configOptions2 = {}) {
-  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
-  const prefix = `${globalPrefix}text-opacity`;
-  const { textOpacity = {} } = theme2;
-  const responsiveCssString = generateCssString(
-    ({ pseudoClass, getCssByOptions }) => {
-      const cssString = getCssByOptions(
-        textOpacity,
-        (key, value) => `
-          ${pseudoClass(`${prefix}-${key}`, variants2.textOpacity)} {
-            --text-opacity: ${value};
-          }
-        `
-      );
-      return cssString;
-    },
-    configOptions2
-  );
-  return responsiveCssString;
-}
-
 // src/generators/textOverflow.js
-function generator139(configOptions2 = {}) {
+function generator137(configOptions2 = {}) {
   const { prefix, variants: variants2 = {} } = configOptions2;
   const propertyOptions = ["ellipsis", "clip"];
   const responsiveCssString = generateCssString(
@@ -5768,7 +5900,7 @@ function generator139(configOptions2 = {}) {
 }
 
 // src/generators/textShadowBlur.js
-function generator140(configOptions2 = {}) {
+function generator138(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}text-shadow-blur`;
   const { textShadowBlur = {} } = theme2;
@@ -5790,7 +5922,7 @@ function generator140(configOptions2 = {}) {
 }
 
 // src/generators/textShadowColor.js
-function generator141(configOptions2 = {}) {
+function generator139(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}text-shadow`;
   const { textShadowColor = {} } = theme2;
@@ -5825,7 +5957,7 @@ function generator141(configOptions2 = {}) {
 }
 
 // src/generators/textShadowOpacity.js
-function generator142(configOptions2 = {}) {
+function generator140(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}text-shadow-opacity`;
   const { textShadowOpacity = {} } = theme2;
@@ -5847,7 +5979,7 @@ function generator142(configOptions2 = {}) {
 }
 
 // src/generators/textShadowX.js
-function generator143(configOptions2 = {}) {
+function generator141(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}text-shadow-x`;
   const { textShadowX = {} } = theme2;
@@ -5869,7 +6001,7 @@ function generator143(configOptions2 = {}) {
 }
 
 // src/generators/textShadowY.js
-function generator144(configOptions2 = {}) {
+function generator142(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}text-shadow-y`;
   const { textShadowY = {} } = theme2;
@@ -5891,7 +6023,7 @@ function generator144(configOptions2 = {}) {
 }
 
 // src/generators/textTransform.js
-function generator145(configOptions2 = {}) {
+function generator143(configOptions2 = {}) {
   const { prefix, variants: variants2 = {} } = configOptions2;
   const propertyOptions = {
     uppercase: "uppercase",
@@ -5917,7 +6049,7 @@ function generator145(configOptions2 = {}) {
 }
 
 // src/generators/textUnderlineOffset.js
-function generator146(configOptions2 = {}) {
+function generator144(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}underline-offset`;
   const { textUnderlineOffset = {} } = theme2;
@@ -5939,7 +6071,7 @@ function generator146(configOptions2 = {}) {
 }
 
 // src/generators/textWrap.js
-function generator147(configOptions2 = {}) {
+function generator145(configOptions2 = {}) {
   const { prefix, variants: variants2 = {} } = configOptions2;
   const propertyOptions = ["wrap", "nowrap", "balance", "pretty"];
   const responsiveCssString = generateCssString(
@@ -5960,7 +6092,7 @@ function generator147(configOptions2 = {}) {
 }
 
 // src/generators/touchAction.js
-function generator148(configOptions2 = {}) {
+function generator146(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}touch`;
   const propertyOptions = [
@@ -5993,7 +6125,7 @@ function generator148(configOptions2 = {}) {
 }
 
 // src/generators/transform.js
-function generator149({ prefix }) {
+function generator147({ prefix }) {
   return `    
   .${prefix}transform-none {
     transform: none !important;
@@ -6001,8 +6133,64 @@ function generator149({ prefix }) {
 `;
 }
 
+// src/generators/transform3d.js
+function generator148(configOptions2 = {}) {
+  const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
+  const { spacing = {}, scale = {} } = theme2;
+  const rotationValues = [0, 1, 2, 3, 6, 12, 45, 90, 180];
+  const perspectiveValues = {
+    none: "none",
+    dramatic: "100px",
+    near: "300px",
+    normal: "500px",
+    midrange: "800px",
+    distant: "1200px"
+  };
+  const responsiveCssString = generateCssString(
+    ({ pseudoClass, getCssByOptions }) => {
+      let cssString = "";
+      ["x", "y", "z"].forEach((axis) => {
+        rotationValues.forEach((deg) => {
+          const key = `${globalPrefix}rotate-${axis}-${deg}`;
+          cssString += `
+            ${pseudoClass(key, variants2.transform3d)} {
+              rotate: ${axis.toUpperCase()}(${deg}deg);
+            }
+          `;
+        });
+      });
+      cssString += getCssByOptions(spacing, (key, value) => `
+        ${pseudoClass(`${globalPrefix}translate-z-${key}`, variants2.transform3d)} {
+          translate: 0 0 ${value};
+        }
+      `);
+      cssString += getCssByOptions(scale, (key, value) => `
+        ${pseudoClass(`${globalPrefix}scale-z-${key}`, variants2.transform3d)} {
+          scale: 1 1 ${value};
+        }
+      `);
+      cssString += getCssByOptions(perspectiveValues, (key, value) => `
+        .${globalPrefix}perspective-${key} {
+          perspective: ${value};
+        }
+      `);
+      cssString += `
+        .${globalPrefix}backface-visible { backface-visibility: visible; }
+        .${globalPrefix}backface-hidden { backface-visibility: hidden; }
+      `;
+      cssString += `
+        .${globalPrefix}transform-style-flat { transform-style: flat; }
+        .${globalPrefix}transform-style-3d, .${globalPrefix}transform-3d { transform-style: preserve-3d; }
+      `;
+      return cssString;
+    },
+    configOptions2
+  );
+  return responsiveCssString;
+}
+
 // src/generators/transformOrigin.js
-function generator150(configOptions2 = {}) {
+function generator149(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}origin`;
   const propertyOptions = [
@@ -6034,7 +6222,7 @@ function generator150(configOptions2 = {}) {
 }
 
 // src/generators/translate.js
-function generator151(configOptions2 = {}) {
+function generator150(configOptions2 = {}) {
   const {
     prefix: globalPrefix,
     variants: variants2 = {},
@@ -6073,7 +6261,7 @@ function generator151(configOptions2 = {}) {
 }
 
 // src/generators/userSelect.js
-function generator152(configOptions2 = {}) {
+function generator151(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}select`;
   const propertyOptions = ["none", "text", "all", "auto"];
@@ -6098,7 +6286,7 @@ function generator152(configOptions2 = {}) {
 }
 
 // src/generators/verticalAlign.js
-function generator153(configOptions2 = {}) {
+function generator152(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}align`;
   const propertyOptions = [
@@ -6129,7 +6317,7 @@ function generator153(configOptions2 = {}) {
 }
 
 // src/generators/visibility.js
-function generator154(configOptions2 = {}) {
+function generator153(configOptions2 = {}) {
   const { prefix, variants: variants2 = {} } = configOptions2;
   const propertyOptions = {
     visible: "visible",
@@ -6154,7 +6342,7 @@ function generator154(configOptions2 = {}) {
 }
 
 // src/generators/whitespace.js
-function generator155(configOptions2 = {}) {
+function generator154(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}whitespace`;
   const propertyOptions = [
@@ -6184,7 +6372,7 @@ function generator155(configOptions2 = {}) {
 }
 
 // src/generators/width.js
-function generator156(configOptions2 = {}) {
+function generator155(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const prefix = `${globalPrefix}w`;
   const { width = {} } = theme2;
@@ -6206,7 +6394,7 @@ function generator156(configOptions2 = {}) {
 }
 
 // src/generators/wordBreak.js
-function generator157(configOptions2 = {}) {
+function generator156(configOptions2 = {}) {
   const { prefix, variants: variants2 = {} } = configOptions2;
   const responsiveCssString = generateCssString(({ pseudoClass }) => {
     const cssString = `
@@ -6230,7 +6418,7 @@ function generator157(configOptions2 = {}) {
 }
 
 // src/generators/willChange.js
-function generator158(configOptions2 = {}) {
+function generator157(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {} } = configOptions2;
   const prefix = `${globalPrefix}will-change`;
   const propertyOptions = {
@@ -6257,7 +6445,7 @@ function generator158(configOptions2 = {}) {
 }
 
 // src/generators/zIndex.js
-function generator159(configOptions2 = {}) {
+function generator158(configOptions2 = {}) {
   const { prefix: globalPrefix, variants: variants2 = {}, theme: theme2 = {} } = configOptions2;
   const { zIndex = {} } = theme2;
   const responsiveCssString = generateCssString(
@@ -6285,7 +6473,7 @@ function generator159(configOptions2 = {}) {
 // src/index.js
 var plugins = {
   accentColor: generator,
-  base: generator17,
+  base: generator16,
   accessibility: generator2,
   alignContent: generator3,
   alignItems: generator4,
@@ -6296,173 +6484,159 @@ var plugins = {
   backgroundClip: generator9,
   backgroundColor: generator10,
   backgroundImage: generator11,
-  backgroundOpacity: generator12,
-  backgroundOrigin: generator13,
-  backgroundPosition: generator14,
-  backgroundRepeat: generator15,
-  backgroundSize: generator16,
-  blur: generator18,
-  borderCollapse: generator19,
-  borderColor: generator20,
-  borderOpacity: generator21,
-  borderRadius: generator22,
-  borderSpacing: generator23,
-  borderStyle: generator24,
-  borderWidth: generator25,
-  boxDecorationBreak: generator26,
-  boxShadow: generator27,
-  boxSizing: generator28,
-  brightness: generator29,
-  captionSide: generator30,
-  caretColor: generator31,
-  clear: generator32,
-  container: generator33,
-  contrast: generator34,
-  cursor: generator35,
-  display: generator36,
-  divideColor: generator37,
-  divideOpacity: generator38,
-  divideStyle: generator39,
-  divideWidth: generator40,
-  dropShadow: generator41,
-  fill: generator42,
-  filter: generator43,
-  flex: generator44,
-  flexBasis: generator45,
-  flexDirection: generator46,
-  flexGrow: generator47,
-  flexShrink: generator48,
-  flexWrap: generator49,
-  float: generator50,
-  fontSize: generator51,
-  fontSmoothing: generator52,
-  fontStyle: generator53,
-  fontVariantNumeric: generator54,
-  fontWeight: generator55,
-  gap: generator56,
-  gradientColorStops: generator57,
-  grayscale: generator58,
-  gridAutoColumns: generator59,
-  gridAutoFlow: generator60,
-  gridAutoRows: generator61,
-  gridColumn: generator62,
-  gridColumnEnd: generator63,
-  gridColumnStart: generator64,
-  gridRow: generator65,
-  gridRowEnd: generator66,
-  gridRowStart: generator67,
-  gridTemplateColumns: generator68,
-  gridTemplateRows: generator69,
-  height: generator70,
-  hueRotate: generator71,
-  hyphens: generator72,
-  inset: generator73,
-  invert: generator74,
-  isolation: generator75,
-  justifyContent: generator76,
-  justifyItems: generator77,
-  justifySelf: generator78,
-  letterSpacing: generator79,
-  lineClamp: generator80,
-  lineHeight: generator81,
-  listStylePosition: generator82,
-  listStyleType: generator83,
-  margin: generator84,
-  maxHeight: generator85,
-  maxWidth: generator86,
-  minHeight: generator87,
-  minWidth: generator88,
-  objectFit: generator90,
-  mixBlendMode: generator89,
-  objectPosition: generator91,
-  opacity: generator92,
-  order: generator93,
-  outlineColor: generator94,
-  outlineOffset: generator95,
-  outlineOpacity: generator96,
-  outlineStyle: generator97,
-  outlineWidth: generator98,
-  overflow: generator99,
-  overscrollBehavior: generator100,
-  padding: generator101,
-  placeContent: generator102,
-  placeItems: generator103,
-  placeSelf: generator104,
-  placeholderColor: generator105,
-  placeholderOpacity: generator106,
+  backgroundOrigin: generator12,
+  backgroundPosition: generator13,
+  backgroundRepeat: generator14,
+  backgroundSize: generator15,
+  blur: generator17,
+  borderCollapse: generator18,
+  borderColor: generator19,
+  borderRadius: generator20,
+  borderSpacing: generator21,
+  borderStyle: generator22,
+  borderWidth: generator23,
+  boxDecorationBreak: generator24,
+  boxShadow: generator25,
+  boxSizing: generator26,
+  brightness: generator27,
+  captionSide: generator28,
+  caretColor: generator29,
+  clear: generator30,
+  container: generator31,
+  containerQuery: generator32,
+  contrast: generator33,
+  cursor: generator34,
+  display: generator35,
+  divideColor: generator36,
+  divideStyle: generator37,
+  divideWidth: generator38,
+  dropShadow: generator39,
+  fieldSizing: generator40,
+  fill: generator41,
+  filter: generator42,
+  flex: generator43,
+  flexBasis: generator44,
+  flexDirection: generator45,
+  flexGrow: generator46,
+  flexShrink: generator47,
+  flexWrap: generator48,
+  float: generator49,
+  fontSize: generator50,
+  fontSmoothing: generator51,
+  fontStyle: generator52,
+  fontVariantNumeric: generator53,
+  fontWeight: generator54,
+  gap: generator55,
+  gradientColorStops: generator56,
+  grayscale: generator57,
+  gridAutoColumns: generator58,
+  gridAutoFlow: generator59,
+  gridAutoRows: generator60,
+  gridColumn: generator61,
+  gridColumnEnd: generator62,
+  gridColumnStart: generator63,
+  gridRow: generator64,
+  gridRowEnd: generator65,
+  gridRowStart: generator66,
+  gridTemplateColumns: generator67,
+  gridTemplateRows: generator68,
+  height: generator69,
+  hueRotate: generator70,
+  hyphens: generator71,
+  inset: generator72,
+  insetRing: generator73,
+  insetShadow: generator74,
+  invert: generator75,
+  isolation: generator76,
+  justifyContent: generator77,
+  justifyItems: generator78,
+  justifySelf: generator79,
+  letterSpacing: generator80,
+  lineClamp: generator81,
+  lineHeight: generator82,
+  listStylePosition: generator83,
+  listStyleType: generator84,
+  margin: generator85,
+  mask: generator86,
+  maxHeight: generator87,
+  maxWidth: generator88,
+  minHeight: generator89,
+  minWidth: generator90,
+  objectFit: generator92,
+  mixBlendMode: generator91,
+  objectPosition: generator93,
+  opacity: generator94,
+  order: generator95,
+  outlineColor: generator96,
+  outlineOffset: generator97,
+  outlineStyle: generator98,
+  outlineWidth: generator99,
+  overflow: generator100,
+  overscrollBehavior: generator101,
+  padding: generator102,
+  placeContent: generator103,
+  placeItems: generator104,
+  placeSelf: generator105,
+  placeholderColor: generator106,
   pointerEvents: generator107,
   position: generator108,
   resize: generator109,
   ringColor: generator110,
   ringOffsetColor: generator111,
   ringOffsetWidth: generator112,
-  ringOpacity: generator113,
-  ringWidth: generator114,
-  rotate: generator116,
-  saturate: generator115,
-  scale: generator117,
-  scrollBehavior: generator118,
-  scrollMargin: generator119,
-  scrollPadding: generator120,
-  scrollSnapAlign: generator121,
-  scrollSnapStop: generator122,
-  scrollSnapType: generator123,
-  sepia: generator124,
-  size: generator125,
-  skew: generator126,
-  space: generator127,
-  stroke: generator128,
-  strokeWidth: generator129,
-  tableLayout: generator130,
-  textAlign: generator131,
-  textColor: generator132,
-  textDecoration: generator133,
-  textDecorationColor: generator134,
-  textDecorationStyle: generator135,
-  textDecorationThickness: generator136,
-  textIndent: generator137,
-  textOpacity: generator138,
-  textOverflow: generator139,
-  textShadowBlur: generator140,
-  textShadowColor: generator141,
-  textShadowOpacity: generator142,
-  textShadowX: generator143,
-  textShadowY: generator144,
-  textTransform: generator145,
-  textUnderlineOffset: generator146,
-  textWrap: generator147,
-  touchAction: generator148,
-  transform: generator149,
-  transformOrigin: generator150,
-  translate: generator151,
-  userSelect: generator152,
-  verticalAlign: generator153,
-  visibility: generator154,
-  whitespace: generator155,
-  width: generator156,
-  willChange: generator158,
-  wordBreak: generator157,
-  zIndex: generator159
+  ringWidth: generator113,
+  rotate: generator115,
+  saturate: generator114,
+  scale: generator116,
+  scrollBehavior: generator117,
+  scrollMargin: generator118,
+  scrollPadding: generator119,
+  scrollSnapAlign: generator120,
+  scrollSnapStop: generator121,
+  scrollSnapType: generator122,
+  sepia: generator123,
+  size: generator124,
+  skew: generator125,
+  space: generator126,
+  stroke: generator127,
+  strokeWidth: generator128,
+  tableLayout: generator129,
+  textAlign: generator130,
+  textColor: generator131,
+  textDecoration: generator132,
+  textDecorationColor: generator133,
+  textDecorationStyle: generator134,
+  textDecorationThickness: generator135,
+  textIndent: generator136,
+  textOverflow: generator137,
+  textShadowBlur: generator138,
+  textShadowColor: generator139,
+  textShadowOpacity: generator140,
+  textShadowX: generator141,
+  textShadowY: generator142,
+  textTransform: generator143,
+  textUnderlineOffset: generator144,
+  textWrap: generator145,
+  touchAction: generator146,
+  transform: generator147,
+  transform3d: generator148,
+  transformOrigin: generator149,
+  translate: generator150,
+  userSelect: generator151,
+  verticalAlign: generator152,
+  visibility: generator153,
+  whitespace: generator154,
+  width: generator155,
+  willChange: generator157,
+  wordBreak: generator156,
+  zIndex: generator158
 };
 function generateTailwindCssString(options = {}) {
   const pluginKeys = Object.keys(plugins);
   const configOptions2 = getConfigOptions(options, pluginKeys);
   const { corePlugins = {} } = configOptions2;
   const corePluginKeys = Object.keys(corePlugins);
-  let cssString = `
-    *, ::after, ::before {
-      --border-opacity: 1;
-      border-color:rgba(229, 231, 235, var(--border-opacity));
-    }
-    *, ::before, ::after {
-      --ring-inset: var(--empty,/*!*/ /*!*/);
-      --ring-offset-width: 0px;
-      --ring-offset-color: #fff;
-      --ring-color: rgba(59, 130, 246, 0.5);
-      --ring-offset-shadow: 0 0 #0000;
-      --ring-shadow: 0 0 #0000;
-    }
-  `;
+  let cssString = "";
   Object.keys(plugins).forEach((key) => {
     if (corePluginKeys.indexOf(key) >= 0 && !corePlugins[key]) {
       cssString += "";

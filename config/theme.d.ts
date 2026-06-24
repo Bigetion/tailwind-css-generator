@@ -40,18 +40,15 @@ declare namespace theme {
     }): any;
     let backgroundImage: {
         none: string;
-        "gradient-to-t": string;
-        "gradient-to-tr": string;
-        "gradient-to-r": string;
-        "gradient-to-br": string;
-        "gradient-to-b": string;
-        "gradient-to-bl": string;
-        "gradient-to-l": string;
-        "gradient-to-tl": string;
+        "linear-to-t": string;
+        "linear-to-tr": string;
+        "linear-to-r": string;
+        "linear-to-br": string;
+        "linear-to-b": string;
+        "linear-to-bl": string;
+        "linear-to-l": string;
+        "linear-to-tl": string;
     };
-    function backgroundOpacity({ theme }: {
-        theme: any;
-    }): any;
     let backgroundPosition: {
         bottom: string;
         center: string;
@@ -81,9 +78,6 @@ declare namespace theme {
         "3xl": string;
     };
     function borderColor({ theme }: {
-        theme: any;
-    }): any;
-    function borderOpacity({ theme }: {
         theme: any;
     }): any;
     let borderRadius: {
@@ -152,6 +146,7 @@ declare namespace theme {
             700: string;
             800: string;
             900: string;
+            950: string;
         };
         let gray: {
             50: string;
@@ -164,6 +159,7 @@ declare namespace theme {
             700: string;
             800: string;
             900: string;
+            950: string;
         };
         let zinc: {
             50: string;
@@ -176,6 +172,7 @@ declare namespace theme {
             700: string;
             800: string;
             900: string;
+            950: string;
         };
         let neutral: {
             50: string;
@@ -188,6 +185,7 @@ declare namespace theme {
             700: string;
             800: string;
             900: string;
+            950: string;
         };
         let stone: {
             50: string;
@@ -200,6 +198,7 @@ declare namespace theme {
             700: string;
             800: string;
             900: string;
+            950: string;
         };
         let red: {
             50: string;
@@ -212,6 +211,7 @@ declare namespace theme {
             700: string;
             800: string;
             900: string;
+            950: string;
         };
         let orange: {
             50: string;
@@ -224,6 +224,7 @@ declare namespace theme {
             700: string;
             800: string;
             900: string;
+            950: string;
         };
         let amber: {
             50: string;
@@ -236,6 +237,7 @@ declare namespace theme {
             700: string;
             800: string;
             900: string;
+            950: string;
         };
         let yellow: {
             50: string;
@@ -248,6 +250,7 @@ declare namespace theme {
             700: string;
             800: string;
             900: string;
+            950: string;
         };
         let lime: {
             50: string;
@@ -260,6 +263,7 @@ declare namespace theme {
             700: string;
             800: string;
             900: string;
+            950: string;
         };
         let green: {
             50: string;
@@ -272,6 +276,7 @@ declare namespace theme {
             700: string;
             800: string;
             900: string;
+            950: string;
         };
         let emerald: {
             50: string;
@@ -284,6 +289,7 @@ declare namespace theme {
             700: string;
             800: string;
             900: string;
+            950: string;
         };
         let teal: {
             50: string;
@@ -296,6 +302,7 @@ declare namespace theme {
             700: string;
             800: string;
             900: string;
+            950: string;
         };
         let cyan: {
             50: string;
@@ -308,6 +315,7 @@ declare namespace theme {
             700: string;
             800: string;
             900: string;
+            950: string;
         };
         let sky: {
             50: string;
@@ -320,6 +328,7 @@ declare namespace theme {
             700: string;
             800: string;
             900: string;
+            950: string;
         };
         let blue: {
             50: string;
@@ -332,6 +341,7 @@ declare namespace theme {
             700: string;
             800: string;
             900: string;
+            950: string;
         };
         let indigo: {
             50: string;
@@ -344,6 +354,7 @@ declare namespace theme {
             700: string;
             800: string;
             900: string;
+            950: string;
         };
         let violet: {
             50: string;
@@ -356,6 +367,7 @@ declare namespace theme {
             700: string;
             800: string;
             900: string;
+            950: string;
         };
         let purple: {
             50: string;
@@ -368,6 +380,7 @@ declare namespace theme {
             700: string;
             800: string;
             900: string;
+            950: string;
         };
         let fuchsia: {
             50: string;
@@ -380,6 +393,7 @@ declare namespace theme {
             700: string;
             800: string;
             900: string;
+            950: string;
         };
         let pink: {
             50: string;
@@ -392,6 +406,7 @@ declare namespace theme {
             700: string;
             800: string;
             900: string;
+            950: string;
         };
         let rose: {
             50: string;
@@ -404,6 +419,59 @@ declare namespace theme {
             700: string;
             800: string;
             900: string;
+            950: string;
+        };
+        let mauve: {
+            50: string;
+            100: string;
+            200: string;
+            300: string;
+            400: string;
+            500: string;
+            600: string;
+            700: string;
+            800: string;
+            900: string;
+            950: string;
+        };
+        let olive: {
+            50: string;
+            100: string;
+            200: string;
+            300: string;
+            400: string;
+            500: string;
+            600: string;
+            700: string;
+            800: string;
+            900: string;
+            950: string;
+        };
+        let mist: {
+            50: string;
+            100: string;
+            200: string;
+            300: string;
+            400: string;
+            500: string;
+            600: string;
+            700: string;
+            800: string;
+            900: string;
+            950: string;
+        };
+        let taupe: {
+            50: string;
+            100: string;
+            200: string;
+            300: string;
+            400: string;
+            500: string;
+            600: string;
+            700: string;
+            800: string;
+            900: string;
+            950: string;
         };
     }
     let columns: {
@@ -435,6 +503,19 @@ declare namespace theme {
         "7xl": string;
     };
     let container: {};
+    let containers: {
+        xs: string;
+        sm: string;
+        md: string;
+        lg: string;
+        xl: string;
+        "2xl": string;
+        "3xl": string;
+        "4xl": string;
+        "5xl": string;
+        "6xl": string;
+        "7xl": string;
+    };
     namespace content {
         let none: string;
     }
@@ -486,9 +567,6 @@ declare namespace theme {
         "zoom-out": string;
     };
     function divideColor({ theme }: {
-        theme: any;
-    }): any;
-    function divideOpacity({ theme }: {
         theme: any;
     }): any;
     function divideWidth({ theme }: {
@@ -861,9 +939,6 @@ declare namespace theme {
         4: string;
         8: string;
     };
-    function outlineOpacity({ theme }: {
-        theme: any;
-    }): any;
     let outlineWidth: {
         0: string;
         1: string;
@@ -875,9 +950,6 @@ declare namespace theme {
         theme: any;
     }): any;
     function placeholderColor({ theme }: {
-        theme: any;
-    }): any;
-    function placeholderOpacity({ theme }: {
         theme: any;
     }): any;
     function ringColor({ theme }: {
@@ -893,9 +965,6 @@ declare namespace theme {
         4: string;
         8: string;
     };
-    function ringOpacity({ theme }: {
-        theme: any;
-    }): any;
     let ringWidth: {
         DEFAULT: string;
         0: string;
@@ -1028,9 +1097,6 @@ declare namespace theme {
         8: string;
     };
     function textIndent({ theme }: {
-        theme: any;
-    }): any;
-    function textOpacity({ theme }: {
         theme: any;
     }): any;
     function textShadowBlur({ theme }: {

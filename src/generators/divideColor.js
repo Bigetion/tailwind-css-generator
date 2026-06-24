@@ -9,11 +9,7 @@ export default function generator(configOptions = {}) {
 
   const responsiveCssString = generateCssString(
     ({ pseudoClass, getCssByColors }) => {
-      const cssString = getCssByColors(divideColor, (key, value, rgbValue) => {
-        let rgbPropertyValue = "";
-        if (rgbValue) {
-          rgbPropertyValue = `border-color: rgba(${rgbValue}, var(--divide-opacity));`;
-        }
+      const cssString = getCssByColors(divideColor, (key, value) => {
         return `
             ${pseudoClass(
               (pseudoString) =>
@@ -21,8 +17,7 @@ export default function generator(configOptions = {}) {
               variants.divideColor,
               {}
             )} {
-              --divide-opacity: 1;
-              border-color: ${value};${rgbPropertyValue}
+              border-color: ${value};
             }
           `;
       });
