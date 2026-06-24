@@ -1,3 +1,7 @@
+export { generate, generateAndInject } from './core.js';
+export * from './plugins/index.js';
+export { presets } from './presets.js';
+
 import { getConfigOptions } from "./utils/index.js";
 
 import generateAccentColor from "./generators/accentColor.js";

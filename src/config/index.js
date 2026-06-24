@@ -1,6 +1,6 @@
-import variants from "./variants";
-import theme from "./theme";
-import vars from "./vars";
+import variants from "./variants.js";
+import theme from "./theme.js";
+import vars from "./vars.js";
 
 const configOptions = {
   variants,
