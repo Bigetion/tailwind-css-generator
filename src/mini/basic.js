@@ -111,8 +111,11 @@ function generateTailwindCssStringBasic(options = {}) {
 }
 
 function addStyleSheetBasic(attributeId, attributeValue, cssString) {
+  const escapedAttributeValue = String(attributeValue)
+    .replace(/\\/g, "\\\\")
+    .replace(/"/g, '\\"');
   const isElementExist = document.querySelector(
-    `style[${attributeId}=${attributeValue}]`
+    `style[${attributeId}="${escapedAttributeValue}"]`
   );
   if (!isElementExist) {
     const head = document.head || document.getElementsByTagName("head")[0];

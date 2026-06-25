@@ -1,6 +1,13 @@
 export { generate, generateAndInject } from './core.js';
 export * from './plugins/index.js';
 export { presets } from './presets.js';
+export {
+  createRuntimeTailwind,
+  parseRuntimeToken,
+  compileRuntimeClassName,
+} from './runtime/index.js';
+export { default as generateTailwindRuntime } from './runtime/index.js';
+export { createRuntimeTailwindFull, default as generateTailwindRuntimeFull } from './runtime-full.js';
 
 import { getConfigOptions } from "./utils/index.js";
 
@@ -342,8 +349,11 @@ function generateTailwindCssString(options = {}) {
 }
 
 function addStyleSheet(attributeId, attributeValue, cssString) {
+  const escapedAttributeValue = String(attributeValue)
+    .replace(/\\/g, "\\\\")
+    .replace(/"/g, '\\"');
   const isElementExist = document.querySelector(
-    `style[${attributeId}=${attributeValue}]`
+    `style[${attributeId}="${escapedAttributeValue}"]`
   );
   if (!isElementExist) {
     const head = document.head || document.getElementsByTagName("head")[0];

@@ -13,6 +13,35 @@ export interface InlineStyleOptions extends TailwindConfig {
   id?: string;
 }
 
+export interface RuntimeOptions extends TailwindConfig {
+  id?: string;
+  autoStart?: boolean;
+  compatMode?: "none" | "full";
+  compatStyleId?: string;
+}
+
+export interface RuntimeToken {
+  original: string;
+  baseToken: string;
+  variants: string[];
+  breakpoint: string | null;
+  important: boolean;
+}
+
+export interface RuntimeEngine {
+  processClassName: (className: string) => string;
+  processClassList: (classListString: string) => string[];
+  processElement: (element: any) => void;
+  scan: (root?: any) => void;
+  observe: (root?: any) => void;
+  flush: () => void;
+  start: () => void;
+  disconnect: () => void;
+  isCompatLoaded: () => boolean;
+  getCacheSize: () => number;
+  getInsertedRuleCount: () => number;
+}
+
 /**
  * Generate and inject Tailwind CSS styles inline into the document (Full Version)
  * @param options - Configuration options for Tailwind CSS generation
@@ -40,6 +69,12 @@ export function generateTailwindCssStringBasic(options?: TailwindConfig): string
  * @returns Processed configuration options
  */
 export function getConfigOptions(options?: TailwindConfig, pluginKeys?: string[]): TailwindConfig;
+export function parseRuntimeToken(className: string, screens?: Record<string, string>): RuntimeToken | null;
+export function compileRuntimeClassName(className: string, options?: RuntimeOptions): string;
+export function createRuntimeTailwind(options?: RuntimeOptions): RuntimeEngine;
+export function generateTailwindRuntime(options?: RuntimeOptions): RuntimeEngine;
+export function createRuntimeTailwindFull(options?: RuntimeOptions): RuntimeEngine;
+export function generateTailwindRuntimeFull(options?: RuntimeOptions): RuntimeEngine;
 
 export default generateInlineStyle;
 
@@ -54,4 +89,18 @@ declare module 'tailwind-css-generator/basic.esm.js' {
   function generateTailwindBasic(options?: InlineStyleOptions): void;
   export default generateTailwindBasic;
   export { generateTailwindCssStringBasic, getConfigOptions };
+}
+
+declare module 'tailwind-css-generator/runtime' {
+  export function parseRuntimeToken(className: string, screens?: Record<string, string>): RuntimeToken | null;
+  export function compileRuntimeClassName(className: string, options?: RuntimeOptions): string;
+  export function createRuntimeTailwind(options?: RuntimeOptions): RuntimeEngine;
+  export function generateTailwindRuntime(options?: RuntimeOptions): RuntimeEngine;
+}
+
+declare module 'tailwind-css-generator/runtime-full' {
+  export function parseRuntimeToken(className: string, screens?: Record<string, string>): RuntimeToken | null;
+  export function compileRuntimeClassName(className: string, options?: RuntimeOptions): string;
+  export function createRuntimeTailwindFull(options?: RuntimeOptions): RuntimeEngine;
+  export function generateTailwindRuntimeFull(options?: RuntimeOptions): RuntimeEngine;
 }

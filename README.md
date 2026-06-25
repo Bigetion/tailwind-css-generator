@@ -121,7 +121,7 @@ const config = {
   theme: {
     extend: {
       colors: {
-        primary: "#1234567",
+        primary: "#123456",
         secondary: "#abcdef"
       }
     }
@@ -176,6 +176,115 @@ generateTailwindCss({
     }
   }
 });
+```
+
+### Runtime JIT (On-Demand, Zero Build Setup)
+
+Generate only the class names that are actually used in the DOM.
+
+```javascript
+import { generateTailwindRuntime } from "tailwind-css-generator/runtime";
+
+// Auto scan current DOM and observe future class changes
+const runtime = generateTailwindRuntime({
+  id: "tailwind-runtime",
+  autoStart: true,
+});
+
+// Optional manual compile
+runtime.processClassName("md:hover:flex");
+runtime.processClassList("mt-4 px-6 items-center justify-between");
+
+// Stop observing when no longer needed
+runtime.disconnect();
+```
+
+If you prefer importing from the main entry point:
+
+```javascript
+import { generateTailwindRuntime } from "tailwind-css-generator";
+```
+
+CDN runtime bundle:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/tailwind-css-generator@5.0.0/runtime.min.js"></script>
+<script>
+  // globalName from runtime.min.js
+  const runtime = window.tailwindRuntime?.generateTailwindRuntime?.({ autoStart: true });
+</script>
+```
+
+Supported in this initial runtime release:
+- Display: `block`, `inline`, `inline-block`, `flex`, `grid`, `hidden`, `contents`
+- Spacing: margin and padding directional classes (including negative margin)
+- Gap: `gap-*`, `gap-x-*`, `gap-y-*`
+- Sizing: `w-*`, `h-*`, `min/max-w-*`, `min/max-h-*`
+- Layout helpers: `justify-*`, `items-*`, `grid-cols-*`, position/inset (`absolute`, `inset-*`, etc)
+- Typography: `text-*` (size, alignment, color) and `font-*` weights
+- Visual: `bg-*`, `border-*` (width + color), `rounded*`, `shadow*`, `ring*`, `opacity-*`
+- Motion: `transition*`, `duration-*`, `ease-*`, `delay-*`
+- Flex helpers: `flex-*` direction/wrap variants
+- Variants: responsive breakpoints, `dark`, `hover`, `focus`, `active`, `visited`, `disabled`, `focus-within`, `group-hover`, `group-focus`, `not-*`
+
+### Runtime Full Compatibility Mode (Tailwind-Wide Fallback)
+
+If you need broad Tailwind utility compatibility, use the full-compat runtime build.
+It compiles fast-path JIT rules first, then injects a full preset fallback stylesheet when an unsupported class is encountered.
+
+```javascript
+import { generateTailwindRuntimeFull } from "tailwind-css-generator/runtime-full";
+
+const runtime = generateTailwindRuntimeFull({
+  id: "tailwind-runtime-full",
+  autoStart: true,
+});
+
+// Useful status check
+console.log(runtime.isCompatLoaded());
+```
+
+CDN full-compat bundle:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/tailwind-css-generator@5.0.0/runtime-full.min.js"></script>
+<script>
+  const runtime = window.tailwindRuntimeFull?.generateTailwindRuntimeFull?.({ autoStart: true });
+</script>
+```
+
+### Runtime Benchmark
+
+Run a reproducible runtime JIT benchmark:
+
+```bash
+npm run bench:runtime
+```
+
+### Runtime Usage Examples
+
+- Vanilla browser example: `examples/use-cases/runtime-vanilla.html`
+- React snippet: `examples/use-cases/runtime-react-snippet.js`
+- Full compatibility vanilla example: `examples/use-cases/runtime-full-compat.html`
+
+Production lifecycle example:
+
+```javascript
+import { createRuntimeTailwind } from "tailwind-css-generator/runtime";
+
+const runtime = createRuntimeTailwind({ id: "app-runtime" });
+
+// Safe to call before DOM is ready
+runtime.start();
+
+// Manual processing for detached templates
+runtime.processClassList("flex gap-4 rounded-lg bg-slate-100 p-4");
+
+// Flush queued mutation records immediately (optional)
+runtime.flush();
+
+// Cleanup (single-page apps, micro-frontend unmount, etc.)
+runtime.disconnect();
 ```
 
 ## API Reference
@@ -250,6 +359,10 @@ npm run build:types  # TypeScript definitions
 - `index.min.js` - Minified build for CDN (Full version, ~95KB)
 - `basic.esm.js` - ES Modules build (Basic version)  
 - `basic.min.js` - Minified build for CDN (Basic version, ~35KB)
+- `runtime.esm.js` - ES Modules build (Runtime JIT only)
+- `runtime.min.js` - Minified CDN build (Runtime JIT only)
+- `runtime-full.esm.js` - ES Modules build (Runtime JIT + full fallback)
+- `runtime-full.min.js` - Minified CDN build (Runtime JIT + full fallback)
 - `index.d.ts` - TypeScript definitions
 
 ## Which Version Should I Use?

@@ -21,7 +21,19 @@
     "./minimal": {
       "import": "./minimal.esm.js",
       "types": "./index.d.ts"
-    }
+    },
+    "./runtime": {
+      "import": "./runtime.esm.js",
+      "types": "./runtime/index.d.ts"
+    },
+    "./runtime-full": {
+      "import": "./runtime-full.esm.js",
+      "types": "./runtime/index.d.ts"
+    },
+    "./runtime.esm.js": "./runtime.esm.js",
+    "./runtime.min.js": "./runtime.min.js",
+    "./runtime-full.esm.js": "./runtime-full.esm.js",
+    "./runtime-full.min.js": "./runtime-full.min.js"
   },
   "files": [
     "index.js",
@@ -31,7 +43,12 @@
     "basic.esm.js",
     "basic.min.js",
     "minimal.esm.js",
-    "minimal.min.js"
+    "minimal.min.js",
+    "runtime.esm.js",
+    "runtime.min.js",
+    "runtime-full.esm.js",
+    "runtime-full.min.js",
+    "runtime/"
   ],
   "scripts": {
     "build": "node build.js && npm run build:types",
@@ -41,7 +58,8 @@
     "build:types": "tsc src/index.js --declaration --allowJs --emitDeclarationOnly --outDir . --skipLibCheck",
     "dev": "npm run build && node test.js",
     "prepublishOnly": "npm run build",
-    "test": "vitest --run"
+    "test": "vitest --run",
+    "bench:runtime": "node examples/benchmark/runtime-benchmark.mjs"
   },
   "repository": {
     "type": "git",

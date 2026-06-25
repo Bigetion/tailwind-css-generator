@@ -20,10 +20,16 @@ function getConfigOptions(options = {}, pluginKeys = []) {
         newVariants[key] = [].concat(newVariants[key], variantsExtend[key]);
       }
     }
-    if (newVariants[key].indexOf("hover")) {
+    if (
+      newVariants[key].indexOf("hover") >= 0 &&
+      newVariants[key].indexOf("group-hover") < 0
+    ) {
       newVariants[key].push("group-hover");
     }
-    if (newVariants[key].indexOf("focus")) {
+    if (
+      newVariants[key].indexOf("focus") >= 0 &&
+      newVariants[key].indexOf("focus-within") < 0
+    ) {
       newVariants[key].push("focus-within");
     }
   });

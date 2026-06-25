@@ -92,6 +92,50 @@ async function buildAll() {
     });
     console.log('✅ Minimal preset builds complete\n');
 
+    // Runtime-only JIT build for smallest zero-setup runtime usage
+    console.log('📦 Building Runtime JIT Bundle...');
+
+    await build({
+      ...buildOptions,
+      entryPoints: ['src/runtime-entry.js'],
+      format: 'esm',
+      outfile: 'runtime.esm.js',
+      platform: 'neutral',
+    });
+
+    await build({
+      ...buildOptions,
+      entryPoints: ['src/runtime-entry.js'],
+      format: 'esm',
+      outfile: 'runtime.min.js',
+      platform: 'neutral',
+      minify: true,
+      globalName: 'tailwindRuntime',
+    });
+    console.log('✅ Runtime JIT builds complete\n');
+
+    // Runtime full-compatibility build (inject full preset on unsupported class)
+    console.log('📦 Building Runtime Full-Compat Bundle...');
+
+    await build({
+      ...buildOptions,
+      entryPoints: ['src/runtime-full-entry.js'],
+      format: 'esm',
+      outfile: 'runtime-full.esm.js',
+      platform: 'neutral',
+    });
+
+    await build({
+      ...buildOptions,
+      entryPoints: ['src/runtime-full-entry.js'],
+      format: 'esm',
+      outfile: 'runtime-full.min.js',
+      platform: 'neutral',
+      minify: true,
+      globalName: 'tailwindRuntimeFull',
+    });
+    console.log('✅ Runtime full-compat builds complete\n');
+
     // Get file sizes
     const fullCjsSize = (fs.statSync('index.js').size / 1024).toFixed(1);
     const fullEsmSize = (fs.statSync('index.esm.js').size / 1024).toFixed(1);
@@ -102,6 +146,12 @@ async function buildAll() {
 
     const minimalEsmSize = (fs.statSync('minimal.esm.js').size / 1024).toFixed(1);
     const minimalMinSize = (fs.statSync('minimal.min.js').size / 1024).toFixed(1);
+
+    const runtimeEsmSize = (fs.statSync('runtime.esm.js').size / 1024).toFixed(1);
+    const runtimeMinSize = (fs.statSync('runtime.min.js').size / 1024).toFixed(1);
+
+    const runtimeFullEsmSize = (fs.statSync('runtime-full.esm.js').size / 1024).toFixed(1);
+    const runtimeFullMinSize = (fs.statSync('runtime-full.min.js').size / 1024).toFixed(1);
 
     console.log('📊 Build Summary:');
     console.log('   🎯 Full Version (All Utilities):');
@@ -114,13 +164,23 @@ async function buildAll() {
     console.log('   ⚡ Minimal Preset (Base + Layout + Spacing + Flexbox + Sizing):');
     console.log(`      ES Modules: ${minimalEsmSize} KB`);
     console.log(`      Minified: ${minimalMinSize} KB`);
+    console.log('   🧠 Runtime JIT (On-Demand Utilities):');
+    console.log(`      ES Modules: ${runtimeEsmSize} KB`);
+    console.log(`      Minified: ${runtimeMinSize} KB`);
+    console.log('   🧩 Runtime Full-Compat (On-Demand + Full Fallback):');
+    console.log(`      ES Modules: ${runtimeFullEsmSize} KB`);
+    console.log(`      Minified: ${runtimeFullMinSize} KB`);
     
     const basicSavings = ((1 - basicMinSize / fullMinSize) * 100).toFixed(1);
     console.log(`   💡 Basic size reduction: ${basicSavings}% smaller than full version`);
     const minimalSavings = ((1 - minimalMinSize / fullMinSize) * 100).toFixed(1);
+    const runtimeSavings = ((1 - runtimeMinSize / fullMinSize) * 100).toFixed(1);
+    const runtimeFullSavings = ((1 - runtimeFullMinSize / fullMinSize) * 100).toFixed(1);
     const minimalRatio = (minimalMinSize / fullMinSize * 100).toFixed(1);
     const minimalPasses = (minimalMinSize / fullMinSize) <= 0.20;
     console.log(`   💡 Minimal size reduction: ${minimalSavings}% smaller than full version`);
+    console.log(`   💡 Runtime JIT size reduction: ${runtimeSavings}% smaller than full version`);
+    console.log(`   💡 Runtime full-compat size reduction: ${runtimeFullSavings}% smaller than full version`);
     console.log(`   📏 minimal.min.js is ${minimalRatio}% of index.min.js (target: ≤20%) — ${minimalPasses ? '✅ PASS' : '⚠️  EXCEEDS target (shared config data is irreducible)'}`);
     if (!minimalPasses) {
       console.log(`      Note: The ~${minimalRatio}% ratio reflects unavoidable shared infrastructure`);

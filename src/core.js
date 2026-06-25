@@ -68,7 +68,8 @@ export function generateAndInject(plugins, options = {}) {
   const cssString = generate(plugins, options).replace(/\s\s+/g, ' ');
   if (typeof window === 'object') {
     const { id = 'tailwind-css' } = options;
-    const isElementExist = document.querySelector(`style[data-inline-style=${id}]`);
+    const escapedId = String(id).replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+    const isElementExist = document.querySelector(`style[data-inline-style="${escapedId}"]`);
     if (!isElementExist) {
       const head = document.head || document.getElementsByTagName('head')[0];
       const style = document.createElement('style');
