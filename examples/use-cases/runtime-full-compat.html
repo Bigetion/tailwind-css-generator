@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Runtime Full Compatibility — Tailwind v4</title>
+  <script type="module">
+    import { generateTailwindRuntimeFull } from "../../runtime-full.esm.js";
+
+    const runtime = generateTailwindRuntimeFull({
+      id: "runtime-full-demo",
+      autoStart: true,
+    });
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const status = document.getElementById("compat-status");
+      const button = document.getElementById("trigger-full");
+
+      button.addEventListener("click", () => {
+        // backdrop-blur-sm is not in the JIT fast-path → triggers full fallback
+        status.className = "mt-4 p-4 rounded-xl bg-sky-50 border border-sky-300 backdrop-blur-sm text-sm text-sky-800";
+        status.textContent = `Full compat CSS injected: ${runtime.isCompatLoaded()} | Cache: ${runtime.getCacheSize()} | Rules: ${runtime.getInsertedRuleCount()}`;
+      });
+
+      // v4 utilities exercised directly
+      runtime.processClassList([
+        // 3D transforms
+        "rotate-x-12", "rotate-y-45", "rotate-z-90",
+        "perspective-normal", "backface-hidden", "transform-style-3d",
+        // inset-shadow / inset-ring
+        "inset-shadow-md", "inset-shadow-none",
+        "inset-ring-2", "inset-ring-4",
+        // field-sizing
+        "field-sizing-content", "field-sizing-fixed",
+        // mask
+        "mask-linear-to-r", "mask-linear-to-b", "mask-none",
+        // container query class
+        "@container",
+        // not-* and starting: variants
+        "not-hover:opacity-75", "starting:opacity-0",
+        // filters
+        "backdrop-blur-md", "backdrop-brightness-110",
+        // gradients v4
+        "bg-linear-to-tr", "from-violet-500", "to-pink-500",
+        // canonical v4 names
+        "grow", "shrink", "text-ellipsis",
+        // new OKLCH colors
+        "text-mauve-500", "bg-olive-100", "border-mist-300",
+      ].join(" "));
+    });
+  </script>
+</head>
+<body class="min-h-screen bg-slate-50 p-6">
+  <main class="mx-auto max-w-2xl rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+    <h1 class="text-2xl font-bold text-slate-900">Runtime Full Compatibility — v4</h1>
+    <p class="mt-2 text-sm text-slate-600">
+      The JIT runtime covers all Tailwind v4 utilities. If an unsupported utility is encountered,
+      the full static CSS is lazy-loaded as a fallback.
+    </p>
+
+    <!-- v4 new utility demonstrations -->
+    <section class="mt-6 space-y-4">
+
+      <!-- 3D transforms -->
+      <div class="flex gap-4 items-center">
+        <div class="w-12 h-12 bg-indigo-400 rounded-lg text-white text-xs flex items-center justify-center transition-transform duration-500 hover:rotate-y-180 transform-style-3d perspective-normal">3D</div>
+        <div class="w-12 h-12 bg-violet-400 rounded-lg text-white text-xs flex items-center justify-center hover:rotate-x-45 transition-transform duration-300">3D-X</div>
+        <span class="text-xs text-slate-500">rotate-y-180, rotate-x-45 (hover)</span>
+      </div>
+
+      <!-- inset-shadow + inset-ring -->
+      <div class="flex gap-3 flex-wrap">
+        <div class="inset-shadow-md rounded-lg bg-white border border-slate-200 px-4 py-2 text-sm">inset-shadow-md</div>
+        <div class="inset-shadow-lg rounded-lg bg-slate-100 px-4 py-2 text-sm">inset-shadow-lg</div>
+        <div class="inset-ring-4 rounded-lg px-4 py-2 text-sm text-indigo-700">inset-ring-4</div>
+      </div>
+
+      <!-- field-sizing-content -->
+      <div>
+        <p class="text-xs text-slate-500 mb-1">field-sizing-content — textarea auto-grows as you type:</p>
+        <textarea class="w-full border border-gray-300 rounded-lg text-sm p-2 field-sizing-content resize-none focus:outline-none focus:ring-2 focus:ring-indigo-300" rows="1" placeholder="Type here to grow..."></textarea>
+      </div>
+
+      <!-- mask -->
+      <div class="h-16 rounded-lg bg-gradient-to-r from-indigo-500 to-sky-400 mask-linear-to-r"></div>
+
+      <!-- gradient v4 canonical -->
+      <div class="h-10 rounded-lg bg-linear-to-r from-violet-500 via-fuchsia-500 to-pink-500"></div>
+
+      <!-- canonical v4 names: grow, shrink, text-ellipsis -->
+      <div class="flex gap-2">
+        <div class="grow bg-emerald-100 text-emerald-700 text-xs rounded px-2 py-1 text-center">grow (not flex-grow)</div>
+        <div class="shrink-0 w-24 bg-rose-100 text-rose-700 text-xs rounded px-2 py-1 text-center">shrink-0</div>
+        <div class="grow overflow-hidden text-xs text-slate-600 py-1"><span class="text-ellipsis block overflow-hidden whitespace-nowrap">text-ellipsis overflow-hidden whitespace-nowrap on a long string</span></div>
+      </div>
+
+      <!-- OKLCH new colors -->
+      <div class="flex gap-2 flex-wrap">
+        <div class="bg-mauve-200 text-mauve-800 text-xs rounded px-2 py-1">mauve</div>
+        <div class="bg-olive-200 text-olive-800 text-xs rounded px-2 py-1">olive</div>
+        <div class="bg-mist-200 text-mist-800 text-xs rounded px-2 py-1">mist</div>
+        <div class="bg-taupe-200 text-taupe-800 text-xs rounded px-2 py-1">taupe</div>
+      </div>
+    </section>
+
+    <!-- Compat fallback trigger -->
+    <button
+      id="trigger-full"
+      class="mt-6 rounded-lg border border-indigo-300 bg-indigo-100 px-4 py-2 text-sm font-semibold text-indigo-700 hover:bg-indigo-200 transition-colors duration-200"
+    >
+      Trigger backdrop-blur (compat fallback)
+    </button>
+
+    <div id="compat-status" class="mt-4 p-3 rounded-lg border border-slate-200 bg-slate-50 text-sm text-slate-600">
+      Compat loaded: false
+    </div>
+  </main>
+</body>
+</html>

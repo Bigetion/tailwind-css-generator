@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Runtime JIT Vanilla — Tailwind v4</title>
+  <style>
+    /* Keyframes needed for animate-* since they can't be JIT-compiled as @keyframes */
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes ping { 75%,100% { transform: scale(2); opacity: 0; } }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .5; } }
+    @keyframes bounce {
+      0%,100% { transform: translateY(-25%); animation-timing-function: cubic-bezier(0.8,0,1,1); }
+      50% { transform: none; animation-timing-function: cubic-bezier(0,0,0.2,1); }
+    }
+    /* 3D rotate needs transition on the `rotate` property, not transform */
+    .card-3d { transition: rotate 0.6s ease; transform-style: preserve-3d; }
+    .card-3d:hover { rotate: Y(180deg); }
+  </style>
+  <script type="module">
+    import { generateTailwindRuntime } from "../../runtime.esm.js";
+
+    const runtime = generateTailwindRuntime({ id: "runtime-demo", autoStart: true });
+
+    window.addEventListener("DOMContentLoaded", () => {
+      // Dynamic class swap — tests MutationObserver
+      const badge = document.getElementById("dynamic-badge");
+      setTimeout(() => {
+        badge.className = "mt-4 px-4 py-2 rounded-lg bg-emerald-100 text-emerald-700 border border-emerald-400 shadow-md opacity-90 transition-all duration-500";
+        badge.textContent = "✓ MutationObserver fired — CSS compiled on the fly";
+      }, 800);
+
+      // Show cache stats after everything loads
+      setTimeout(() => {
+        document.getElementById("stats").textContent =
+          `Cache: ${runtime.getCacheSize()} classes | Injected rules: ${runtime.getInsertedRuleCount()}`;
+      }, 1200);
+    });
+  </script>
+</head>
+<body class="p-6 bg-slate-50 text-gray-800">
+  <main class="max-w-3xl mx-auto bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+    <h1 class="text-2xl font-bold text-slate-900">Runtime JIT — Tailwind v4</h1>
+    <p class="mt-2 text-sm text-slate-600">
+      Only classes actually used in the DOM are compiled and injected.
+      Open DevTools → Elements → <code>&lt;head&gt;</code> to see <code>&lt;style data-tailwind-runtime&gt;</code>.
+    </p>
+
+    <!-- ── Cards: OKLCH colors + hover variants ── -->
+    <section class="mt-6 grid grid-cols-2 gap-4">
+      <article class="rounded-lg border border-blue-200 bg-blue-50 p-4 shadow-sm ring-1 ring-blue-200 transition-shadow duration-300 hover:shadow-lg">
+        <h2 class="text-sm font-semibold text-blue-700">Card A</h2>
+        <p class="mt-2 text-xs text-blue-600 leading-relaxed">Compiled on initial scan. Colors use OKLCH P3 palette.</p>
+      </article>
+      <article class="rounded-lg border border-violet-200 bg-violet-50 p-4 shadow-sm opacity-95 transition-opacity duration-300 hover:opacity-100">
+        <h2 class="text-sm font-semibold text-violet-700">Card B</h2>
+        <p class="mt-2 text-xs text-violet-600 leading-relaxed">Variants: hover, focus, dark, group-hover.</p>
+      </article>
+    </section>
+
+    <!-- ── v4 utility showcase: grow / 3D / field-sizing ── -->
+    <section class="mt-6 grid grid-cols-3 gap-3">
+      <!-- grow + shrink (v4 canonical, replaces flex-grow/flex-shrink) -->
+      <div class="flex gap-2 rounded border border-gray-200 p-3 bg-gray-50 items-center">
+        <div class="grow bg-sky-200 rounded text-xs text-center py-1 font-medium">grow</div>
+        <div class="shrink-0 w-14 bg-rose-200 rounded text-xs text-center py-1 font-medium">shrink-0</div>
+      </div>
+
+      <!-- 3D card flip on hover -->
+      <div class="rounded border border-gray-200 p-3 bg-gray-50 flex items-center justify-center">
+        <div class="card-3d w-14 h-14 bg-indigo-400 rounded-lg text-white text-xs font-bold flex items-center justify-center cursor-pointer select-none">
+          3D ↻
+        </div>
+      </div>
+
+      <!-- field-sizing-content: textarea auto-grows -->
+      <div class="rounded border border-gray-200 p-3 bg-gray-50 flex flex-col justify-center">
+        <p class="text-xs text-slate-400 mb-1">field-sizing-content</p>
+        <textarea
+          class="w-full border border-gray-300 rounded text-xs p-1 field-sizing-content resize-none focus:outline-none focus:ring-2 focus:ring-indigo-300"
+          rows="1"
+          placeholder="type to expand…"
+        ></textarea>
+      </div>
+    </section>
+
+    <!-- ── inset-shadow + inset-ring + hover:shadow ── -->
+    <section class="mt-4 flex gap-3 flex-wrap items-center">
+      <div class="inset-shadow-sm rounded-lg bg-white border border-gray-200 px-4 py-2 text-sm text-gray-700">
+        inset-shadow-sm
+      </div>
+      <div class="inset-ring-2 rounded-lg px-4 py-2 text-sm text-indigo-700 bg-indigo-50">
+        inset-ring-2
+      </div>
+      <div class="shadow-md rounded-lg bg-white border border-gray-100 px-4 py-2 text-sm text-gray-700 transition-shadow duration-300 hover:shadow-2xl cursor-pointer">
+        hover → shadow-2xl
+      </div>
+    </section>
+
+    <!-- ── Gradient v4: bg-linear-to-* (replaces bg-gradient-to-*) ── -->
+    <div class="mt-4 h-12 rounded-lg bg-linear-to-r from-sky-400 via-violet-400 to-pink-400 flex items-center px-4">
+      <span class="text-white text-xs font-semibold drop-shadow-sm">bg-linear-to-r from-sky-400 via-violet-400 to-pink-400</span>
+    </div>
+
+    <!-- ── Filters ── -->
+    <section class="mt-4 flex gap-4 items-center">
+      <div class="w-10 h-10 rounded-full bg-emerald-400 blur-sm flex-shrink-0"></div>
+      <div class="w-10 h-10 rounded-full bg-orange-400 brightness-125 flex-shrink-0"></div>
+      <div class="w-10 h-10 rounded-full bg-blue-400 grayscale flex-shrink-0"></div>
+      <span class="text-xs text-slate-500">blur-sm · brightness-125 · grayscale</span>
+    </section>
+
+    <!-- ── Mask (fade left edge to transparent) ── -->
+    <div class="mt-4 relative h-16 rounded-lg overflow-hidden">
+      <!-- solid background so the mask fade is visible -->
+      <div class="absolute inset-0 bg-linear-to-r from-blue-500 to-purple-500"></div>
+      <!-- mask fades from opaque (left) to transparent (right) -->
+      <div class="absolute inset-0 bg-linear-to-r from-blue-500 to-purple-500 mask-linear-to-l"></div>
+      <span class="absolute left-4 top-1/2 -translate-y-1/2 text-white text-sm font-semibold">mask-linear-to-l</span>
+    </div>
+
+    <!-- ── Animations ── -->
+    <section class="mt-4 flex gap-6 items-center">
+      <div class="w-6 h-6 rounded-full bg-sky-400 animate-spin flex-shrink-0"></div>
+      <div class="w-6 h-6 rounded-full bg-rose-400 animate-ping flex-shrink-0"></div>
+      <div class="w-6 h-6 rounded-full bg-amber-400 animate-pulse flex-shrink-0"></div>
+      <div class="w-6 h-6 rounded-full bg-emerald-400 animate-bounce flex-shrink-0"></div>
+      <span class="text-xs text-slate-500">spin · ping · pulse · bounce</span>
+    </section>
+
+    <!-- ── Dynamic badge (MutationObserver demo) ── -->
+    <div id="dynamic-badge" class="mt-4 px-3 py-2 rounded bg-gray-100 text-gray-500 text-sm">
+      Waiting for dynamic class update…
+    </div>
+
+    <!-- ── Stats ── -->
+    <p id="stats" class="mt-3 text-xs text-slate-400 font-mono"></p>
+  </main>
+</body>
+</html>
